@@ -5,33 +5,33 @@ using UnityEngine;
 public partial class PlayerState : MonoBehaviour
 {
     //--納刀状態--//
-    private static readonly StateIdle _idle = new();// アイドル.
-    private static readonly StateAvoid _avoid = new();// 回避.
-    private static readonly StateRunning _running = new();// 走る.
-    private static readonly StateDash _dash = new();// ダッシュ.
-    private static readonly StateFatigueDash _fatigueDash = new();// 疲労時のダッシュ.
-    private static readonly StateRecovery _recovery = new();// 回復.
+    private static readonly StateIdle                 _idle = new();                // アイドル.
+    private static readonly StateAvoid                _avoid = new();               // 回避.
+    private static readonly StateRunning              _running = new();             // 走る.
+    private static readonly StateDash                 _dash = new();                // ダッシュ.
+    private static readonly StateFatigueDash          _fatigueDash = new();         // 疲労時のダッシュ.
+    private static readonly StateRecovery             _recovery = new();            // 回復.
 
     //--抜刀状態--//
-    private static readonly StateDrawnSwordTransition _drawSwordTransition = new();// 抜刀している.
-    private static readonly StateIdleDrawnSword _idleDrawnSword = new();// アイドル.
-    private static readonly StateRunDrawnSword _runDrawnSword = new();// 走る.
-    private static readonly StateAvoidDrawSword _avoidDrawnSword = new();// 抜刀回避.
-    private static readonly StateSheathingSword _sheathingSword = new();// 納刀する.
-    private static readonly StateSteppingSlash _steppingSlash = new();// 踏み込み斬り.
-    private static readonly StatePiercing _piercing = new();// 突き.
-    private static readonly StateSlashUp _slashUp = new();// 斬り上げ.
-    private static readonly StateSpiritBlade1 _spiritBlade1 = new();// 気刃斬り1.
-    private static readonly StateSpiritBlade2 _spiritBlade2 = new();// 気刃斬り2.
-    private static readonly StateSpiritBlade3 _spiritBlade3 = new();// 気刃斬り3.
-    private static readonly StateRoundSlash _roundSlash = new();// 気刃大回転斬り.
+    private static readonly StateDrawnSwordTransition _drawSwordTransition = new(); // 抜刀している.
+    private static readonly StateIdleDrawnSword       _idleDrawnSword = new();      // アイドル.
+    private static readonly StateRunDrawnSword        _runDrawnSword = new();       // 走る.
+    private static readonly StateAvoidDrawSword       _avoidDrawnSword = new();     // 抜刀回避.
+    private static readonly StateSheathingSword       _sheathingSword = new();      // 納刀する.
+    private static readonly StateSteppingSlash        _steppingSlash = new();       // 踏み込み斬り.
+    private static readonly StatePiercing             _piercing = new();            // 突き.
+    private static readonly StateSlashUp              _slashUp = new();             // 斬り上げ.
+    private static readonly StateSpiritBlade1         _spiritBlade1 = new();        // 気刃斬り1.
+    private static readonly StateSpiritBlade2         _spiritBlade2 = new();        // 気刃斬り2.
+    private static readonly StateSpiritBlade3         _spiritBlade3 = new();        // 気刃斬り3.
+    private static readonly StateRoundSlash           _roundSlash = new();          // 気刃大回転斬り.
 
     //--共通状態--//
-    private static readonly StateDead _dead = new();// やられた.
-    private static readonly StateDamage _damage = new();// ダメージを受けた
+    private static readonly StateDead                 _dead = new();                // やられた.
+    private static readonly StateDamage               _damage = new();              // ダメージを受けた.
 
     // 現在のState.
-    private StateBase _currentState = _idle;
+    private StateBase                                 _currentState = _idle;
 
     void Start()
     {
@@ -83,7 +83,6 @@ public partial class PlayerState : MonoBehaviour
             AutoRecoveryStamina();
         }
 
-        //Debug.Log(_rigidbody.velocity.magnitude);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -205,8 +204,6 @@ public partial class PlayerState : MonoBehaviour
     {
         transform.forward = Vector3.Slerp(transform.forward, _moveVelocity, Time.deltaTime * _rotateSpeed);
     }
-
-
 
     // ダッシュしているかどうかの情報取得.
     public bool GetIsDashing() { return _isDashing; }

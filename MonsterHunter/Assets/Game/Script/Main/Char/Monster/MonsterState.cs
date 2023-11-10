@@ -12,9 +12,9 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateBless _bless = new();// ブレス攻撃.
 
     // Stateの初期化.
-    //private StateBase _currentState = _idle;
+    private StateBase _currentState = _idle;
     // デバッグ用のStateの初期化
-    private StateBase _currentState = _bless;
+    //private StateBase _currentState = _bless;
 
     private void Start()
     {
@@ -109,10 +109,12 @@ public partial class MonsterState : MonoBehaviour
             if(GetDistance() <= _shortDistance)
             {
                 _text.text = "正面近距離";
+                _isNearDistance = true;
             }
             else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
                 _text.text = "正面遠距離";
+                _isNearDistance = false;
             }
         }
         // 背後
@@ -121,10 +123,12 @@ public partial class MonsterState : MonoBehaviour
             if(GetDistance() <= _shortDistance)
             {
                 _text.text = "背後近距離";
+                _isNearDistance = true;
             }
             else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
                 _text.text = "背後遠距離";
+                _isNearDistance = false;
             }
         }
         // 右
@@ -133,10 +137,12 @@ public partial class MonsterState : MonoBehaviour
             if(GetDistance() <= _shortDistance)
             {
                 _text.text = "右近距離";
+                _isNearDistance = true;
             }
             else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
                 _text.text = "右遠距離";
+                _isNearDistance = false;
             }
         }
         // 左
@@ -145,10 +151,12 @@ public partial class MonsterState : MonoBehaviour
             if(GetDistance() <= _shortDistance)
             {
                 _text.text = "左近距離";
+                _isNearDistance = true;
             }
             else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
                 _text.text = "左遠距離";
+                _isNearDistance = false;
 
             }
         }

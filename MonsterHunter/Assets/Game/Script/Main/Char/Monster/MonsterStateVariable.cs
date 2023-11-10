@@ -42,6 +42,11 @@ public partial class MonsterState
     // 遠距離
     private float _longDistance = 50;
 
+    // 遠、近距離にいるかどうかの真偽.
+    // true  : 近
+    // false : 遠
+    private bool _isNearDistance = false;
+
     // 以下デバッグ用
 
     // デバッグ用ステータス
@@ -55,7 +60,9 @@ public partial class MonsterState
     // デバッグ用攻撃判定を生成するかどうか
     private bool _indicateAttackCol = false;
 
-    
+    [Header("回転速度")]
+    [SerializeField] private float _rotateSpeed = 0;
+
     private LineRenderer _line;
 
     // デバッグ用テキスト

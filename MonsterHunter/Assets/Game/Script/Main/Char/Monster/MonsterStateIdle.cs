@@ -22,7 +22,7 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            //testTime++;
+
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -32,10 +32,10 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            //if(testTime >= 120.0f)
-            //{
-            //    owner.ChangeState(_run);
-            //}
+            if (owner._viewDirection[(int)viewDirection.FORWARD] && owner._isNearDistance)
+            {
+                owner.ChangeState(_bless);
+            }
         }
     }
 }

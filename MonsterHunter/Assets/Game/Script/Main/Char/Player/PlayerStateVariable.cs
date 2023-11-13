@@ -24,6 +24,7 @@ public partial class PlayerState
     // Setbool
     private bool _drawnSwordMotion = false;// 抜刀.
     private bool _drawnIdleMotion = false;// アイドル.
+    private bool _drawnAvoidMotion = false;// 回避.
     private bool _drawnSteppingSlash = false;// 踏み込み斬り.
 
     //--共通モーション--//

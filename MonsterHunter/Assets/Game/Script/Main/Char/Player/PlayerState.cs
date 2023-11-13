@@ -142,6 +142,7 @@ public partial class PlayerState : MonoBehaviour
         // bool
         _animator.SetBool("DrawnSword", _drawnSwordMotion);
         _animator.SetBool("DrawnIdle", _drawnIdleMotion);
+        _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
 
         /*共通*/
         // bool

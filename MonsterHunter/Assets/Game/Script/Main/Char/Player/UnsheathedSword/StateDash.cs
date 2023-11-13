@@ -56,10 +56,15 @@ public partial class PlayerState
                 owner.ChangeState(_fatigueDash);
             }
             // 回復状態へ.
-            // HACK:アイテムが選ばれている状態の条件も追加する
+            // HACK:アイテムが選ばれている状態の条件も追加する.
             else if (owner._input._XButtonDown && !owner._unsheathedSword)
             {
                 owner.ChangeState(_recovery);
+            }
+            // 踏み込み斬り.
+            else if (owner._input._YButtonDown)
+            {
+                owner.ChangeState(_steppingSlash);
             }
         }
 

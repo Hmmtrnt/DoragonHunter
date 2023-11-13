@@ -11,23 +11,24 @@ public partial class PlayerState
     private Animator _animator;
     //--納刀状態--//
     // Setfloat
-    private float _currentRunSpeed = 0;// 現在の走る速度
+    private float _currentRunSpeed = 0;// 現在の走る速度.
 
     // Setbool
-    private bool _idleMotion = false;
-    private bool _runMotion = false;
-    private bool _dashMotion = false;
-    private bool _avoidMotion = false;
-    private bool _healMotion = false;
+    private bool _idleMotion = false;// アイドル.
+    private bool _runMotion = false;// 走る.
+    private bool _dashMotion = false;// ダッシュ.
+    private bool _avoidMotion = false;// 回避.
+    private bool _healMotion = false;// 回復.
 
     //--抜刀状態--//
     // Setbool
-    private bool _drawnSwordMotion = false;
-    private bool _drawnIdleMotion = false;
+    private bool _drawnSwordMotion = false;// 抜刀.
+    private bool _drawnIdleMotion = false;// アイドル.
+    private bool _drawnSteppingSlash = false;// 踏み込み斬り.
 
     //--共通モーション--//
     // Setbool
-    private bool _damageMotion = false;
+    private bool _damageMotion = false;// ダメージ.
 
     // プレイヤーのステータス.
     // 体力.

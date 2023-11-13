@@ -59,6 +59,7 @@ public partial class PlayerState
             {
                 owner.ChangeState(_recovery);
             }
+            // 踏み込み斬りへ.
             else if(owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);

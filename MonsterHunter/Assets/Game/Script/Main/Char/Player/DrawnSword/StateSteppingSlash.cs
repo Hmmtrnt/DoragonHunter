@@ -8,14 +8,16 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            if(prevState == _running)
-            {
-                owner._drawnSwordMotion = true;
-            }
-            else
-            {
-                owner._drawnIdleMotion = true;
-            }
+            //if(prevState == _running)
+            //{
+            //    owner._drawnSteppingSlash = true;
+            //}
+            //else
+            //{
+            //    owner._drawnIdleMotion = true;
+            //}
+
+            owner._drawnSteppingSlash = true;
             owner._attackFrame = 0;
 
         }
@@ -32,18 +34,19 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            if(owner._drawnSwordMotion)
-            {
-                owner._drawnSwordMotion = false;
-            }
-            owner._drawnIdleMotion = false;
+            //if(owner._drawnSwordMotion)
+            //{
+            //    owner._drawnSwordMotion = false;
+            //}
+            //owner._drawnIdleMotion = false;
+            owner._drawnSteppingSlash = false;
             owner._attackFrame = 0;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // アイドル.
-            if(owner._attackFrame >= 60)
+            if(owner._attackFrame >= 120)
             {
                 owner.ChangeState(_idleDrawnSword);
             }

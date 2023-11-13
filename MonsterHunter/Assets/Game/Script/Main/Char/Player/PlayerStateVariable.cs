@@ -149,8 +149,6 @@ public partial class PlayerState
 
 
     // 以下デバッグ用変数
-    // 攻撃判定のオブジェクト.
-    private GameObject _AtCol;
     // モンスターオブジェクト.
     private GameObject _Monster;
     // モンスターのState.

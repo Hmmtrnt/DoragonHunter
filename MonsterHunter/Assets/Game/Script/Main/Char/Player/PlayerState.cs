@@ -36,7 +36,6 @@ public partial class PlayerState : MonoBehaviour
     void Start()
     {
         Initialization();
-        _AtCol.SetActive(false);
         _currentState.OnEnter(this, null);
     }
 
@@ -117,7 +116,6 @@ public partial class PlayerState : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
-        _AtCol = GameObject.Find("AttackCol");
         _Monster = GameObject.FindWithTag("Monster");
         _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
     }

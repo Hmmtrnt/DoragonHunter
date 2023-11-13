@@ -67,5 +67,6 @@ public partial class MonsterState
 
     // デバッグ用テキスト
     private Text _text;
+    private Text _textHp;
 
 }

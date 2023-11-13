@@ -30,6 +30,16 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             owner._attackFrame++;
+            if(owner._attackFrame >= 10)
+            {
+                owner._isCauseDamage = true;
+            }
+            if(owner._attackFrame >= 60)
+            {
+                owner._isCauseDamage = false;
+            }
+
+            Debug.Log(owner._isCauseDamage);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

@@ -40,7 +40,7 @@ public partial class MonsterState : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
+        _textHp.text = "MonsterHp:" + _debagHitPoint;
         PositionalRelationship();
     }
 
@@ -63,7 +63,7 @@ public partial class MonsterState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Weapon")
+        if (other.gameObject.tag == "HunterAtCol" && _state.GetIsCauseDamage())
         {
             GetOnDamager();
         }
@@ -91,6 +91,7 @@ public partial class MonsterState : MonoBehaviour
 
         _line = GetComponent<LineRenderer>();
         _text = GameObject.Find("DebugText").GetComponent<Text>();
+        _textHp = GameObject.Find("MonsterHp").GetComponent<Text>();
 
         _debugAttackCol = GameObject.FindWithTag("MonsterAtCol");
         

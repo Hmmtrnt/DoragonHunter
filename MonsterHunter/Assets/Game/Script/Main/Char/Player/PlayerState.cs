@@ -234,4 +234,7 @@ public partial class PlayerState : MonoBehaviour
     // ダメージを与えた時の値.
     public float GetHunterAttack() { return _AttackPower; }
 
+    // ダメージを与えられるかどうか.
+    public bool GetIsCauseDamage() { return _isCauseDamage; }
+
 }

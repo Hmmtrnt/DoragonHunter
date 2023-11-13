@@ -32,7 +32,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._viewDirection[(int)viewDirection.FORWARD] && owner._isNearDistance)
+            if (owner._viewDirection[(int)viewDirection.FORWARD] && !owner._isNearDistance)
             {
                 owner.ChangeState(_bless);
             }

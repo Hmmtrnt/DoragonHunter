@@ -10,7 +10,7 @@ public partial class MonsterState
 
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
-            
+            testTime = 0;
         }
 
         public override void OnUpdate(MonsterState owner)

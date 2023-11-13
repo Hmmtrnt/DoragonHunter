@@ -88,6 +88,9 @@ public partial class PlayerState
 
     // 攻撃判定.
 
+    // ダメージを与えられるかどうか.
+    private bool _isCauseDamage = false;
+
     /*アイドル状態時の変数*/
 
 

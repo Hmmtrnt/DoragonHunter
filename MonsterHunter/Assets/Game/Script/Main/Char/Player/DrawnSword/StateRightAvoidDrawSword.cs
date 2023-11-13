@@ -1,20 +1,19 @@
-ï»¿/*æŠœåˆ€å›žé¿*/
+/*‰E‰ñ”ð*/
 
 using UnityEngine;
 
 public partial class PlayerState
 {
-    public class StateAvoidDrawSword : StateBase
+    public class StateRightAvoidDrawSword : StateBase
     {
-        // å›žé¿ã—ãŸå¾Œã®æ¸›é€Ÿ
+        // ‰ñ”ð‚µ‚½Œã‚ÌŒ¸‘¬
         private float _deceleration = 0.95f;
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-
-            owner._drawnAvoidMotion = true;
+            owner._drawnRightAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
-            owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
+            owner._avoidVelocity = owner._transform.right * owner._avoidVelocityMagnification;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -24,42 +23,47 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
+            //owner._attackFrame++;
+            //if (owner._attackFrame >= 10)
+            //{
+            //    owner._isCauseDamage = true;
+            //}
+            //if (owner._attackFrame >= 60)
+            //{
+            //    owner._isCauseDamage = false;
+            //}
+
             owner._avoidTime++;
+            //MoveAvoid(owner);
             MoveAvoid(owner);
+            Debug.Log(owner._isCauseDamage);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._drawnAvoidMotion = false;
+            //if(owner._drawnSwordMotion)
+            //{
+            //    owner._drawnSwordMotion = false;
+            //}
+            //owner._drawnIdleMotion = false;
+            owner._drawnRightAvoidMotion = false;
             owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
-            if (owner._avoidTime >= 30)
+            // ƒAƒCƒhƒ‹.
+            if (owner._attackFrame >= 120)
             {
-                // ã‚¹ãƒ†ã‚£ãƒƒã‚¯å‚¾ã‘ã¦ã„ãŸã‚‰Runã«
-                if ((owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
-                {
-                    owner.ChangeState(_runDrawnSword);
-                }
+                owner.ChangeState(_idleDrawnSword);
             }
+            
 
-            if (owner._avoidTime >= owner._avoidMaxTime)
-            {
-                if (owner._leftStickHorizontal == 0 &&
-                    owner._leftStickVertical == 0)
-                {
-                    owner.ChangeState(_idleDrawnSword);
-                }
-            }
         }
 
         private void MoveAvoid(PlayerState owner)
         {
-
             if (owner._avoidTime <= 10)
             {
                 owner._rigidbody.velocity *= _deceleration;
@@ -78,9 +82,6 @@ public partial class PlayerState
             owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
 
             owner._isProcess = false;
-
         }
     }
 }
-
-

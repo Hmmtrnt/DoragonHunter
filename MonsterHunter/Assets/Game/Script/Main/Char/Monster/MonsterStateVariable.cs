@@ -47,6 +47,9 @@ public partial class MonsterState
     // false : 遠
     private bool _isNearDistance = false;
 
+    [Header("ダメージUI")]
+    [SerializeField] private GameObject _damageUI;
+
     // 以下デバッグ用
 
     // デバッグ用ステータス

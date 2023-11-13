@@ -66,6 +66,7 @@ public partial class MonsterState : MonoBehaviour
         if (other.gameObject.tag == "HunterAtCol" && _state.GetIsCauseDamage())
         {
             GetOnDamager();
+            //other.transform.root.GetComponent<teakedamage>
         }
     }
 
@@ -237,6 +238,12 @@ public partial class MonsterState : MonoBehaviour
             }
         }
     }
+
+    public void DamageUI(Collider col)
+    {
+        var obj = Instantiate(_damageUI, col.bounds.center - Camera.main.transform.forward * 0.2f, Quaternion.identity);
+    }
+
 
     private float GetDistance()
     {

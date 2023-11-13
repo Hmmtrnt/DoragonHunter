@@ -60,6 +60,16 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idleDrawnSword);
             }
+            // 回避.
+            else if (owner._attackFrame >= 40 && owner._input._LeftStickHorizontal < 0.01f && owner._input._AButtonDown)
+            {
+                owner.ChangeState(_avoidDrawnSword);
+            }
+            // 右回避.
+            else if (owner._attackFrame>= 40 && owner._input._LeftStickHorizontal > 0 && owner._input._AButtonDown)
+            {
+                owner.ChangeState(_rightAvoid);
+            }
             // 突き.
             else if(owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
             {
@@ -74,5 +84,3 @@ public partial class PlayerState
         }
     }
 }
-
-

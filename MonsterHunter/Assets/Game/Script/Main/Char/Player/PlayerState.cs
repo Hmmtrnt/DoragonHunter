@@ -17,6 +17,7 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateIdleDrawnSword       _idleDrawnSword = new();      // アイドル.
     private static readonly StateRunDrawnSword        _runDrawnSword = new();       // 走る.
     private static readonly StateAvoidDrawSword       _avoidDrawnSword = new();     // 抜刀回避.
+    private static readonly StateRightAvoidDrawSword  _rightAvoid = new();          // 攻撃後の右回避.
     private static readonly StateSheathingSword       _sheathingSword = new();      // 納刀する.
     private static readonly StateSteppingSlash        _steppingSlash = new();       // 踏み込み斬り.
     private static readonly StatePiercing             _piercing = new();            // 突き.
@@ -141,6 +142,7 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("DrawnSword", _drawnSwordMotion);
         _animator.SetBool("DrawnIdle", _drawnIdleMotion);
         _animator.SetBool("DrawAvoid", _drawnAvoidMotion);
+        _animator.SetBool("DrawRAvoid", _drawnRightAvoidMotion);
         _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
 
         /*共通*/
@@ -165,7 +167,7 @@ public partial class PlayerState : MonoBehaviour
         Vector3 moveSide = _camera.transform.right * _leftStickHorizontal;
         // 速度の代入.
         _moveVelocity = moveForward + moveSide;
-        _avoidVelocity = _transform.forward * _avoidVelocityMagnification;
+        //_avoidVelocity = _transform.forward * _avoidVelocityMagnification;
 
     }
 

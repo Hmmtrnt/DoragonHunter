@@ -8,6 +8,9 @@ public partial class PlayerState
     {
         // ‰ñ”ð‚µ‚½Œã‚ÌŒ¸‘¬
         private float _deceleration = 0.95f;
+
+        
+
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnRightAvoidMotion = true;
@@ -54,7 +57,7 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // ƒAƒCƒhƒ‹.
-            if (owner._attackFrame >= 120)
+            if (owner._avoidTime >= 120)
             {
                 owner.ChangeState(_idleDrawnSword);
             }

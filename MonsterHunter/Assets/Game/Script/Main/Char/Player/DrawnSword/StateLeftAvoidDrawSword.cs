@@ -1,22 +1,22 @@
-/*âEâÒî*/
+/*ç∂âÒî*/
 
 using UnityEngine;
 
 public partial class PlayerState
 {
-    public class StateRightAvoidDrawSword : StateBase
+    public class StateLeftAvoidDrawSword : StateBase
     {
         // âÒîÇµÇΩå„ÇÃå∏ë¨
         private float _deceleration = 0.95f;
 
-        
+
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._drawnRightAvoidMotion = true;
+            owner._drawnLeftAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
-            owner._avoidVelocity = owner._transform.right * owner._avoidVelocityMagnification;
+            owner._avoidVelocity = -owner._transform.right * owner._avoidVelocityMagnification;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -29,12 +29,12 @@ public partial class PlayerState
             owner._avoidTime++;
             //MoveAvoid(owner);
             MoveAvoid(owner);
-            Debug.Log(owner._isCauseDamage);
+            //Debug.Log(owner._isCauseDamage);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._drawnRightAvoidMotion = false;
+            owner._drawnLeftAvoidMotion = false;
             owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
         }
@@ -46,7 +46,7 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idleDrawnSword);
             }
-            
+
 
         }
 
@@ -63,6 +63,8 @@ public partial class PlayerState
                 owner._rigidbody.velocity *= 0.8f;
             }
 
+
+
             if (!owner._isProcess) return;
 
             owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
@@ -71,3 +73,5 @@ public partial class PlayerState
         }
     }
 }
+
+

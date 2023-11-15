@@ -39,7 +39,7 @@ public partial class PlayerState
                 owner._isCauseDamage = false;
             }
 
-            Debug.Log(owner._isCauseDamage);
+            //Debug.Log(owner._isCauseDamage);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -61,15 +61,26 @@ public partial class PlayerState
                 owner.ChangeState(_idleDrawnSword);
             }
             // 回避.
-            else if (owner._attackFrame >= 40 && (owner._input._LeftStickHorizontal < 0.1f && owner._input._LeftStickHorizontal > -0.1f) && owner._input._AButtonDown)
+            else if (owner._attackFrame >= 40 && 
+                owner._viewDirection[(int)viewDirection.FORWARD] && owner.GetDistance() > 1 && 
+                owner._input._AButtonDown)
             {
                 owner.ChangeState(_avoidDrawnSword);
             }
             // 右回避.
-            //else if (owner._attackFrame>= 40 && owner._input._LeftStickHorizontal > 0 && owner._input._AButtonDown)
-            //{
-            //    owner.ChangeState(_rightAvoid);
-            //}
+            else if (owner._attackFrame >= 40 
+                && owner._viewDirection[(int)viewDirection.RIGHT] && owner.GetDistance() > 1 && 
+                owner._input._AButtonDown)
+            {
+                owner.ChangeState(_rightAvoid);
+            }
+            // 左回避.
+            else if(owner._attackFrame >= 40 && 
+                owner._viewDirection[(int)viewDirection.LEFT] && owner.GetDistance() > 1 
+                && owner._input._AButtonDown)
+            {
+                owner.ChangeState(_leftAvoid);
+            }
             // 突き.
             else if(owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
             {

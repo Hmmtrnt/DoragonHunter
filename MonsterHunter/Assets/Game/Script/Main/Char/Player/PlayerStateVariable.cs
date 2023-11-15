@@ -1,9 +1,28 @@
 ﻿// プレイヤーの変数.
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class PlayerState
 {
+    enum viewDirection
+    {
+        FORWARD,
+        BACKWARD,
+        RIGHT,
+        LEFT,
+        NONE
+    }
+
+    // デバッグ用のテキスト
+    public Text _text;
+
+    // スティックがハンターのどの向きにいるかを取得
+    private bool[] _viewDirection = new bool[5];
+
+    // スティックの傾きを表す球とハンターの距離
+    private float _currentDistance;
+
     // コントローラーの入力情報.
     private ControllerManager _input;
 
@@ -26,6 +45,7 @@ public partial class PlayerState
     private bool _drawnIdleMotion = false;// アイドル.
     private bool _drawnAvoidMotion = false;// 回避.
     private bool _drawnRightAvoidMotion = false;// 右回避.
+    private bool _drawnLeftAvoidMotion = false;// 左回避.
     private bool _drawnSteppingSlash = false;// 踏み込み斬り.
 
     //--共通モーション--//

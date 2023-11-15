@@ -192,17 +192,17 @@ public partial class MonsterState : MonoBehaviour
         {
             FoundFlag((int)viewDirection.FORWARD);
         }
-        // 後ろ
+        // 後ろ.
         else if(forwardAngle > 135 && forwardAngle < 180)
         {
             FoundFlag((int)viewDirection.BACKWARD);
         }
-        // 右
+        // 右.
         else if(sideAngle < 90 * 0.5f)
         {
             FoundFlag((int)viewDirection.RIGHT);
         }
-        // 左
+        // 左.
         else if (sideAngle > 135 && sideAngle < 180)
         {
             FoundFlag((int)viewDirection.LEFT);

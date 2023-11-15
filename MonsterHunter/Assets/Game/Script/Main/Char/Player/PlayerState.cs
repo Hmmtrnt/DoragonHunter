@@ -18,6 +18,7 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateRunDrawnSword        _runDrawnSword = new();       // 走る.
     private static readonly StateAvoidDrawSword       _avoidDrawnSword = new();     // 抜刀回避.
     private static readonly StateRightAvoidDrawSword  _rightAvoid = new();          // 攻撃後の右回避.
+    private static readonly StateLeftAvoidDrawSword  _leftAvoid = new();          // 攻撃後の左回避.
     private static readonly StateSheathingSword       _sheathingSword = new();      // 納刀する.
     private static readonly StateSteppingSlash        _steppingSlash = new();       // 踏み込み斬り.
     private static readonly StatePiercing             _piercing = new();            // 突き.
@@ -33,6 +34,8 @@ public partial class PlayerState : MonoBehaviour
 
     // 現在のState.
     private StateBase                                 _currentState = _idle;
+
+    public GameObject _debugCube;// スティックのやつ.
 
     void Start()
     {
@@ -54,6 +57,8 @@ public partial class PlayerState : MonoBehaviour
         {
             _rigidbody.velocity *= 0.8f;
         }
+
+        viewAngle();
     }
 
     private void FixedUpdate()
@@ -82,6 +87,13 @@ public partial class PlayerState : MonoBehaviour
         {
             AutoRecoveryStamina();
         }
+        StickDirection();
+
+        //Debug.Log(_viewDirection[0]);
+        //Debug.Log(_viewDirection[1]);
+        //Debug.Log(_viewDirection[2]);
+        //Debug.Log(_viewDirection[3]);
+        //Debug.Log(_viewDirection[4]);
 
     }
 
@@ -143,6 +155,7 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("DrawnIdle", _drawnIdleMotion);
         _animator.SetBool("DrawAvoid", _drawnAvoidMotion);
         _animator.SetBool("DrawRAvoid", _drawnRightAvoidMotion);
+        _animator.SetBool("DrawLAvoid", _drawnLeftAvoidMotion);
         _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
 
         /*共通*/
@@ -169,6 +182,105 @@ public partial class PlayerState : MonoBehaviour
         _moveVelocity = moveForward + moveSide;
         //_avoidVelocity = _transform.forward * _avoidVelocityMagnification;
 
+        _debugCube.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
+
+    }
+
+    // スティックがハンターから見てどの向きを向いているか
+    private void StickDirection()
+    {
+        // 正面
+        if (_viewDirection[(int)viewDirection.FORWARD])
+        {
+            _text.text = "正面";
+        }
+        // 背後
+        else if (_viewDirection[(int)viewDirection.BACKWARD])
+        {
+            _text.text = "背後";
+        }
+        // 右
+        else if (_viewDirection[(int)viewDirection.RIGHT])
+        {
+            _text.text = "右";
+        }
+        // 左
+        else if (_viewDirection[(int)viewDirection.LEFT])
+        {
+            _text.text = "左";
+        }
+    }
+
+
+    // プレイヤーの視野角
+    private void viewAngle()
+    {
+        Vector3 direction = _debugCube.transform.position - _transform.position;
+        // ハンターとデバッグ用キューブのベクトルのなす角
+        // デバッグ用キューブの正面.
+        float forwardAngle = Vector3.Angle(direction, _transform.forward);
+        // オブジェクトの側面,
+        float sideAngle = Vector3.Angle(direction, _transform.right);
+
+        RaycastHit hit;
+        bool ray = Physics.Raycast(_transform.position, direction.normalized, out hit);
+
+        bool viewFlag = ray && hit.collider.gameObject == _debugCube && GetDistance() > 1;
+
+        Debug.Log(viewFlag);
+        if (!viewFlag) return;
+
+        // 正面.
+        if (forwardAngle < 90 * 0.5f)
+        {
+            FoundFlag((int)viewDirection.FORWARD);
+            _text.text = "正面";
+        }
+        // 後ろ.
+        else if (forwardAngle > 135 && forwardAngle < 180)
+        {
+            FoundFlag((int)viewDirection.BACKWARD);
+            _text.text = "後ろ";
+        }
+        // 右.
+        else if (sideAngle < 90 * 0.5f)
+        {
+            FoundFlag((int)viewDirection.RIGHT);
+            _text.text = "右";
+        }
+        // 左.
+        else if (sideAngle > 135 && sideAngle < 180)
+        {
+            FoundFlag((int)viewDirection.LEFT);
+            _text.text = "左";
+        }
+        else
+        {
+            FoundFlag((int)viewDirection.NONE);
+            _text.text = "NONE";
+        }
+
+
+
+    }
+
+    /// <summary>
+    /// スティックがいる位置を表す値を返す
+    /// </summary>
+    /// <param name="foundNum">スティックの位置を示す番号</param>
+    private void FoundFlag(int foundNum)
+    {
+        for (int i = 0; i < (int)viewDirection.NONE; i++)
+        {
+            if (i == foundNum)
+            {
+                _viewDirection[i] = true;
+            }
+            else
+            {
+                _viewDirection[i] = false;
+            }
+        }
     }
 
     // スタミナの自動回復.
@@ -236,5 +348,12 @@ public partial class PlayerState : MonoBehaviour
 
     // ダメージを与えられるかどうか.
     public bool GetIsCauseDamage() { return _isCauseDamage; }
+
+    // 距離
+    private float GetDistance()
+    {
+        _currentDistance = (_debugCube.transform.position - _transform.position).magnitude;
+        return _currentDistance;
+    }
 
 }

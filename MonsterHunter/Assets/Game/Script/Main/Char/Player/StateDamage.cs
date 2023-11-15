@@ -41,11 +41,11 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // 納刀かそうじゃないかで遷移先を変更
-            if(owner._unsheathedSword && _testTime >= 30)
+            if(owner._unsheathedSword && _testTime >= 90)
             {
                 owner.ChangeState(_idleDrawnSword);
             }
-            else if(!owner._unsheathedSword && _testTime >= 30)
+            else if(!owner._unsheathedSword && _testTime >= 90)
             {
                 owner.ChangeState(_idle);
             }

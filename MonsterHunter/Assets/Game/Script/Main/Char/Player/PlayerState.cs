@@ -66,7 +66,7 @@ public partial class PlayerState : MonoBehaviour
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
 
-        // スタミナの上限、下限を超えないようにする
+        // スタミナの上限、下限を超えないようにする.
         if(_stamina >= _maxStamina)
         {
             _stamina = _maxStamina;

@@ -63,7 +63,7 @@ public partial class MonsterState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "HunterAtCol" && _state.GetIsCauseDamage())
+        if (other.gameObject.tag == "HunterAtCol" && _playerState.GetIsCauseDamage())
         {
             GetOnDamager();
             //other.transform.root.GetComponent<teakedamage>
@@ -84,7 +84,7 @@ public partial class MonsterState : MonoBehaviour
         _hunter = GameObject.Find("Hunter");
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
-        _state = _hunter.GetComponent<PlayerState>();
+        _playerState = _hunter.GetComponent<PlayerState>();
 
         _fireBall = (GameObject)Resources.Load("FireBall");
         _fireBallPosition = GameObject.Find("BlessPosition");
@@ -259,7 +259,7 @@ public partial class MonsterState : MonoBehaviour
 
     private float GetOnDamager()
     {
-        _debagHitPoint = _debagHitPoint - _state.GetHunterAttack();
+        _debagHitPoint = _debagHitPoint - _playerState.GetHunterAttack();
         return _debagHitPoint;
     }
 

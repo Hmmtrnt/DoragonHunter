@@ -41,6 +41,11 @@ public partial class PlayerState
             {
                 owner.ChangeState(_steppingSlash);
             }
+            // 突き.
+            else if (owner._input._BButtonDown)
+            {
+                owner.ChangeState(_piercing);
+            }
             // 回避
             else if(owner._input._AButtonDown)
             {

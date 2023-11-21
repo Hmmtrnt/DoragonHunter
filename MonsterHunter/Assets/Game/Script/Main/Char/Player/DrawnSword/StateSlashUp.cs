@@ -8,7 +8,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._drawnIdleMotion = true;
+            owner._drawnSlashUp = true;
 
             owner._attackFrame = 0;
         }
@@ -25,16 +25,37 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._drawnIdleMotion = false;
+            owner._drawnSlashUp = false;
             owner._attackFrame = 0;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // アイドル.
-            if (owner._attackFrame >= 60)
+            if (owner._attackFrame >= 120)
             {
                 owner.ChangeState(_idleDrawnSword);
+            }
+            // 回避.
+            else if (owner._attackFrame >= 40 &&
+                owner._viewDirection[(int)viewDirection.FORWARD] && owner.GetDistance() > 1 &&
+                owner._input._AButtonDown)
+            {
+                owner.ChangeState(_avoidDrawnSword);
+            }
+            // 右回避.
+            else if (owner._attackFrame >= 40
+                && owner._viewDirection[(int)viewDirection.RIGHT] && owner.GetDistance() > 1 &&
+                owner._input._AButtonDown)
+            {
+                owner.ChangeState(_rightAvoid);
+            }
+            // 左回避.
+            else if (owner._attackFrame >= 40 &&
+                owner._viewDirection[(int)viewDirection.LEFT] && owner.GetDistance() > 1
+                && owner._input._AButtonDown)
+            {
+                owner.ChangeState(_leftAvoid);
             }
             // 突き.
             else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
@@ -46,7 +67,6 @@ public partial class PlayerState
             {
                 owner.ChangeState(_spiritBlade1);
             }
-
         }
     }
 }

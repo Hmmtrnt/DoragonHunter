@@ -18,7 +18,7 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateRunDrawnSword        _runDrawnSword = new();       // 走る.
     private static readonly StateAvoidDrawSword       _avoidDrawnSword = new();     // 抜刀回避.
     private static readonly StateRightAvoidDrawSword  _rightAvoid = new();          // 攻撃後の右回避.
-    private static readonly StateLeftAvoidDrawSword  _leftAvoid = new();          // 攻撃後の左回避.
+    private static readonly StateLeftAvoidDrawSword  _leftAvoid = new();            // 攻撃後の左回避.
     private static readonly StateSheathingSword       _sheathingSword = new();      // 納刀する.
     private static readonly StateSteppingSlash        _steppingSlash = new();       // 踏み込み斬り.
     private static readonly StatePiercing             _piercing = new();            // 突き.
@@ -51,7 +51,7 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
-        //Debug.Log(_unsheathedSword);
+        Debug.Log(_isCauseDamage);
 
         if(_input._LeftStickHorizontal == 0.0f && _input._LeftStickVertical == 0.0f)
         {
@@ -157,6 +157,8 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("DrawRAvoid", _drawnRightAvoidMotion);
         _animator.SetBool("DrawLAvoid", _drawnLeftAvoidMotion);
         _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
+        _animator.SetBool("Thrust", _drawnThrustSlash);
+        _animator.SetBool("SlashUp", _drawnSlashUp);
 
         /*共通*/
         // bool
@@ -227,7 +229,7 @@ public partial class PlayerState : MonoBehaviour
 
         bool viewFlag = ray && hit.collider.gameObject == _debugCube && GetDistance() > 1;
 
-        Debug.Log(viewFlag);
+        //Debug.Log(viewFlag);
         if (!viewFlag) return;
 
         // 正面.

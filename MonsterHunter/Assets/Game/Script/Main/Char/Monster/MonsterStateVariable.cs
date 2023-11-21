@@ -19,7 +19,7 @@ public partial class MonsterState
     private Transform _trasnform;
     private Rigidbody _rigidbody;
     // プレイヤーのステート情報
-    private PlayerState _state;
+    private PlayerState _playerState;
 
     // ファイアーボールのプレハブ
     private GameObject _fireBall;

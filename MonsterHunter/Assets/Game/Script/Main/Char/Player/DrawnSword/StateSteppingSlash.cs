@@ -8,18 +8,8 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            //if(prevState == _running)
-            //{
-            //    owner._drawnSteppingSlash = true;
-            //}
-            //else
-            //{
-            //    owner._drawnIdleMotion = true;
-            //}
-
             owner._drawnSteppingSlash = true;
             owner._attackFrame = 0;
-
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -51,6 +41,7 @@ public partial class PlayerState
             //owner._drawnIdleMotion = false;
             owner._drawnSteppingSlash = false;
             owner._attackFrame = 0;
+            owner._isCauseDamage = false;
         }
 
         public override void OnChangeState(PlayerState owner)

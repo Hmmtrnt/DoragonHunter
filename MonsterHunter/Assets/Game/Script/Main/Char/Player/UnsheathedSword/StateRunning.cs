@@ -19,8 +19,8 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
-            Move(owner);
             owner.RotateDirection();
+            Move(owner);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

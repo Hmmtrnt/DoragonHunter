@@ -7,7 +7,7 @@ public partial class PlayerState
     public class StateAvoid : StateBase
     {
         // 回避した後の減速
-        private float _deceleration = 0.95f;
+        private float _deceleration = 0.9f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -15,6 +15,7 @@ public partial class PlayerState
             owner._avoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
+            owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
         }
 
@@ -81,7 +82,7 @@ public partial class PlayerState
                 owner._rigidbody.velocity *= 0.8f;
             }
 
-            
+
             // 最初の一フレームだけ加速
             if (!owner._isProcess) return;
             

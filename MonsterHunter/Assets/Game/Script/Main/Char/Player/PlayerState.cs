@@ -35,7 +35,7 @@ public partial class PlayerState : MonoBehaviour
     // 現在のState.
     private StateBase                                 _currentState = _idle;
 
-    public GameObject _debugCube;// スティックのやつ.
+    public GameObject _debugSphere;// スティックのやつ.
 
     void Start()
     {
@@ -45,15 +45,18 @@ public partial class PlayerState : MonoBehaviour
 
     void Update()
     {
+
+
         GetStickInput();
         AnimTransition();
         
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
-        Debug.Log(_isCauseDamage);
-
-        if(_input._LeftStickHorizontal == 0.0f && _input._LeftStickVertical == 0.0f)
+        // 移動終了時に減速.
+        if ((_input._LeftStickHorizontal == 0.0f && _input._LeftStickVertical == 0.0f) &&
+            (_currentState == _idle || 
+            _currentState == _drawSwordTransition))
         {
             _rigidbody.velocity *= 0.8f;
         }
@@ -63,6 +66,10 @@ public partial class PlayerState : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 現在のステート情報.
+        //Debug.Log(_currentState);
+        Debug.Log(_rigidbody.velocity.magnitude);
+
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
 
@@ -75,26 +82,21 @@ public partial class PlayerState : MonoBehaviour
         {
             _stamina = 0;
         }
-
+        // 乙処理.
         if(_hitPoint <= 0)
         {
             OnDead();
         }
 
+        // スタミナを回復させるタイミング指定.
         if(_currentState != _dash &&
             _currentState != _avoid &&
             _currentState != _fatigueDash)
         {
             AutoRecoveryStamina();
         }
+
         StickDirection();
-
-        //Debug.Log(_viewDirection[0]);
-        //Debug.Log(_viewDirection[1]);
-        //Debug.Log(_viewDirection[2]);
-        //Debug.Log(_viewDirection[3]);
-        //Debug.Log(_viewDirection[4]);
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -188,8 +190,13 @@ public partial class PlayerState : MonoBehaviour
         _moveVelocity = moveForward + moveSide;
         //_avoidVelocity = _transform.forward * _avoidVelocityMagnification;
 
-        _debugCube.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
+        _debugSphere.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
 
+    }
+
+    private void GetStickDirection()
+    {
+        _stickDirection = transform.position - _debugSphere.transform.position;
     }
 
     // スティックがハンターから見てどの向きを向いているか
@@ -221,7 +228,7 @@ public partial class PlayerState : MonoBehaviour
     // プレイヤーの視野角
     private void viewAngle()
     {
-        Vector3 direction = _debugCube.transform.position - _transform.position;
+        Vector3 direction = _debugSphere.transform.position - _transform.position;
         // ハンターとデバッグ用キューブのベクトルのなす角
         // デバッグ用キューブの正面.
         float forwardAngle = Vector3.Angle(direction, _transform.forward);
@@ -231,7 +238,7 @@ public partial class PlayerState : MonoBehaviour
         RaycastHit hit;
         bool ray = Physics.Raycast(_transform.position, direction.normalized, out hit);
 
-        bool viewFlag = ray && hit.collider.gameObject == _debugCube && GetDistance() > 1;
+        bool viewFlag = ray && hit.collider.gameObject == _debugSphere && GetDistance() > 1;
 
         //Debug.Log(viewFlag);
         if (!viewFlag) return;
@@ -271,7 +278,7 @@ public partial class PlayerState : MonoBehaviour
     }
 
     /// <summary>
-    /// スティックがいる位置を表す値を返す
+    /// スティックがいる位置をtureで返す
     /// </summary>
     /// <param name="foundNum">スティックの位置を示す番号</param>
     private void FoundFlag(int foundNum)
@@ -358,7 +365,7 @@ public partial class PlayerState : MonoBehaviour
     // 距離
     private float GetDistance()
     {
-        _currentDistance = (_debugCube.transform.position - _transform.position).magnitude;
+        _currentDistance = (_debugSphere.transform.position - _transform.position).magnitude;
         return _currentDistance;
     }
 

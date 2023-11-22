@@ -142,7 +142,7 @@ public partial class PlayerState
     // 移動速度.
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
     // 移動時の回転速度
-    private float _rotateSpeed = 10.0f;
+    private float _rotateSpeed = 30.0f;
 
     // ダッシュしているかどうか.
     private bool _isDashing = false;
@@ -154,9 +154,9 @@ public partial class PlayerState
 
     /*回避時の変数*/
     // 回避速度倍率.
-    private float _avoidVelocityMagnification = 30;
+    private float _avoidVelocityMagnification = 50;
     // 回避速度.
-    private Vector3 _avoidVelocity = new(0.0f, 0.0f, 0.0f);
+    private Vector3 _avoidVelocity = Vector3.zero;
     // 現在の回避フレーム.
     private int _avoidTime = 0;
     // 最大回避フレーム.
@@ -166,6 +166,9 @@ public partial class PlayerState
 
     // 回避しているかどうか.
     private bool _isAvoiding = false;
+
+    // スティックの傾きとプレイヤー間の方向ベクトル.
+    private Vector3 _stickDirection = Vector3.zero;
 
     /*回復*/
     // 回復しているかどうか.

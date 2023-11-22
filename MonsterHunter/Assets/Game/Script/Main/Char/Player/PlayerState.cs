@@ -159,6 +159,10 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
         _animator.SetBool("Thrust", _drawnThrustSlash);
         _animator.SetBool("SlashUp", _drawnSlashUp);
+        _animator.SetBool("SpiritBlade1", _drawnSpiritBlade1);
+        _animator.SetBool("SpiritBlade2", _drawnSpiritBlade2);
+        _animator.SetBool("SpiritBlade3", _drawnSpiritBlade3);
+        _animator.SetBool("SpiritRoundSlash", _drawnSpiritRoundSlash);
 
         /*共通*/
         // bool

@@ -33,22 +33,29 @@ public partial class PlayerState
     private float _currentRunSpeed = 0;// 現在の走る速度.
 
     // Setbool
-    private bool _idleMotion = false;// アイドル.
-    private bool _runMotion = false;// 走る.
-    private bool _dashMotion = false;// ダッシュ.
+    private bool _idleMotion  = false;// アイドル.
+    private bool _runMotion   = false;// 走る.
+    private bool _dashMotion  = false;// ダッシュ.
     private bool _avoidMotion = false;// 回避.
-    private bool _healMotion = false;// 回復.
+    private bool _healMotion  = false;// 回復.
 
     //--抜刀状態--//
     // Setbool
-    private bool _drawnSwordMotion = false;// 抜刀.
-    private bool _drawnIdleMotion = false;// アイドル.
-    private bool _drawnAvoidMotion = false;// 回避.
+    private bool _drawnSwordMotion      = false;// 抜刀.
+    private bool _drawnIdleMotion       = false;// アイドル.
+    private bool _drawnAvoidMotion      = false;// 回避.
     private bool _drawnRightAvoidMotion = false;// 右回避.
-    private bool _drawnLeftAvoidMotion = false;// 左回避.
-    private bool _drawnSteppingSlash = false;// 踏み込み斬り.
-    private bool _drawnThrustSlash = false;// 突き.
-    private bool _drawnSlashUp = false;// 斬り上げ.
+    private bool _drawnLeftAvoidMotion  = false;// 左回避.
+    private bool _drawnSteppingSlash    = false;// 踏み込み斬り.
+    private bool _drawnThrustSlash      = false;// 突き.
+    private bool _drawnSlashUp          = false;// 斬り上げ.
+    private bool _drawnSpiritBlade1     = false;// 気刃斬り1.
+    private bool _drawnSpiritBlade2     = false;// 気刃斬り2.
+    private bool _drawnSpiritBlade3     = false;// 気刃斬り3.
+    private bool _drawnSpiritRoundSlash = false;// 気刃大回転斬り.
+
+    // 次のモーションに遷移するフレーム.
+    private float _nextMotionFlame = 0;
 
     //--共通モーション--//
     // Setbool

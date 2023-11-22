@@ -54,10 +54,15 @@ public partial class PlayerState
                 owner.ChangeState(_recovery);
             }
 
-            if(owner._input._YButtonDown)
+            // 抜刀する.
+            if (owner._input._YButtonDown)
             {
-                // 抜刀する
                 owner.ChangeState(_drawSwordTransition);
+            }
+            // 気刃斬り1.
+            if (owner._input._RightTrigger >= 0.5f)
+            {
+                owner.ChangeState(_spiritBlade1);
             }
         }
 

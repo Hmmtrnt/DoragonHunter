@@ -8,9 +8,11 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._drawnIdleMotion = true;
+            owner._drawnSpiritBlade2 = true;
 
             owner._attackFrame = 0;
+
+            owner._nextMotionFlame = 40;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -25,28 +27,68 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._drawnIdleMotion = false;
+            owner._drawnSpiritBlade2 = false;
             owner._attackFrame = 0;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // アイドル.
-            if (owner._attackFrame >= 60)
+            //if (owner._attackFrame >= 60)
+            //{
+            //    owner.ChangeState(_idleDrawnSword);
+            //}
+            //// 切り上げ.
+            //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
+            //{
+            //    owner.ChangeState(_slashUp);
+            //}
+            //// 気刃斬り3.
+            //else if (owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
+            //{
+            //    owner.ChangeState(_spiritBlade3);
+            //}
+
+            // アイドル.
+            if (owner._attackFrame >= 120)
             {
                 owner.ChangeState(_idleDrawnSword);
             }
-            // 切り上げ.
-            else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
+            // 回避.
+            else if (owner._attackFrame >= owner._nextMotionFlame &&
+                owner._viewDirection[(int)viewDirection.FORWARD] && 
+                owner.GetDistance() > 1 &&
+                owner._input._AButtonDown)
             {
-                owner.ChangeState(_slashUp);
+                owner.ChangeState(_avoidDrawnSword);
             }
+            // 右回避.
+            else if (owner._attackFrame >= owner._nextMotionFlame && 
+                owner._viewDirection[(int)viewDirection.RIGHT] && 
+                owner.GetDistance() > 1 &&
+                owner._input._AButtonDown)
+            {
+                owner.ChangeState(_rightAvoid);
+            }
+            // 左回避.
+            else if (owner._attackFrame >= owner._nextMotionFlame &&
+                owner._viewDirection[(int)viewDirection.LEFT] && 
+                owner.GetDistance() > 1 &&
+                owner._input._AButtonDown)
+            {
+                owner.ChangeState(_leftAvoid);
+            }
+            //// 切り上げ.
+            //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
+            //{
+            //    owner.ChangeState(_slashUp);
+            //}
             // 気刃斬り3.
-            else if (owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
+            else if (owner._attackFrame >= owner._nextMotionFlame &&
+                owner._input._RightTrigger >= 0.5)
             {
                 owner.ChangeState(_spiritBlade3);
             }
-
         }
     }
 }

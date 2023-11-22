@@ -10,6 +10,7 @@ public partial class PlayerState
         {
             owner._drawnSteppingSlash = true;
             owner._attackFrame = 0;
+            owner._nextMotionFlame = 50;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -52,33 +53,38 @@ public partial class PlayerState
                 owner.ChangeState(_idleDrawnSword);
             }
             // 回避.
-            else if (owner._attackFrame >= 40 && 
-                owner._viewDirection[(int)viewDirection.FORWARD] && owner.GetDistance() > 1 && 
+            else if (owner._attackFrame >= owner._nextMotionFlame && 
+                owner._viewDirection[(int)viewDirection.FORWARD] && 
+                owner.GetDistance() > 1 && 
                 owner._input._AButtonDown)
             {
                 owner.ChangeState(_avoidDrawnSword);
             }
             // 右回避.
-            else if (owner._attackFrame >= 40 
-                && owner._viewDirection[(int)viewDirection.RIGHT] && owner.GetDistance() > 1 && 
+            else if (owner._attackFrame >= owner._nextMotionFlame &&
+                owner._viewDirection[(int)viewDirection.RIGHT] && 
+                owner.GetDistance() > 1 && 
                 owner._input._AButtonDown)
             {
                 owner.ChangeState(_rightAvoid);
             }
             // 左回避.
-            else if(owner._attackFrame >= 40 && 
-                owner._viewDirection[(int)viewDirection.LEFT] && owner.GetDistance() > 1 
-                && owner._input._AButtonDown)
+            else if(owner._attackFrame >= owner._nextMotionFlame && 
+                owner._viewDirection[(int)viewDirection.LEFT] &&
+                owner.GetDistance() > 1 &&
+                owner._input._AButtonDown)
             {
                 owner.ChangeState(_leftAvoid);
             }
             // 突き.
-            else if(owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
+            else if(owner._attackFrame >= owner._nextMotionFlame &&
+                (owner._input._YButtonDown || owner._input._BButtonDown))
             {
                 owner.ChangeState(_piercing);
             }
             // 気刃斬り1.
-            else if(owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
+            else if(owner._attackFrame >= owner._nextMotionFlame &&
+                owner._input._RightTrigger >= 0.5)
             {
                 owner.ChangeState(_spiritBlade1);
             }

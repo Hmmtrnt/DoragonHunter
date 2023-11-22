@@ -8,9 +8,11 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._drawnIdleMotion = true;
+            owner._drawnSpiritRoundSlash = true;
 
             owner._attackFrame = 0;
+
+            owner._nextMotionFlame = 90;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -25,14 +27,14 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._drawnIdleMotion = false;
+            owner._drawnSpiritRoundSlash = false;
             owner._attackFrame = 0;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // 納刀アイドル.
-            if (owner._attackFrame >= 60)
+            if (owner._attackFrame >= owner._nextMotionFlame)
             {
                 owner.ChangeState(_idle);
             }

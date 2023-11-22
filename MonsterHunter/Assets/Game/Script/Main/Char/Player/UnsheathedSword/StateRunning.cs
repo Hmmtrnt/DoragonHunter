@@ -32,37 +32,42 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // アイドル状態へ.
+            // アイドル状態.
             if (owner._leftStickHorizontal == 0.0f &&
                 owner._leftStickVertical == 0.0f)
             {
                 owner.ChangeState(_idle);
             }
-            // ダッシュ状態へ.
+            // ダッシュ状態.
             else if (owner._input._RBButton && owner._stamina >= owner._maxStamina / 5)
             {
                 owner.ChangeState(_dash);
             }
-            // 疲労ダッシュ状態へ.
+            // 疲労ダッシュ状態.
             else if(owner._input._RBButton && owner._stamina <= owner._maxStamina / 5)
             {
                 owner.ChangeState(_fatigueDash);
             }
-            // 回避状態へ.
+            // 回避状態.
             else if (owner._input._AButtonDown && owner._stamina >= owner._maxStamina / 10)
             {
                 owner.ChangeState(_avoid);
             }
-            // 回復状態へ.
+            // 回復状態.
             // HACK:アイテムが選ばれている状態の条件も追加する
             else if (owner._input._XButtonDown && !owner._unsheathedSword)
             {
                 owner.ChangeState(_recovery);
             }
-            // 踏み込み斬りへ.
+            // 踏み込み斬り.
             else if(owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);
+            }
+            // 気刃斬り1.
+            if (owner._input._RightTrigger >= 0.5f)
+            {
+                owner.ChangeState(_spiritBlade1);
             }
         }
 

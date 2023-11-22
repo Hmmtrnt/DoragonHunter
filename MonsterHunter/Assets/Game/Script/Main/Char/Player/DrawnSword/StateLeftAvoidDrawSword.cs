@@ -17,6 +17,8 @@ public partial class PlayerState
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.right * owner._avoidVelocityMagnification;
+
+            owner._nextMotionFlame = 50;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -42,7 +44,7 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // ƒAƒCƒhƒ‹.
-            if (owner._avoidTime >= 120)
+            if (owner._avoidTime >= owner._nextMotionFlame)
             {
                 owner.ChangeState(_idleDrawnSword);
             }

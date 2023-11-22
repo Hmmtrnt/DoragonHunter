@@ -66,6 +66,11 @@ public partial class PlayerState
             {
                 owner.ChangeState(_steppingSlash);
             }
+            // 気刃斬り1.
+            if (owner._input._RightTrigger >= 0.5f)
+            {
+                owner.ChangeState(_spiritBlade1);
+            }
         }
 
         // 移動

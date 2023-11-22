@@ -402,6 +402,11 @@ PrefabInstance:
       propertyPath: _debugCube
       value: 
       objectReference: {fileID: 54977982}
+    - target: {fileID: 619885944365721750, guid: f88bded5780498340b860522a0ff3e3e,
+        type: 3}
+      propertyPath: _debugSphere
+      value: 
+      objectReference: {fileID: 54977982}
     - target: {fileID: 3682662975647979901, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_LocalPosition.x

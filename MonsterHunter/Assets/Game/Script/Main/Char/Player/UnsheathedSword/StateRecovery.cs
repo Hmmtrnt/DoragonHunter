@@ -21,6 +21,7 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
+            owner._rigidbody.velocity *= 0.8f;
             owner._currentRecoveryTime++;
             _recoveryTime++;
 

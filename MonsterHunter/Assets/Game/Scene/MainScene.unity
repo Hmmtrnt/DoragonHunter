@@ -954,6 +954,11 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1871615969106666751, guid: cda1c36d0df3e664f93e6058e32515a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2021809663722721133, guid: cda1c36d0df3e664f93e6058e32515a2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1059,6 +1064,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3959649143297132534, guid: cda1c36d0df3e664f93e6058e32515a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000997746333581572, guid: cda1c36d0df3e664f93e6058e32515a2,
         type: 3}
       propertyPath: m_Enabled
@@ -1078,6 +1088,21 @@ PrefabInstance:
         type: 3}
       propertyPath: _startColor.rgba
       value: 4278255615
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421847591435722551, guid: cda1c36d0df3e664f93e6058e32515a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470723386385380885, guid: cda1c36d0df3e664f93e6058e32515a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022172912586790437, guid: cda1c36d0df3e664f93e6058e32515a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

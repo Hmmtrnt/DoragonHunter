@@ -10,7 +10,6 @@ public partial class PlayerState
         private float _deceleration = 0.95f;
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-
             owner._drawnAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;

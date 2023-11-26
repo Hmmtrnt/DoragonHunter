@@ -11,6 +11,7 @@ public partial class PlayerState
             owner._drawnSteppingSlash = true;
             owner._attackFrame = 0;
             owner._nextMotionFlame = 50;
+            owner._rigidbody.velocity = Vector3.zero;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -21,6 +22,17 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             owner._attackFrame++;
+
+            if(owner._attackFrame <= 40)
+            {
+                Step(owner);
+            }
+            else
+            {
+                owner._rigidbody.velocity *= 0.8f;
+            }
+
+
             if(owner._attackFrame >= 10)
             {
                 owner._isCauseDamage = true;
@@ -30,16 +42,10 @@ public partial class PlayerState
                 owner._isCauseDamage = false;
             }
 
-            //Debug.Log(owner._isCauseDamage);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            //if(owner._drawnSwordMotion)
-            //{
-            //    owner._drawnSwordMotion = false;
-            //}
-            //owner._drawnIdleMotion = false;
             owner._drawnSteppingSlash = false;
             owner._attackFrame = 0;
             owner._isCauseDamage = false;
@@ -89,6 +95,12 @@ public partial class PlayerState
                 owner.ChangeState(_spiritBlade1);
             }
             
+        }
+
+        // 前進
+        private void Step(PlayerState owner)
+        {
+            owner._rigidbody.velocity = owner._transform.forward * 10;
         }
     }
 }

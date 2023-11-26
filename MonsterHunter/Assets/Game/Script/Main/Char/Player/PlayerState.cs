@@ -53,14 +53,6 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
-        // 移動終了時に減速.
-        if ((_input._LeftStickHorizontal == 0.0f && _input._LeftStickVertical == 0.0f) &&
-            (_currentState == _idle || 
-            _currentState == _drawSwordTransition))
-        {
-            _rigidbody.velocity *= 0.8f;
-        }
-
         viewAngle();
     }
 
@@ -68,7 +60,7 @@ public partial class PlayerState : MonoBehaviour
     {
         // 現在のステート情報.
         //Debug.Log(_currentState);
-        Debug.Log(_rigidbody.velocity.magnitude);
+        //Debug.Log(_rigidbody.velocity.magnitude);
 
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);

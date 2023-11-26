@@ -30,7 +30,7 @@ public partial class PlayerState
             owner._avoidTime++;
             //MoveAvoid(owner);
             MoveAvoid(owner);
-            Debug.Log(owner._isCauseDamage);
+            //Debug.Log(owner._isCauseDamage);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

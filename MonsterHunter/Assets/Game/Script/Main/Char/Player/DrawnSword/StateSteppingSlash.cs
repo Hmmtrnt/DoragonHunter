@@ -12,6 +12,7 @@ public partial class PlayerState
             owner._attackFrame = 0;
             owner._nextMotionFlame = 50;
             owner._rigidbody.velocity = Vector3.zero;
+            owner._attackCol._col.enabled = true;
         }
 
         public override void OnUpdate(PlayerState owner)

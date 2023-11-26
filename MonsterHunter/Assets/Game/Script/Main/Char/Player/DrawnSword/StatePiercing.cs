@@ -11,6 +11,7 @@ public partial class PlayerState
             owner._drawnThrustSlash = true;
             owner._attackFrame = 0;
             owner._nextMotionFlame = 35;
+            owner._attackCol._col.enabled = true;
         }
 
         public override void OnUpdate(PlayerState owner)

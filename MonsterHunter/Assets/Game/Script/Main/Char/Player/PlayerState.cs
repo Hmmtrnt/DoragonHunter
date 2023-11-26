@@ -97,6 +97,8 @@ public partial class PlayerState : MonoBehaviour
         //{
         //    OnDamage();
         //}
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -106,6 +108,9 @@ public partial class PlayerState : MonoBehaviour
             OnDamage();
         }
     }
+
+
+
 
     // ステート変更.
     private void ChangeState(StateBase nextState)
@@ -125,6 +130,7 @@ public partial class PlayerState : MonoBehaviour
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _Monster = GameObject.FindWithTag("Monster");
         _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
+        _attackCol = GameObject.Find("AttackCollider").GetComponent<AttackCol>();
     }
 
     // アニメーション遷移.

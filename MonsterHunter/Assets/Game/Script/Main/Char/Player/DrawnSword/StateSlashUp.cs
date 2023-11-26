@@ -12,6 +12,7 @@ public partial class PlayerState
 
             owner._attackFrame = 0;
             owner._nextMotionFlame = 35;
+            owner._attackCol._col.enabled = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -22,6 +23,14 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             owner._attackFrame++;
+            if (owner._attackFrame >= 10)
+            {
+                owner._isCauseDamage = true;
+            }
+            if (owner._attackFrame >= 60)
+            {
+                owner._isCauseDamage = false;
+            }
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

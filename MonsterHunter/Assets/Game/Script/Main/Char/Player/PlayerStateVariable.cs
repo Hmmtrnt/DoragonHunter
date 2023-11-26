@@ -119,7 +119,7 @@ public partial class PlayerState
     // 攻撃判定.
 
     // ダメージを与えられるかどうか.
-    private bool _isCauseDamage = false;
+    public bool _isCauseDamage = false;
 
     /*アイドル状態時の変数*/
 
@@ -186,4 +186,6 @@ public partial class PlayerState
     private GameObject _Monster;
     // モンスターのState.
     private MonsterState _MonsterState;
+
+    private AttackCol _attackCol;
 }

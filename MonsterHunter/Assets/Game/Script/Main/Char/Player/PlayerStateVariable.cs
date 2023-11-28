@@ -47,6 +47,7 @@ public partial class PlayerState
     private bool _drawnAvoidMotion      = false;// 回避.
     private bool _drawnRightAvoidMotion = false;// 右回避.
     private bool _drawnLeftAvoidMotion  = false;// 左回避.
+    private bool _drawnSheathingSword   = false;// 納刀.
     private bool _drawnSteppingSlash    = false;// 踏み込み斬り.
     private bool _drawnThrustSlash      = false;// 突き.
     private bool _drawnSlashUp          = false;// 斬り上げ.

@@ -157,6 +157,7 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("DrawAvoid", _drawnAvoidMotion);
         _animator.SetBool("DrawRAvoid", _drawnRightAvoidMotion);
         _animator.SetBool("DrawLAvoid", _drawnLeftAvoidMotion);
+        _animator.SetBool("SheathingSword", _drawnSheathingSword);
         _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
         _animator.SetBool("Thrust", _drawnThrustSlash);
         _animator.SetBool("SlashUp", _drawnSlashUp);

@@ -10,7 +10,7 @@ public partial class PlayerState
         private int MotionTransition = 0;
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._drawnSwordMotion = false;
+            owner._drawnSheathingSword = true;
             MotionTransition = 0;
         }
 
@@ -26,11 +26,12 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
+            owner._drawnSheathingSword = false;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
-            if(MotionTransition >= 60)
+            if(MotionTransition >= 30)
             {
                 owner.ChangeState(_idle);
             }

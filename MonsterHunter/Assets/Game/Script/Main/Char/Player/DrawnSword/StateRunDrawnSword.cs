@@ -8,7 +8,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._drawnIdleMotion = true;
+            owner._drawnRunMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
@@ -25,13 +25,13 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._drawnIdleMotion = false;
+            owner._drawnRunMotion = false;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // 抜刀アイドル状態へ.
-            if(owner._leftStickHorizontal == 0 &&
+            if (owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)
             {
                 owner.ChangeState(_idleDrawnSword);
@@ -41,13 +41,13 @@ public partial class PlayerState
             {
                 owner.ChangeState(_steppingSlash);
             }
-            // 突き.
-            else if (owner._input._BButtonDown)
+            // 気刃斬り1.
+            else if (owner._input._RightTrigger >= 0.5f)
             {
-                owner.ChangeState(_piercing);
+                owner.ChangeState(_spiritBlade1);
             }
             // 回避
-            else if(owner._input._AButtonDown)
+            else if (owner._input._AButtonDown)
             {
                 owner.ChangeState(_avoidDrawnSword);
             }

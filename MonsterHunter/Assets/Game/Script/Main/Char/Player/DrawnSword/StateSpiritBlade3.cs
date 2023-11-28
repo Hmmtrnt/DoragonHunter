@@ -70,7 +70,7 @@ public partial class PlayerState
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
             {
-                owner.ChangeState(_avoid);
+                owner.ChangeState(_avoidDrawnSword);
             }
             // 右回避.
             else if (owner._attackFrame >= owner._nextMotionFlame &&
@@ -93,7 +93,7 @@ public partial class PlayerState
             //{
             //    owner.ChangeState(_piercing);
             //}
-            // 気刃斬り3.
+            // 気刃大回転斬り.
             else if (owner._attackFrame >= owner._nextMotionFlame && 
                 owner._input._RightTrigger >= 0.5)
             {

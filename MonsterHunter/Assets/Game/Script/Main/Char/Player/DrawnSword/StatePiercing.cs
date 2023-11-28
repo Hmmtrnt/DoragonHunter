@@ -42,7 +42,7 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // アイドル.
-            if (owner._attackFrame >= 120)
+            if (owner._attackFrame >= 80)
             {
                 owner.ChangeState(_idleDrawnSword);
             }

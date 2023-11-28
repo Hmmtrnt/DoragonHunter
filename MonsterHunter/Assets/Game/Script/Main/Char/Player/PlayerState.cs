@@ -153,6 +153,7 @@ public partial class PlayerState : MonoBehaviour
         // bool
         _animator.SetBool("DrawnSword", _drawnSwordMotion);
         _animator.SetBool("DrawnIdle", _drawnIdleMotion);
+        _animator.SetBool("DrawnRun", _drawnRunMotion);
         _animator.SetBool("DrawAvoid", _drawnAvoidMotion);
         _animator.SetBool("DrawRAvoid", _drawnRightAvoidMotion);
         _animator.SetBool("DrawLAvoid", _drawnLeftAvoidMotion);
@@ -167,6 +168,7 @@ public partial class PlayerState : MonoBehaviour
         /*共通*/
         // bool
         _animator.SetBool("Damage", _damageMotion);
+        _animator.SetBool("Down", _downMotion);
     }
 
     // 情報の代入.

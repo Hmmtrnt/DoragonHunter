@@ -10,6 +10,7 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateAt _at = new();// 攻撃(デバッグ用).
     public static readonly MonsterStateRotateAttack _rotate = new();// 回転攻撃.
     public static readonly MonsterStateBless _bless = new();// ブレス攻撃.
+    public static readonly MonsterStateBite _bite = new();// 噛みつき攻撃.
 
     // Stateの初期化.
     private StateBase _currentState = _idle;

@@ -146,6 +146,7 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("Idle", _idleMotion);
         _animator.SetBool("Run", _runMotion);
         _animator.SetBool("Dash", _dashMotion);
+        _animator.SetBool("Fatigue", _fatigueMotion);
         _animator.SetBool("Avoid", _avoidMotion);
         _animator.SetBool("Heal", _healMotion);
 
@@ -156,11 +157,13 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("DrawnRun", _drawnRunMotion);
         _animator.SetBool("DrawAvoid", _drawnAvoidMotion);
         _animator.SetBool("DrawRAvoid", _drawnRightAvoidMotion);
+
         _animator.SetBool("DrawLAvoid", _drawnLeftAvoidMotion);
         _animator.SetBool("SheathingSword", _drawnSheathingSword);
         _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
         _animator.SetBool("Thrust", _drawnThrustSlash);
         _animator.SetBool("SlashUp", _drawnSlashUp);
+
         _animator.SetBool("SpiritBlade1", _drawnSpiritBlade1);
         _animator.SetBool("SpiritBlade2", _drawnSpiritBlade2);
         _animator.SetBool("SpiritBlade3", _drawnSpiritBlade3);

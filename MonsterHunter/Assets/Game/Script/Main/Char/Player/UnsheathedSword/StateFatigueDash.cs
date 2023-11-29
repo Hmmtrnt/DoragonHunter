@@ -8,7 +8,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._runMotion = true;
+            owner._fatigueMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityFatigueDashMagnigication;
         }
 
@@ -26,7 +26,7 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._runMotion = false;
+            owner._fatigueMotion = false;
         }
 
         public override void OnChangeState(PlayerState owner)
@@ -50,7 +50,7 @@ public partial class PlayerState
         // 移動
         private void Move(PlayerState owner)
         {
-            owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
+            owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityFatigueDashMagnigication + new Vector3(0.0f, owner._gravity, 0.0f);
         }
     }
 }

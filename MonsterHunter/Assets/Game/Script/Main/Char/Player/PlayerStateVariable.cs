@@ -33,11 +33,12 @@ public partial class PlayerState
     private float _currentRunSpeed = 0;// 現在の走る速度.
 
     // Setbool
-    private bool _idleMotion  = false;// アイドル.
-    private bool _runMotion   = false;// 走る.
-    private bool _dashMotion  = false;// ダッシュ.
-    private bool _avoidMotion = false;// 回避.
-    private bool _healMotion  = false;// 回復.
+    private bool _idleMotion    = false;// アイドル.
+    private bool _runMotion     = false;// 走る.
+    private bool _dashMotion    = false;// ダッシュ.
+    private bool _fatigueMotion = false;// 疲労ダッシュ.
+    private bool _avoidMotion   = false;// 回避.
+    private bool _healMotion    = false;// 回復.
 
     //--抜刀状態--//
     // Setbool
@@ -135,7 +136,7 @@ public partial class PlayerState
     // ダッシュ時の移動倍率.
     private float _moveVelocityDashMagnigication = 20;
     // 疲労ダッシュ時の移動倍率.
-    private float _moveVelocityFatigueDashMagnigication = 10;
+    private float _moveVelocityFatigueDashMagnigication = 5;
 
     // 移動速度倍率.
     private float _moveVelocityMagnification = 12;

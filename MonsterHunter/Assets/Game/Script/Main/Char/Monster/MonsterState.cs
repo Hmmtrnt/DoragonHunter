@@ -43,6 +43,8 @@ public partial class MonsterState : MonoBehaviour
         }
         _textHp.text = "MonsterHp:" + _debagHitPoint;
         PositionalRelationship();
+
+        Debug.Log(_playerState.GetIsCauseDamage());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -63,6 +65,15 @@ public partial class MonsterState : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "HunterAtCol" && _playerState.GetIsCauseDamage())
+        {
+            GetOnDamager();
+            //other.transform.root.GetComponent<teakedamage>
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "HunterAtCol" && _playerState.GetIsCauseDamage())
         {

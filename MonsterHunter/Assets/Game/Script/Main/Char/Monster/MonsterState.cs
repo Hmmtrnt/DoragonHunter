@@ -7,10 +7,15 @@ public partial class MonsterState : MonoBehaviour
 {
     public static readonly MonsterStateIdle _idle = new();// アイドル.
     public static readonly MonsterStateRun _run = new();// 移動.
+
     public static readonly MonsterStateAt _at = new();// 攻撃(デバッグ用).
     public static readonly MonsterStateRotateAttack _rotate = new();// 回転攻撃.
     public static readonly MonsterStateBless _bless = new();// ブレス攻撃.
     public static readonly MonsterStateBite _bite = new();// 噛みつき攻撃.
+    public static readonly MonsterStateRushForward _rush = new();// 突進.
+    public static readonly MonsterStateWingBlow _wingBlow = new();// 翼で攻撃.
+    public static readonly MonsterStatePowerFireBall _powerFireBall = new();// 大技火球.
+
 
     // Stateの初期化.
     private StateBase _currentState = _idle;

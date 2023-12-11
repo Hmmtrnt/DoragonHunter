@@ -77,6 +77,9 @@ public partial class PlayerState
     // スタミナの自動回復量
     private float _autoRecaveryStamina = 0.5f;
 
+    // モーションフレーム.
+    private int _motionFrame = 0;
+
     // 攻撃力.
     private float _AttackPower = 100;
     // 攻撃フレーム数

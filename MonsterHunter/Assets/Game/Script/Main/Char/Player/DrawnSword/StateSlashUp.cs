@@ -31,6 +31,12 @@ public partial class PlayerState
             {
                 owner._isCauseDamage = false;
             }
+
+            // 前進させる.
+            if(owner._attackFrame <= 20)
+            {
+                owner.ForwardStep(2);
+            }
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

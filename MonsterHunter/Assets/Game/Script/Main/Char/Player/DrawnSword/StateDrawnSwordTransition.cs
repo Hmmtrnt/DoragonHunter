@@ -6,14 +6,11 @@ public partial class PlayerState
 {
     public class StateDrawnSwordTransition : StateBase
     {
-        // デバッグ用変数
-        private int MotionTransition = 0;
-
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSwordMotion = true;
             owner._unsheathedSword = true;
-            MotionTransition = 0;
+            owner._motionFrame = 0;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -23,18 +20,26 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
-            MotionTransition++;
+            owner._motionFrame++;
+
+            // 前進させる.
+            if (owner._motionFrame <= 20&& owner._motionFrame >= 5)
+            {
+                owner.ForwardStep(5);
+            }
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSwordMotion = false;
+
+            
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // デバッグ用
-            if(MotionTransition >= 60)
+            if(owner._motionFrame >= 60)
             {
                 owner.ChangeState(_idleDrawnSword);
             }

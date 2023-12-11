@@ -26,7 +26,7 @@ public partial class PlayerState
 
             if(owner._attackFrame <= 40)
             {
-                Step(owner);
+                owner.ForwardStep(10);
             }
             else
             {
@@ -95,13 +95,6 @@ public partial class PlayerState
             {
                 owner.ChangeState(_spiritBlade1);
             }
-            
-        }
-
-        // 前進
-        private void Step(PlayerState owner)
-        {
-            owner._rigidbody.velocity = owner._transform.forward * 10;
         }
     }
 }

@@ -80,11 +80,7 @@ public partial class MonsterState : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "HunterAtCol" && _playerState.GetIsCauseDamage())
-        {
-            GetOnDamager();
-            //other.transform.root.GetComponent<teakedamage>
-        }
+        
     }
 
     // ステートの変更.

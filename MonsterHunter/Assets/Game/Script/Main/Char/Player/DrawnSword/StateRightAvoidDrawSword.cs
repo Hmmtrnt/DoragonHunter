@@ -7,7 +7,7 @@ public partial class PlayerState
     public class StateRightAvoidDrawSword : StateBase
     {
         // ‰ñ”ð‚µ‚½Œã‚ÌŒ¸‘¬
-        private float _deceleration = 0.95f;
+        private float _deceleration = 0.9f;
 
         
 

@@ -64,6 +64,12 @@ public partial class MonsterState
     [Header("回転速度")]
     [SerializeField] private float _rotateSpeed = 0;
 
+    // 状態のフレーム数
+    private int _stateFlame = 0;
+
+    // 乱数.
+    private int _randomNumber = 0;
+
     // デバッグ用テキスト
     private Text _text;
     private Text _textHp;

@@ -6,11 +6,9 @@ public partial class MonsterState
 {
     public class MonsterStateBless : StateBase
     {
-        private int testTime = 0;
-
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
-            testTime = 0;
+            owner.StateTransitionInitialization();
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -30,15 +28,13 @@ public partial class MonsterState
             // デバッグ用ブレス
             // TODO:あとで変数名、コメント変更する！.
             // プレイヤーのほうを向いて回転
-            if(testTime <= 40)
+            if(owner._stateFlame <= 40)
             {
                 owner._trasnform.rotation = Quaternion.Slerp(owner._trasnform.rotation, _rotation, Time.deltaTime * owner._rotateSpeed);
             }
-            
 
-            testTime++;
             // 発射ぁ.
-            if(testTime % 50 == 0)
+            if(owner._stateFlame % 50 == 0)
             {
                 Instantiate(owner._fireBall, new Vector3(owner._fireBallPosition.transform.position.x,
                 owner._fireBallPosition.transform.position.y,
@@ -53,7 +49,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(testTime >= 90f)
+            if(owner._stateFlame >= 90f)
             {
                 owner.ChangeState(_idle);
             }

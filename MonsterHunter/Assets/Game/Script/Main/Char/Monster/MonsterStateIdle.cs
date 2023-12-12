@@ -6,13 +6,9 @@ public partial class MonsterState
 {
     public class MonsterStateIdle : StateBase
     {
-        private int testTime = 0;
-
-        
-
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
-            testTime = 0;
+            owner.StateTransitionInitialization();
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -32,9 +28,63 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._viewDirection[(int)viewDirection.FORWARD] && !owner._isNearDistance)
+            // 近距離.
+            if(owner._isNearDistance)
             {
-                owner.ChangeState(_bless);
+                // 正面.
+                if(owner._viewDirection[(int)viewDirection.FORWARD])
+                {
+                    owner.ChangeState(_bite);
+                }
+                // 後ろ.
+                else if (owner._viewDirection[(int)viewDirection.BACKWARD])
+                {
+                    owner.ChangeState(_rotate);
+                }
+                // 左.
+                else if (owner._viewDirection[(int)viewDirection.LEFT])
+                {
+                    owner.ChangeState(_wingBlow);
+                }
+                // 右.
+                else if (owner._viewDirection[(int)viewDirection.RIGHT])
+                {
+                    owner.ChangeState(_wingBlow);
+                }
+            }
+            // 遠距離.
+            else
+            {
+                if (owner._viewDirection[(int)viewDirection.FORWARD])
+                {
+                    if (owner._randomNumber < 61)
+                    {
+                        owner.ChangeState(_rush);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_bless);
+                    }
+                }
+                else if (owner._viewDirection[(int)viewDirection.BACKWARD])
+                {
+                    if (owner._randomNumber < 41)
+                    {
+                        owner.ChangeState(_rush);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_bless);
+                    }
+                }
+                else if (owner._viewDirection[(int)viewDirection.LEFT])
+                {
+                    owner.ChangeState(_bless);
+                }
+                else if (owner._viewDirection[(int)viewDirection.RIGHT])
+                {
+                    owner.ChangeState(_bless);
+                }
             }
         }
     }

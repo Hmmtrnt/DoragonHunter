@@ -6,14 +6,13 @@ public partial class PlayerState
 {
     public class StateAvoidDrawSword : StateBase
     {
-        // 回避した後の減速
-        private float _deceleration = 0.95f;
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
+            owner._deceleration = 0.9f;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -38,7 +37,7 @@ public partial class PlayerState
         {
             if (owner._avoidTime >= 30)
             {
-                // スティック傾けていたらRunに
+                // スティック傾けていたらRunに.
                 if ((owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
                 {
@@ -61,7 +60,7 @@ public partial class PlayerState
 
             if (owner._avoidTime <= 10)
             {
-                owner._rigidbody.velocity *= _deceleration;
+                owner._rigidbody.velocity *= owner._deceleration;
             }
 
             if (owner._avoidTime >= 30)

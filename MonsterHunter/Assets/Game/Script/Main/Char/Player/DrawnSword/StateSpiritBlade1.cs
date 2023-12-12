@@ -9,11 +9,10 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSpiritBlade1 = true;
-
             owner._attackFrame = 0;
-
             owner._nextMotionFlame = 50;
             owner._attackCol._col.enabled = true;
+            owner._deceleration = 0.9f;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -27,6 +26,8 @@ public partial class PlayerState
             if (owner._attackFrame >= 10)
             {
                 owner._isCauseDamage = true;
+                // 減速させる
+                owner._rigidbody.velocity *= owner._deceleration;
             }
             if (owner._attackFrame >= 60)
             {

@@ -36,7 +36,7 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idleDrawnSword);
             }
-            // 踏み込み斬り
+            // 踏み込み斬り.
             else if (owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);
@@ -46,10 +46,15 @@ public partial class PlayerState
             {
                 owner.ChangeState(_spiritBlade1);
             }
-            // 回避
+            // 回避.
             else if (owner._input._AButtonDown)
             {
                 owner.ChangeState(_avoidDrawnSword);
+            }
+            // 納刀.
+            else if(owner._input._XButtonDown)
+            {
+                owner.ChangeState(_sheathingSword);
             }
         }
 

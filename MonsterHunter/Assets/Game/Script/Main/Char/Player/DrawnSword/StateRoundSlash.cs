@@ -9,11 +9,10 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSpiritRoundSlash = true;
-
             owner._attackFrame = 0;
-
             owner._nextMotionFlame = 90;
             owner._attackCol._col.enabled = true;
+            owner._deceleration = 0.9f;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -31,6 +30,18 @@ public partial class PlayerState
             if (owner._attackFrame >= 60)
             {
                 owner._isCauseDamage = false;
+            }
+            if(owner._attackFrame <= 10)
+            {
+                owner.ForwardStep(20);
+            }
+            if(owner._attackFrame >= 10 && owner._attackFrame <= 50)
+            {
+                owner._rigidbody.velocity *= owner._deceleration;
+            }
+            else if(owner._attackFrame >= 50)
+            {
+                owner.ForwardStep(10);
             }
         }
 

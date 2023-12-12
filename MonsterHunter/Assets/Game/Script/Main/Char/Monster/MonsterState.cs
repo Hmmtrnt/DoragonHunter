@@ -49,7 +49,6 @@ public partial class MonsterState : MonoBehaviour
         _textHp.text = "MonsterHp:" + _debagHitPoint;
         PositionalRelationship();
 
-        Debug.Log(_playerState.GetIsCauseDamage());
     }
 
     private void OnCollisionEnter(Collision collision)

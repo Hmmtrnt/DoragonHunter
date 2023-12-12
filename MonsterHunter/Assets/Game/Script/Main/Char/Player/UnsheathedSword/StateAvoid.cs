@@ -6,9 +6,6 @@ public partial class PlayerState
 {
     public class StateAvoid : StateBase
     {
-        // 回避した後の減速
-        private float _deceleration = 0.9f;
-
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._isAvoiding = true;
@@ -17,6 +14,7 @@ public partial class PlayerState
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
+            owner._deceleration = 0.9f;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -74,7 +72,7 @@ public partial class PlayerState
             // 減速
             if (owner._avoidTime <= 10)
             {
-                owner._rigidbody.velocity *= _deceleration;
+                owner._rigidbody.velocity *= owner._deceleration;
             }
             // 一気に減速
             if (owner._avoidTime >= 30)

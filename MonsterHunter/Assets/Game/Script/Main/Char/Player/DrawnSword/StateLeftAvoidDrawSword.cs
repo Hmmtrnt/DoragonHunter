@@ -6,19 +6,14 @@ public partial class PlayerState
 {
     public class StateLeftAvoidDrawSword : StateBase
     {
-        // ‰ñ”ð‚µ‚½Œã‚ÌŒ¸‘¬
-        private float _deceleration = 0.9f;
-
-
-
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnLeftAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.right * owner._avoidVelocityMagnification;
-
             owner._nextMotionFlame = 50;
+            owner._deceleration = 0.9f;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -56,12 +51,11 @@ public partial class PlayerState
         {
             if (owner._avoidTime <= 10)
             {
-                owner._rigidbody.velocity *= _deceleration;
+                owner._rigidbody.velocity *= owner._deceleration;
             }
 
             if (owner._avoidTime >= 30)
             {
-                //owner._rigidbody.velocity = new Vector3(0.0f,0.0f,0.0f);
                 owner._rigidbody.velocity *= 0.8f;
             }
 

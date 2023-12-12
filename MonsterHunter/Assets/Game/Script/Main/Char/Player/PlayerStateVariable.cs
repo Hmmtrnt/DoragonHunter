@@ -187,6 +187,9 @@ public partial class PlayerState
     // 回復量.
     private float _recoveryAmount = 0.8f;
 
+    /*共通*/
+    // 減速.
+    private float _deceleration = 0;
 
     // 以下デバッグ用変数
     // モンスターオブジェクト.

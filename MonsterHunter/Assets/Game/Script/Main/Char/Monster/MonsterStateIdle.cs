@@ -55,6 +55,7 @@ public partial class MonsterState
             // 遠距離.
             else
             {
+                // 正面.
                 if (owner._viewDirection[(int)viewDirection.FORWARD])
                 {
                     if (owner._randomNumber < 61)

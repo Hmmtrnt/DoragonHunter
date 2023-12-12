@@ -41,7 +41,7 @@ public partial class PlayerState
             }
             else if(owner._attackFrame >= 50)
             {
-                owner.ForwardStep(10);
+                owner.ForwardStep(8);
             }
         }
 

@@ -58,15 +58,11 @@ public partial class MonsterState
     // 攻撃力
     private float _debagAttackPower = 1;
 
-    // デバッグ用攻撃判定
-    private GameObject _debugAttackCol;
     // デバッグ用攻撃判定を生成するかどうか
     private bool _indicateAttackCol = false;
 
     [Header("回転速度")]
     [SerializeField] private float _rotateSpeed = 0;
-
-    private LineRenderer _line;
 
     // デバッグ用テキスト
     private Text _text;

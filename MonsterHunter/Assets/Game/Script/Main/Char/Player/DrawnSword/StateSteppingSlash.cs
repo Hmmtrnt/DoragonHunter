@@ -24,9 +24,9 @@ public partial class PlayerState
         {
             owner._attackFrame++;
 
-            if(owner._attackFrame <= 40)
+            if(owner._attackFrame <= 40 && owner._attackFrame >=10)
             {
-                owner.ForwardStep(10);
+                owner.ForwardStep(8);
             }
             else
             {

@@ -40,7 +40,6 @@ public partial class MonsterState : MonoBehaviour
         _currentState.OnFixedUpdate(this);
 
         // 攻撃判定の生成
-        _debugAttackCol.SetActive(_indicateAttackCol);
 
         if(_debagHitPoint <= 0)
         {
@@ -102,12 +101,9 @@ public partial class MonsterState : MonoBehaviour
         _fireBallPosition = GameObject.Find("BlessPosition");
         _temp = _fireBallPosition.transform.position;
 
-        _line = GetComponent<LineRenderer>();
         _text = GameObject.Find("DebugText").GetComponent<Text>();
         _textHp = GameObject.Find("MonsterHp").GetComponent<Text>();
 
-        _debugAttackCol = GameObject.FindWithTag("MonsterAtCol");
-        
         for(int i = 0; i < (int)viewDirection.NONE; i++)
         {
             _viewDirection[i] = false;
@@ -223,13 +219,6 @@ public partial class MonsterState : MonoBehaviour
         {
             FoundFlag((int)viewDirection.NONE);
         }
-
-        //Debug.Log(forwardAngle);
-        //Debug.Log(sideAngle);
-        
-
-        _line.SetPosition(0, transform.position);
-        _line.SetPosition(1, _hunter.transform.position);
     }
 
     /// <summary>

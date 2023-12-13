@@ -48,17 +48,16 @@ public partial class MonsterState : MonoBehaviour
         // 乱数を常に与える.
         _randomNumber = Random.Range(1, 101);
 
-        Debug.Log(_randomNumber);
+        Debug.Log(_currentState);
 
         // 攻撃判定の生成.
-
         if(_debagHitPoint <= 0)
         {
             gameObject.SetActive(false);
         }
         _textHp.text = "MonsterHp:" + _debagHitPoint;
         PositionalRelationship();
-
+        AnimTransition();
     }
 
     private void OnCollisionEnter(Collision collision)

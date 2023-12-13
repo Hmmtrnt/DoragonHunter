@@ -50,6 +50,17 @@ public partial class MonsterState
     [Header("ダメージUI")]
     [SerializeField] private GameObject _damageUI;
 
+    /*アニメーション*/
+    private Animator _animator;
+    // bool
+    private bool _idleMotion = false;
+    private bool _runMotion = false;
+    private bool _rotateMotion = false;
+    private bool _blessMotion = false;
+    private bool _biteMotion = false;
+    private bool _rushMotion = false;
+
+
     // 以下デバッグ用
 
     // デバッグ用ステータス

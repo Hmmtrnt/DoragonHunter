@@ -54,4 +54,12 @@ public class FireBall : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

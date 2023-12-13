@@ -16,6 +16,7 @@ public partial class PlayerState
             owner._hitPoint = owner._hitPoint - owner._MonsterState.GetMonsterAttack();
             owner._damageMotion = true;
             owner._isProcess = true;
+            owner._rigidbody.velocity = Vector3.zero;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -57,7 +58,7 @@ public partial class PlayerState
             // 敵の中心点からベクトルを取得
             Vector3 dir = owner._transform.position - owner._Monster.transform.position;
             dir = dir.normalized;
-            owner._rigidbody.AddForce(dir * 20, ForceMode.Impulse);
+            owner._rigidbody.AddForce(dir * 15, ForceMode.Impulse);
             owner._isProcess = false;
         }
     }

@@ -9,6 +9,8 @@ public partial class MonsterState
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
+            owner._idleMotion = false;
+            owner._blessMotion = true;
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -24,6 +26,7 @@ public partial class MonsterState
             // 方向ベクトルからクォータニオン取得
             Quaternion _rotation = Quaternion.LookRotation(_direction, Vector3.up);
 
+            Debug.Log("ブレス");
 
             // デバッグ用ブレス
             // TODO:あとで変数名、コメント変更する！.
@@ -34,7 +37,7 @@ public partial class MonsterState
             }
 
             // 発射ぁ.
-            if(owner._stateFlame % 50 == 0)
+            if(owner._stateFlame % 70 == 0)
             {
                 Instantiate(owner._fireBall, new Vector3(owner._fireBallPosition.transform.position.x,
                 owner._fireBallPosition.transform.position.y,
@@ -44,7 +47,8 @@ public partial class MonsterState
 
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
-
+            owner._idleMotion = true;
+            owner._blessMotion = false;
         }
 
         public override void OnChangeState(MonsterState owner)

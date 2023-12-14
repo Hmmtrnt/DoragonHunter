@@ -29,7 +29,8 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._collisionTag == "Player")
+            //if (owner._collisionTag == "Player")
+            if (owner._stateFlame >= 90)
             {
                 owner.ChangeState(_at);
             }

@@ -6,14 +6,9 @@ public partial class PlayerState
 {
     public class StateDamage : StateBase
     {
-        // ノックバックを受けている時間
-        private int _testTime;
-        
-
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            _testTime = 0;
-            
+            owner.StateTransitionInitialization();
             owner._hitPoint = owner._hitPoint - owner._MonsterState.GetMonsterAttack();
             owner._damageMotion = true;
             owner._isProcess = true;
@@ -27,7 +22,6 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
-            _testTime++;
             //Debug.Log(_testTime);
             if (!owner._isProcess) return;
             //Debug.Log("通った");
@@ -43,11 +37,13 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // 納刀かそうじゃないかで遷移先を変更
-            if(owner._unsheathedSword && _testTime >= 90)
+            if (owner._stateFlame <= 90) return;
+
+            if(owner._unsheathedSword)
             {
                 owner.ChangeState(_idleDrawnSword);
             }
-            else if(!owner._unsheathedSword && _testTime >= 90)
+            else if(!owner._unsheathedSword)
             {
                 owner.ChangeState(_idle);
             }
@@ -59,8 +55,20 @@ public partial class PlayerState
             // 敵の中心点からベクトルを取得
             Vector3 dir = owner._transform.position - owner._Monster.transform.position;
             dir = dir.normalized;
-            owner._rigidbody.AddForce(dir * 15, ForceMode.Impulse);
-            owner._isProcess = false;
+            //owner._rigidbody.AddForce(dir * 30, ForceMode.Impulse);
+            if(owner._stateFlame <= 40)
+            {
+                owner._transform.position += dir * 0.15f;
+            }
+            else if(owner._stateFlame <= 80)
+            {
+                owner._transform.position += dir * 0.3f;
+            }
+            
+
+            var rotation = Quaternion.LookRotation(-dir, Vector3.up);
+            owner._transform.rotation = rotation;
+            //owner._isProcess = false;
         }
     }
 

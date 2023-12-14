@@ -1,4 +1,4 @@
-﻿/*１乙*/
+﻿/*ハンターの体力が0になった時の処理*/
 
 using UnityEngine;
 
@@ -13,6 +13,7 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
+            owner._downMotion = true;
         }
         public override void OnFixedUpdate(PlayerState owner)
         {

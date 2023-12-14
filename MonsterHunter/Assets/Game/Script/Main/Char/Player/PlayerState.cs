@@ -58,6 +58,8 @@ public partial class PlayerState : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _stateFlame++;
+
         // 現在のステート情報.
         //Debug.Log(_currentState);
 

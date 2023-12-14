@@ -17,6 +17,12 @@ public partial class PlayerState
         _attackCol = GameObject.Find("AttackCollider").GetComponent<AttackCol>();
     }
 
+    // 状態遷移時の初期化.
+    private void StateTransitionInitialization()
+    {
+        _stateFlame = 0;
+    }
+
     /// <summary>
     /// ステート変更.
     /// </summary>

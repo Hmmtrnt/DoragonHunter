@@ -80,6 +80,8 @@ public partial class PlayerState
     // モーションフレーム.
     private int _motionFrame = 0;
 
+    private int _stateFlame = 0;
+
     // 攻撃力.
     private float _AttackPower = 100;
     // 攻撃フレーム数

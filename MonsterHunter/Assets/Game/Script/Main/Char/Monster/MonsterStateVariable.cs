@@ -68,7 +68,7 @@ public partial class MonsterState
     // 体力
     private float _HitPoint = 3000;
     // 攻撃力
-    private float _debagAttackPower = 5;
+    private float _AttackPower = 5;
 
     // デバッグ用攻撃判定を生成するかどうか
     private bool _indicateAttackCol = false;

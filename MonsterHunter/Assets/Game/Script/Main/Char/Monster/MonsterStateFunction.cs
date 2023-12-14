@@ -208,7 +208,7 @@ public partial class MonsterState
 
     public float GetMonsterAttack()
     {
-        return _debagAttackPower;
+        return _AttackPower;
     }
 
     private float GetOnDamager()

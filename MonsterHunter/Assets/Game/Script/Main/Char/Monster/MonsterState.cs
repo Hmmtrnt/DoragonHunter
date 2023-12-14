@@ -7,6 +7,7 @@ public partial class MonsterState : MonoBehaviour
 {
     public static readonly MonsterStateIdle _idle = new();// アイドル.
     public static readonly MonsterStateRun _run = new();// 移動.
+    public static readonly MonsterStateDown _down = new();// 死ぬ.
 
     public static readonly MonsterStateAt _at = new();// 攻撃(デバッグ用).
     public static readonly MonsterStateRotateAttack _rotate = new();// 回転攻撃.
@@ -48,16 +49,21 @@ public partial class MonsterState : MonoBehaviour
         // 乱数を常に与える.
         _randomNumber = Random.Range(1, 101);
 
-        Debug.Log(_currentState);
+        //Debug.Log(_currentState);
 
-        // 攻撃判定の生成.
-        if(_debagHitPoint <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-        _textHp.text = "MonsterHp:" + _debagHitPoint;
+        
+        _textHp.text = "MonsterHp:" + _HitPoint;
+
+        // プレイヤーとモンスター同士の角度、距離によって処理を変更.
         PositionalRelationship();
+        // アニメーション遷移.
         AnimTransition();
+
+        // 体力が0になった時の処理.
+        if(_HitPoint <= 0)
+        {
+            ChangeStateDeath();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -93,31 +99,5 @@ public partial class MonsterState : MonoBehaviour
     
 
 
-    private float GetDistance()
-    {
-        _currentDistance = (_hunter.transform.position - _trasnform.position).magnitude;
 
-        return _currentDistance;
-    }
-
-    public float GetMonsterAttack()
-    {
-        return _debagAttackPower;
-    }
-
-    private float GetOnDamager()
-    {
-        _debagHitPoint = _debagHitPoint - _playerState.GetHunterAttack();
-        return _debagHitPoint;
-    }
-
-    public void SetHitPoint(float hitPoint)
-    {
-        _debagHitPoint = hitPoint;
-    }
-
-    public float GetHitPoint()
-    {
-        return _debagHitPoint;
-    }
 }

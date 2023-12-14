@@ -9,6 +9,7 @@ public partial class MonsterState
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
+            owner._idleMotion = true;
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -23,11 +24,13 @@ public partial class MonsterState
 
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
-
+            owner._idleMotion = false;
         }
 
         public override void OnChangeState(MonsterState owner)
         {
+            if (owner._stateFlame <= 100) return;
+
             // 近距離.
             if(owner._isNearDistance)
             {

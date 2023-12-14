@@ -49,11 +49,16 @@ public partial class MonsterState
         // アニメーターがアタッチされていなければ引っかかる
         Debug.Assert(_currentState != null);
 
+        //Debug.Log(_deathMotion);
+
         // bool
+        _animator.SetBool("Idle", _idleMotion);
+        _animator.SetBool("Death", _deathMotion);
         _animator.SetBool("Bless", _blessMotion);
+        _animator.SetBool("Bite", _biteMotion);
     }
 
-    // プレイヤーとモンスター同士の角度、距離によって処理を変更
+    // プレイヤーとモンスター同士の角度、距離によって処理を変更.
     private void PositionalRelationship()
     {
         // 正面
@@ -183,8 +188,42 @@ public partial class MonsterState
         }
     }
 
+    // 体力が0になると強制的にダウンする.
+    private void ChangeStateDeath()
+    {
+        _currentState = _down;
+    }
+
     public void DamageUI(Collider col)
     {
         var obj = Instantiate(_damageUI, col.bounds.center - Camera.main.transform.forward * 0.2f, Quaternion.identity);
+    }
+
+    private float GetDistance()
+    {
+        _currentDistance = (_hunter.transform.position - _trasnform.position).magnitude;
+
+        return _currentDistance;
+    }
+
+    public float GetMonsterAttack()
+    {
+        return _debagAttackPower;
+    }
+
+    private float GetOnDamager()
+    {
+        _HitPoint = _HitPoint - _playerState.GetHunterAttack();
+        return _HitPoint;
+    }
+
+    public void SetHitPoint(float hitPoint)
+    {
+        _HitPoint = hitPoint;
+    }
+
+    public float GetHitPoint()
+    {
+        return _HitPoint;
     }
 }

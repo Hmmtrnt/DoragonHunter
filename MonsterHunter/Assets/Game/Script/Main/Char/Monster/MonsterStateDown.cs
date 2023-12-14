@@ -1,40 +1,37 @@
-ï»¿/*å™›ã¿ã¤ã*/
+/*ƒ‚ƒ“ƒXƒ^[‚Ì‘Ì—Í‚ª0‚Ì*/
 
 using UnityEngine;
 
 public partial class MonsterState
 {
-    public class MonsterStateBite : StateBase
+    public class MonsterStateDown : StateBase
     {
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
-            owner._biteMotion = true;
+            
+            Debug.Log("’Ê‚é");
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            owner._deathMotion = true;
         }
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            Debug.Log("å™›ã¿ã¤ã");
+
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
-            owner._biteMotion = false;
+            owner._deathMotion = false;
         }
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._collisionTag == "Player")
-            {
-                owner.ChangeState(_at);
-            }
+            
         }
     }
+
 }
-
-

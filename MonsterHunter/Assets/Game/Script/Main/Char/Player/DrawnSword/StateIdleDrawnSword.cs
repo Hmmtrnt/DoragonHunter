@@ -2,7 +2,6 @@
 
 using UnityEngine;
 
-
 public partial class PlayerState
 {
     public class StateIdleDrawnSword : StateBase

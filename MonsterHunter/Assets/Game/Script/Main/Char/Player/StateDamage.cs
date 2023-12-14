@@ -13,6 +13,7 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             _testTime = 0;
+            
             owner._hitPoint = owner._hitPoint - owner._MonsterState.GetMonsterAttack();
             owner._damageMotion = true;
             owner._isProcess = true;

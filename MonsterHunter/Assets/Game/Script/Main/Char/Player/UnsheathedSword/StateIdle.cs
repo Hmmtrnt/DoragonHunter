@@ -16,7 +16,7 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
-            owner._rigidbody.velocity *= 0.8f;
+
         }
 
         public override void OnFixedUpdate(PlayerState owner)

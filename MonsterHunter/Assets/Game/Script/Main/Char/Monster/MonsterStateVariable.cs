@@ -55,6 +55,7 @@ public partial class MonsterState
     // bool
     private bool _idleMotion = false;
     private bool _runMotion = false;
+    private bool _deathMotion = false;
     private bool _rotateMotion = false;
     private bool _blessMotion = false;
     private bool _biteMotion = false;
@@ -65,9 +66,9 @@ public partial class MonsterState
 
     // デバッグ用ステータス
     // 体力
-    private float _debagHitPoint = 3000;
+    private float _HitPoint = 3000;
     // 攻撃力
-    private float _debagAttackPower = 1;
+    private float _debagAttackPower = 5;
 
     // デバッグ用攻撃判定を生成するかどうか
     private bool _indicateAttackCol = false;

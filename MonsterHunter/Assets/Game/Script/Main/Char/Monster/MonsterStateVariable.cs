@@ -27,6 +27,9 @@ public partial class MonsterState
     private GameObject _fireBallPosition;
     private Vector3 _temp;
 
+    // 子オブジェクトの当たり判定.
+    private MeshCollider[] _colliderChildren;
+
     // 追従スピード
     private float _followingSpeed = 1;
 

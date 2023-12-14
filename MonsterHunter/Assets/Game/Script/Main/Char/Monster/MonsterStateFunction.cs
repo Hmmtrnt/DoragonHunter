@@ -23,6 +23,10 @@ public partial class MonsterState
 
         _fireBall = (GameObject)Resources.Load("FireBall");
         _fireBallPosition = GameObject.Find("BlessPosition");
+        //_colliderChildren = GetComponentInChildren<MeshCollider>();
+
+        _colliderChildren = GetComponentsInChildren<MeshCollider>();
+
         _temp = _fireBallPosition.transform.position;
 
         _animator = GetComponent<Animator>();
@@ -170,7 +174,7 @@ public partial class MonsterState
     }
 
     /// <summary>
-    /// 見つかっているかの値を返す
+    /// 見つかっているかの値を返す.
     /// </summary>
     /// <param name="foundNum">プレイヤーの位置を示す番号</param>
     private void FoundFlag(int foundNum)
@@ -192,6 +196,11 @@ public partial class MonsterState
     private void ChangeStateDeath()
     {
         _currentState = _down;
+        // 死ぬと当たり判定を貫通させる.
+        foreach(MeshCollider collider in _colliderChildren)
+        {
+            collider.isTrigger = true;
+        }
     }
 
     public void DamageUI(Collider col)

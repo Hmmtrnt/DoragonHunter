@@ -49,6 +49,7 @@ public partial class PlayerState
         {
             owner._drawnSpiritRoundSlash = false;
             owner._attackFrame = 0;
+            owner._unsheathedSword = false;
         }
 
         public override void OnChangeState(PlayerState owner)

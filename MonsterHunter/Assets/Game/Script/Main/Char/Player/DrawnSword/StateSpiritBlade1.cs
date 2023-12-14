@@ -13,6 +13,7 @@ public partial class PlayerState
             owner._nextMotionFlame = 50;
             owner._attackCol._col.enabled = true;
             owner._deceleration = 0.9f;
+            owner._unsheathedSword = true;
         }
 
         public override void OnUpdate(PlayerState owner)

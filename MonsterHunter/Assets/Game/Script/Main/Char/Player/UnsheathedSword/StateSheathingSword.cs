@@ -11,6 +11,7 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSheathingSword = true;
+            owner._unsheathedSword = false;
             MotionTransition = 0;
         }
 

@@ -39379,12 +39379,22 @@ PrefabInstance:
     - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed
-      value: -1
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6,
+        type: 3}
+      propertyPath: m_VerticalAxis.m_MaxValue
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6,
+        type: 3}
+      propertyPath: m_VerticalAxis.m_MinValue
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
       propertyPath: m_HorizontalAxis.m_MaxSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7400516567444871290, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
@@ -39394,7 +39404,7 @@ PrefabInstance:
     - target: {fileID: 7400516567444871290, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.599631
+      value: 2.4403412
       objectReference: {fileID: 0}
     - target: {fileID: 7400516567444871290, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
@@ -39435,6 +39445,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577456689820068954, guid: 3d9de063ff6fce2488834b2a348276e6,
+        type: 3}
+      propertyPath: m_ScreenX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577456689820068954, guid: 3d9de063ff6fce2488834b2a348276e6,
+        type: 3}
+      propertyPath: m_ScreenY
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

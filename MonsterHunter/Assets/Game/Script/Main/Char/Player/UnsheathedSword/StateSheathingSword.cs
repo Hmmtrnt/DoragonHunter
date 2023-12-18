@@ -13,6 +13,7 @@ public partial class PlayerState
             owner._drawnSheathingSword = true;
             owner._unsheathedSword = false;
             MotionTransition = 0;
+            owner.StateTransitionInitialization();
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -23,7 +24,12 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             MotionTransition++;
-            owner.ForwardStep(6);
+            if(owner._stateFlame <= 10)
+            {
+                owner.ForwardStep(10);
+            }
+
+            
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

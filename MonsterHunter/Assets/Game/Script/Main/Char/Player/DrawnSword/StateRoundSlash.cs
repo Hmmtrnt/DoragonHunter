@@ -9,10 +9,10 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSpiritRoundSlash = true;
-            owner._attackFrame = 0;
             owner._nextMotionFlame = 90;
             owner._attackCol._col.enabled = true;
             owner._deceleration = 0.9f;
+            owner.StateTransitionInitialization();
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -22,24 +22,23 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
-            owner._attackFrame++;
-            if (owner._attackFrame >= 10)
+            if (owner._stateFlame >= 10)
             {
                 owner._isCauseDamage = true;
             }
-            if (owner._attackFrame >= 60)
+            if (owner._stateFlame >= 60)
             {
                 owner._isCauseDamage = false;
             }
-            if(owner._attackFrame <= 10)
+            if(owner._stateFlame <= 10)
             {
                 owner.ForwardStep(20);
             }
-            if(owner._attackFrame >= 10 && owner._attackFrame <= 50)
+            if(owner._stateFlame >= 10 && owner._stateFlame <= 50)
             {
                 owner._rigidbody.velocity *= owner._deceleration;
             }
-            else if(owner._attackFrame >= 50)
+            else if(owner._stateFlame >= 50)
             {
                 owner.ForwardStep(8);
             }
@@ -48,14 +47,13 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSpiritRoundSlash = false;
-            owner._attackFrame = 0;
             owner._unsheathedSword = false;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // 納刀アイドル.
-            if (owner._attackFrame >= owner._nextMotionFlame)
+            if (owner._stateFlame >= owner._nextMotionFlame)
             {
                 owner.ChangeState(_idle);
             }

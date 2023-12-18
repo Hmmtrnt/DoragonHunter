@@ -5610,6 +5610,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &161876907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 161876908}
+  - component: {fileID: 161876909}
+  m_Layer: 0
+  m_Name: WingLeftCol
+  m_TagString: MonsterAtCol
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &161876908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161876907}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7598414, y: 0.028471671, z: -0.020731593, w: 0.64915377}
+  m_LocalPosition: {x: 0.10142208, y: -0.005351007, z: 0.12167395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1291031891}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &161876909
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161876907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.68
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &177018114 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1002910164038957907, guid: 744c7c042d094ac45bad0e7f2ef04262,
@@ -59969,6 +60024,61 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1698425502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1698425503}
+  - component: {fileID: 1698425504}
+  m_Layer: 0
+  m_Name: WingRightCol
+  m_TagString: MonsterAtCol
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1698425503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698425502}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.49711865, y: 0.211391, z: 0.3535152, w: 0.7636844}
+  m_LocalPosition: {x: 0.03205629, y: -0.0010863915, z: 0.2577191}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 487727494}
+  m_LocalEulerAnglesHint: {x: -65.332, y: -3.93, z: 52.2}
+--- !u!136 &1698425504
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698425502}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.68
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1702391162
 GameObject:
   m_ObjectHideFlags: 0
@@ -72597,6 +72707,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3632426798961179271, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 161876908}
+    - targetCorrespondingSourceObject: {fileID: -3632426798961179271, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1020428398}
     - targetCorrespondingSourceObject: {fileID: 5849060050354854638, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
@@ -72694,6 +72808,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1719396754}
+    - targetCorrespondingSourceObject: {fileID: -125703146598078828, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1698425503}
     - targetCorrespondingSourceObject: {fileID: -125703146598078828, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
       insertIndex: -1

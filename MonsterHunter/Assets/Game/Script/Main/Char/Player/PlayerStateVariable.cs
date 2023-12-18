@@ -26,6 +26,9 @@ public partial class PlayerState
     // コントローラーの入力情報.
     private ControllerManager _input;
 
+    // カメラの注視点.
+    [SerializeField] private GameObject _cameraFollow;
+
     /*アニメーション*/
     private Animator _animator;
     //--納刀状態--//
@@ -84,8 +87,6 @@ public partial class PlayerState
 
     // 攻撃力.
     private float _AttackPower = 100;
-
-    //private bool _isReceiveDamage = false;
 
     // モーション値.
     //private float _MotionValue = 0;

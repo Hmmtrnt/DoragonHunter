@@ -25,7 +25,6 @@ public partial class MonsterState
     private GameObject _fireBall;
     // ファイアーボールの生成位置
     private GameObject _fireBallPosition;
-    private Vector3 _temp;
 
     // 子オブジェクトの当たり判定.
     private MeshCollider[] _colliderChildren;
@@ -56,13 +55,14 @@ public partial class MonsterState
     /*アニメーション*/
     private Animator _animator;
     // bool
-    private bool _idleMotion = false;
-    private bool _runMotion = false;
-    private bool _deathMotion = false;
-    private bool _rotateMotion = false;
-    private bool _blessMotion = false;
-    private bool _biteMotion = false;
-    private bool _rushMotion = false;
+    private bool _roarMotion = false;// 咆哮.
+    private bool _idleMotion = false;// 待機.
+    private bool _runMotion = false;// 走る.
+    private bool _deathMotion = false;// 死.
+    private bool _rotateMotion = false;// 回転攻撃.
+    private bool _blessMotion = false;// ブレス攻撃.
+    private bool _biteMotion = false;// 噛みつき攻撃.
+    private bool _rushMotion = false;// 突進攻撃.
 
 
     // 以下デバッグ用

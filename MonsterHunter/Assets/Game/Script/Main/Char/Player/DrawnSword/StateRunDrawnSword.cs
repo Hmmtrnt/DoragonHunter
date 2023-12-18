@@ -52,7 +52,7 @@ public partial class PlayerState
                 owner.ChangeState(_avoidDrawnSword);
             }
             // 納刀.
-            else if(owner._input._XButtonDown)
+            else if(owner._input._XButtonDown || owner._input._RBButtonDown)
             {
                 owner.ChangeState(_sheathingSword);
             }

@@ -74,7 +74,7 @@ public partial class PlayerState
                 owner.ChangeState(_leftAvoid);
             }
             // 突き.
-            else if (owner._stateFlame >= owner._nextMotionFlame && 
+            else if (owner._stateFlame >= owner._nextMotionFlame - 5 && 
                 (owner._input._YButtonDown || owner._input._BButtonDown))
             {
                 owner.ChangeState(_piercing);

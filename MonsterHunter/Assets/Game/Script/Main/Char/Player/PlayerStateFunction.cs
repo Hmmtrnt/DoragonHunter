@@ -99,6 +99,25 @@ public partial class PlayerState
 
     }
 
+    // カメラの注視点の挙動.
+    private void CameraFollowUpdate()
+    {
+        //if(_unsheathedSword)
+        //{
+        //    if(_cameraFollow.transform.position.z <= _transform.position.z + 0.3f )
+        //    {
+        //        _cameraFollow.transform.position += new Vector3(0.0f, 0.0f, 0.01f);
+        //    }
+        //}
+        //else
+        //{
+        //    if (_cameraFollow.transform.position.z >= _transform.position.z)
+        //    {
+        //        _cameraFollow.transform.position -= new Vector3(0.0f, 0.0f, 0.01f);
+        //    }
+        //}
+    }
+
     // スティックがハンターから見てどの向きを向いているか.
     private void StickDirection()
     {

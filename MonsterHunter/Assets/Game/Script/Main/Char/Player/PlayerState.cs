@@ -45,8 +45,6 @@ public partial class PlayerState : MonoBehaviour
 
     void Update()
     {
-
-
         GetStickInput();
         AnimTransition();
         
@@ -66,8 +64,10 @@ public partial class PlayerState : MonoBehaviour
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
 
+        CameraFollowUpdate();
+
         // スタミナの上限、下限を超えないようにする.
-        if(_stamina >= _maxStamina)
+        if (_stamina >= _maxStamina)
         {
             _stamina = _maxStamina;
         }

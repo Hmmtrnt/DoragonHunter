@@ -14729,6 +14729,7 @@ PrefabInstance:
         type: 2}
     m_RemovedComponents:
     - {fileID: 7049329326665652651, guid: f88bded5780498340b860522a0ff3e3e, type: 3}
+    - {fileID: 493881788435276854, guid: f88bded5780498340b860522a0ff3e3e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -20100,6 +20101,61 @@ MonoBehaviour:
     modifyNameEnabled: 0
   modified: 0
   modifiedChildren: 0
+--- !u!1 &561061513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561061514}
+  - component: {fileID: 561061515}
+  m_Layer: 0
+  m_Name: BiteCol
+  m_TagString: MonsterAtCol
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &561061514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561061513}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7081736, y: -0.033253543, z: -0.7023951, w: 0.063447125}
+  m_LocalPosition: {x: 0.78, y: 0.25, z: -0.04}
+  m_LocalScale: {x: 1.1455575, y: 1.1455567, z: 1.145557}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 824721831}
+  m_LocalEulerAnglesHint: {x: 177.527, y: 89.7, z: 7.8370056}
+--- !u!136 &561061515
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561061513}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Height: 2.54
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &561488871
 GameObject:
   m_ObjectHideFlags: 0
@@ -50992,6 +51048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528a6660dbeb6d04c82d63989222d6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _biteCollisiton: {fileID: 561061513}
   _damageUI: {fileID: 1536979379}
   _rotateSpeed: 5
 --- !u!114 &1423090094
@@ -72333,6 +72390,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 324775504}
+    - targetCorrespondingSourceObject: {fileID: 5416536395384532395, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 561061514}
     - targetCorrespondingSourceObject: {fileID: 5416536395384532395, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
       insertIndex: -1

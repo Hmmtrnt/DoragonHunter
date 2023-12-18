@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public partial class MonsterState : MonoBehaviour
 {
+    public static readonly MonsterStateRoar _roar = new();// 咆哮.
     public static readonly MonsterStateIdle _idle = new();// アイドル.
     public static readonly MonsterStateRun _run = new();// 移動.
     public static readonly MonsterStateDown _down = new();// 死ぬ.
@@ -59,6 +60,13 @@ public partial class MonsterState : MonoBehaviour
         // アニメーション遷移.
         AnimTransition();
 
+        if(_isRoar && _stateFlame >= 10)
+        {
+            RoarTransition();
+            
+        }
+
+        Debug.Log(_currentState);
         // 体力が0になった時の処理.
         if(_HitPoint <= 0)
         {

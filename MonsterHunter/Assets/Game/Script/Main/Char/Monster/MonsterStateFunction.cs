@@ -23,11 +23,9 @@ public partial class MonsterState
 
         _fireBall = (GameObject)Resources.Load("FireBall");
         _fireBallPosition = GameObject.Find("BlessPosition");
-        //_colliderChildren = GetComponentInChildren<MeshCollider>();
+
 
         _colliderChildren = GetComponentsInChildren<MeshCollider>();
-
-        _temp = _fireBallPosition.transform.position;
 
         _animator = GetComponent<Animator>();
 
@@ -39,6 +37,9 @@ public partial class MonsterState
             _viewDirection[i] = false;
         }
         _idleMotion = true;
+        _isRoar = true;
+
+        _biteCollisiton.SetActive(false);
     }
 
     // 状態遷移時の初期化.
@@ -53,13 +54,18 @@ public partial class MonsterState
         // アニメーターがアタッチされていなければ引っかかる
         Debug.Assert(_currentState != null);
 
-        //Debug.Log(_deathMotion);
-
         // bool
+        _animator.SetBool("Roar", _roarMotion);
         _animator.SetBool("Idle", _idleMotion);
         _animator.SetBool("Death", _deathMotion);
         _animator.SetBool("Bless", _blessMotion);
         _animator.SetBool("Bite", _biteMotion);
+    }
+
+    // 咆哮モーションに遷移.
+    private void RoarTransition()
+    {
+        ChangeState(_roar);
     }
 
     // プレイヤーとモンスター同士の角度、距離によって処理を変更.

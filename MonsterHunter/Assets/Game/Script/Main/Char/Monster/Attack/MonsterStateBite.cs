@@ -19,7 +19,14 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            Debug.Log("噛みつき");
+            if(owner._stateFlame >= 20 && owner._stateFlame <=80)
+            {
+                owner._biteCollisiton.SetActive(true);
+            }
+            else
+            {
+                owner._biteCollisiton.SetActive(false);
+            }
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -30,9 +37,9 @@ public partial class MonsterState
         public override void OnChangeState(MonsterState owner)
         {
             //if (owner._collisionTag == "Player")
-            if (owner._stateFlame >= 90)
+            if (owner._stateFlame >= 120)
             {
-                owner.ChangeState(_at);
+                owner.ChangeState(_idle);
             }
         }
     }

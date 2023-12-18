@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public partial class MonsterState
 {
+    // モンスターから見てハンターの位置はどこか.
     enum viewDirection
     {
         FORWARD,
@@ -14,17 +15,19 @@ public partial class MonsterState
         NONE
     }
 
-    // 目標のプレイヤー
+    // 目標のプレイヤー.
     private GameObject _hunter;
     private Transform _trasnform;
     private Rigidbody _rigidbody;
-    // プレイヤーのステート情報
+    // プレイヤーのステート情報.
     private PlayerState _playerState;
 
-    // ファイアーボールのプレハブ
+    // ファイアーボールのプレハブ.
     private GameObject _fireBall;
-    // ファイアーボールの生成位置
+    // ファイアーボールの生成位置.
     private GameObject _fireBallPosition;
+    // 噛みつき判定.
+    public GameObject _biteCollisiton;
 
     // 子オブジェクトの当たり判定.
     private MeshCollider[] _colliderChildren;
@@ -64,6 +67,8 @@ public partial class MonsterState
     private bool _biteMotion = false;// 噛みつき攻撃.
     private bool _rushMotion = false;// 突進攻撃.
 
+    // 咆哮するかどうか.
+    private bool _isRoar;
 
     // 以下デバッグ用
 

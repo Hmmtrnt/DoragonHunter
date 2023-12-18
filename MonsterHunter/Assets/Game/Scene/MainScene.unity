@@ -424,6 +424,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &17846833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7350434442144862742, guid: f88bded5780498340b860522a0ff3e3e,
+    type: 3}
+  m_PrefabInstance: {fileID: 441402893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &19061132
 Mesh:
   m_ObjectHideFlags: 0
@@ -14640,6 +14646,11 @@ PrefabInstance:
       propertyPath: _debugSphere
       value: 
       objectReference: {fileID: 54977982}
+    - target: {fileID: 619885944365721750, guid: f88bded5780498340b860522a0ff3e3e,
+        type: 3}
+      propertyPath: _cameraFollow
+      value: 
+      objectReference: {fileID: 17846833}
     - target: {fileID: 3682662975647979901, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -71981,6 +71992,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8061370857863983022, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      propertyPath: m_TagString
+      value: MonsterHead
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
       propertyPath: m_Name
@@ -71990,6 +72006,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990655628002954532, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      propertyPath: m_TagString
+      value: MonsterWingLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945344659456528714, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      propertyPath: m_TagString
+      value: MonsterWingRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391892432109082164, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      propertyPath: m_TagString
+      value: MonsterTail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

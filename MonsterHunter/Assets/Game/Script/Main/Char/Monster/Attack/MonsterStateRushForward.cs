@@ -18,7 +18,7 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            Debug.Log("突進攻撃");
+
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

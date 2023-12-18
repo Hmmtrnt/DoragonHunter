@@ -9,6 +9,10 @@ TagManager:
   - Monster
   - MonsterAtCol
   - HunterAtCol
+  - MonsterHead
+  - MonsterWingRight
+  - MonsterWingLeft
+  - MonsterTail
   layers:
   - Default
   - TransparentFX

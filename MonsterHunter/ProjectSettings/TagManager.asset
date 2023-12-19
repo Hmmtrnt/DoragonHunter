@@ -13,6 +13,7 @@ TagManager:
   - MonsterWingRight
   - MonsterWingLeft
   - MonsterTail
+  - MonsterBody
   layers:
   - Default
   - TransparentFX

@@ -60,6 +60,9 @@ public partial class MonsterState
         _animator.SetBool("Death", _deathMotion);
         _animator.SetBool("Bless", _blessMotion);
         _animator.SetBool("Bite", _biteMotion);
+        _animator.SetBool("Tail", _tailMotion);
+        _animator.SetBool("WingLeft", _wingLeftMotion);
+        _animator.SetBool("WingRight", _wingRightMotion);
     }
 
     // ™ôšKƒ‚[ƒVƒ‡ƒ“‚É‘JˆÚ.

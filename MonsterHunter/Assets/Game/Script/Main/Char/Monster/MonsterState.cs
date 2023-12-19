@@ -15,7 +15,9 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateBless _bless = new();// ブレス攻撃.
     public static readonly MonsterStateBite _bite = new();// 噛みつき攻撃.
     public static readonly MonsterStateRushForward _rush = new();// 突進.
-    public static readonly MonsterStateWingBlow _wingBlow = new();// 翼で攻撃.
+    public static readonly MonsterStateWingBlowRight _wingBlowRight = new();// 右翼攻撃.
+    public static readonly MonsterStateWingBlowLeft _wingBlowLeft = new();// 左翼攻撃.
+    public static readonly MonsterStateTailAttack _tail = new();// 尻尾攻撃.
     public static readonly MonsterStatePowerFireBall _powerFireBall = new();// 大技火球.
 
 
@@ -60,6 +62,7 @@ public partial class MonsterState : MonoBehaviour
         // アニメーション遷移.
         AnimTransition();
 
+        // 最初だけ咆哮するようにする.
         if(_isRoar && _stateFlame >= 10)
         {
             RoarTransition();

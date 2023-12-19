@@ -3432,7 +3432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &111908965
 Transform:
   m_ObjectHideFlags: 0
@@ -29596,7 +29596,7 @@ GameObject:
   - component: {fileID: 833451420}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Spine2_M
-  m_TagString: Untagged
+  m_TagString: MonsterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39774,7 +39774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1084957110
 Transform:
   m_ObjectHideFlags: 0
@@ -41328,7 +41328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1130365176
 Transform:
   m_ObjectHideFlags: 0
@@ -60092,7 +60092,7 @@ GameObject:
   - component: {fileID: 1702391164}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Root_M
-  m_TagString: Untagged
+  m_TagString: MonsterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61242,7 +61242,7 @@ GameObject:
   - component: {fileID: 1756095115}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Spine3_M
-  m_TagString: Untagged
+  m_TagString: MonsterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68324,7 +68324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1961610445
 Transform:
   m_ObjectHideFlags: 0
@@ -71526,7 +71526,7 @@ GameObject:
   - component: {fileID: 2065747224}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Spine1_M
-  m_TagString: Untagged
+  m_TagString: MonsterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72112,7 +72112,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}

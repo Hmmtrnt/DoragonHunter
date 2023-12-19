@@ -47,12 +47,12 @@ public partial class MonsterState
                 // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])
                 {
-                    owner.ChangeState(_wingBlow);
+                    owner.ChangeState(_idle);
                 }
                 // 右.
                 else if (owner._viewDirection[(int)viewDirection.RIGHT])
                 {
-                    owner.ChangeState(_wingBlow);
+                    owner.ChangeState(_idle);
                 }
             }
             // 遠距離.

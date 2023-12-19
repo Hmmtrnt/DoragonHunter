@@ -66,6 +66,9 @@ public partial class MonsterState
     private bool _blessMotion = false;// ブレス攻撃.
     private bool _biteMotion = false;// 噛みつき攻撃.
     private bool _rushMotion = false;// 突進攻撃.
+    private bool _tailMotion = false;// 尻尾攻撃.
+    private bool _wingLeftMotion = false;// 左翼攻撃.
+    private bool _wingRightMotion = false;// 右翼攻撃.
 
     // 咆哮するかどうか.
     private bool _isRoar;

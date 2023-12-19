@@ -167,14 +167,11 @@ public partial class PlayerState
         //Debug.Log(viewFlag);
         //if (!viewFlag) return;
 
-        Debug.Log("í ÇÈ");
-
         // ê≥ñ .
         if (forwardAngle < 90 * 0.5f)
         {
             FoundFlag((int)viewDirection.FORWARD);
             //_text.text = "ê≥ñ ";
-            Debug.Log("í ÇÈ");
         }
         // å„ÇÎ.
         else if (forwardAngle > 135 && forwardAngle < 180)
@@ -217,7 +214,6 @@ public partial class PlayerState
             {
                 _viewDirection[i] = false;
             }
-            Debug.Log(_viewDirection[i]);
         }
     }
 

@@ -9,6 +9,7 @@ public partial class MonsterState
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
+            owner._tailMotion = true;
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -18,19 +19,19 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            Debug.Log("—ƒ‚ÅUŒ‚");
+            
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
-
+            owner._tailMotion = false;
         }
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._collisionTag == "Player")
+            if (owner._stateFlame >= 230)
             {
-                owner.ChangeState(_at);
+                owner.ChangeState(_idle);
             }
         }
     }

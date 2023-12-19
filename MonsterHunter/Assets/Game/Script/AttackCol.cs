@@ -22,10 +22,13 @@ public class AttackCol : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_state._isCauseDamage && other.gameObject.tag == "Monster")
+        if(/*_state._isCauseDamage &&*/ other.gameObject.tag == "Monster")
         {
-            //Debug.Log("当たった");
-            _col.enabled = false;
+            Debug.Log("当たった");
+            //_col.enabled = false;
+
+            _state._isCauseDamage = false;
+
         }
         
     }

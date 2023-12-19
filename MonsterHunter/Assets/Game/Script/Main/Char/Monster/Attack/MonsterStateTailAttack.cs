@@ -29,7 +29,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._stateFlame >= 230)
+            if (owner._stateFlame >= 240)
             {
                 owner.ChangeState(_idle);
             }

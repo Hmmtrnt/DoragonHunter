@@ -37,7 +37,8 @@ public partial class MonsterState
             _viewDirection[i] = false;
         }
         _idleMotion = true;
-        _isRoar = true;
+        //_isRoar = true;
+        _isRoar = false;
 
         _biteCollisiton.SetActive(false);
     }
@@ -63,6 +64,8 @@ public partial class MonsterState
         _animator.SetBool("Tail", _tailMotion);
         _animator.SetBool("WingLeft", _wingLeftMotion);
         _animator.SetBool("WingRight", _wingRightMotion);
+        _animator.SetBool("ForwardRush", _rushMotion);
+        _animator.SetBool("Rota", _rotateMotion);
     }
 
     // ™ôšKƒ‚[ƒVƒ‡ƒ“‚É‘JˆÚ.

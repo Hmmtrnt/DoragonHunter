@@ -14,6 +14,7 @@ public partial class PlayerState
             owner._attackCol._col.enabled = true;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
+            owner._isCauseDamage = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -33,10 +34,6 @@ public partial class PlayerState
             }
 
 
-            if(owner._stateFlame >= 10)
-            {
-                owner._isCauseDamage = true;
-            }
             if(owner._stateFlame >= 60)
             {
                 owner._isCauseDamage = false;

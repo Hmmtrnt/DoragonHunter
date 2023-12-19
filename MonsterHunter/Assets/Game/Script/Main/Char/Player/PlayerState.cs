@@ -52,11 +52,16 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnChangeState(this);
 
         viewAngle();
+        
     }
 
     private void FixedUpdate()
     {
         _stateFlame++;
+
+        Debug.Assert(_text != null);
+
+        //Debug.Log(_text);
 
         // 現在のステート情報.
         //Debug.Log(_currentState);

@@ -66,7 +66,7 @@ public partial class MonsterState : MonoBehaviour
             
         }
 
-        Debug.Log(_currentState);
+        //Debug.Log(_currentState);
         // 体力が0になった時の処理.
         if(_HitPoint <= 0)
         {

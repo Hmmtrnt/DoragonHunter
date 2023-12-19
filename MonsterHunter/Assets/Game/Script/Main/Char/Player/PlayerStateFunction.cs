@@ -125,6 +125,7 @@ public partial class PlayerState
         if (_viewDirection[(int)viewDirection.FORWARD])
         {
             _text.text = "ê≥ñ ";
+            
         }
         // îwå„.
         else if (_viewDirection[(int)viewDirection.BACKWARD])
@@ -140,6 +141,10 @@ public partial class PlayerState
         else if (_viewDirection[(int)viewDirection.LEFT])
         {
             _text.text = "ç∂";
+        }
+        else
+        {
+            _text.text = "NONE";
         }
     }
 
@@ -158,37 +163,41 @@ public partial class PlayerState
 
         bool viewFlag = ray && hit.collider.gameObject == _debugSphere && GetDistance() > 1;
 
+
         //Debug.Log(viewFlag);
-        if (!viewFlag) return;
+        //if (!viewFlag) return;
+
+        Debug.Log("í ÇÈ");
 
         // ê≥ñ .
         if (forwardAngle < 90 * 0.5f)
         {
             FoundFlag((int)viewDirection.FORWARD);
-            _text.text = "ê≥ñ ";
+            //_text.text = "ê≥ñ ";
+            Debug.Log("í ÇÈ");
         }
         // å„ÇÎ.
         else if (forwardAngle > 135 && forwardAngle < 180)
         {
             FoundFlag((int)viewDirection.BACKWARD);
-            _text.text = "å„ÇÎ";
+            //_text.text = "å„ÇÎ";
         }
         // âE.
         else if (sideAngle < 90 * 0.5f)
         {
             FoundFlag((int)viewDirection.RIGHT);
-            _text.text = "âE";
+            //_text.text = "âE";
         }
         // ç∂.
         else if (sideAngle > 135 && sideAngle < 180)
         {
             FoundFlag((int)viewDirection.LEFT);
-            _text.text = "ç∂";
+            //_text.text = "ç∂";
         }
         else
         {
             FoundFlag((int)viewDirection.NONE);
-            _text.text = "NONE";
+            //_text.text = "NONE";
         }
     }
 
@@ -208,6 +217,7 @@ public partial class PlayerState
             {
                 _viewDirection[i] = false;
             }
+            Debug.Log(_viewDirection[i]);
         }
     }
 

@@ -10,7 +10,6 @@ public partial class MonsterState
         {
             owner._isRoar = false;
             owner._roarMotion = true;
-            Debug.Log("’Ê‚é");
             owner.StateTransitionInitialization();
         }
 

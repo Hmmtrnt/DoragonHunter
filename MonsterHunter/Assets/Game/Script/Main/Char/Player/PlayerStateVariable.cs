@@ -198,5 +198,5 @@ public partial class PlayerState
     // モンスターのState.
     private MonsterState _MonsterState;
 
-    private AttackCol _attackCol;
+    
 }

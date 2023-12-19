@@ -10,7 +10,6 @@ public partial class PlayerState
         {
             owner._drawnThrustSlash = true;
             owner._nextMotionFlame = 35;
-            owner._attackCol._col.enabled = true;
             owner.StateTransitionInitialization();
         }
 

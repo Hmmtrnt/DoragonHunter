@@ -9,8 +9,6 @@ public partial class MonsterState
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
-            
-            Debug.Log("’Ê‚é");
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -20,6 +18,14 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
+            
+            // €‚Ê‚Æ“–‚½‚è”»’è‚ğŠÑ’Ê‚³‚¹‚é.
+            foreach (MeshCollider collider in owner._colliderChildren)
+            {
+                collider.isTrigger = true;
+            }
+            // ‘S‚Ä‚ÌUŒ‚“–‚½‚è”»’è‚ğÁ‹.
+            owner._biteCollisiton.SetActive(false);
 
         }
 

@@ -14,7 +14,6 @@ public partial class PlayerState
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _Monster = GameObject.FindWithTag("Monster");
         _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
-        _attackCol = GameObject.Find("AttackCollider").GetComponent<AttackCol>();
     }
 
     // ó‘Ô‘JˆÚ‚Ì‰Šú‰».

@@ -10,7 +10,6 @@ public partial class PlayerState
         {
             owner._drawnSpiritBlade3 = true;
             owner._nextMotionFlame = 90;
-            owner._attackCol._col.enabled = true;
             owner.StateTransitionInitialization();
         }
 

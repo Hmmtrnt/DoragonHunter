@@ -208,11 +208,7 @@ public partial class MonsterState
     private void ChangeStateDeath()
     {
         _currentState = _down;
-        // Ž€‚Ê‚Æ“–‚½‚è”»’è‚ðŠÑ’Ê‚³‚¹‚é.
-        foreach(MeshCollider collider in _colliderChildren)
-        {
-            collider.isTrigger = true;
-        }
+        ChangeState(_down);
     }
 
     public void DamageUI(Collider col)

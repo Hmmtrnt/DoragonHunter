@@ -43,16 +43,40 @@ public partial class MonsterState
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
                 {
                     owner.ChangeState(_rotate);
+
+                    if (owner._randomNumber < 51)
+                    {
+                        owner.ChangeState(_rotate);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_tail);
+                    }
                 }
                 // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])
                 {
-                    owner.ChangeState(_idle);
+                    if(owner._randomNumber < 61)
+                    {
+                        owner.ChangeState(_rotate);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_wingBlowLeft);
+                    }
+                    
                 }
                 // 右.
                 else if (owner._viewDirection[(int)viewDirection.RIGHT])
                 {
-                    owner.ChangeState(_idle);
+                    if (owner._randomNumber < 61)
+                    {
+                        owner.ChangeState(_rotate);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_wingBlowRight);
+                    }
                 }
             }
             // 遠距離.
@@ -61,19 +85,20 @@ public partial class MonsterState
                 // 正面.
                 if (owner._viewDirection[(int)viewDirection.FORWARD])
                 {
-                    //if (owner._randomNumber < 61)
-                    //{
-                    //    owner.ChangeState(_rush);
-                    //}
-                    //else
-                    //{
-                    //    owner.ChangeState(_bless);
-                    //}
+                    if (owner._randomNumber < 61)
+                    {
+                        owner.ChangeState(_rush);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_bless);
+                    }
 
                     // デバッグ用モーション遷移.
-                    owner.ChangeState(_rotate);
+                    //owner.ChangeState(_rotate);
 
                 }
+                // 背後.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
                 {
                     if (owner._randomNumber < 41)
@@ -85,10 +110,12 @@ public partial class MonsterState
                         owner.ChangeState(_bless);
                     }
                 }
+                // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])
                 {
                     owner.ChangeState(_bless);
                 }
+                // 右,
                 else if (owner._viewDirection[(int)viewDirection.RIGHT])
                 {
                     owner.ChangeState(_bless);

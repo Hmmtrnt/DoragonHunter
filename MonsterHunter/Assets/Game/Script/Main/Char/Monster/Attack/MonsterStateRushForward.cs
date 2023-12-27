@@ -19,20 +19,20 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            //if(owner._stateFlame <= 30)
-            //{
-            //    owner._trasnform.position -= Vector3.forward * 0.15f;
-            //}
-            //else if(owner._stateFlame <= 130)
-            //{
-            //    owner._trasnform.position -= Vector3.forward * 0.3f;
-            //}
-            //else if(owner._stateFlame <= 160)
-            //{
-            //    owner._trasnform.position += Vector3.forward * 0.15f;
-            //}
+            if (owner._stateFlame <= 30)
+            {
+                owner._trasnform.position -= Vector3.forward * 0.15f;
+            }
+            else if (owner._stateFlame <= 130)
+            {
+                owner._trasnform.position -= Vector3.forward * 0.3f;
+            }
+            else if (owner._stateFlame <= 160)
+            {
+                owner._trasnform.position += Vector3.forward * 0.15f;
+            }
 
-            
+
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

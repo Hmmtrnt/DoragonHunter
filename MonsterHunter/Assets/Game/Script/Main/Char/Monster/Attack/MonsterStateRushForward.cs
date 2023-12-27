@@ -25,7 +25,7 @@ public partial class MonsterState
             }
             else if (owner._stateFlame <= 130)
             {
-                owner._trasnform.position -= Vector3.forward * 0.3f;
+                owner._trasnform.position -= Vector3.forward * 0.5f;
             }
             else if (owner._stateFlame <= 160)
             {

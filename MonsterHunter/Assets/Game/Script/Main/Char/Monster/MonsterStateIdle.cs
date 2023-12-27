@@ -85,17 +85,17 @@ public partial class MonsterState
                 // 正面.
                 if (owner._viewDirection[(int)viewDirection.FORWARD])
                 {
-                    if (owner._randomNumber < 61)
-                    {
-                        owner.ChangeState(_rush);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_bless);
-                    }
+                    //if (owner._randomNumber < 61)
+                    //{
+                    //    owner.ChangeState(_rush);
+                    //}
+                    //else
+                    //{
+                    //    owner.ChangeState(_bless);
+                    //}
 
                     // デバッグ用モーション遷移.
-                    //owner.ChangeState(_rotate);
+                    owner.ChangeState(_rush);
 
                 }
                 // 背後.

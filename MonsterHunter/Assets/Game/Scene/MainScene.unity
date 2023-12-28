@@ -51192,6 +51192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _biteCollisiton: {fileID: 561061513}
   _rushCollisiton: {fileID: 976016961}
+  _wingRightCollisiton: {fileID: 1698425502}
+  _wingLeftCollisiton: {fileID: 253848488}
   _damageUI: {fileID: 1536979379}
   _rotateSpeed: 5
 --- !u!114 &1423090094

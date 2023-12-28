@@ -133,8 +133,6 @@ public partial class PlayerState
 
 
     /*移動時の変数*/
-    // 移動方向.
-    private Vector3 _moveDirection;
     // 走る時の移動倍率.
     private float _moveVelocityRunMagnification = 12;
     // ダッシュ時の移動倍率.

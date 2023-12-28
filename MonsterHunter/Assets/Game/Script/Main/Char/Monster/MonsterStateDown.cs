@@ -26,6 +26,9 @@ public partial class MonsterState
             }
             // ‘S‚Ä‚ÌUŒ‚“–‚½‚è”»’è‚ğÁ‹.
             owner._biteCollisiton.SetActive(false);
+            owner._rushCollisiton.SetActive(false);
+            owner._wingLeftCollisiton.SetActive(false);
+            owner._wingRightCollisiton.SetActive(false);
 
         }
 

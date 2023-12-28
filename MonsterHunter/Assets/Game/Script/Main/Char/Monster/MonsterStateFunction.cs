@@ -40,7 +40,29 @@ public partial class MonsterState
         //_isRoar = true;
         _isRoar = false;
 
+
+        // 攻撃当たり判定を無効.
         _biteCollisiton.SetActive(false);
+        _rushCollisiton.SetActive(false);
+        _wingLeftCollisiton.SetActive(false);
+        _wingRightCollisiton.SetActive(false);
+
+
+    }
+
+    // 計算した情報の代入.
+    private void SubstituteVariable()
+    {
+        // モンスターの正面
+        Vector3 monsterForward = Vector3.Scale(transform.forward, new Vector3(1.0f,0.0f,1.0f)).normalized;
+
+        // 前後.
+        Vector3 moveForward = monsterForward * _forwardSpeed;
+        // 左右.
+        Vector3 moveSide = transform.right * _sideSpeed;
+        // 速度の代入
+        _moveVelocity = moveForward + moveSide;
+
     }
 
     // 状態遷移時の初期化.

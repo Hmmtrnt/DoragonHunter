@@ -28,6 +28,11 @@ public partial class MonsterState
     private GameObject _fireBallPosition;
     // 噛みつき判定.
     public GameObject _biteCollisiton;
+    // 突進判定.
+    public GameObject _rushCollisiton;
+    // 翼攻撃判定.
+    public GameObject _wingRightCollisiton;
+    public GameObject _wingLeftCollisiton;
 
     // 子オブジェクトの当たり判定.
     private MeshCollider[] _colliderChildren;
@@ -86,6 +91,14 @@ public partial class MonsterState
 
     [Header("回転速度")]
     [SerializeField] private float _rotateSpeed = 0;
+
+    // 移動速度.
+    private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
+
+    // 前後の移動速度の調整.
+    private float _forwardSpeed = 0;
+    // 左右の移動速度の調整.
+    private float _sideSpeed = 0;
 
     // 状態のフレーム数
     private int _stateFlame = 0;

@@ -44,6 +44,9 @@ public partial class MonsterState : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 計算情報の代入.
+        SubstituteVariable();
+
         // 状態のフレームの時間を増やす.
         _stateFlame++;
 

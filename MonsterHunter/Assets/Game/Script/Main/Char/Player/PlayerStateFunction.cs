@@ -79,9 +79,6 @@ public partial class PlayerState
     // î•ñ‚Ì‘ã“ü.
     private void SubstituteVariable()
     {
-        // “®‚­•ûŒü‘ã“ü.
-        _moveDirection = new Vector3(_leftStickHorizontal, 0.0f, _leftStickVertical);
-        _moveDirection.Normalize();
 
         // ƒJƒƒ‰‚Ì³–Ê.
         _cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;

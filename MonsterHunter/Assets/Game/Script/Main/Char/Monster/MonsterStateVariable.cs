@@ -34,6 +34,9 @@ public partial class MonsterState
     public GameObject _wingRightCollisiton;
     public GameObject _wingLeftCollisiton;
 
+    // 尾判定.
+    public GameObject _tailObject;
+
     // 子オブジェクトの当たり判定.
     private MeshCollider[] _colliderChildren;
 

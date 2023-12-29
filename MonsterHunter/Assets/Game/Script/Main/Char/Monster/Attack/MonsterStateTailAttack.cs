@@ -20,6 +20,15 @@ public partial class MonsterState
         public override void OnFixedUpdate(MonsterState owner)
         {
             
+            if(owner._stateFlame >= 30) 
+            {
+                owner._tailObject.tag = "MonsterAtCol";
+            }
+            else if(owner._stateFlame >= 200)
+            {
+                owner._tailObject.tag = "MonsterTail";
+            }
+
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

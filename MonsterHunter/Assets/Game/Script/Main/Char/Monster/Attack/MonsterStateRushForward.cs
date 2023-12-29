@@ -10,6 +10,7 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._rushMotion = true;
+            owner._trasnform.LookAt(owner._hunter.transform.position);
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -41,7 +42,7 @@ public partial class MonsterState
                 owner._forwardSpeed = -0.15f;
             }
 
-            owner._trasnform.LookAt(owner._hunter.transform.position);
+            
 
             owner._trasnform.position += owner._moveVelocity;
         }

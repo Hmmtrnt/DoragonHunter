@@ -43,7 +43,7 @@ public partial class MonsterState
 
         // UŒ‚“–‚½‚è”»’è‚ğ–³Œø.
         _biteCollisiton.SetActive(false);
-        _rushCollisiton.SetActive(false);
+        //_rushCollisiton.SetActive(false);
         _wingLeftCollisiton.SetActive(false);
         _wingRightCollisiton.SetActive(false);
 

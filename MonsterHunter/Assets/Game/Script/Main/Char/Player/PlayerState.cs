@@ -99,12 +99,15 @@ public partial class PlayerState : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.transform.tag == "Monster")
-        //{
-        //    OnDamage();
-        //}
+        if (collision.transform.tag == "Monster")
+        {
+            Debug.Log("Monster");
+        }
+        else if (collision.transform.tag == "MonsterAtCol")
+        {
+            Debug.Log("MonsterAtCol");
+        }
 
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,6 +115,28 @@ public partial class PlayerState : MonoBehaviour
         if(other.gameObject.tag == "MonsterAtCol")
         {
             OnDamage();
+            //Debug.Log("MonsterAtCol");
         }
+        else if (other.transform.tag == "MonsterHead")
+        {
+            Debug.Log("MonsterHead");
+        }
+        else if (other.transform.tag == "MonsterWingRight")
+        {
+            Debug.Log("MonsterWingRight");
+        }
+        else if (other.transform.tag == "MonsterWingLeft")
+        {
+            Debug.Log("MonsterWingLeft");
+        }
+        else if (other.transform.tag == "MonsterTail")
+        {
+            Debug.Log("MonsterTail");
+        }
+        else if (other.transform.tag == "MonsterBody")
+        {
+            Debug.Log("MonsterBody");
+        }
+        
     }
 }

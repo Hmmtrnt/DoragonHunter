@@ -70,6 +70,7 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnFixedUpdate(this);
 
         CameraFollowUpdate();
+        GroundPenetrationDisable();
 
         // スタミナの上限、下限を超えないようにする.
         if (_stamina >= _maxStamina)
@@ -102,6 +103,7 @@ public partial class PlayerState : MonoBehaviour
         if (collision.transform.tag == "Monster")
         {
             Debug.Log("Monster");
+            transform.position = new Vector3 (transform.position.x, 0.1f, transform.position.z);
         }
         else if (collision.transform.tag == "MonsterAtCol")
         {

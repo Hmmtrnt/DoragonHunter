@@ -255,6 +255,15 @@ public partial class PlayerState
         transform.forward = Vector3.Slerp(transform.forward, _moveVelocity, Time.deltaTime * _rotateSpeed);
     }
 
+    // 地面貫通無効
+    private void GroundPenetrationDisable()
+    {
+        if(_transform.position.y < 0)
+        {
+            _transform.position = new Vector3(transform.position.x, 0.1f, transform.position.z);
+        }
+    }
+
     // ダッシュしているかどうかの情報取得.
     public bool GetIsDashing() { return _isDashing; }
 

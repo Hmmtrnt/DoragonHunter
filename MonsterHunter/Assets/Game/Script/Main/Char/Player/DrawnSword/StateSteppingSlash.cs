@@ -14,6 +14,7 @@ public partial class PlayerState
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
             owner._isCauseDamage = true;
+            owner._AttackPower = 81;
         }
 
         public override void OnUpdate(PlayerState owner)

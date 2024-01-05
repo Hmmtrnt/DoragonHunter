@@ -27,6 +27,8 @@ public class AttackCol : MonoBehaviour
             _state._isCauseDamage = false;
 
         }
+
+        Debug.Log(other.gameObject.tag);
         
     }
 

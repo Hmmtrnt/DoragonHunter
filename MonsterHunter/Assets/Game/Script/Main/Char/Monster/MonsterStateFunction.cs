@@ -233,6 +233,15 @@ public partial class MonsterState
         ChangeState(_down);
     }
 
+    // ‘Ì—Í‚ð0–¢–ž‚É‚µ‚È‚¢.
+    private void HitPointLowerLimit()
+    {
+        if(_HitPoint <= 0)
+        {
+            _HitPoint = 0;
+        }
+    }
+
     public void DamageUI(Collider col)
     {
         var obj = Instantiate(_damageUI, col.bounds.center - Camera.main.transform.forward * 0.2f, Quaternion.identity);

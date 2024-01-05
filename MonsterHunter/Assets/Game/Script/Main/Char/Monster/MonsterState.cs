@@ -78,6 +78,8 @@ public partial class MonsterState : MonoBehaviour
         {
             ChangeStateDeath();
         }
+        // 体力を0未満にしない.
+        HitPointLowerLimit();
     }
 
     private void OnCollisionEnter(Collision collision)

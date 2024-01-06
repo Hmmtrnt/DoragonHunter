@@ -1,5 +1,6 @@
 ﻿/*踏み込み斬り*/
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class PlayerState
@@ -15,6 +16,7 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
             owner._isCauseDamage = true;
             owner._attackPower = 81;
+            owner._weaponActive = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -45,6 +47,7 @@ public partial class PlayerState
         {
             owner._drawnSteppingSlash = false;
             owner._isCauseDamage = false;
+            owner._weaponActive = false;
         }
 
         public override void OnChangeState(PlayerState owner)
@@ -91,5 +94,7 @@ public partial class PlayerState
                 owner.ChangeState(_spiritBlade1);
             }
         }
+
+        
     }
 }

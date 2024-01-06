@@ -20,17 +20,18 @@ public class AttackCol : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(/*_state._isCauseDamage &&*/ other.gameObject.tag == "Monster")
-        {
-            Debug.Log("当たった");
+        //if(/*_state._isCauseDamage &&*/ other.gameObject.tag == "Monster")
+        //{
+        //    Debug.Log("当たった");
 
-            _state._isCauseDamage = false;
+        //    _state._isCauseDamage = false;
 
-        }
+        //}
 
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log(other.gameObject.tag);
+        Debug.Log(_state._MonsterFleshy);
 
-        if(other.gameObject.tag == "MonsterHead")
+        if (other.gameObject.tag == "MonsterHead")
         {
             _state._MonsterFleshy = 1.2f;
         }

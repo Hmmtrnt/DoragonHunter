@@ -102,12 +102,12 @@ public partial class PlayerState : MonoBehaviour
     {
         if (collision.transform.tag == "Monster")
         {
-            Debug.Log("Monster");
+            //Debug.Log("Monster");
             transform.position = new Vector3 (transform.position.x, 0.1f, transform.position.z);
         }
         else if (collision.transform.tag == "MonsterAtCol")
         {
-            Debug.Log("MonsterAtCol");
+            //Debug.Log("MonsterAtCol");
         }
 
     }
@@ -121,23 +121,23 @@ public partial class PlayerState : MonoBehaviour
         }
         else if (other.transform.tag == "MonsterHead")
         {
-            Debug.Log("MonsterHead");
+            //Debug.Log("MonsterHead");
         }
         else if (other.transform.tag == "MonsterWingRight")
         {
-            Debug.Log("MonsterWingRight");
+            //Debug.Log("MonsterWingRight");
         }
         else if (other.transform.tag == "MonsterWingLeft")
         {
-            Debug.Log("MonsterWingLeft");
+            //Debug.Log("MonsterWingLeft");
         }
         else if (other.transform.tag == "MonsterTail")
         {
-            Debug.Log("MonsterTail");
+            //Debug.Log("MonsterTail");
         }
         else if (other.transform.tag == "MonsterBody")
         {
-            Debug.Log("MonsterBody");
+            //Debug.Log("MonsterBody");
         }
         
     }

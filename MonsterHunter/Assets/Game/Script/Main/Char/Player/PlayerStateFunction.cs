@@ -14,6 +14,8 @@ public partial class PlayerState
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _Monster = GameObject.FindWithTag("Monster");
         _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
+        _weaponObject.SetActive(false);
+        _weaponActive = false;
     }
 
     // 状態遷移時の初期化.
@@ -76,7 +78,7 @@ public partial class PlayerState
         _animator.SetBool("Down", _downMotion);
     }
 
-    // 情報の代入.
+    // 継続的に情報を代入.
     private void SubstituteVariable()
     {
 
@@ -93,6 +95,10 @@ public partial class PlayerState
         //スティックがどの方向に傾いているかを取得.
         _debugSphere.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
 
+        // 攻撃力の代入.
+        _attackPower = _attackPower * _MonsterFleshy;
+
+        _weaponObject.SetActive(_weaponActive);
     }
 
     // カメラの注視点の挙動.
@@ -289,7 +295,7 @@ public partial class PlayerState
     public float GetMaxStamina() { return _maxStamina; }
 
     // ダメージを与えた時の値.
-    public float GetHunterAttack() { return _AttackPower; }
+    public float GetHunterAttack() { return _attackPower; }
 
     // ダメージを与えられるかどうか.
     public bool GetIsCauseDamage() { return _isCauseDamage; }

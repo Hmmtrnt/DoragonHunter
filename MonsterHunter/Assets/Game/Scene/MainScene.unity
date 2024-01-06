@@ -14871,6 +14871,11 @@ PrefabInstance:
       propertyPath: _cameraFollow
       value: 
       objectReference: {fileID: 17846833}
+    - target: {fileID: 619885944365721750, guid: f88bded5780498340b860522a0ff3e3e,
+        type: 3}
+      propertyPath: _weaponObject
+      value: 
+      objectReference: {fileID: 595816280}
     - target: {fileID: 3682662975647979901, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21139,6 +21144,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &595816280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7909341703242984116, guid: f88bded5780498340b860522a0ff3e3e,
+    type: 3}
+  m_PrefabInstance: {fileID: 441402893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &596179485
 Mesh:
   m_ObjectHideFlags: 0

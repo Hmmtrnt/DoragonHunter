@@ -86,7 +86,10 @@ public partial class PlayerState
     private int _stateFlame = 0;
 
     // 攻撃力.
-    private float _AttackPower = 100;
+    private float _attackPower = 100.0f;
+    // 攻撃したモンスターの肉質.
+    [Header("攻撃したモンスターの肉質")]
+    public float _MonsterFleshy = 0;
 
     // モーション値.
     //private float _MotionValue = 0;
@@ -96,6 +99,12 @@ public partial class PlayerState
 
     // 納刀抜刀を確認するデバッグ用オブジェクト.
     private GameObject _debagObject;
+    // 武器オブジェクトの当たり判定.
+    [Header("武器オブジェクトの当たり判定")]
+    public GameObject _weaponObject;
+    // 武器オブジェクトの表示非表示
+    [Header("武器オブジェクトの表示非表示")]
+    public bool _weaponActive;
 
     
 

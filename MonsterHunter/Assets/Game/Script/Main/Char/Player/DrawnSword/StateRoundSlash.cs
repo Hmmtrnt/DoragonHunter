@@ -12,7 +12,7 @@ public partial class PlayerState
             owner._nextMotionFlame = 90;
             owner._deceleration = 0.9f;
             owner.StateTransitionInitialization();
-            owner._AttackPower = 150;
+            owner._attackPower = 150;
         }
 
         public override void OnUpdate(PlayerState owner)

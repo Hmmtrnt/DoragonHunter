@@ -29,6 +29,27 @@ public class AttackCol : MonoBehaviour
         }
 
         Debug.Log(other.gameObject.tag);
+
+        if(other.gameObject.tag == "MonsterHead")
+        {
+            _state._MonsterFleshy = 1.2f;
+        }
+        else if(other.gameObject.tag == "MonsterBody")
+        {
+            _state._MonsterFleshy = 1.0f;
+        }
+        else if (other.gameObject.tag == "MonsterWingRight")
+        {
+            _state._MonsterFleshy = 0.9f;
+        }
+        else if( other.gameObject.tag == "MonsterWingLeft")
+        {
+            _state._MonsterFleshy = 0.9f;
+        }
+        else if(other.gameObject.tag == "MonsterTail")
+        {
+            _state._MonsterFleshy = 1.1f;
+        }
         
     }
 

@@ -22,11 +22,11 @@ public partial class MonsterState
             
             if(owner._stateFlame >= 30) 
             {
-                owner._tailObject.tag = "MonsterAtCol";
+                //owner._tailObject.tag = "MonsterAtCol";
             }
             else if(owner._stateFlame >= 200)
             {
-                owner._tailObject.tag = "MonsterTail";
+                //owner._tailObject.tag = "MonsterTail";
             }
 
         }

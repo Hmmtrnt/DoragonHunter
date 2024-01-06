@@ -27,15 +27,20 @@ public partial class MonsterState
     // ファイアーボールの生成位置.
     private GameObject _fireBallPosition;
     // 噛みつき判定.
+    [Header("噛みつき判定")]
     public GameObject _biteCollisiton;
     // 突進判定.
+    [Header("突進攻撃判定")]
     public GameObject _rushCollisiton;
     // 翼攻撃判定.
+    [Header("翼攻撃判定")]
     public GameObject _wingRightCollisiton;
     public GameObject _wingLeftCollisiton;
 
     // 尾判定.
-    public GameObject _tailObject;
+    [Header("尾攻撃判定")]
+    public GameObject[] _tailCollisiton;
+
 
     // 子オブジェクトの当たり判定.
     private MeshCollider[] _colliderChildren;

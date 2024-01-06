@@ -2311,7 +2311,7 @@ GameObject:
   - component: {fileID: 87802687}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail4_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5797,7 +5797,7 @@ GameObject:
   - component: {fileID: 181227338}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail0_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6563,7 +6563,7 @@ GameObject:
   - component: {fileID: 208305998}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail3_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10253,9 +10253,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313661426}
+  - component: {fileID: 313661427}
   m_Layer: 0
   m_Name: TailAtCol1
-  m_TagString: Untagged
+  m_TagString: MonsterAtCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10275,6 +10276,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 974254250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &313661427
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313661425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &314562077
 GameObject:
   m_ObjectHideFlags: 0
@@ -12426,9 +12450,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 370824711}
+  - component: {fileID: 370824712}
   m_Layer: 0
   m_Name: TailAtCol3
-  m_TagString: Untagged
+  m_TagString: MonsterAtCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12442,12 +12467,35 @@ Transform:
   m_GameObject: {fileID: 370824710}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00031879309, y: -0.0107036, z: -0.001521036, w: 0.9999416}
-  m_LocalPosition: {x: -1.3354942, y: -0.0028903575, z: -0.0066546793}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1655724543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &370824712
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370824710}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &371277198
 GameObject:
   m_ObjectHideFlags: 0
@@ -12900,7 +12948,7 @@ GameObject:
   - component: {fileID: 391269041}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail1Part2_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14204,7 +14252,7 @@ GameObject:
   - component: {fileID: 415986392}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail2Part2_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16369,7 +16417,7 @@ GameObject:
   - component: {fileID: 484014219}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail1Part1_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17675,7 +17723,7 @@ GameObject:
   - component: {fileID: 511117751}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail2Part1_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19651,7 +19699,7 @@ GameObject:
   - component: {fileID: 543704427}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail5Part1_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22853,7 +22901,7 @@ GameObject:
   - component: {fileID: 641764009}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail4Part1_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27761,7 +27809,7 @@ GameObject:
   - component: {fileID: 774367733}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail6Part1_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29234,9 +29282,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 824147198}
+  - component: {fileID: 824147199}
   m_Layer: 0
   m_Name: TailAtCol6
-  m_TagString: Untagged
+  m_TagString: MonsterAtCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29249,13 +29298,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824147197}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -8.832934e-10, y: 0.000000009154293, z: 0.00000005960463, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 863910015}
+  m_Father: {fileID: 1973950727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &824147199
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824147197}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &824721830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 121809561967946046, guid: 744c7c042d094ac45bad0e7f2ef04262,
@@ -30507,7 +30579,7 @@ GameObject:
   - component: {fileID: 853101063}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail3Part2_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31535,7 +31607,7 @@ GameObject:
   - component: {fileID: 869659930}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail5_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33727,7 +33799,7 @@ GameObject:
   - component: {fileID: 942819974}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail6_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39414,7 +39486,7 @@ GameObject:
   - component: {fileID: 1072281155}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail5Part2_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42473,9 +42545,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1137815737}
+  - component: {fileID: 1137815738}
   m_Layer: 0
   m_Name: TailAtCol5
-  m_TagString: Untagged
+  m_TagString: MonsterAtCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42495,6 +42568,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2071226969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1137815738
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137815736}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1146549111
 GameObject:
   m_ObjectHideFlags: 0
@@ -42508,7 +42604,7 @@ GameObject:
   - component: {fileID: 1146549113}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail4Part2_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43277,7 +43373,7 @@ GameObject:
   - component: {fileID: 1179094263}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail6Part2_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45594,7 +45690,7 @@ GameObject:
   - component: {fileID: 1248208307}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail2_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45776,9 +45872,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1255314678}
+  - component: {fileID: 1255314679}
   m_Layer: 0
   m_Name: TailAtCol4
-  m_TagString: Untagged
+  m_TagString: MonsterAtCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45798,6 +45895,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1760750002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1255314679
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255314677}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1256772906
 GameObject:
   m_ObjectHideFlags: 0
@@ -51349,7 +51469,13 @@ MonoBehaviour:
   _rushCollisiton: {fileID: 976016961}
   _wingRightCollisiton: {fileID: 1698425502}
   _wingLeftCollisiton: {fileID: 253848488}
-  _tailObject: {fileID: 1053028603}
+  _tailCollisiton:
+  - {fileID: 313661425}
+  - {fileID: 1554528428}
+  - {fileID: 370824710}
+  - {fileID: 1255314677}
+  - {fileID: 1137815736}
+  - {fileID: 824147197}
   _damageUI: {fileID: 1536979379}
   _rotateSpeed: 5
 --- !u!114 &1423090094
@@ -54319,9 +54445,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1554528429}
+  - component: {fileID: 1554528430}
   m_Layer: 0
   m_Name: TailAtCol2
-  m_TagString: Untagged
+  m_TagString: MonsterAtCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54335,12 +54462,35 @@ Transform:
   m_GameObject: {fileID: 1554528428}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00019241073, y: -0.005350808, z: -0.0038442963, w: 0.9999783}
-  m_LocalPosition: {x: -0.6217213, y: 0, z: -0}
+  m_LocalPosition: {x: -0.6217213, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1279288550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1554528430
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554528428}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1555868633
 GameObject:
   m_ObjectHideFlags: 0
@@ -60555,7 +60705,7 @@ GameObject:
   - component: {fileID: 1704555779}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail1_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65951,7 +66101,7 @@ GameObject:
   - component: {fileID: 1895168431}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Tail3Part1_M
-  m_TagString: Untagged
+  m_TagString: MonsterTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73217,14 +73367,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 511117750}
-    - targetCorrespondingSourceObject: {fileID: -8385216629373282752, guid: 744c7c042d094ac45bad0e7f2ef04262,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 824147198}
     - targetCorrespondingSourceObject: {fileID: -4904361242044917740, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 415986391}
+    - targetCorrespondingSourceObject: {fileID: -4904361242044917740, guid: 744c7c042d094ac45bad0e7f2ef04262,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 824147198}
     - targetCorrespondingSourceObject: {fileID: 8198060934409844587, guid: 744c7c042d094ac45bad0e7f2ef04262,
         type: 3}
       insertIndex: -1

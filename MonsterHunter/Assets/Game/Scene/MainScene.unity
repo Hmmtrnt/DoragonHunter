@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 17822399}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_17_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 24883581}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_2_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 25075331}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_23_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1139,7 +1139,7 @@ GameObject:
   - component: {fileID: 34832408}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_7_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 38845130}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Cheek02_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1438,7 +1438,7 @@ GameObject:
   - component: {fileID: 40324332}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Neck1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4125,7 +4125,7 @@ GameObject:
   - component: {fileID: 121065476}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_6_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4378,7 +4378,7 @@ GameObject:
   - component: {fileID: 126057004}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Neck4_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5556,7 +5556,7 @@ GameObject:
   - component: {fileID: 157110133}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5959,7 +5959,7 @@ GameObject:
   - component: {fileID: 182723932}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipLower01_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6145,7 +6145,7 @@ GameObject:
   - component: {fileID: 190017852}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Nose1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6331,7 +6331,7 @@ GameObject:
   - component: {fileID: 197687375}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:tongue4_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6749,7 +6749,7 @@ GameObject:
   - component: {fileID: 216000053}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:horn1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6981,7 +6981,7 @@ GameObject:
   - component: {fileID: 226539399}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_6_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8657,7 +8657,7 @@ GameObject:
   - component: {fileID: 269126111}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_5_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9411,7 +9411,7 @@ GameObject:
   - component: {fileID: 286033299}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Elbow_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10663,7 +10663,7 @@ GameObject:
   - component: {fileID: 321410046}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper03_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10730,7 +10730,7 @@ GameObject:
   - component: {fileID: 324775505}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Muzzle1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11075,7 +11075,7 @@ GameObject:
   - component: {fileID: 328835309}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Eye_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11453,7 +11453,7 @@ GameObject:
   - component: {fileID: 343342330}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_5_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11758,7 +11758,7 @@ GameObject:
   - component: {fileID: 357842835}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_3_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11825,7 +11825,7 @@ GameObject:
   - component: {fileID: 359707552}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Chest_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12814,7 +12814,7 @@ GameObject:
   - component: {fileID: 384392720}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Shoulder_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12881,7 +12881,7 @@ GameObject:
   - component: {fileID: 387211022}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipLower03_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14789,7 +14789,7 @@ GameObject:
   - component: {fileID: 433465441}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_5_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14967,7 +14967,7 @@ GameObject:
   - component: {fileID: 448452851}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_2_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15431,7 +15431,7 @@ GameObject:
   - component: {fileID: 462993449}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_18_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16603,7 +16603,7 @@ GameObject:
   - component: {fileID: 488885125}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_11_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17656,7 +17656,7 @@ GameObject:
   - component: {fileID: 508474712}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_3_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18404,7 +18404,7 @@ GameObject:
   - component: {fileID: 525729050}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Jaw1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20389,7 +20389,7 @@ GameObject:
   - component: {fileID: 561488873}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpperMid1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20456,7 +20456,7 @@ GameObject:
   - component: {fileID: 566949275}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20920,7 +20920,7 @@ GameObject:
   - component: {fileID: 577391406}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeBrow2_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21430,7 +21430,7 @@ GameObject:
   - component: {fileID: 601480872}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:horn3_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21864,7 +21864,7 @@ GameObject:
   - component: {fileID: 613776050}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_7_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21931,7 +21931,7 @@ GameObject:
   - component: {fileID: 614087816}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:tongue2_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21998,7 +21998,7 @@ GameObject:
   - component: {fileID: 615228710}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipLower01_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22065,7 +22065,7 @@ GameObject:
   - component: {fileID: 618779370}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:horn5_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22132,7 +22132,7 @@ GameObject:
   - component: {fileID: 621473539}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_21_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22199,7 +22199,7 @@ GameObject:
   - component: {fileID: 622763866}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_23_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22669,7 +22669,7 @@ GameObject:
   - component: {fileID: 631517645}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25215,7 +25215,7 @@ GameObject:
   - component: {fileID: 683908953}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper01_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25489,7 +25489,7 @@ GameObject:
   - component: {fileID: 687194224}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:WingFingerRoot_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26802,7 +26802,7 @@ GameObject:
   - component: {fileID: 742075827}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:thumb1_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27318,7 +27318,7 @@ GameObject:
   - component: {fileID: 751641395}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_2_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27623,7 +27623,7 @@ GameObject:
   - component: {fileID: 760885480}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper05_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28352,7 +28352,7 @@ GameObject:
   - component: {fileID: 787359938}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipLower03_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28749,7 +28749,7 @@ GameObject:
   - component: {fileID: 796075685}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Eye_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29749,7 +29749,7 @@ GameObject:
   - component: {fileID: 829533382}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_7_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30512,7 +30512,7 @@ GameObject:
   - component: {fileID: 850130075}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:horn3_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30646,7 +30646,7 @@ GameObject:
   - component: {fileID: 854299443}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_5_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30832,7 +30832,7 @@ GameObject:
   - component: {fileID: 855179605}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_10_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31018,7 +31018,7 @@ GameObject:
   - component: {fileID: 858858789}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Neck3_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32117,7 +32117,7 @@ GameObject:
   - component: {fileID: 887581812}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_22_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33732,7 +33732,7 @@ GameObject:
   - component: {fileID: 942374421}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper02_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36843,7 +36843,7 @@ GameObject:
   - component: {fileID: 1015820779}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeBrow5_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37148,7 +37148,7 @@ GameObject:
   - component: {fileID: 1020428399}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:WingFingerRoot_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37215,7 +37215,7 @@ GameObject:
   - component: {fileID: 1022822329}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Elbow_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37514,7 +37514,7 @@ GameObject:
   - component: {fileID: 1031876852}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_6_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37581,7 +37581,7 @@ GameObject:
   - component: {fileID: 1032192387}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeLidUpper1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37932,7 +37932,7 @@ GameObject:
   - component: {fileID: 1034582911}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:neckFat5_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38732,7 +38732,7 @@ GameObject:
   - component: {fileID: 1049993316}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Neck2_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40479,7 +40479,7 @@ GameObject:
   - component: {fileID: 1104442168}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeLidLower1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40546,7 +40546,7 @@ GameObject:
   - component: {fileID: 1105502549}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:horn1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41062,7 +41062,7 @@ GameObject:
   - component: {fileID: 1116416181}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeBrow5_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41129,7 +41129,7 @@ GameObject:
   - component: {fileID: 1119239773}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Scapula_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42131,7 +42131,7 @@ GameObject:
   - component: {fileID: 1136976035}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_2_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43187,7 +43187,7 @@ GameObject:
   - component: {fileID: 1165983226}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipLower02_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44179,7 +44179,7 @@ GameObject:
   - component: {fileID: 1198625398}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipLower02_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45623,7 +45623,7 @@ GameObject:
   - component: {fileID: 1244654217}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:fingerMain_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45931,7 +45931,7 @@ GameObject:
   - component: {fileID: 1256772908}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_10_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46499,7 +46499,7 @@ GameObject:
   - component: {fileID: 1267758578}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:neckFat3_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46566,7 +46566,7 @@ GameObject:
   - component: {fileID: 1270737337}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:tongue1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48016,7 +48016,7 @@ GameObject:
   - component: {fileID: 1295608826}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Cheek02_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48315,7 +48315,7 @@ GameObject:
   - component: {fileID: 1311246014}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:hornMid1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48382,7 +48382,7 @@ GameObject:
   - component: {fileID: 1319969822}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_24_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48449,7 +48449,7 @@ GameObject:
   - component: {fileID: 1327252680}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_14_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48702,7 +48702,7 @@ GameObject:
   - component: {fileID: 1336863571}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_15_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48769,7 +48769,7 @@ GameObject:
   - component: {fileID: 1340602601}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_19_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48955,7 +48955,7 @@ GameObject:
   - component: {fileID: 1351745268}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Wrist_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49141,7 +49141,7 @@ GameObject:
   - component: {fileID: 1356361453}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Nose1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50035,7 +50035,7 @@ GameObject:
   - component: {fileID: 1379397653}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_9_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50386,7 +50386,7 @@ GameObject:
   - component: {fileID: 1387638367}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:tongue3_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50731,7 +50731,7 @@ GameObject:
   - component: {fileID: 1394659209}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_24_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51666,7 +51666,7 @@ GameObject:
   - component: {fileID: 1431031741}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeBrow1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51733,7 +51733,7 @@ GameObject:
   - component: {fileID: 1436256952}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_19_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52508,7 +52508,7 @@ GameObject:
   - component: {fileID: 1495336998}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:HeadUpper_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52575,7 +52575,7 @@ GameObject:
   - component: {fileID: 1496406466}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper01_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53277,7 +53277,7 @@ GameObject:
   - component: {fileID: 1512230113}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper04_3_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53576,7 +53576,7 @@ GameObject:
   - component: {fileID: 1522257047}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Jaw_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54877,7 +54877,7 @@ GameObject:
   - component: {fileID: 1564874632}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_9_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56028,7 +56028,7 @@ GameObject:
   - component: {fileID: 1587173642}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeLidUpper1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57158,7 +57158,7 @@ GameObject:
   - component: {fileID: 1609451085}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Cheek01_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57622,7 +57622,7 @@ GameObject:
   - component: {fileID: 1631483525}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_22_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57689,7 +57689,7 @@ GameObject:
   - component: {fileID: 1632053205}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper04_3_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57756,7 +57756,7 @@ GameObject:
   - component: {fileID: 1636404218}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper03_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58556,7 +58556,7 @@ GameObject:
   - component: {fileID: 1652968362}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:neckFat1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59304,7 +59304,7 @@ GameObject:
   - component: {fileID: 1668611150}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_7_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59814,7 +59814,7 @@ GameObject:
   - component: {fileID: 1675070917}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Shoulder_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59948,7 +59948,7 @@ GameObject:
   - component: {fileID: 1688635480}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Jaw2_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60891,7 +60891,7 @@ GameObject:
   - component: {fileID: 1709642445}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeBrow2_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61236,7 +61236,7 @@ GameObject:
   - component: {fileID: 1719396755}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Wrist_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61303,7 +61303,7 @@ GameObject:
   - component: {fileID: 1720309051}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:breath1_M
-  m_TagString: Untagged
+  m_TagString: MonsterBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61602,7 +61602,7 @@ GameObject:
   - component: {fileID: 1746227005}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_20_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61736,7 +61736,7 @@ GameObject:
   - component: {fileID: 1759876367}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_11_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61922,7 +61922,7 @@ GameObject:
   - component: {fileID: 1769005522}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:fingerMain_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62340,7 +62340,7 @@ GameObject:
   - component: {fileID: 1778939572}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:BrowMid1_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62691,7 +62691,7 @@ GameObject:
   - component: {fileID: 1784411828}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Cheek01_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63552,7 +63552,7 @@ GameObject:
   - component: {fileID: 1813408774}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:hornMid_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65580,7 +65580,7 @@ GameObject:
   - component: {fileID: 1850007367}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_3_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65647,7 +65647,7 @@ GameObject:
   - component: {fileID: 1857982775}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper05_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65714,7 +65714,7 @@ GameObject:
   - component: {fileID: 1859572645}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:LipUpper02_1_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65967,7 +65967,7 @@ GameObject:
   - component: {fileID: 1884184235}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Muzzle2_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66235,7 +66235,7 @@ GameObject:
   - component: {fileID: 1898385209}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:neckFat7_M
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66751,7 +66751,7 @@ GameObject:
   - component: {fileID: 1907526561}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:finger_6_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67334,7 +67334,7 @@ GameObject:
   - component: {fileID: 1922148919}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_21_R
-  m_TagString: Untagged
+  m_TagString: MonsterWingRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67587,7 +67587,7 @@ GameObject:
   - component: {fileID: 1926465112}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:thumb1_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67984,7 +67984,7 @@ GameObject:
   - component: {fileID: 1936555972}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeLidLower1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68051,7 +68051,7 @@ GameObject:
   - component: {fileID: 1946987477}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_1_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68949,7 +68949,7 @@ GameObject:
   - component: {fileID: 1968530256}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_13_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69981,7 +69981,7 @@ GameObject:
   - component: {fileID: 1993604090}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_20_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70610,7 +70610,7 @@ GameObject:
   - component: {fileID: 2017062326}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:horn5_R
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71886,7 +71886,7 @@ GameObject:
   - component: {fileID: 2058296339}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:Scapula_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72051,7 +72051,7 @@ GameObject:
   - component: {fileID: 2069309089}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:EyeBrow1_L
-  m_TagString: Untagged
+  m_TagString: MonsterHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74465,7 +74465,7 @@ GameObject:
   - component: {fileID: 2080728605}
   m_Layer: 0
   m_Name: Coll.TEMPORARY_IMPORT_NAMESPACE_Dragon____R_s__:wingFinger_3_L
-  m_TagString: Untagged
+  m_TagString: MonsterWingLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

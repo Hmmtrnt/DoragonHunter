@@ -12,6 +12,7 @@ public partial class PlayerState
             owner._nextMotionFlame = 35;
             owner.StateTransitionInitialization();
             owner._attackDamage = 73;
+            owner._isCauseDamage = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -21,13 +22,22 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
-            if (owner._stateFlame >= 10)
+            //if (owner._stateFlame >= 10)
+            //{
+            //    owner._isCauseDamage = true;
+            //}
+            //if (owner._stateFlame >= 60)
+            //{
+            //    owner._isCauseDamage = false;
+            //}
+
+            if(owner._stateFlame == 10)
             {
-                owner._isCauseDamage = true;
+                owner._weaponActive = true;
             }
-            if (owner._stateFlame >= 60)
+            else if(owner._stateFlame == 60)
             {
-                owner._isCauseDamage = false;
+                owner._weaponActive = false;
             }
 
             // 前進させる.

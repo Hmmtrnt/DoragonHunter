@@ -30,7 +30,7 @@ public class AttackCol : MonoBehaviour
         //}
 
         //Debug.Log(other.gameObject.tag);
-        Debug.Log(_state._MonsterFleshy);
+        //Debug.Log(_state._MonsterFleshy);
 
         if (other.gameObject.tag == "MonsterHead")
         {

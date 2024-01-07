@@ -16,7 +16,7 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
             owner._isCauseDamage = true;
             owner._attackPower = 81;
-            owner._weaponActive = true;
+            //owner._weaponActive = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -26,6 +26,11 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
+            if(owner._stateFlame == 40)
+            {
+                owner._weaponActive = true;
+            }
+
             if(owner._stateFlame <= 40 && owner._stateFlame >= 10)
             {
                 owner.ForwardStep(8);
@@ -38,7 +43,8 @@ public partial class PlayerState
 
             if(owner._stateFlame >= 60)
             {
-                owner._isCauseDamage = false;
+                //owner._isCauseDamage = false;
+                owner._weaponActive = false;
             }
 
         }
@@ -46,7 +52,7 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSteppingSlash = false;
-            owner._isCauseDamage = false;
+            //owner._isCauseDamage = false;
             owner._weaponActive = false;
         }
 

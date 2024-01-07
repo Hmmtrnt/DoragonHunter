@@ -98,6 +98,8 @@ public partial class PlayerState
         // 攻撃力の代入.
         _attackDamage = _attackPower * _MonsterFleshy;
 
+        //Debug.Log(_attackDamage);
+
         _weaponObject.SetActive(_weaponActive);
     }
 
@@ -299,6 +301,8 @@ public partial class PlayerState
 
     // ダメージを与えられるかどうか.
     public bool GetIsCauseDamage() { return _isCauseDamage; }
+    // ダメージを与えられるかの代入.
+    public void SetIsCauseDamage(bool causeDamage) { _isCauseDamage = causeDamage; }
 
     // スティックの傾きによって距離を求める
     private float GetDistance()

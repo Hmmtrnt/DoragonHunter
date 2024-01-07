@@ -14,6 +14,7 @@ public partial class PlayerState
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
             owner._attackDamage = 102;
+            owner._isCauseDamage = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -25,13 +26,22 @@ public partial class PlayerState
         {
             if (owner._stateFlame >= 10)
             {
-                owner._isCauseDamage = true;
+                //owner._isCauseDamage = true;
                 // 減速させる
                 owner._rigidbody.velocity *= owner._deceleration;
             }
             if (owner._stateFlame >= 60)
             {
-                owner._isCauseDamage = false;
+                //owner._isCauseDamage = false;
+            }
+
+            if(owner._stateFlame == 10)
+            {
+                owner._weaponActive = true;
+            }
+            else if(owner._stateFlame == 60)
+            {
+                owner._weaponActive = false;
             }
 
             if(owner._stateFlame <= 10)

@@ -13,7 +13,7 @@ public partial class PlayerState
             owner._deceleration = 0.9f;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
-            owner._attackPower = 102;
+            owner._attackDamage = 102;
         }
 
         public override void OnUpdate(PlayerState owner)

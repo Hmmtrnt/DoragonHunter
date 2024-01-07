@@ -96,7 +96,7 @@ public partial class PlayerState
         _debugSphere.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
 
         // 攻撃力の代入.
-        _attackPower = _attackPower * _MonsterFleshy;
+        _attackDamage = _attackPower * _MonsterFleshy;
 
         _weaponObject.SetActive(_weaponActive);
     }
@@ -295,7 +295,7 @@ public partial class PlayerState
     public float GetMaxStamina() { return _maxStamina; }
 
     // ダメージを与えた時の値.
-    public float GetHunterAttack() { return _attackPower; }
+    public float GetHunterAttack() { return _attackDamage; }
 
     // ダメージを与えられるかどうか.
     public bool GetIsCauseDamage() { return _isCauseDamage; }

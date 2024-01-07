@@ -11,7 +11,7 @@ public partial class PlayerState
             owner._drawnSpiritBlade2 = true;
             owner._nextMotionFlame = 40;
             owner.StateTransitionInitialization();
-            owner._attackPower = 114;
+            owner._attackDamage = 114;
         }
 
         public override void OnUpdate(PlayerState owner)

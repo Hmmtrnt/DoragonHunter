@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Buffers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,22 +35,27 @@ public class AttackCol : MonoBehaviour
         if (other.gameObject.tag == "MonsterHead")
         {
             _state._MonsterFleshy = 1.2f;
+            _state._weaponActive = false;
         }
         else if(other.gameObject.tag == "MonsterBody")
         {
             _state._MonsterFleshy = 1.0f;
+            _state._weaponActive = false;
         }
         else if (other.gameObject.tag == "MonsterWingRight")
         {
             _state._MonsterFleshy = 0.9f;
+            _state._weaponActive = false;
         }
         else if( other.gameObject.tag == "MonsterWingLeft")
         {
             _state._MonsterFleshy = 0.9f;
+            _state._weaponActive = false;
         }
         else if(other.gameObject.tag == "MonsterTail")
         {
             _state._MonsterFleshy = 1.1f;
+            _state._weaponActive = false;
         }
         
     }

@@ -85,8 +85,10 @@ public partial class PlayerState
 
     private int _stateFlame = 0;
 
-    // 攻撃力.
-    private float _attackPower = 100.0f;
+    // モンスターに与えるダメージ.
+    private float _attackDamage = 0.0f;
+    // 元の攻撃力.
+    private float _attackPower = 0.0f;
     // 攻撃したモンスターの肉質.
     [Header("攻撃したモンスターの肉質")]
     public float _MonsterFleshy = 0;

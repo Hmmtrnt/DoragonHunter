@@ -11,7 +11,7 @@ public partial class PlayerState
             owner._drawnThrustSlash = true;
             owner._nextMotionFlame = 35;
             owner.StateTransitionInitialization();
-            owner._attackPower = 65;
+            owner._attackDamage = 65;
         }
 
         public override void OnUpdate(PlayerState owner)

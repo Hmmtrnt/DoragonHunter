@@ -19,7 +19,14 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-
+            if(owner._stateFlame == 40 )
+            {
+                owner._wingLeftCollisiton.SetActive(true);
+            }
+            else if(owner._stateFlame == 100)
+            {
+                owner._wingLeftCollisiton.SetActive(false);
+            }
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -29,7 +36,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateFlame >= 165)
+            if(owner._stateFlame >= 155)
             {
                 owner.ChangeState(_idle);
             }

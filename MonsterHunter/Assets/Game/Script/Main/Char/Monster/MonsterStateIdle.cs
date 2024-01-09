@@ -31,52 +31,56 @@ public partial class MonsterState
         {
             if (owner._stateFlame <= 100) return;
 
-            近距離.
+            // 近距離.
             if (owner._isNearDistance)
             {
-                // 正面.
+                // 正面(主にかみつき).
                 if (owner._viewDirection[(int)viewDirection.FORWARD])
                 {
-                    owner.ChangeState(_bite);
+                    //owner.ChangeState(_bite);
+
+                    owner.ChangeState(_wingBlowLeft);
                 }
                 // 後ろ.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
                 {
-                    owner.ChangeState(_rotate);
+                    //if (owner._randomNumber < 51)
+                    //{
+                    //    owner.ChangeState(_rotate);
+                    //}
+                    //else
+                    //{
+                    //    owner.ChangeState(_tail);
+                    //}
 
-                    if (owner._randomNumber < 51)
-                    {
-                        owner.ChangeState(_rotate);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_tail);
-                    }
+                    owner.ChangeState(_wingBlowLeft);
                 }
                 // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])
                 {
-                    if (owner._randomNumber < 61)
-                    {
-                        owner.ChangeState(_rotate);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_wingBlowLeft);
-                    }
-
+                    //if (owner._randomNumber < 61)
+                    //{
+                    //    owner.ChangeState(_rotate);
+                    //}
+                    //else
+                    //{
+                    //    owner.ChangeState(_wingBlowLeft);
+                    //}
+                    owner.ChangeState(_wingBlowLeft);
                 }
                 // 右.
                 else if (owner._viewDirection[(int)viewDirection.RIGHT])
                 {
-                    if (owner._randomNumber < 61)
-                    {
-                        owner.ChangeState(_rotate);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_wingBlowRight);
-                    }
+                    //if (owner._randomNumber < 61)
+                    //{
+                    //    owner.ChangeState(_rotate);
+                    //}
+                    //else
+                    //{
+                    //    owner.ChangeState(_wingBlowRight);
+                    //}
+
+                    //owner.ChangeState(_wingBlowLeft);
                 }
             }
             // 遠距離.
@@ -95,7 +99,7 @@ public partial class MonsterState
                     //}
 
                     // デバッグ用モーション遷移.
-                    owner.ChangeState(_rush);
+                    owner.ChangeState(_wingBlowLeft);
 
                 }
                 // 背後.

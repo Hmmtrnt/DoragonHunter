@@ -30,8 +30,9 @@ public partial class PlayerState
             MoveAvoid(owner);
             //Debug.Log(owner._rigidbody.velocity);
 
-            if(owner._stateFlame == 6)
+            if(owner._avoidTime == 6)
             {
+                Debug.Log("っとる");
                 owner._flameAvoid = false;
             }
 

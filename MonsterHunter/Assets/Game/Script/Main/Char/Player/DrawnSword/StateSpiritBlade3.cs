@@ -31,17 +31,35 @@ public partial class PlayerState
             //    owner._isCauseDamage = false;
             //}
 
-            if(owner._stateFlame == 10)
+            if(owner._stateFlame == 5)
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 60)
+            else if(owner._stateFlame == 20)
+            {
+                owner._weaponActive = false;
+            }
+            else if(owner._stateFlame == 25)
+            {
+                owner._isCauseDamage = true;
+                owner._weaponActive = true;
+            }
+            else if(owner._stateFlame == 40)
+            {
+                owner._weaponActive = false;
+            }
+            else if (owner._stateFlame == 60)
+            {
+                owner._isCauseDamage = true;
+                owner._weaponActive = true;
+            }
+            else if (owner._stateFlame == 80)
             {
                 owner._weaponActive = false;
             }
 
 
-            if(owner._stateFlame <= 60)
+            if (owner._stateFlame <= 60)
             {
                 owner.ForwardStep(4);
             }

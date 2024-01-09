@@ -36,7 +36,7 @@ public partial class PlayerState
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 50)
+            else if(owner._stateFlame == 40)
             {
                 owner._weaponActive = false;
             }
@@ -67,7 +67,7 @@ public partial class PlayerState
             //}
 
             // アイドル.
-            if (owner._stateFlame >= 120)
+            if (owner._stateFlame >= 100)
             {
                 owner.ChangeState(_idleDrawnSword);
             }

@@ -13,7 +13,7 @@ public partial class PlayerState
             owner._deceleration = 0.9f;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
-            owner._attackDamage = 102;
+            owner._attackPower = 102;
             owner._isCauseDamage = true;
         }
 
@@ -39,7 +39,7 @@ public partial class PlayerState
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 60)
+            else if(owner._stateFlame == 55)
             {
                 owner._weaponActive = false;
             }
@@ -53,12 +53,13 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSpiritBlade1 = false;
+            owner._weaponActive = false;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
             // アイドル.
-            if (owner._stateFlame >= 120)
+            if (owner._stateFlame >= 105)
             {
                 owner.ChangeState(_idleDrawnSword);
             }

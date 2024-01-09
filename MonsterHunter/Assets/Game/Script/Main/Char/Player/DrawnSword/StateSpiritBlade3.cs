@@ -11,7 +11,7 @@ public partial class PlayerState
             owner._drawnSpiritBlade3 = true;
             owner._nextMotionFlame = 90;
             owner.StateTransitionInitialization();
-            owner._attackDamage = 40;
+            owner._attackPower = 40;
             owner._isCauseDamage = true;
         }
 
@@ -50,6 +50,7 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSpiritBlade3 = false;
+            owner._weaponActive = false;
         }
 
         public override void OnChangeState(PlayerState owner)

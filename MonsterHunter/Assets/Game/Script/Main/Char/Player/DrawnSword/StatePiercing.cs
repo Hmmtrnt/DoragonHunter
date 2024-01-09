@@ -11,7 +11,7 @@ public partial class PlayerState
             owner._drawnThrustSlash = true;
             owner._nextMotionFlame = 35;
             owner.StateTransitionInitialization();
-            owner._attackDamage = 65;
+            owner._attackPower = 55;
             owner._isCauseDamage = true;
         }
 
@@ -52,6 +52,7 @@ public partial class PlayerState
             owner._drawnThrustSlash = false;
             owner._stateFlame = 0;
             //owner._isCauseDamage = false;
+            owner._weaponActive = false;
         }
 
         public override void OnChangeState(PlayerState owner)

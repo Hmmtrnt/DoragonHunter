@@ -90,7 +90,7 @@ public partial class MonsterState
 
     // デバッグ用ステータス
     // 体力
-    private float _HitPoint = 3000;
+    private float _HitPoint = 30000;
     // 攻撃力
     private float _AttackPower = 5;
 

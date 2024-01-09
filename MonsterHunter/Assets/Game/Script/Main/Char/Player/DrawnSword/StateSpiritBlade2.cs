@@ -12,7 +12,7 @@ public partial class PlayerState
             owner._drawnSpiritBlade2 = true;
             owner._nextMotionFlame = 40;
             owner.StateTransitionInitialization();
-            owner._attackDamage = 114;
+            owner._attackPower = 114;
             owner._isCauseDamage = true;
         }
 
@@ -32,11 +32,11 @@ public partial class PlayerState
             //    owner._isCauseDamage = false;
             //}
 
-            if(owner._stateFlame == 10)
+            if(owner._stateFlame == 20)
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 60)
+            else if(owner._stateFlame == 50)
             {
                 owner._weaponActive = false;
             }
@@ -45,6 +45,7 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSpiritBlade2 = false;
+            owner._weaponActive = false;
         }
 
         public override void OnChangeState(PlayerState owner)

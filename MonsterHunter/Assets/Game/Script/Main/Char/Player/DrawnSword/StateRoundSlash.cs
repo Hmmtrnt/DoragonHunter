@@ -13,7 +13,7 @@ public partial class PlayerState
             owner._nextMotionFlame = 90;
             owner._deceleration = 0.9f;
             owner.StateTransitionInitialization();
-            owner._attackDamage = 150;
+            owner._attackPower = 150;
             owner._isCauseDamage = true;
         }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2639.2559, g: 4062.8823, b: 7295.0273, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14944,22 +14944,22 @@ PrefabInstance:
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.31743863
+      value: 0.5381233
       objectReference: {fileID: 0}
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.066025324
+      value: -0.066022515
       objectReference: {fileID: 0}
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Center.y
-      value: -0.0022717374
+      value: 0.000075940035
       objectReference: {fileID: 0}
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.93176734
+      value: 0.93176645
       objectReference: {fileID: 0}
     - target: {fileID: 7909341703242984116, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
@@ -51512,7 +51512,6 @@ MonoBehaviour:
   - {fileID: 1255314677}
   - {fileID: 1137815736}
   - {fileID: 824147197}
-  _damageUI: {fileID: 1536979379}
   _rotateSpeed: 5
 --- !u!114 &1423090094
 MonoBehaviour:
@@ -53898,12 +53897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2b87818a56064b926871454f01541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1536979379 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3595531407978730654, guid: 7af2f8048bbc5d14880287873b3367ae,
-    type: 3}
-  m_PrefabInstance: {fileID: 7641562250264474161}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1538211159
 Mesh:
   m_ObjectHideFlags: 0

@@ -52,7 +52,6 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnChangeState(this);
 
         viewAngle();
-        SubstituteVariableUpdate();
     }
 
     private void FixedUpdate()
@@ -60,11 +59,6 @@ public partial class PlayerState : MonoBehaviour
         _stateFlame++;
 
         Debug.Assert(_text != null);
-
-        //Debug.Log(_text);
-
-        // 現在のステート情報.
-        //Debug.Log(_currentState);
 
         SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);

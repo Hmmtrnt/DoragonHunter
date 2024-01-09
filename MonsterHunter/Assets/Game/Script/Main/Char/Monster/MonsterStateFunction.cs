@@ -266,7 +266,6 @@ public partial class MonsterState
     private float GetOnDamager()
     {
         _HitPoint = _HitPoint - _playerState.GetHunterAttack();
-        Debug.Log("GetHunterAttack" + _playerState.GetHunterAttack());
         return _HitPoint;
     }
 

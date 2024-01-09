@@ -33,11 +33,11 @@ public partial class PlayerState
             //    owner._isCauseDamage = false;
             //}
 
-            if(owner._stateFlame == 10)
+            if(owner._stateFlame == 15)
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 60)
+            else if(owner._stateFlame == 35)
             {
                 owner._weaponActive = false;
             }

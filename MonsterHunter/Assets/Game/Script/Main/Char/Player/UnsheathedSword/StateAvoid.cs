@@ -32,7 +32,6 @@ public partial class PlayerState
 
             if(owner._avoidTime == 6)
             {
-                Debug.Log("っとる");
                 owner._flameAvoid = false;
             }
 

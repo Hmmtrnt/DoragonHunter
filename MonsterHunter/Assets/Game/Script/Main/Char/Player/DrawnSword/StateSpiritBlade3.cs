@@ -31,6 +31,7 @@ public partial class PlayerState
             //    owner._isCauseDamage = false;
             //}
 
+            // 一撃目.
             if(owner._stateFlame == 5)
             {
                 owner._weaponActive = true;
@@ -39,6 +40,7 @@ public partial class PlayerState
             {
                 owner._weaponActive = false;
             }
+            // 二撃目.
             else if(owner._stateFlame == 25)
             {
                 owner._isCauseDamage = true;
@@ -48,10 +50,12 @@ public partial class PlayerState
             {
                 owner._weaponActive = false;
             }
+            // 三撃目.
             else if (owner._stateFlame == 60)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
+                owner._attackPower = 100;
             }
             else if (owner._stateFlame == 80)
             {

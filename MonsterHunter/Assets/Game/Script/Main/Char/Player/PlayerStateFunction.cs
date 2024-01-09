@@ -78,8 +78,8 @@ public partial class PlayerState
         _animator.SetBool("Down", _downMotion);
     }
 
-    // 継続的に情報を代入.
-    private void SubstituteVariable()
+    // 一定に情報を代入.
+    private void SubstituteVariableFixedUpdate()
     {
 
         // カメラの正面.
@@ -94,15 +94,12 @@ public partial class PlayerState
         _moveVelocity = moveForward + moveSide;
         //スティックがどの方向に傾いているかを取得.
         _debugSphere.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
-
+        // 武器の当たり判定の表示非表示.
+        _weaponObject.SetActive(_weaponActive);
         // 攻撃力の代入.
         _attackDamage = _attackPower * _MonsterFleshy;
 
-        Debug.Log(_attackPower);
-
-        //Debug.Log(_attackDamage);
-
-        _weaponObject.SetActive(_weaponActive);
+        Debug.Log("_attackDamage" + _attackDamage);
     }
 
     // カメラの注視点の挙動.

@@ -15,6 +15,7 @@ public partial class PlayerState
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
             owner._deceleration = 0.9f;
+            owner._flameAvoid = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -28,6 +29,12 @@ public partial class PlayerState
             owner._avoidTime++;
             MoveAvoid(owner);
             //Debug.Log(owner._rigidbody.velocity);
+
+            if(owner._stateFlame == 6)
+            {
+                owner._flameAvoid = false;
+            }
+
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

@@ -52,7 +52,7 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnChangeState(this);
 
         viewAngle();
-        
+        SubstituteVariableUpdate();
     }
 
     private void FixedUpdate()
@@ -66,7 +66,7 @@ public partial class PlayerState : MonoBehaviour
         // 現在のステート情報.
         //Debug.Log(_currentState);
 
-        SubstituteVariable();
+        SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);
 
         CameraFollowUpdate();
@@ -114,7 +114,7 @@ public partial class PlayerState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "MonsterAtCol")
+        if(other.gameObject.tag == "MonsterAtCol" && !_flameAvoid)
         {
             OnDamage();
             //Debug.Log("MonsterAtCol");

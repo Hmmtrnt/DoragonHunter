@@ -247,7 +247,7 @@ public partial class MonsterState
 
     public void DamageUI(Collider col)
     {
-        var obj = Instantiate(_damageUI, col.bounds.center - Camera.main.transform.forward * 0.2f, Quaternion.identity);
+        //var obj = Instantiate(_damageUI, col.bounds.center - Camera.main.transform.forward * 0.2f, Quaternion.identity);
     }
 
     private float GetDistance()
@@ -262,9 +262,11 @@ public partial class MonsterState
         return _AttackPower;
     }
 
+    // ƒ_ƒ[ƒW‚ğ‚­‚ç‚¤.
     private float GetOnDamager()
     {
         _HitPoint = _HitPoint - _playerState.GetHunterAttack();
+        Debug.Log("GetHunterAttack" + _playerState.GetHunterAttack());
         return _HitPoint;
     }
 

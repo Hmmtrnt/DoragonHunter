@@ -62,6 +62,8 @@ public partial class PlayerState
 
     // 次のモーションに遷移するフレーム.
     private float _nextMotionFlame = 0;
+    // フレーム回避の状態.
+    private bool _flameAvoid = false;
 
     //--共通モーション--//
     // Setbool

@@ -65,9 +65,6 @@ public partial class MonsterState
     // false : 遠
     private bool _isNearDistance = false;
 
-    [Header("ダメージUI")]
-    [SerializeField] private GameObject _damageUI;
-
     /*アニメーション*/
     private Animator _animator;
     // bool
@@ -111,8 +108,11 @@ public partial class MonsterState
     // 状態のフレーム数
     private int _stateFlame = 0;
 
-    // 乱数.
+    // 状態管理のための乱数.
     private int _randomNumber = 0;
+
+    // ダメージを受けるかどうか.
+    private bool _takeDamage = false;
 
     // デバッグ用テキスト
     private Text _text;

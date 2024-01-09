@@ -80,6 +80,12 @@ public partial class MonsterState : MonoBehaviour
         }
         // 体力を0未満にしない.
         HitPointLowerLimit();
+
+        if (_takeDamage)
+        {
+            GetOnDamager();
+            _takeDamage = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -103,10 +109,9 @@ public partial class MonsterState : MonoBehaviour
     {
         if (other.gameObject.tag == "HunterAtCol" && _playerState.GetIsCauseDamage())
         {
-            //Debug.Log("通った");
-
             _playerState.SetIsCauseDamage(false);
-            GetOnDamager();
+            _takeDamage = true;
+            //GetOnDamager();
         }
     }
 

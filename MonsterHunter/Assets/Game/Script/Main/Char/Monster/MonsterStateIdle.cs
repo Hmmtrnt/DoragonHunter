@@ -39,7 +39,7 @@ public partial class MonsterState
                 {
                     //owner.ChangeState(_bite);
 
-                    owner.ChangeState(_rotate);
+                    //owner.ChangeState(_rotate);
                 }
                 // 後ろ.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
@@ -99,7 +99,7 @@ public partial class MonsterState
                     //}
 
                     // デバッグ用モーション遷移.
-                    owner.ChangeState(_rotate);
+                    //owner.ChangeState(_bless);
 
                 }
                 // 背後.

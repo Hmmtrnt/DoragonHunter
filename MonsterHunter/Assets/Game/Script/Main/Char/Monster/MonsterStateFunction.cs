@@ -245,10 +245,25 @@ public partial class MonsterState
         }
     }
 
-    public void DamageUI(Collider col)
+    // プレイヤーの方を向く.
+    private void TurnTowards()
     {
-        //var obj = Instantiate(_damageUI, col.bounds.center - Camera.main.transform.forward * 0.2f, Quaternion.identity);
+        // ターゲットの方向ベクトル.
+        Vector3 _direction = new Vector3(_hunter.transform.position.x - transform.position.x,
+            0.0f, _hunter.transform.position.z - transform.position.z);
+        // 方向ベクトルからクォータニオン取得
+        Quaternion _rotation = Quaternion.LookRotation(_direction, Vector3.up);
+
+        // デバッグ用ブレス
+        // TODO:あとで変数名、コメント変更する！.
+        // プレイヤーのほうを向いて回転
+        if (_stateFlame <= 40)
+        {
+            _trasnform.rotation = Quaternion.Slerp(_trasnform.rotation, _rotation, Time.deltaTime * _rotateSpeed);
+        }
     }
+
+
 
     private float GetDistance()
     {

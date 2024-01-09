@@ -28,7 +28,7 @@ public partial class PlayerState
         {
             owner._avoidTime++;
             MoveAvoid(owner);
-            //Debug.Log(owner._rigidbody.velocity);
+            
 
             if(owner._avoidTime == 6)
             {

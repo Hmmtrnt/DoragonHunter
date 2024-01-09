@@ -20,13 +20,21 @@ public partial class MonsterState
         public override void OnFixedUpdate(MonsterState owner)
         {
             
-            if(owner._stateFlame >= 30) 
+            if(owner._stateFlame == 30) 
             {
                 //owner._tailObject.tag = "MonsterAtCol";
+
+                for(int colNum = 0; colNum < owner._tailCollisiton.Length; colNum++)
+                {
+                    owner._tailCollisiton[colNum].SetActive(true);
+                }
             }
-            else if(owner._stateFlame >= 200)
+            else if(owner._stateFlame == 170)
             {
-                //owner._tailObject.tag = "MonsterTail";
+                for (int colNum = 0; colNum < owner._tailCollisiton.Length; colNum++)
+                {
+                    owner._tailCollisiton[colNum].SetActive(false);
+                }
             }
 
         }

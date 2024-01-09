@@ -39,7 +39,7 @@ public partial class MonsterState
                 {
                     //owner.ChangeState(_bite);
 
-                    owner.ChangeState(_wingBlowLeft);
+                    owner.ChangeState(_rotate);
                 }
                 // 後ろ.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
@@ -53,7 +53,7 @@ public partial class MonsterState
                     //    owner.ChangeState(_tail);
                     //}
 
-                    owner.ChangeState(_wingBlowLeft);
+                    owner.ChangeState(_rotate);
                 }
                 // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])
@@ -66,7 +66,7 @@ public partial class MonsterState
                     //{
                     //    owner.ChangeState(_wingBlowLeft);
                     //}
-                    owner.ChangeState(_wingBlowLeft);
+                    owner.ChangeState(_rotate);
                 }
                 // 右.
                 else if (owner._viewDirection[(int)viewDirection.RIGHT])
@@ -80,7 +80,7 @@ public partial class MonsterState
                     //    owner.ChangeState(_wingBlowRight);
                     //}
 
-                    //owner.ChangeState(_wingBlowLeft);
+                    owner.ChangeState(_rotate);
                 }
             }
             // 遠距離.
@@ -99,7 +99,7 @@ public partial class MonsterState
                     //}
 
                     // デバッグ用モーション遷移.
-                    owner.ChangeState(_wingBlowLeft);
+                    owner.ChangeState(_rotate);
 
                 }
                 // 背後.

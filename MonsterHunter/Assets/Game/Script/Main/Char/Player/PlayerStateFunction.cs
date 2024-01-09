@@ -98,6 +98,8 @@ public partial class PlayerState
         // UŒ‚—Í‚Ì‘ã“ü.
         _attackDamage = _attackPower * _MonsterFleshy;
 
+        Debug.Log(_attackDamage);
+
         //Debug.Log(_attackDamage);
 
         _weaponObject.SetActive(_weaponActive);

@@ -103,7 +103,7 @@ public partial class MonsterState : MonoBehaviour
     {
         if (other.gameObject.tag == "HunterAtCol" && _playerState.GetIsCauseDamage())
         {
-            Debug.Log("通った");
+            //Debug.Log("通った");
 
             _playerState.SetIsCauseDamage(false);
             GetOnDamager();

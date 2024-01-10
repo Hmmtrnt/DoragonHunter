@@ -41,6 +41,10 @@ public partial class MonsterState
     [Header("尾攻撃判定")]
     public GameObject[] _tailCollisiton;
 
+    // 回転攻撃判定.
+    [Header("回転攻撃判定")]
+    public GameObject _rotateCollisiton;
+
 
     // 子オブジェクトの当たり判定.
     private MeshCollider[] _colliderChildren;
@@ -90,9 +94,6 @@ public partial class MonsterState
     private float _HitPoint = 30000;
     // 攻撃力
     private float _AttackPower = 5;
-
-    // デバッグ用攻撃判定を生成するかどうか
-    private bool _indicateAttackCol = false;
 
     [Header("回転速度")]
     [SerializeField] private float _rotateSpeed = 0;

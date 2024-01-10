@@ -108,31 +108,34 @@ public partial class PlayerState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "MonsterAtCol" && !_flameAvoid)
+        // ダメージを受けつける.
+        if(other.gameObject.tag == "MonsterAtCol" && !_flameAvoid && _currentState != _damage)
         {
             OnDamage();
             //Debug.Log("MonsterAtCol");
         }
-        else if (other.transform.tag == "MonsterHead")
-        {
-            //Debug.Log("MonsterHead");
-        }
-        else if (other.transform.tag == "MonsterWingRight")
-        {
-            //Debug.Log("MonsterWingRight");
-        }
-        else if (other.transform.tag == "MonsterWingLeft")
-        {
-            //Debug.Log("MonsterWingLeft");
-        }
-        else if (other.transform.tag == "MonsterTail")
-        {
-            //Debug.Log("MonsterTail");
-        }
-        else if (other.transform.tag == "MonsterBody")
-        {
-            //Debug.Log("MonsterBody");
-        }
+
+
+        //else if (other.transform.tag == "MonsterHead")
+        //{
+        //    //Debug.Log("MonsterHead");
+        //}
+        //else if (other.transform.tag == "MonsterWingRight")
+        //{
+        //    //Debug.Log("MonsterWingRight");
+        //}
+        //else if (other.transform.tag == "MonsterWingLeft")
+        //{
+        //    //Debug.Log("MonsterWingLeft");
+        //}
+        //else if (other.transform.tag == "MonsterTail")
+        //{
+        //    //Debug.Log("MonsterTail");
+        //}
+        //else if (other.transform.tag == "MonsterBody")
+        //{
+        //    //Debug.Log("MonsterBody");
+        //}
         
     }
 }

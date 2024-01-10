@@ -19,7 +19,9 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            TurnTowards(owner);
+            //TurnTowards(owner);
+
+            owner.TurnTowards();
 
             // ”­ŽË‚Ÿ.
             //if(owner._stateFlame % 70 == 0)

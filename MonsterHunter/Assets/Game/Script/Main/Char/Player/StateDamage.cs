@@ -6,6 +6,9 @@ public partial class PlayerState
 {
     public class StateDamage : StateBase
     {
+        Vector3 knockBackVector = Vector3.zero;
+
+
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -13,6 +16,7 @@ public partial class PlayerState
             owner._damageMotion = true;
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
+            KnockBackVector(owner);
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -49,24 +53,32 @@ public partial class PlayerState
             }
         }
 
+        // ノックバック先のベクトル取得.
+        private void KnockBackVector(PlayerState owner)
+        {
+            knockBackVector = owner._transform.position - owner._Monster.transform.position;
+
+            knockBackVector.Normalize();
+        }
+
         // ノックバック
         private void KnockBack(PlayerState owner)
         {
-            // 敵の中心点からベクトルを取得
-            Vector3 dir = owner._transform.position - owner._Monster.transform.position;
-            dir = dir.normalized;
+            // 敵の中心点からベクトルを取得.
+            //Vector3 dir = owner._transform.position - owner._Monster.transform.position;
+            //dir = dir.normalized;
             //owner._rigidbody.AddForce(dir * 30, ForceMode.Impulse);
             if(owner._stateFlame <= 40)
             {
-                owner._transform.position += dir * 0.15f;
+                owner._transform.position += knockBackVector * 0.15f;
             }
             else if(owner._stateFlame <= 80)
             {
-                owner._transform.position += dir * 0.3f;
+                owner._transform.position += knockBackVector * 0.3f;
             }
             
 
-            var rotation = Quaternion.LookRotation(-dir, Vector3.up);
+            var rotation = Quaternion.LookRotation(-knockBackVector, Vector3.up);
             owner._transform.rotation = rotation;
             //owner._isProcess = false;
         }

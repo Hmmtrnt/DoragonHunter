@@ -29,6 +29,11 @@ public partial class MonsterState
             owner._rushCollisiton.SetActive(false);
             owner._wingLeftCollisiton.SetActive(false);
             owner._wingRightCollisiton.SetActive(false);
+            for(int tailColNum = 0; tailColNum < owner._tailCollisiton.Length; tailColNum++)
+            {
+                owner._tailCollisiton[tailColNum].SetActive(false);
+            }
+            owner._rotateCollisiton.SetActive(false);
 
         }
 

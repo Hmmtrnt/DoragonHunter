@@ -36,7 +36,9 @@ public class AttackCol : MonoBehaviour
         {
             _state._MonsterFleshy = 1.2f;
             _state._weaponActive = false;
-            HitStopManager.instance.StartHitStop(0.1f);
+            // ヒットストップ.
+            // NOTE:コレジャナイ感、世界全体が止まっている.
+            //HitStopManager.instance.StartHitStop(0.1f);
         }
         else if(other.gameObject.tag == "MonsterBody")
         {

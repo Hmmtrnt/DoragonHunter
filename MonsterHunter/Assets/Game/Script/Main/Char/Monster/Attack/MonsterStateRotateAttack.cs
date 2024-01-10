@@ -29,6 +29,7 @@ public partial class MonsterState
                 {
                     owner._tailCollisiton[colNum].SetActive(true);
                 }
+                owner._rotateCollisiton.SetActive(true);
             }
             else if(owner._stateFlame == 170)
             {
@@ -40,6 +41,7 @@ public partial class MonsterState
                 {
                     owner._tailCollisiton[colNum].SetActive(false);
                 }
+                owner._rotateCollisiton.SetActive(false);
             }
         }
 

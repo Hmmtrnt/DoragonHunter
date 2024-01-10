@@ -37,6 +37,20 @@ public partial class MonsterState
                 // 正面(主にかみつき).
                 if (owner._viewDirection[(int)viewDirection.FORWARD])
                 {
+                    if(owner._randomNumber < 31)
+                    {
+                        owner.ChangeState(_bite);
+                    }
+                    else if(owner._randomNumber < 71)
+                    {
+                        owner.ChangeState(_rush);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_rotate);
+                    }
+
+                    // デバッグ用状態遷移.
                     //owner.ChangeState(_bite);
 
                     //owner.ChangeState(_rotate);
@@ -44,28 +58,29 @@ public partial class MonsterState
                 // 後ろ.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
                 {
-                    //if (owner._randomNumber < 51)
-                    //{
-                    //    owner.ChangeState(_rotate);
-                    //}
-                    //else
-                    //{
-                    //    owner.ChangeState(_tail);
-                    //}
+                    if (owner._randomNumber < 51)
+                    {
+                        owner.ChangeState(_rotate);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_tail);
+                    }
 
-                    owner.ChangeState(_rotate);
+                    // デバッグ用状態遷移.
+                    //owner.ChangeState(_tail);
                 }
                 // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])
                 {
-                    //if (owner._randomNumber < 61)
-                    //{
-                    //    owner.ChangeState(_rotate);
-                    //}
-                    //else
-                    //{
-                    //    owner.ChangeState(_wingBlowLeft);
-                    //}
+                    if (owner._randomNumber < 61)
+                    {
+                        owner.ChangeState(_rotate);
+                    }
+                    else
+                    {
+                        owner.ChangeState(_wingBlowLeft);
+                    }
                     owner.ChangeState(_rotate);
                 }
                 // 右.
@@ -100,6 +115,8 @@ public partial class MonsterState
 
                     // デバッグ用モーション遷移.
                     //owner.ChangeState(_bless);
+
+                    owner.ChangeState(_rotate);
 
                 }
                 // 背後.

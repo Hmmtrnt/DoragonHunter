@@ -50,7 +50,7 @@ public partial class MonsterState
         {
             _tailCollisiton[tailColNum].SetActive(false);
         }
-
+        _rotateCollisiton.SetActive(false);
     }
 
     // ŒvZ‚µ‚½î•ñ‚Ì‘ã“ü.

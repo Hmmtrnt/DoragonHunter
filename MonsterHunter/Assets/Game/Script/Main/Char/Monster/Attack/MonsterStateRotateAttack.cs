@@ -19,7 +19,7 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            if(owner._stateFlame == 80)
+            if(owner._stateFlame == 90)
             {
                 owner._biteCollisiton.SetActive(true);
                 owner._rushCollisiton.SetActive(true);
@@ -31,7 +31,7 @@ public partial class MonsterState
                 }
                 owner._rotateCollisiton.SetActive(true);
             }
-            else if(owner._stateFlame == 170)
+            else if(owner._stateFlame == 135)
             {
                 owner._biteCollisiton.SetActive(false);
                 owner._rushCollisiton.SetActive(false);

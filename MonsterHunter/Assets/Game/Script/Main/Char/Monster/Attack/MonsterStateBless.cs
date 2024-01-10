@@ -19,12 +19,9 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            //TurnTowards(owner);
-
-            owner.TurnTowards();
+            owner.TurnTowards(40);
 
             // 発射ぁ.
-            //if(owner._stateFlame % 70 == 0)
             if (owner._stateFlame == 60)
             {
                 Instantiate(owner._fireBall, new Vector3(owner._fireBallPosition.transform.position.x,
@@ -45,24 +42,6 @@ public partial class MonsterState
                 owner.ChangeState(_idle);
             }
         }
-
-        private void TurnTowards(MonsterState owner)
-        {
-            // ターゲットの方向ベクトル.
-            Vector3 _direction = new Vector3(owner._hunter.transform.position.x - owner.transform.position.x,
-                0.0f, owner._hunter.transform.position.z - owner.transform.position.z);
-            // 方向ベクトルからクォータニオン取得
-            Quaternion _rotation = Quaternion.LookRotation(_direction, Vector3.up);
-
-            // デバッグ用ブレス
-            // TODO:あとで変数名、コメント変更する！.
-            // プレイヤーのほうを向いて回転
-            if (owner._stateFlame <= 40)
-            {
-                owner._trasnform.rotation = Quaternion.Slerp(owner._trasnform.rotation, _rotation, Time.deltaTime * owner._rotateSpeed);
-            }
-        }
-
     }
 }
 

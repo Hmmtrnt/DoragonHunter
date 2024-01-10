@@ -66,6 +66,9 @@ public partial class MonsterState
         // 速度の代入
         _moveVelocity = moveForward + moveSide;
 
+        // デバッグ用
+        //Debug.Log(_moveVelocity);
+
     }
 
     // 状態遷移時の初期化.
@@ -246,7 +249,7 @@ public partial class MonsterState
     }
 
     // プレイヤーの方を向く.
-    private void TurnTowards()
+    private void TurnTowards(int turnFlame)
     {
         // ターゲットの方向ベクトル.
         Vector3 _direction = new Vector3(_hunter.transform.position.x - transform.position.x,
@@ -255,9 +258,8 @@ public partial class MonsterState
         Quaternion _rotation = Quaternion.LookRotation(_direction, Vector3.up);
 
         // デバッグ用ブレス
-        // TODO:あとで変数名、コメント変更する！.
         // プレイヤーのほうを向いて回転
-        if (_stateFlame <= 40)
+        if (_stateFlame <= turnFlame)
         {
             _trasnform.rotation = Quaternion.Slerp(_trasnform.rotation, _rotation, Time.deltaTime * _rotateSpeed);
         }

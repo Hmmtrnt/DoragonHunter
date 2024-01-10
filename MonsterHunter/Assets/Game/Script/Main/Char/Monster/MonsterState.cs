@@ -23,8 +23,6 @@ public partial class MonsterState : MonoBehaviour
 
     // Stateの初期化.
     private StateBase _currentState = _idle;
-    // デバッグ用のStateの初期化
-    //private StateBase _currentState = _bless;
 
     private void Start()
     {

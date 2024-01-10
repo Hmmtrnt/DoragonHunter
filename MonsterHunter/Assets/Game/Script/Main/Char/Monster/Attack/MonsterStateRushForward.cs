@@ -10,7 +10,7 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._rushMotion = true;
-            owner._trasnform.LookAt(owner._hunter.transform.position);
+            //owner._trasnform.LookAt(owner._hunter.transform.position);
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -20,29 +20,42 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            if (owner._stateFlame <= 30)
+            owner.TurnTowards(40);
+
+            if (owner._stateFlame == 0)
             {
                 //owner._trasnform.position -= Vector3.forward * 0.15f;
                 owner._forwardSpeed = 0.15f;
             }
-            else if (owner._stateFlame <= 130)
+            else if (owner._stateFlame == 60)
             {
                 //owner._trasnform.position -= Vector3.forward * 0.5f;
+                owner._forwardSpeed = 0.7f;
+            }
+            else if (owner._stateFlame == 140)
+            {
+                //owner._trasnform.position += Vector3.forward * 0.15f;
+                //owner._forwardSpeed = -0.15f;
+                owner._forwardSpeed = 0.15f;
+            }
+
+            if(owner._stateFlame >= 60 && owner._stateFlame <= 140)
+            {
+                owner._forwardSpeed -= 0.001f;
+            }
+
+            if(owner._stateFlame == 65)
+            {
                 owner._rushCollisiton.SetActive(true);
                 owner._wingRightCollisiton.SetActive(true);
                 owner._wingLeftCollisiton.SetActive(true);
-                owner._forwardSpeed = 0.5f;
             }
-            else if (owner._stateFlame <= 160)
+            else if(owner._stateFlame == 130)
             {
-                //owner._trasnform.position += Vector3.forward * 0.15f;
                 owner._rushCollisiton.SetActive(false);
                 owner._wingRightCollisiton.SetActive(false);
                 owner._wingLeftCollisiton.SetActive(false);
-                owner._forwardSpeed = -0.15f;
             }
-
-            
 
             owner._trasnform.position += owner._moveVelocity;
         }
@@ -54,7 +67,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateFlame >= 160)
+            if(owner._stateFlame >= 150)
             {
                 owner.ChangeState(_idle);
             }

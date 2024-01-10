@@ -109,7 +109,7 @@ public partial class PlayerState : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // ダメージを受けつける.
-        if(other.gameObject.tag == "MonsterAtCol" && !_flameAvoid && _currentState != _damage)
+        if(other.gameObject.tag == "MonsterAtCol" /*&& !_flameAvoid*/ && _currentState != _damage)
         {
             OnDamage();
             //Debug.Log("MonsterAtCol");

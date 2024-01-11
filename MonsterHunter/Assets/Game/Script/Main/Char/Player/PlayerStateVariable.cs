@@ -132,17 +132,14 @@ public partial class PlayerState
     // 一度通ったら二度は通らない
     private bool _isProcess = false;
 
-    // 現在の攻撃のモーション値.
-    //private int _currentAttackMotionValue = 0;
-    // 最大攻撃のモーション値.
-    //private int _maxAttackMotionValue = 0;
-
-    // 攻撃判定.
-
     // ダメージを与えられるかどうか.
     public bool _isCauseDamage = true;
 
-    /*アイドル状態時の変数*/
+    /*錬気ゲージ*/
+    // 最大錬気ゲージ.
+    private const float _maxRenkiGauge = 100;
+    // 現在の錬気ゲージ.
+    private float _currentRenkiGauge = 0;
 
 
     /*移動時の変数*/

@@ -302,6 +302,11 @@ public partial class PlayerState
     // ダメージを与えられるかの代入.
     public void SetIsCauseDamage(bool causeDamage) { _isCauseDamage = causeDamage; }
 
+    // 最大錬気ゲージ.
+    public float GetMaxRenkiGauge() { return _maxRenkiGauge; }
+    // 現在の錬気ゲージ.
+    public float GetCurrentRenkiGauge() { return _currentRenkiGauge; }
+
     // スティックの傾きによって距離を求める
     private float GetDistance()
     {

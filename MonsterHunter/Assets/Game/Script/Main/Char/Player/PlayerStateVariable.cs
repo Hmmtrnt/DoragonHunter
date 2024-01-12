@@ -137,7 +137,7 @@ public partial class PlayerState
 
     /*錬気ゲージ*/
     // 最大錬気ゲージ.
-    private const float _maxRenkiGauge = 100;
+    private float _maxRenkiGauge = 100;
     // 現在の錬気ゲージ.
     private float _currentRenkiGauge = 0;
 

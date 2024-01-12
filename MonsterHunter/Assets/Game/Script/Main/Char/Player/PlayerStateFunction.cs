@@ -271,19 +271,18 @@ public partial class PlayerState
     }
 
     // •Ï”‚ÌãŒÀ‰ºŒÀ‚ð“Ë”j‚µ‚È‚¢.
-    private void LimitStop()
+    private void LimitStop(ref float currentVariable, ref float maxVariable)
     {
-        // ƒXƒ^ƒ~ƒi.
-        if (_stamina >= _maxStamina)
+        // ãŒÀ“Ë”j–hŽ~.
+        if(currentVariable >= maxVariable)
         {
-            _stamina = _maxStamina;
+            currentVariable = maxVariable;
         }
-        if (_stamina < 0)
+        // ‰ºŒÀ“Ë”j–hŽ~.
+        if(currentVariable < 0)
         {
-            _stamina = 0;
+            currentVariable = 0;
         }
-
-
     }
 
     // ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìî•ñŽæ“¾.

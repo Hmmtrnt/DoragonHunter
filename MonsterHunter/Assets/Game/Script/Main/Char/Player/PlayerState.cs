@@ -66,7 +66,10 @@ public partial class PlayerState : MonoBehaviour
         CameraFollowUpdate();
         GroundPenetrationDisable();
 
-        
+        // スタミナ.
+        LimitStop(ref _stamina, ref _maxStamina);
+        LimitStop(ref _currentRenkiGauge, ref _maxRenkiGauge);
+
         // 乙処理.
         if(_hitPoint <= 0)
         {

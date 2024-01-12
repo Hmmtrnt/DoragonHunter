@@ -22,6 +22,7 @@ public partial class PlayerState
     private void StateTransitionInitialization()
     {
         _stateFlame = 0;
+        _maintainTime = 100;
     }
 
     /// <summary>
@@ -98,6 +99,11 @@ public partial class PlayerState
         _weaponObject.SetActive(_weaponActive);
         // 攻撃力の代入.
         _attackDamage = _attackPower * _MonsterFleshy;
+        // 練気ゲージ赤適用した時に攻撃力を上昇させる.
+        if(_applyRedRenkiGauge)
+        {
+            _attackDamage *= 1.12f;
+        }
 
     }
 
@@ -148,6 +154,22 @@ public partial class PlayerState
         {
             _text.text = "NONE";
         }
+    }
+
+    // 練気ゲージ赤になると効果を適用.
+    private void ApplyRedRenkiGauge()
+    {
+        if (_currentRedRenkiGauge > 0)
+        {
+            //_currentRedRenkiGauge = 100;
+            _applyRedRenkiGauge = true;
+        }
+        else if(_currentRedRenkiGauge == 0)
+        {
+            _applyRedRenkiGauge = false;
+        }
+
+        //Debug.Log(_applyRedRenkiGauge);
     }
 
     // プレイヤーの視野角.
@@ -228,7 +250,24 @@ public partial class PlayerState
     // 錬気ゲージ自然消費.
     private void RenkiNaturalConsume()
     {
-        _currentRenkiGauge -= 0.01f;
+        // 練気ゲージが下限突破や維持時間以外に消費.
+        if (_currentRenkiGauge <= 0 || _maintainTimeRenkiGauge > 0) return;
+        _currentRenkiGauge -= 0.03f;
+    }
+
+    // 練気ゲージ維持時間の経過.
+    private void MaintainElapsedTimeRenkiGauge()
+    {
+        if(_maintainTimeRenkiGauge <= 0) return;
+        _maintainTimeRenkiGauge--;
+    }
+
+    // 練気ゲージ赤自然消費.
+    private void RedRenkiNaturalConsume()
+    {
+        // 練気ゲージ赤が下限突破以外に消費.
+        if(_currentRedRenkiGauge <= 0) return;
+        _currentRedRenkiGauge -= 0.05f;
     }
 
     // 変数の上限下限を突破しない.
@@ -330,8 +369,14 @@ public partial class PlayerState
     public float GetMaxRenkiGauge() { return _maxRenkiGauge; }
     // 現在の錬気ゲージ.
     public float GetCurrentRenkiGauge() { return _currentRenkiGauge; }
+    // 最大練気ゲージ赤.
+    public float GetMaxRedRenkiGauge() { return _maxRedRenkiGauge; }
+    // 現在の練気ゲージ赤.
+    public float GetCurrentRedRenkiGauge() { return _currentRedRenkiGauge; }
+    // 気刃大回転斬りを行っている途中.
+    public bool GetRoundSlash() { return _drawnSpiritRoundSlash; }
 
-    // スティックの傾きによって距離を求める
+    // スティックの傾きによって距離を求める.
     private float GetDistance()
     {
         _currentDistance = (_debugSphere.transform.position - _transform.position).magnitude;

@@ -136,11 +136,22 @@ public partial class PlayerState
     public bool _isCauseDamage = true;
 
     /*錬気ゲージ*/
-    // 最大錬気ゲージ.
+    // 最大練気ゲージ.
     private float _maxRenkiGauge = 100;
-    // 現在の錬気ゲージ.
-    private float _currentRenkiGauge = 100;
-
+    // 現在の練気ゲージ.
+    public float _currentRenkiGauge = 0;
+    // 練気ゲージの増加量
+    public float _increaseAmountRenkiGauge = 0;
+    // 練気ゲージを維持する時間.
+    public int _maintainTimeRenkiGauge = 0;
+    // 練気ゲージを維持する時間を代入する変数.
+    public int _maintainTime = 0;
+    // 最大練気ゲージ赤.
+    private float _maxRedRenkiGauge = 100;
+    // 現在の練気ゲージ赤.
+    public float _currentRedRenkiGauge = 0;
+    // 練気ゲージ赤適用中.
+    private bool _applyRedRenkiGauge = false;
 
     /*移動時の変数*/
     // 走る時の移動倍率.

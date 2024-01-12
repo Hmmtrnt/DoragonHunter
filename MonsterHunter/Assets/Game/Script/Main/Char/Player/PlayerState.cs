@@ -68,7 +68,10 @@ public partial class PlayerState : MonoBehaviour
 
         // スタミナ.
         LimitStop(ref _stamina, ref _maxStamina);
+        // 練気ゲージ.
         LimitStop(ref _currentRenkiGauge, ref _maxRenkiGauge);
+        // 練気ゲージ赤
+        LimitStop(ref _currentRedRenkiGauge, ref _maxRedRenkiGauge);
 
         // 乙処理.
         if(_hitPoint <= 0)
@@ -84,9 +87,11 @@ public partial class PlayerState : MonoBehaviour
             AutoRecoveryStamina();
         }
 
-        Renki();
-
+        RenkiNaturalConsume();
+        MaintainElapsedTimeRenkiGauge();
+        RedRenkiNaturalConsume();
         StickDirection();
+        ApplyRedRenkiGauge();
     }
 
     private void OnCollisionEnter(Collision collision)

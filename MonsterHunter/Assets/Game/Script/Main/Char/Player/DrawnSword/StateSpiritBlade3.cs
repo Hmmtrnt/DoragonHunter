@@ -13,6 +13,8 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
             owner._attackPower = 40;
             owner._isCauseDamage = true;
+            owner._increaseAmountRenkiGauge = 0;
+            owner._currentRenkiGauge -= 20;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -113,7 +115,7 @@ public partial class PlayerState
             //}
             // 気刃大回転斬り.
             else if (owner._stateFlame >= owner._nextMotionFlame && 
-                owner._input._RightTrigger >= 0.5)
+                owner._input._RightTrigger >= 0.5 && owner._currentRenkiGauge >= 25)
             {
                 owner.ChangeState(_roundSlash);
             }

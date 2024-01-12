@@ -14,6 +14,8 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
             owner._attackPower = 114;
             owner._isCauseDamage = true;
+            owner._increaseAmountRenkiGauge = 0;
+            owner._currentRenkiGauge -= 15;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -102,7 +104,7 @@ public partial class PlayerState
             //}
             // 気刃斬り3.
             else if (owner._stateFlame >= owner._nextMotionFlame &&
-                owner._input._RightTrigger >= 0.5)
+                owner._input._RightTrigger >= 0.5 && owner._currentRenkiGauge >= 20)
             {
                 owner.ChangeState(_spiritBlade3);
             }

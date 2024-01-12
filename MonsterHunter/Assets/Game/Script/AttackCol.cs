@@ -1,4 +1,6 @@
-﻿using System.Buffers;
+﻿/*プレイヤーの攻撃判定*/
+
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,13 +9,11 @@ public class AttackCol : MonoBehaviour
 {
     private PlayerState _state;
 
-    // Start is called before the first frame update
     void Start()
     {
         _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -35,6 +35,23 @@ public class AttackCol : MonoBehaviour
         if (other.gameObject.tag == "MonsterHead")
         {
             _state._MonsterFleshy = 1.2f;
+            if(_state.GetIsCauseDamage())
+            {
+                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
+                _state._maintainTimeRenkiGauge = _state._maintainTime;
+
+                if(_state.GetRoundSlash())
+                {
+                    _state._currentRedRenkiGauge = 100;
+                }
+            }
+
+            //if(_state.CurrentState() == new StateRoundSlash())
+            //{
+            //    _state
+            //}  
+            
+
             _state._weaponActive = false;
             // ヒットストップ.
             // NOTE:コレジャナイ感、世界全体が止まっている.
@@ -43,24 +60,59 @@ public class AttackCol : MonoBehaviour
         else if(other.gameObject.tag == "MonsterBody")
         {
             _state._MonsterFleshy = 1.0f;
+            if (_state.GetIsCauseDamage())
+            {
+                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
+                _state._maintainTimeRenkiGauge = _state._maintainTime;
+                if (_state.GetRoundSlash())
+                {
+                    _state._currentRedRenkiGauge = 100;
+                }
+            }
             _state._weaponActive = false;
         }
         else if (other.gameObject.tag == "MonsterWingRight")
         {
             _state._MonsterFleshy = 0.9f;
+            if (_state.GetIsCauseDamage())
+            {
+                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
+                _state._maintainTimeRenkiGauge = _state._maintainTime;
+                if (_state.GetRoundSlash())
+                {
+                    _state._currentRedRenkiGauge = 100;
+                }
+            }
             _state._weaponActive = false;
         }
         else if( other.gameObject.tag == "MonsterWingLeft")
         {
             _state._MonsterFleshy = 0.9f;
+            if (_state.GetIsCauseDamage())
+            {
+                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
+                _state._maintainTimeRenkiGauge = _state._maintainTime;
+                if (_state.GetRoundSlash())
+                {
+                    _state._currentRedRenkiGauge = 100;
+                }
+            }
             _state._weaponActive = false;
         }
         else if(other.gameObject.tag == "MonsterTail")
         {
             _state._MonsterFleshy = 1.1f;
+            if (_state.GetIsCauseDamage())
+            {
+                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
+                _state._maintainTimeRenkiGauge = _state._maintainTime;
+                if (_state.GetRoundSlash())
+                {
+                    _state._currentRedRenkiGauge = 100;
+                }
+            }
             _state._weaponActive = false;
         }
-        
     }
 
     private void OnTriggerExit(Collider other)

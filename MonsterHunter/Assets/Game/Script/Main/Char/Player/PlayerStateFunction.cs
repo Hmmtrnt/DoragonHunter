@@ -270,6 +270,22 @@ public partial class PlayerState
         }
     }
 
+    // 変数の上限下限を突破しない.
+    private void LimitStop()
+    {
+        // スタミナ.
+        if (_stamina >= _maxStamina)
+        {
+            _stamina = _maxStamina;
+        }
+        if (_stamina < 0)
+        {
+            _stamina = 0;
+        }
+
+
+    }
+
     // ダッシュしているかどうかの情報取得.
     public bool GetIsDashing() { return _isDashing; }
 

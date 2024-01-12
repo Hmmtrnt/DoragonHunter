@@ -66,15 +66,7 @@ public partial class PlayerState : MonoBehaviour
         CameraFollowUpdate();
         GroundPenetrationDisable();
 
-        // スタミナの上限、下限を超えないようにする.
-        if (_stamina >= _maxStamina)
-        {
-            _stamina = _maxStamina;
-        }
-        if(_stamina < 0)
-        {
-            _stamina = 0;
-        }
+        
         // 乙処理.
         if(_hitPoint <= 0)
         {

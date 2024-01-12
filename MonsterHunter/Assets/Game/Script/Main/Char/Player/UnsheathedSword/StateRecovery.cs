@@ -6,6 +6,7 @@ public partial class PlayerState
 {
     public class StateRecovery : StateBase
     {
+        // 回復時間
         private int _recoveryTime = 0;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
@@ -65,9 +66,14 @@ public partial class PlayerState
         // 回復.
         private void Recovery(PlayerState owner)
         {
-            if (owner._hitPoint >= owner._maxHitPoint) return;
+            //if (owner._hitPoint >= owner._maxHitPoint) return;
 
             owner._hitPoint += owner._recoveryAmount;
+
+            if(owner._hitPoint >= owner._maxHitPoint)
+            {
+                owner._hitPoint = owner._maxHitPoint;
+            }
         }
     }
 

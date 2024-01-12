@@ -84,6 +84,8 @@ public partial class PlayerState : MonoBehaviour
             AutoRecoveryStamina();
         }
 
+        Renki();
+
         StickDirection();
     }
 

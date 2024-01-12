@@ -225,6 +225,28 @@ public partial class PlayerState
         _stamina += _autoRecaveryStamina;
     }
 
+    // ˜B‹CƒQ[ƒWŽ©‘RÁ”ï.
+    private void RenkiNaturalConsume()
+    {
+        _currentRenkiGauge -= 0.01f;
+    }
+
+    // •Ï”‚ÌãŒÀ‰ºŒÀ‚ð“Ë”j‚µ‚È‚¢.
+    private void LimitStop(ref float currentVariable, ref float maxVariable)
+    {
+        // ãŒÀ“Ë”j–hŽ~.
+        if (currentVariable >= maxVariable)
+        {
+            currentVariable = maxVariable;
+        }
+        // ‰ºŒÀ“Ë”j–hŽ~.
+        if (currentVariable < 0)
+        {
+            currentVariable = 0;
+        }
+    }
+    
+
     // ‘Oi‚·‚é.
     private void ForwardStep(float speedPower)
     {
@@ -270,20 +292,7 @@ public partial class PlayerState
         }
     }
 
-    // •Ï”‚ÌãŒÀ‰ºŒÀ‚ð“Ë”j‚µ‚È‚¢.
-    private void LimitStop(ref float currentVariable, ref float maxVariable)
-    {
-        // ãŒÀ“Ë”j–hŽ~.
-        if(currentVariable >= maxVariable)
-        {
-            currentVariable = maxVariable;
-        }
-        // ‰ºŒÀ“Ë”j–hŽ~.
-        if(currentVariable < 0)
-        {
-            currentVariable = 0;
-        }
-    }
+    
 
     // ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìî•ñŽæ“¾.
     public bool GetIsDashing() { return _isDashing; }

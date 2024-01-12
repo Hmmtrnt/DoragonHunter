@@ -139,7 +139,7 @@ public partial class PlayerState
     // 最大錬気ゲージ.
     private float _maxRenkiGauge = 100;
     // 現在の錬気ゲージ.
-    private float _currentRenkiGauge = 0;
+    private float _currentRenkiGauge = 100;
 
 
     /*移動時の変数*/

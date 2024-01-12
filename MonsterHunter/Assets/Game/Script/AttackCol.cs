@@ -35,23 +35,12 @@ public class AttackCol : MonoBehaviour
         if (other.gameObject.tag == "MonsterHead")
         {
             _state._MonsterFleshy = 1.2f;
-            if(_state.GetIsCauseDamage())
-            {
-                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
-                _state._maintainTimeRenkiGauge = _state._maintainTime;
-
-                if(_state.GetRoundSlash())
-                {
-                    _state._currentRedRenkiGauge = 100;
-                }
-            }
+            RenkiGaugeManager();
 
             //if(_state.CurrentState() == new StateRoundSlash())
             //{
             //    _state
             //}  
-            
-
             _state._weaponActive = false;
             // ヒットストップ.
             // NOTE:コレジャナイ感、世界全体が止まっている.
@@ -60,57 +49,25 @@ public class AttackCol : MonoBehaviour
         else if(other.gameObject.tag == "MonsterBody")
         {
             _state._MonsterFleshy = 1.0f;
-            if (_state.GetIsCauseDamage())
-            {
-                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
-                _state._maintainTimeRenkiGauge = _state._maintainTime;
-                if (_state.GetRoundSlash())
-                {
-                    _state._currentRedRenkiGauge = 100;
-                }
-            }
+            RenkiGaugeManager();
             _state._weaponActive = false;
         }
         else if (other.gameObject.tag == "MonsterWingRight")
         {
             _state._MonsterFleshy = 0.9f;
-            if (_state.GetIsCauseDamage())
-            {
-                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
-                _state._maintainTimeRenkiGauge = _state._maintainTime;
-                if (_state.GetRoundSlash())
-                {
-                    _state._currentRedRenkiGauge = 100;
-                }
-            }
+            RenkiGaugeManager();
             _state._weaponActive = false;
         }
         else if( other.gameObject.tag == "MonsterWingLeft")
         {
             _state._MonsterFleshy = 0.9f;
-            if (_state.GetIsCauseDamage())
-            {
-                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
-                _state._maintainTimeRenkiGauge = _state._maintainTime;
-                if (_state.GetRoundSlash())
-                {
-                    _state._currentRedRenkiGauge = 100;
-                }
-            }
+            RenkiGaugeManager();
             _state._weaponActive = false;
         }
         else if(other.gameObject.tag == "MonsterTail")
         {
             _state._MonsterFleshy = 1.1f;
-            if (_state.GetIsCauseDamage())
-            {
-                _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
-                _state._maintainTimeRenkiGauge = _state._maintainTime;
-                if (_state.GetRoundSlash())
-                {
-                    _state._currentRedRenkiGauge = 100;
-                }
-            }
+            RenkiGaugeManager();
             _state._weaponActive = false;
         }
     }
@@ -123,4 +80,20 @@ public class AttackCol : MonoBehaviour
         //    _col.enabled = true;
         //}
     }
+
+
+    // 錬気ゲージ管理.
+    private void RenkiGaugeManager()
+    {
+        if (_state.GetIsCauseDamage())
+        {
+            _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
+            _state._maintainTimeRenkiGauge = _state._maintainTime;
+            if (_state.GetRoundSlash())
+            {
+                _state._currentRedRenkiGauge = 100;
+            }
+        }
+    }
+
 }

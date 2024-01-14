@@ -89,7 +89,7 @@ public partial class PlayerState : MonoBehaviour
 
         RenkiNaturalConsume();
         MaintainElapsedTimeRenkiGauge();
-        RedRenkiNaturalConsume();
+        //RedRenkiNaturalConsume();
         StickDirection();
         ApplyRedRenkiGauge();
     }

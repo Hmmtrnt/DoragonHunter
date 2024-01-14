@@ -15,8 +15,8 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
             owner._attackPower = 102;
             owner._isCauseDamage = true;
-            owner._increaseAmountRenkiGauge = 0;
-            owner._currentRenkiGauge -= 10;
+            owner._increaseAmountRenkiGauge = 10;
+            //owner._currentRenkiGauge = 10;
         }
 
         public override void OnUpdate(PlayerState owner)

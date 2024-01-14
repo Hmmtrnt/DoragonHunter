@@ -159,12 +159,12 @@ public partial class PlayerState
     // 練気ゲージ赤になると効果を適用.
     private void ApplyRedRenkiGauge()
     {
-        if (_currentRedRenkiGauge > 0)
+        if (_currentRenkiGauge > 75)
         {
             //_currentRedRenkiGauge = 100;
             _applyRedRenkiGauge = true;
         }
-        else if(_currentRedRenkiGauge == 0)
+        else if(_currentRenkiGauge < 75)
         {
             _applyRedRenkiGauge = false;
         }

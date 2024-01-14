@@ -104,7 +104,7 @@ public partial class PlayerState
         {
             _attackDamage *= 1.12f;
         }
-
+        Debug.Log(_attackDamage);
     }
 
     // ƒJƒƒ‰‚Ì’‹“_‚Ì‹““®.

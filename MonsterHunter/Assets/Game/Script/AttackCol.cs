@@ -10,13 +10,14 @@ public class AttackCol : MonoBehaviour
     private PlayerState _state;
     private PlayerHitStopManager _hitStop;
     private SEManager _seManager;
+    private SEManager.SE _se;
+    
 
     void Start()
     {
         _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
-
     }
 
     void Update()
@@ -71,11 +72,11 @@ public class AttackCol : MonoBehaviour
 
         if(_state.GetRoundSlash())
         {
-            _seManager.PlaySE(1);
+            _seManager.PlaySE((int)SEManager.SE.RoundSlash);
         }
         else
         {
-            _seManager.PlaySE(0);
+            _seManager.PlaySE((int)SEManager.SE.Slash);
         }
     }
 }

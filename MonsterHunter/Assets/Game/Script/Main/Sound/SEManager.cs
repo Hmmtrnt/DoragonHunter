@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SEManager : MonoBehaviour
 {
-    enum SE
+    public enum SE
     {
         Slash,// aŒ‚‰¹.
         RoundSlash,// ‹Cn‘å‰ñ“]a‚è.

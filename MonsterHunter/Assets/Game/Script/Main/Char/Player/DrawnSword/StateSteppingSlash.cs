@@ -18,6 +18,7 @@ public partial class PlayerState
             owner._attackPower = 81;
             //owner._weaponActive = true;
             owner._increaseAmountRenkiGauge = 7;
+            owner._hitStopTime = 0.05f;
         }
 
         public override void OnUpdate(PlayerState owner)

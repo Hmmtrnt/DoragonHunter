@@ -14,6 +14,7 @@ public partial class PlayerState
             owner._attackPower = 73;
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 5;
+            owner._hitStopTime = 0.02f;
         }
 
         public override void OnUpdate(PlayerState owner)

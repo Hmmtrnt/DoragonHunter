@@ -1,8 +1,10 @@
+/*プレイヤーのヒットストップ*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitStopManager : MonoBehaviour
+public class PlayerHitStopManager : MonoBehaviour
 {
     private PlayerState _playerState;
     private Animator _anim;
@@ -24,19 +26,17 @@ public class HitStopManager : MonoBehaviour
 
     private IEnumerator HitStopCoroutine(float HitStopTime)
     {
-        // 時間停止開始.
-        //Time.timeScale = 0f;
-        //_anim.StopRecording();
+        // プレイヤーのフレーム数の停止.
         _playerState._currentHitStop = true;
+        // アニメーションの停止.
         _anim.speed = 0.0f;
 
         // 指定した時間まで停止.
         yield return new WaitForSecondsRealtime(HitStopTime);
 
-        //時間停止終了.
-        //Time.timeScale = 1f;
-        //_anim.StartPlayback();
+        // プレイヤーのフレーム数の停止.
         _playerState._currentHitStop = false;
+        // アニメーションの停止.
         _anim.speed = 1.0f;
     }
 }

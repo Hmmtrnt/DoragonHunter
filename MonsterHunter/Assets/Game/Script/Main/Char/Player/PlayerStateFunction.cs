@@ -25,6 +25,13 @@ public partial class PlayerState
         _maintainTime = 100;
     }
 
+    // 状態終了時の初期化.
+    // まだ使う予定なし.
+    private void StateTransitionEnd()
+    {
+
+    }
+
     /// <summary>
     /// ステート変更.
     /// </summary>
@@ -113,7 +120,7 @@ public partial class PlayerState
         {
             _attackDamage *= 1.12f;
         }
-        Debug.Log(_currentRenkiGauge);
+        //Debug.Log(_currentRenkiGauge);
 
         RenkiGaugeDraw();
     }

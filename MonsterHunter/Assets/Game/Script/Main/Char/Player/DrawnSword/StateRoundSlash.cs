@@ -17,6 +17,7 @@ public partial class PlayerState
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 20;
             //owner._currentRenkiGauge -= 25;
+            owner._hitStopTime = 0.1f;
         }
 
         public override void OnUpdate(PlayerState owner)

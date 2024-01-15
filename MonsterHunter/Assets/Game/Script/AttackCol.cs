@@ -8,12 +8,12 @@ using UnityEngine;
 public class AttackCol : MonoBehaviour
 {
     private PlayerState _state;
-    private HitStopManager _hitStop;
+    private PlayerHitStopManager _hitStop;
 
     void Start()
     {
         _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
-        _hitStop = GameObject.Find("HitStopManager").GetComponent<HitStopManager>();
+        _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class AttackCol : MonoBehaviour
 
             // ヒットストップ.
             // NOTE:コレジャナイ感、世界全体が止まっている.
-            _hitStop.StartHitStop(0.1f);
+            //_hitStop.StartHitStop(0.1f);
         }
         else if(other.gameObject.tag == "MonsterBody")
         {
@@ -54,12 +54,14 @@ public class AttackCol : MonoBehaviour
         
     }
 
-    // ダメージを与えた瞬間、肉質を変化.
+    // ダメージを与えた瞬間、肉質を変化やヒットストップ追加.
     // TODO:変数名が決まってない.
     private void FleshyChange(float monsterFleshy)
     {
         _state._MonsterFleshy = monsterFleshy;
         _state.RenkiGaugeFluctuation();
         _state._weaponActive = false;
+        // プレイヤーのヒットストップ.
+        _hitStop.StartHitStop(_state._hitStopTime);
     }
 }

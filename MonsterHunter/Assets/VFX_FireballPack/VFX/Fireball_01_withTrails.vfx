@@ -19,7 +19,7 @@ MonoBehaviour:
       x: 2405
       y: -444
       width: 941
-      height: 1902
+      height: 1936
     contents:
     - model: {fileID: 8926484042661615113}
       id: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
     x: 1602
     y: -444
     width: 1744
-    height: 1917
+    height: 1936
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -1553,7 +1553,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0
     m_Space: 2147483647
   m_Property:
     name: DelayBeforeLoop
@@ -2678,7 +2678,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661615156}
-  m_UIPosition: {x: 2896, y: 428}
+  m_UIPosition: {x: 2897, y: 428}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []

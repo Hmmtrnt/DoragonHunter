@@ -57,9 +57,9 @@ public class FireBall : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
+        //if(other.gameObject.tag == "Player")
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 }

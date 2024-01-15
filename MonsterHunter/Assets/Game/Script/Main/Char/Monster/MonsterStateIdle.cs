@@ -31,6 +31,26 @@ public partial class MonsterState
         {
             if (owner._stateFlame <= 100) return;
 
+            // デバッグ用.
+            // 近距離.
+            if(owner._isNearDistance)
+            {
+                // 正面(主にかみつき).
+                if (owner._viewDirection[(int)viewDirection.FORWARD])
+                {
+                    owner.ChangeState(_bless);
+                }
+            }
+            // 遠距離.
+            else
+            {
+                // 正面(主にかみつき).
+                if (owner._viewDirection[(int)viewDirection.FORWARD])
+                {
+                    owner.ChangeState(_bless);
+                }
+            }
+
             //// 近距離.
             //if (owner._isNearDistance)
             //{

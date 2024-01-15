@@ -21,79 +21,43 @@ public class AttackCol : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if(/*_state._isCauseDamage &&*/ other.gameObject.tag == "Monster")
-        //{
-        //    Debug.Log("当たった");
-
-        //    _state._isCauseDamage = false;
-
-        //}
-
-        //Debug.Log(other.gameObject.tag);
-        //Debug.Log(_state._MonsterFleshy);
-
         if (other.gameObject.tag == "MonsterHead")
         {
-            _state._MonsterFleshy = 1.2f;
-            RenkiGaugeManager();
+            FleshyChange(1.2f);
 
-            //if(_state.CurrentState() == new StateRoundSlash())
-            //{
-            //    _state
-            //}  
-            _state._weaponActive = false;
             // ヒットストップ.
             // NOTE:コレジャナイ感、世界全体が止まっている.
             //HitStopManager.instance.StartHitStop(0.1f);
         }
         else if(other.gameObject.tag == "MonsterBody")
         {
-            _state._MonsterFleshy = 1.0f;
-            _state.RenkiGaugeFluctuation();
-            _state._weaponActive = false;
+            FleshyChange(1.0f);
         }
         else if (other.gameObject.tag == "MonsterWingRight")
         {
-            _state._MonsterFleshy = 0.9f;
-            _state.RenkiGaugeFluctuation();
-            _state._weaponActive = false;
+            FleshyChange(0.9f);
         }
         else if( other.gameObject.tag == "MonsterWingLeft")
         {
-            _state._MonsterFleshy = 0.9f;
-            _state.RenkiGaugeFluctuation();
-            _state._weaponActive = false;
+            FleshyChange(0.9f);
         }
         else if(other.gameObject.tag == "MonsterTail")
         {
-            _state._MonsterFleshy = 1.1f;
-            _state.RenkiGaugeFluctuation();
-            _state._weaponActive = false;
+            FleshyChange(1.1f);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //if(other.gameObject.tag == "Monster")
-        //{
-        //    Debug.Log("通る");
-        //    _col.enabled = true;
-        //}
+        
     }
 
-
-    // 錬気ゲージ管理.
-    private void RenkiGaugeManager()
+    // ダメージを与えた瞬間、肉質を変化.
+    // TODO:変数名が決まってない.
+    private void FleshyChange(float monsterFleshy)
     {
-        if (_state.GetIsCauseDamage())
-        {
-            _state._currentRenkiGauge += _state._increaseAmountRenkiGauge;
-            _state._maintainTimeRenkiGauge = _state._maintainTime;
-            if (_state.GetRoundSlash())
-            {
-                _state._currentRedRenkiGauge = 100;
-            }
-        }
+        _state._MonsterFleshy = monsterFleshy;
+        _state.RenkiGaugeFluctuation();
+        _state._weaponActive = false;
     }
-
 }

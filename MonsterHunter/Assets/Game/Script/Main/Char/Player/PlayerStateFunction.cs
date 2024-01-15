@@ -288,27 +288,6 @@ public partial class PlayerState
     // 練気ゲージ赤の表示.
     private void RenkiGaugeDraw()
     {
-        //if (GetIsCauseDamage())
-        //{
-        //    // 錬気ゲージ増加.
-        //    _currentRenkiGauge += _increaseAmountRenkiGauge;
-        //    // しばらく練気ゲージを減らさない.
-        //    _maintainTimeRenkiGauge = _maintainTime;
-        //    //if (GetRoundSlash())
-        //    //{
-        //    //    _currentRedRenkiGauge = 100;
-        //    //}
-        //    // 錬気ゲージ赤のバフを適用した際に表示.
-        //    if(_applyRedRenkiGauge)
-        //    {
-        //        _currentRedRenkiGauge = 100;
-        //    }
-        //    else
-        //    {
-        //        _currentRedRenkiGauge = 0;
-        //    }
-        //}
-
         // 錬気ゲージ赤のバフを適用した際に表示.
         if(_applyRedRenkiGauge)
         {

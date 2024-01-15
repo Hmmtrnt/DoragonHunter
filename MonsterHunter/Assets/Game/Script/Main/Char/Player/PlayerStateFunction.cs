@@ -79,6 +79,15 @@ public partial class PlayerState
         _animator.SetBool("Down", _downMotion);
     }
 
+    // Œ»İ‚Ìó‘Ô‚ÌƒtƒŒ[ƒ€”ŠÇ—.
+    private void StateFlameManager()
+    {
+        if(!_currentHitStop)
+        {
+            _stateFlame++;
+        }
+    }
+
     // ˆê’è‚Éî•ñ‚ğ‘ã“ü.
     private void SubstituteVariableFixedUpdate()
     {

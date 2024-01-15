@@ -56,7 +56,9 @@ public partial class PlayerState : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _stateFlame++;
+        //_stateFlame++;
+
+        StateFlameManager();
 
         Debug.Assert(_text != null);
 

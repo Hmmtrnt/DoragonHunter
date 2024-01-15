@@ -8,10 +8,12 @@ using UnityEngine;
 public class AttackCol : MonoBehaviour
 {
     private PlayerState _state;
+    private HitStopManager _hitStop;
 
     void Start()
     {
         _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _hitStop = GameObject.Find("HitStopManager").GetComponent<HitStopManager>();
     }
 
     void Update()
@@ -27,7 +29,7 @@ public class AttackCol : MonoBehaviour
 
             // ヒットストップ.
             // NOTE:コレジャナイ感、世界全体が止まっている.
-            //HitStopManager.instance.StartHitStop(0.1f);
+            _hitStop.StartHitStop(0.1f);
         }
         else if(other.gameObject.tag == "MonsterBody")
         {

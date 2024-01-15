@@ -84,8 +84,12 @@ public partial class PlayerState
 
     // モーションフレーム.
     private int _motionFrame = 0;
-
+    // 現在の状態のフレーム数.
     private int _stateFlame = 0;
+    // ヒットストップ中かどうか.
+    public bool _currentHitStop = false;
+    // ヒットストップ時間.
+    public float _hitStopTime = 0;
 
     // モンスターに与えるダメージ.
     private float _attackDamage = 0.0f;

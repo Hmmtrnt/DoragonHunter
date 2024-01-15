@@ -104,7 +104,9 @@ public partial class PlayerState
         {
             _attackDamage *= 1.12f;
         }
-        Debug.Log(_attackDamage);
+        Debug.Log(_currentRenkiGauge);
+
+        RenkiGaugeDraw();
     }
 
     // カメラの注視点の挙動.
@@ -263,11 +265,59 @@ public partial class PlayerState
     }
 
     // 練気ゲージ赤自然消費.
+    // 使っていない.
     private void RedRenkiNaturalConsume()
     {
         // 練気ゲージ赤が下限突破以外に消費.
         if(_currentRedRenkiGauge <= 0) return;
         _currentRedRenkiGauge -= 0.05f;
+    }
+
+    // 錬気ゲージの増減処理.
+    public void RenkiGaugeFluctuation()
+    {
+        if (GetIsCauseDamage())
+        {
+            // 錬気ゲージ増加.
+            _currentRenkiGauge += _increaseAmountRenkiGauge;
+            // しばらく練気ゲージを減らさない.
+            _maintainTimeRenkiGauge = _maintainTime;
+        }
+    }
+
+    // 練気ゲージ赤の表示.
+    private void RenkiGaugeDraw()
+    {
+        //if (GetIsCauseDamage())
+        //{
+        //    // 錬気ゲージ増加.
+        //    _currentRenkiGauge += _increaseAmountRenkiGauge;
+        //    // しばらく練気ゲージを減らさない.
+        //    _maintainTimeRenkiGauge = _maintainTime;
+        //    //if (GetRoundSlash())
+        //    //{
+        //    //    _currentRedRenkiGauge = 100;
+        //    //}
+        //    // 錬気ゲージ赤のバフを適用した際に表示.
+        //    if(_applyRedRenkiGauge)
+        //    {
+        //        _currentRedRenkiGauge = 100;
+        //    }
+        //    else
+        //    {
+        //        _currentRedRenkiGauge = 0;
+        //    }
+        //}
+
+        // 錬気ゲージ赤のバフを適用した際に表示.
+        if(_applyRedRenkiGauge)
+        {
+            _currentRedRenkiGauge = 100;
+        }
+        else
+        {
+            _currentRedRenkiGauge = 0;
+        }
     }
 
     // 変数の上限下限を突破しない.

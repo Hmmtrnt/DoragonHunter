@@ -17,7 +17,7 @@ public partial class PlayerState
             owner._isCauseDamage = true;
             owner._attackPower = 81;
             //owner._weaponActive = true;
-            owner._increaseAmountRenkiGauge = 10;
+            owner._increaseAmountRenkiGauge = 7;
         }
 
         public override void OnUpdate(PlayerState owner)

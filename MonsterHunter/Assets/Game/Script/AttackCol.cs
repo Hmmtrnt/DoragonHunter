@@ -49,25 +49,25 @@ public class AttackCol : MonoBehaviour
         else if(other.gameObject.tag == "MonsterBody")
         {
             _state._MonsterFleshy = 1.0f;
-            RenkiGaugeManager();
+            _state.RenkiGaugeFluctuation();
             _state._weaponActive = false;
         }
         else if (other.gameObject.tag == "MonsterWingRight")
         {
             _state._MonsterFleshy = 0.9f;
-            RenkiGaugeManager();
+            _state.RenkiGaugeFluctuation();
             _state._weaponActive = false;
         }
         else if( other.gameObject.tag == "MonsterWingLeft")
         {
             _state._MonsterFleshy = 0.9f;
-            RenkiGaugeManager();
+            _state.RenkiGaugeFluctuation();
             _state._weaponActive = false;
         }
         else if(other.gameObject.tag == "MonsterTail")
         {
             _state._MonsterFleshy = 1.1f;
-            RenkiGaugeManager();
+            _state.RenkiGaugeFluctuation();
             _state._weaponActive = false;
         }
     }

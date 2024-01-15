@@ -9,11 +9,14 @@ public class AttackCol : MonoBehaviour
 {
     private PlayerState _state;
     private PlayerHitStopManager _hitStop;
+    private SEManager _seManager;
 
     void Start()
     {
         _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+
     }
 
     void Update()
@@ -26,6 +29,8 @@ public class AttackCol : MonoBehaviour
         if (other.gameObject.tag == "MonsterHead")
         {
             FleshyChange(1.2f);
+
+            
 
             // ヒットストップ.
             // NOTE:コレジャナイ感、世界全体が止まっている.
@@ -63,5 +68,14 @@ public class AttackCol : MonoBehaviour
         _state._weaponActive = false;
         // プレイヤーのヒットストップ.
         _hitStop.StartHitStop(_state._hitStopTime);
+
+        if(_state.GetRoundSlash())
+        {
+            _seManager.PlaySE(1);
+        }
+        else
+        {
+            _seManager.PlaySE(0);
+        }
     }
 }

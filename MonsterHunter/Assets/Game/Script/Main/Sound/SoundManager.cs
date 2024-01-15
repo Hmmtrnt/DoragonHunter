@@ -6,15 +6,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    enum BGM
-    {
-        BGMNum// BGM”.
-    }
+    
 
-    enum SE
-    {
-        Slash,// aŒ‚‰¹.
-        RoundSlash,// ‹Cn‘å‰ñ“]a‚è.
-        SENum// SE”.
-    }
+    
 }

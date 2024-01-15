@@ -6,20 +6,38 @@ using UnityEngine;
 
 public class SEManager : MonoBehaviour
 {
+    enum SE
+    {
+        Slash,// aŒ‚‰¹.
+        RoundSlash,// ‹Cn‘å‰ñ“]a‚è.
+        SENum// SE”.
+    }
+
     // SE‘fŞ.
     public AudioClip[] _audio;
+
+    public AudioClip _test;
+
     // ”­‰¹
     private AudioSource _audioSource;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // ‰¹‚ª–Â‚é‚©‚Ç‚¤‚©Šm”F.
+        //if(Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    _audioSource.PlayOneShot(_test);
+        //}
+    }
+
+    // SE‚ğ–Â‚ç‚·.
+    public void PlaySE(int SENunber)
+    {
+        _audioSource.PlayOneShot(_audio[SENunber]);
     }
 }

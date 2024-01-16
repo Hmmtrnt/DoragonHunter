@@ -51,6 +51,16 @@ public partial class MonsterState
             _tailCollisiton[tailColNum].SetActive(false);
         }
         _rotateCollisiton.SetActive(false);
+
+        // ‘Ì—Í‚ÌŒˆ’è.
+        if(_HitPointMany)
+        {
+            _HitPoint = 10000;
+        }
+        else
+        {
+            _HitPoint = 3000;
+        }
     }
 
     // ŒvZ‚µ‚½î•ñ‚Ì‘ã“ü.

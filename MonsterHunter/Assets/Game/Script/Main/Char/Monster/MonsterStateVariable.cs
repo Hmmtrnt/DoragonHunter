@@ -91,7 +91,7 @@ public partial class MonsterState
 
     // デバッグ用ステータス
     // 体力
-    private float _HitPoint = 10000;
+    private float _HitPoint = 0;
     // 攻撃力
     private float _AttackPower = 5;
 
@@ -114,6 +114,9 @@ public partial class MonsterState
 
     // ダメージを受けるかどうか.
     private bool _takeDamage = false;
+
+    // モンスターの体力量が多いか少ないか.
+    private bool _HitPointMany = false;
 
     // デバッグ用テキスト
     private Text _text;

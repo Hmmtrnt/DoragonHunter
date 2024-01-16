@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Game/Scene/TitleScene.unity
     guid: a4083fc0bcbd3b344b6174385685548a
   - enabled: 1
+    path: Assets/Game/Scene/SelectScene.unity
+    guid: ccc55d90ee19c43468a8ee28899dc80f
+  - enabled: 1
     path: Assets/Game/Scene/MainScene.unity
     guid: 4feeaf6aca8e2d34e90f3277e67c7742
   - enabled: 1

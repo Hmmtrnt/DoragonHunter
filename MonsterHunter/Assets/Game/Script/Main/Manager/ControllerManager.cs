@@ -56,6 +56,9 @@ public class ControllerManager : MonoBehaviour
     public bool _MenuButton;
     public bool _MenuButtonDown;
     public bool _MenuButtonUp;
+
+    // PressAnyButtonいずれかのボタンを押したとき.
+    public bool _PressAnyButton;
     
     void Update()
     {
@@ -109,6 +112,7 @@ public class ControllerManager : MonoBehaviour
         _MenuButtonDown = Input.GetKeyDown("joystick button 7");
         _MenuButtonUp = Input.GetKeyUp("joystick button 7");
 
-
+        _PressAnyButton = _AButtonDown || _BButtonDown || _XButtonDown || _YButtonDown ||
+            _LBButtonDown || _RBButtonDown || _LeftStickButtonDown || _RightStickButtonDown;
     }
 }

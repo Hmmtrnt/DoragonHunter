@@ -20,7 +20,7 @@ public class TitleUpdate : MonoBehaviour
     public GameObject[] _selectShadow;
 
     // PressAnyButtonを押したときtrueにする.
-    private bool _pressAnyPush = false;
+    public bool _pressAnyPush = false;
 
     void Start()
     {

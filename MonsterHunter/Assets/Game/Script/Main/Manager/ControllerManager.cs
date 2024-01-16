@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿/*コントローラーの入力情報*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ControllerManager : MonoBehaviour
 {
-    // スティックの入力情報
+    // スティックの入力情報.
     public float _LeftStickHorizontal = 0;
     public float _LeftStickVertical = 0;
     public bool  _LeftStickButton;
@@ -17,11 +19,16 @@ public class ControllerManager : MonoBehaviour
     public bool  _RightStickButtonDown;
     public bool  _RightStickButtonUp;
 
-    // トリガー入力情報
+    // 十字キーの入力情報.
+    public float _RightLeftCrossKey = 0;
+    public float _UpDownCrossKey = 0;
+
+
+    // トリガー入力情報.
     public float _LeftTrigger = 0;
     public float _RightTrigger = 0;
 
-    // Xboxボタン入力情報
+    // Xboxボタン入力情報.
     // Button：長押し
     // Down  ：押した瞬間
     // Up    ：押し終わる瞬間
@@ -59,10 +66,12 @@ public class ControllerManager : MonoBehaviour
 
     // PressAnyButtonいずれかのボタンを押したとき.
     public bool _PressAnyButton;
+
+    
     
     void Update()
     {
-        // スティックの入力情報取得
+        // スティックの入力情報取得.
         _LeftStickHorizontal = Input.GetAxis("HorizontalLeft");
         _LeftStickVertical = Input.GetAxis("VerticalLeft");
         _LeftStickButton = Input.GetKey("joystick button 8");
@@ -75,11 +84,15 @@ public class ControllerManager : MonoBehaviour
         _RightStickButtonDown = Input.GetKeyDown("joystick button 9");
         _RightStickButtonUp = Input.GetKeyUp("joystick button 9");
 
-        // トリガー入力情報
+        // 十字キー入力情報取得.
+        _RightLeftCrossKey = Input.GetAxis("CrossKeyRightLeft");
+        _UpDownCrossKey = Input.GetAxis("CrossKeyUpDown");
+
+        // トリガー入力情報取得.
         _LeftTrigger = Input.GetAxis("LTrigger");
         _RightTrigger = Input.GetAxis("RTrigger");
 
-        // ボタン入力情報
+        // ボタン入力情報取得.
         _AButton = Input.GetKey("joystick button 0");
         _AButtonDown = Input.GetKeyDown("joystick button 0");
         _AButtonUp = Input.GetKeyUp("joystick button 0");
@@ -112,6 +125,7 @@ public class ControllerManager : MonoBehaviour
         _MenuButtonDown = Input.GetKeyDown("joystick button 7");
         _MenuButtonUp = Input.GetKeyUp("joystick button 7");
 
+        // PressAnyKey情報取得.
         _PressAnyButton = _AButtonDown || _BButtonDown || _XButtonDown || _YButtonDown ||
             _LBButtonDown || _RBButtonDown || _LeftStickButtonDown || _RightStickButtonDown;
     }

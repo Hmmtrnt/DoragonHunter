@@ -13,9 +13,6 @@ public class SelectUi : MonoBehaviour
     private ControllerManager _controllerManager;
     // 選択するUIが動くインターバル.
     private int _selectMoveInterval = 0;
-    private float _selectMoveTime = 2;
-    // 選択UIを押してすぐに動いたかどうか.
-    private bool _selectMoveFirst = false;
 
     // 現在選ばれている選択番号.
     // 1.ゲームスタート.
@@ -33,6 +30,7 @@ public class SelectUi : MonoBehaviour
     void Update()
     {
         SelectUpdate();
+        CrossKeyPushFlameCount()
     }
 
     private void FixedUpdate()
@@ -54,69 +52,28 @@ public class SelectUi : MonoBehaviour
     // pressAnyButtonを押したら選択できるようにする.
     private void SelectUpdate()
     {
-        if (!_titleUpdate._pressAnyPush) return;
+        //if (!_titleUpdate._pressAnyPush) return;
 
+        //if(_controllerManager._UpDownCrossKey == 1 && _selectNum == 2)
+        //{
+        //    _selectNum = 1;
+        //}
+        //else if(_controllerManager._UpDownCrossKey == -1 && _selectNum == 1)
+        //{
+        //    _selectNum = 2;
+        //}
+
+
+    }
+
+    // 十字キーを押している時間.
+    private void CrossKeyPushFlameCount()
+    {
+        // 十字キーを押している間、時間を増やす.
         if(_controllerManager._UpDownCrossKey != 0)
         {
             _selectMoveInterval++;
-            //if (_selectNum == 1)
-            //{
-            //    _selectNum = 2;
-            //}
-            //else if (_selectNum == 2)
-            //{
-            //    _selectNum = 1;
-            //}
-
-            StartCoroutine(SelectMoveCoroutine(_selectMoveTime));
-        }
-        else if(_controllerManager._UpDownCrossKey == 0)
-        {
-            _selectMoveInterval = 0;
         }
     }
-
-    // 選択UIの挙動
-    private void SelectMove()
-    {
-        if(_selectMoveInterval % 120 == 0)
-        {
-            
-        }
-    }
-
-
-
-    private IEnumerator SelectMoveCoroutine(float selectTime)
-    {
-        Debug.Log("通った");
-        if (_selectMoveInterval % 120 == 0)
-        {
-            if (_selectNum == 1)
-            {
-                _selectNum = 2;
-            }
-            else if (_selectNum == 2)
-            {
-                _selectNum = 1;
-            }
-        }
-        
-
-        yield return new WaitForSecondsRealtime(selectTime);
-
-        
-
-        if(_selectMoveInterval % 20 == 0)
-        {
-            if (_selectNum == 1)
-            {
-                _selectNum = 2;
-            }
-            else if (_selectNum == 2)
-            {
-                _selectNum = 1;
-            }
-        }
-    }
+    
 }

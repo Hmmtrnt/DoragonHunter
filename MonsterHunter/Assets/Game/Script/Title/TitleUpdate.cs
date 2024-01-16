@@ -6,7 +6,7 @@ public class TitleUpdate : MonoBehaviour
 {
     private SceneTransitionManager _sceneTransitionManager;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
@@ -16,9 +16,22 @@ public class TitleUpdate : MonoBehaviour
     void Update()
     {
         // メインシーンへ遷移
-        if (Input.anyKeyDown)
-        {
-            _sceneTransitionManager.MainScene();
-        }
+        // デバッグ用.
+        //if (Input.anyKeyDown)
+        //{
+        //    _sceneTransitionManager.MainScene();
+        //}
+    }
+
+    private void FixedUpdate()
+    {
+        
+    }
+
+    // PressAnyBottonを押したとき、GAME STARTとOPTIONを表示.
+    private void SecondUIDraw()
+    {
+        
     }
 }
+

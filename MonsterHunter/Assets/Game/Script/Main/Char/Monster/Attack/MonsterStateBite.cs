@@ -22,7 +22,7 @@ public partial class MonsterState
         {
             owner.TurnTowards(40);
 
-            if(owner._stateFlame >= 20 && owner._stateFlame <=80)
+            if(owner._stateFlame >= 40 && owner._stateFlame <=80)
             {
                 owner._biteCollisiton.SetActive(true);
             }

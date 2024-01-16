@@ -22,6 +22,8 @@ public class ControllerManager : MonoBehaviour
     // 十字キーの入力情報.
     public float _RightLeftCrossKey = 0;
     public float _UpDownCrossKey = 0;
+    public bool _UpCrossKey = false;
+    public bool _DownCrossKey = false;
 
 
     // トリガー入力情報.
@@ -87,6 +89,8 @@ public class ControllerManager : MonoBehaviour
         // 十字キー入力情報取得.
         _RightLeftCrossKey = Input.GetAxis("CrossKeyRightLeft");
         _UpDownCrossKey = Input.GetAxis("CrossKeyUpDown");
+        _UpCrossKey = _UpDownCrossKey == 1;
+        _DownCrossKey = _UpDownCrossKey == -1;
 
         // トリガー入力情報取得.
         _LeftTrigger = Input.GetAxis("LTrigger");

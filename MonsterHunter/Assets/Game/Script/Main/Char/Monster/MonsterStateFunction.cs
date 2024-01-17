@@ -59,7 +59,6 @@ public partial class MonsterState
         }
         else
         {
-            //Debug.Log("’Ê‚é");
             _HitPoint = 3000;
         }
     }

@@ -93,7 +93,7 @@ public partial class MonsterState
     // 体力
     private float _HitPoint = 0;
     // 攻撃力
-    private float _AttackPower = 5;
+    private float _AttackPower = 0;
 
     [Header("回転速度")]
     [SerializeField] private float _rotateSpeed = 0;
@@ -119,7 +119,7 @@ public partial class MonsterState
     private bool _HitPointMany = false;
 
     // デバッグ用テキスト
-    private Text _text;
-    private Text _textHp;
+    //private Text _text;
+    //private Text _textHp;
 
 }

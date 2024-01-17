@@ -29,8 +29,8 @@ public partial class MonsterState
 
         _animator = GetComponent<Animator>();
 
-        _text = GameObject.Find("DebugText").GetComponent<Text>();
-        _textHp = GameObject.Find("MonsterHp").GetComponent<Text>();
+        //_text = GameObject.Find("DebugText").GetComponent<Text>();
+        //_textHp = GameObject.Find("MonsterHp").GetComponent<Text>();
 
         for (int i = 0; i < (int)viewDirection.NONE; i++)
         {
@@ -59,6 +59,7 @@ public partial class MonsterState
         }
         else
         {
+            //Debug.Log("’Ê‚é");
             _HitPoint = 3000;
         }
     }
@@ -120,12 +121,12 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                _text.text = "³–Ê‹ß‹——£";
+                //_text.text = "³–Ê‹ß‹——£";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                _text.text = "³–Ê‰“‹——£";
+                //_text.text = "³–Ê‰“‹——£";
                 _isNearDistance = false;
             }
         }
@@ -134,12 +135,12 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                _text.text = "”wŒã‹ß‹——£";
+                //_text.text = "”wŒã‹ß‹——£";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                _text.text = "”wŒã‰“‹——£";
+                //_text.text = "”wŒã‰“‹——£";
                 _isNearDistance = false;
             }
         }
@@ -148,12 +149,12 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                _text.text = "‰E‹ß‹——£";
+                //_text.text = "‰E‹ß‹——£";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                _text.text = "‰E‰“‹——£";
+                //_text.text = "‰E‰“‹——£";
                 _isNearDistance = false;
             }
         }
@@ -162,19 +163,19 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                _text.text = "¶‹ß‹——£";
+                //_text.text = "¶‹ß‹——£";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                _text.text = "¶‰“‹——£";
+                //_text.text = "¶‰“‹——£";
                 _isNearDistance = false;
 
             }
         }
         if (GetDistance() >= _longDistance)
         {
-            _text.text = "NONE";
+            //_text.text = "NONE";
         }
 
 

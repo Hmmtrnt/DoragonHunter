@@ -15,7 +15,7 @@ public partial class PlayerState
     }
 
     // デバッグ用のテキスト
-    public Text _text;
+    //public Text _text;
 
     // スティックがハンターのどの向きにいるかを取得
     private bool[] _viewDirection = new bool[5];

@@ -56,7 +56,7 @@ public partial class MonsterState : MonoBehaviour
         //Debug.Log(_currentState);
 
         
-        _textHp.text = "MonsterHp:" + _HitPoint;
+        //_textHp.text = "MonsterHp:" + _HitPoint;
 
         // プレイヤーとモンスター同士の角度、距離によって処理を変更.
         PositionalRelationship();

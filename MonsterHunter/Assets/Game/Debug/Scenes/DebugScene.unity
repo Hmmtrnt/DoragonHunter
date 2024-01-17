@@ -351,6 +351,10 @@ MonoBehaviour:
   _RightStickButton: 0
   _RightStickButtonDown: 0
   _RightStickButtonUp: 0
+  _RightLeftCrossKey: 0
+  _UpDownCrossKey: 0
+  _UpCrossKey: 0
+  _DownCrossKey: 0
   _LeftTrigger: 0
   _RightTrigger: 0
   _AButton: 0
@@ -377,6 +381,7 @@ MonoBehaviour:
   _MenuButton: 0
   _MenuButtonDown: 0
   _MenuButtonUp: 0
+  _PressAnyButton: 0
 --- !u!1 &794213425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2080319868
 RectTransform:
   m_ObjectHideFlags: 0

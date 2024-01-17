@@ -150,27 +150,27 @@ public partial class PlayerState
         // ê≥ñ .
         if (_viewDirection[(int)viewDirection.FORWARD])
         {
-            _text.text = "ê≥ñ ";
+            //_text.text = "ê≥ñ ";
             
         }
         // îwå„.
         else if (_viewDirection[(int)viewDirection.BACKWARD])
         {
-            _text.text = "îwå„";
+            //_text.text = "îwå„";
         }
         // âE.
         else if (_viewDirection[(int)viewDirection.RIGHT])
         {
-            _text.text = "âE";
+            //_text.text = "âE";
         }
         // ç∂.
         else if (_viewDirection[(int)viewDirection.LEFT])
         {
-            _text.text = "ç∂";
+            //_text.text = "ç∂";
         }
         else
         {
-            _text.text = "NONE";
+            //_text.text = "NONE";
         }
     }
 

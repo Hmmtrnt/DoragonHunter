@@ -18,7 +18,7 @@ public class DebugSceneTransition : MonoBehaviour
         }
         if(controllerManager._XButtonDown)
         {
-            //TitleScene();
+            TitleScene();
         }
         if(controllerManager._AButtonDown)
         {
@@ -26,7 +26,7 @@ public class DebugSceneTransition : MonoBehaviour
         }
         if(controllerManager._BButtonDown)
         {
-            //ResultScene();
+            ResultScene();
         }
     }
 

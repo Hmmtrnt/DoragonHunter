@@ -10,6 +10,9 @@ public class ResultBranch : MonoBehaviour
     private GameObject _clearBranch;
     // ゲームオーバーリザルト.
     private GameObject _resultBranch;
+    // クエストクリアしたかどうか.
+    public bool _questClear = false;
+
 
     void Start()
     {
@@ -20,5 +23,19 @@ public class ResultBranch : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        if( _questClear )
+        {
+            //_clearBranch.SetActive( true );
+            _resultBranch.SetActive(false);
+        }
+        else
+        {
+            _clearBranch.SetActive(false);
+            //_resultBranch.SetActive(false);
+        }
     }
 }

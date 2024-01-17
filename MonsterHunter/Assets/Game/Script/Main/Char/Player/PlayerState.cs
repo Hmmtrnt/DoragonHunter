@@ -60,7 +60,7 @@ public partial class PlayerState : MonoBehaviour
 
         StateFlameManager();
 
-        Debug.Assert(_text != null);
+        //Debug.Assert(_text != null);
 
         SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);

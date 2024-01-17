@@ -23,9 +23,9 @@ public class SelectUi : MonoBehaviour
     // 最初に選択した瞬間.
     private bool _firstSelect = false;
     // 押しっぱなしにした時の最初にUIが動くインターバル.
-
+    private int _firstMoveInterval = 50;
     // 押しっぱなしにしている時のUIが動くインターバル.
-    private int _pushingInterval = 10;
+    private int _pushingInterval = 5;
 
     // 現在選ばれている選択番号.
     // 1.ゲームスタート.
@@ -78,7 +78,7 @@ public class SelectUi : MonoBehaviour
         if (_controllerManager._UpDownCrossKey == 0) return;
         if(!_firstSelect)
         {
-            if (_selectMoveInterval % 100 == 0)
+            if (_selectMoveInterval % _firstMoveInterval == 0)
             {
                 // 上に押したとき
                 if (_controllerManager._UpCrossKey)
@@ -90,7 +90,7 @@ public class SelectUi : MonoBehaviour
                 {
                     _selectNum++;
                 }
-                if (_selectMoveInterval == 100)
+                if (_selectMoveInterval == _firstMoveInterval)
                 {
                     _firstSelect = true;
                 }

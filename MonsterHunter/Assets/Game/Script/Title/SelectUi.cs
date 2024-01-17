@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SelectUi : MonoBehaviour
 {
-    enum SelectItem
+    public enum SelectItem
     {
         GAMESTART,  // ゲームスタート.
         OPTION,     // 設定.
@@ -148,4 +148,5 @@ public class SelectUi : MonoBehaviour
         }
     }
     
+    public int GetSelectNumber() { return _selectNum; }
 }

@@ -12,7 +12,10 @@ public class SceneTransitionManager : MonoBehaviour
     }
 
     // セレクトシーン遷移.
-
+    public void SelectScene()
+    {
+        SceneManager.LoadScene("SelectScene");
+    }
 
     // メインシーン遷移.
     public void MainScene()

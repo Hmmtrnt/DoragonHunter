@@ -18,6 +18,8 @@ public class TitleUpdate : MonoBehaviour
     private GameObject _option;
     // 選択枠の影.
     public GameObject[] _selectShadow;
+    // 選択UIの処理.
+    private SelectUi _selectUi;
 
     // PressAnyButtonを押したときtrueにする.
     public bool _pressAnyPush = false;
@@ -29,14 +31,17 @@ public class TitleUpdate : MonoBehaviour
         _pressAnyButton = GameObject.Find("PRESSANYBUTTON").gameObject;
         _gameStart = GameObject.Find("GAMESTART").gameObject;
         _option = GameObject.Find("OPTION").gameObject;
+        _selectUi = GameObject.Find("Select").GetComponent<SelectUi>();
 
         _gameStart.SetActive(false);
         _option.SetActive(false);
         _selectShadow[1].SetActive(false);
+
     }
 
     void Update()
     {
+        SceneTransition();
         // メインシーンへ遷移
         // デバッグ用.
         //if (Input.anyKeyDown)
@@ -54,7 +59,13 @@ public class TitleUpdate : MonoBehaviour
     // GameStartを押したらメインシーンへ(デバッグ用).
     private void SceneTransition()
     {
-
+        // PressAnyButtonが押されていなければスキップ.
+        if (!_pressAnyPush) return;
+        if(_controllerManager._AButtonDown && _selectUi.GetSelectNumber() == 0)
+        {
+            _sceneTransitionManager.MainScene();
+        }
+        
     }
 
     // PressAnyBottonを押したときGameStartとOPTIONのUIを描画するためにflagをtrue.

@@ -51,6 +51,12 @@ public class TitleUpdate : MonoBehaviour
         UiDraw();
     }
 
+    // GameStartを押したらメインシーンへ(デバッグ用).
+    private void SceneTransition()
+    {
+
+    }
+
     // PressAnyBottonを押したときGameStartとOPTIONのUIを描画するためにflagをtrue.
     private void PressAnyPushflag()
     {

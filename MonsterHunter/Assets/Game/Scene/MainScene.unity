@@ -14782,6 +14782,11 @@ PrefabInstance:
       propertyPath: _weaponObject
       value: 
       objectReference: {fileID: 595816280}
+    - target: {fileID: 1576788135621178032, guid: f88bded5780498340b860522a0ff3e3e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3682662975647979901, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14842,6 +14847,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 23d47f95cc93c42439eb9f4b0776bc90, type: 2}
+    - target: {fileID: 5395749998080784064, guid: f88bded5780498340b860522a0ff3e3e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011760926925325097, guid: f88bded5780498340b860522a0ff3e3e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Size.x

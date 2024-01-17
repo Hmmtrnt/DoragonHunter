@@ -1,13 +1,14 @@
-/*セレクト画面モンスターの処理*/
+/*選択画面のハンターの処理*/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectMonster : MonoBehaviour
+public class SelectHunter : MonoBehaviour
 {
+    // アニメーション.
     private Animator _animator;
-
+    // アニメーションの再生開始位置.
     [SerializeField, Range(0.0f, 1.0f)]
     private float _animMotion;
 
@@ -15,6 +16,7 @@ public class SelectMonster : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
+
 
     private void FixedUpdate()
     {

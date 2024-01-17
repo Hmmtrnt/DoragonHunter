@@ -17,26 +17,37 @@ public class HuntingEnd : MonoBehaviour
     // 狩猟成功したか.
     private bool _QuestClear = false;
 
+    // 狩猟成功してシーン遷移を行うまでの時間.
+    private int _startSceneTransitionCount = 0;
+
     void Start()
     {
         _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
+        _startSceneTransitionCount = 1000;
     }
 
     private void FixedUpdate()
     {
         HuntingEndBranch();
 
-        // デバッグ用シーン遷移.
-        //if(_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
-        //{
-        //    // シーン切り替え時にイベント登録.
-        //    SceneManager.sceneLoaded += GameSceneLoaded;
 
-        //    // シーン切り替え.
-        //    _sceneTransitionManager.ResultScene();
-        //}
+        SceneTransition();
+    }
+
+    // シーン遷移を行う.
+    private void SceneTransition()
+    {
+        // デバッグ用シーン遷移.
+        if (_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
+        {
+            // シーン切り替え時にイベント登録.
+            SceneManager.sceneLoaded += GameSceneLoaded;
+
+            // シーン切り替え.
+            _sceneTransitionManager.ResultScene();
+        }
     }
 
     // シーン遷移時に行う処理.
@@ -64,5 +75,13 @@ public class HuntingEnd : MonoBehaviour
         {
             _QuestClear= false;
         }
+    }
+
+    // カウント開始.
+    private void CountStart()
+    {
+        // クエストをクリアしていないときにスキップ.
+        if (!_QuestClear) return;
+        _startSceneTransitionCount--;
     }
 }

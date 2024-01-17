@@ -53,7 +53,7 @@ public partial class MonsterState : MonoBehaviour
         // 乱数を常に与える.
         _randomNumber = Random.Range(1, 101);
 
-        //Debug.Log(_currentState);
+        
 
         
         //_textHp.text = "MonsterHp:" + _HitPoint;

@@ -19,7 +19,7 @@ public class TitleUpdate : MonoBehaviour
     // 選択枠の影.
     public GameObject[] _selectShadow;
     // 選択UIの処理.
-    private SelectUi _selectUi;
+    private TitleSelectUi _selectUi;
 
     // PressAnyButtonを押したときtrueにする.
     public bool _pressAnyPush = false;
@@ -31,7 +31,7 @@ public class TitleUpdate : MonoBehaviour
         _pressAnyButton = GameObject.Find("PRESSANYBUTTON").gameObject;
         _gameStart = GameObject.Find("GAMESTART").gameObject;
         _option = GameObject.Find("OPTION").gameObject;
-        _selectUi = GameObject.Find("Select").GetComponent<SelectUi>();
+        _selectUi = GameObject.Find("Select").GetComponent<TitleSelectUi>();
 
         _gameStart.SetActive(false);
         _option.SetActive(false);

@@ -1,8 +1,7 @@
 /*選択画面全体の処理*/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SelectUpdate : MonoBehaviour
@@ -11,9 +10,10 @@ public class SelectUpdate : MonoBehaviour
     private ControllerManager _controllerManager;
     // シーン遷移管理.
     private SceneTransitionManager _sceneTransitionManager;
-
     // 選択したUI.
     private SelectSceneSelectUi _SelectUi;
+    // 難易度説明のテキスト.
+    private Text _explanationText;
     // 決定ボタンを押したかどうか.
     private bool _decidePush = false;
     // クエストの難易度.
@@ -24,6 +24,7 @@ public class SelectUpdate : MonoBehaviour
         _controllerManager = GetComponent<ControllerManager>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
         _SelectUi = GameObject.Find("SelectDraw").GetComponent<SelectSceneSelectUi>();
+        _explanationText = GameObject.Find("DifficultText").GetComponent<Text>();
     }
 
     void Update()
@@ -38,6 +39,7 @@ public class SelectUpdate : MonoBehaviour
             SceneTransition();
         }
         Difficulty();
+        ExplanationDraw();
     }
 
     // 難易度の設定.
@@ -80,11 +82,23 @@ public class SelectUpdate : MonoBehaviour
         // シーン遷移先にあるスクリプト追加.
         MonsterState monsterState　= GameObject.Find("Dragon").GetComponent<MonsterState>();
 
-        //Debug.Assert(monsterState != null);
-
         // 難易度を選択した情報を代入.
         monsterState._HitPointMany = _hard;
 
         SceneManager.sceneLoaded -= SceneTransitionUpdate;
+    }
+
+    // 難易度説明の表記(デバッグ用)
+    private void ExplanationDraw()
+    {
+        if(_SelectUi.GetSelectNumber()==(int)SelectSceneSelectUi.SelectItem.EASY)
+        {
+            _explanationText.text = "モンスターの体力が少なく\n短時間で気軽にプレイできます。";
+        }
+        else if(_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.HATD)
+        {
+            _explanationText.text = "モンスターの体力が多く\n長時間がっつりとプレイできます。";
+        }
+        
     }
 }

@@ -934,6 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1216560461}
+  - component: {fileID: 1216560462}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -956,6 +957,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1216560462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216560460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f43f04c49a6ccc42bddfc00594a3505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _LeftStickHorizontal: 0
+  _LeftStickVertical: 0
+  _LeftStickButton: 0
+  _LeftStickButtonDown: 0
+  _LeftStickButtonUp: 0
+  _RightStickHorizontal: 0
+  _RightStickVertical: 0
+  _RightStickButton: 0
+  _RightStickButtonDown: 0
+  _RightStickButtonUp: 0
+  _RightLeftCrossKey: 0
+  _UpDownCrossKey: 0
+  _UpCrossKey: 0
+  _DownCrossKey: 0
+  _LeftTrigger: 0
+  _RightTrigger: 0
+  _AButton: 0
+  _AButtonDown: 0
+  _AButtonUp: 0
+  _BButton: 0
+  _BButtonDown: 0
+  _BButtonUp: 0
+  _XButton: 0
+  _XButtonDown: 0
+  _XButtonUp: 0
+  _YButton: 0
+  _YButtonDown: 0
+  _YButtonUp: 0
+  _LBButton: 0
+  _LBButtonDown: 0
+  _LBButtonUp: 0
+  _RBButton: 0
+  _RBButtonDown: 0
+  _RBButtonUp: 0
+  _ViewButton: 0
+  _ViewButtonDown: 0
+  _ViewButtonUp: 0
+  _MenuButton: 0
+  _MenuButtonDown: 0
+  _MenuButtonUp: 0
+  _PressAnyButton: 0
 --- !u!1 &1282509488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1096,7 @@ GameObject:
   - component: {fileID: 1448864292}
   - component: {fileID: 1448864294}
   - component: {fileID: 1448864293}
+  - component: {fileID: 1448864295}
   m_Layer: 5
   m_Name: SelectDraw
   m_TagString: Untagged
@@ -1106,6 +1161,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448864291}
   m_CullTransparentMesh: 1
+--- !u!114 &1448864295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448864291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed2c7afd4b353f54dae1516e1852247c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1459848774
 PrefabInstance:
   m_ObjectHideFlags: 0

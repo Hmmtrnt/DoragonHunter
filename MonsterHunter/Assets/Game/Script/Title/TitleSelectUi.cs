@@ -48,7 +48,7 @@ public class TitleSelectUi : MonoBehaviour
     {
         // PressAnyButtonが押されていないときはスキップ.
         if (!_titleUpdate._pressAnyPush) return;
-        SelectNumLimit();
+        _selectUiUpdate.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXITEMNUM);
         SelectPosition();
     }
 
@@ -62,19 +62,6 @@ public class TitleSelectUi : MonoBehaviour
         else if (_selectNum == (int)SelectItem.OPTION)
         {
             _rectTransform.anchoredPosition = new Vector3(500.0f, -300.0f, 0.0f);
-        }
-    }
-
-    // 項目の限界値を越えた時の処理.
-    private void SelectNumLimit()
-    {
-        if(_selectNum < 0)
-        {
-            _selectNum = (int)SelectItem.OPTION;
-        }
-        else if(_selectNum >= (int)SelectItem.MAXITEMNUM)
-        {
-            _selectNum = 0;
         }
     }
 

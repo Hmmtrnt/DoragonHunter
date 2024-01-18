@@ -82,4 +82,20 @@ public class Menu : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// ‘I‘ğ”Ô†‚ÌŒÀŠE’l.
+    /// </summary>
+    /// <param name="SelectNum">‘I‘ğ‚³‚ê‚Ä‚¢‚é€–Ú‚Ì”Ô†</param>
+    public void SelectNumLimit(ref int SelectNum, int MaxItemNum)
+    {
+        if(SelectNum < 0)
+        {
+            SelectNum = MaxItemNum - 1;
+        }
+        else if(SelectNum >= MaxItemNum)
+        {
+            SelectNum = 0;
+        }
+    }
 }

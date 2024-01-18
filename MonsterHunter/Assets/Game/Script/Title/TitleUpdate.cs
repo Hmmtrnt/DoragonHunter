@@ -63,7 +63,7 @@ public class TitleUpdate : MonoBehaviour
         if (!_pressAnyPush) return;
         if(_controllerManager._AButtonDown && _selectUi.GetSelectNumber() == 0)
         {
-            _sceneTransitionManager.MainScene();
+            _sceneTransitionManager.SelectScene();
         }
         
     }

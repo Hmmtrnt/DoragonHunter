@@ -6,20 +6,22 @@ using UnityEngine;
 
 public class TitleSelectUi : MonoBehaviour
 {
-    public enum SelectItem
+    // 選択項目数.
+    private enum SelectItem
     {
         GAMESTART,  // ゲームスタート.
         OPTION,     // 設定.
         MAXITEMNUM  // 項目の最大数.
     }
 
+    // UIの座標.
     private RectTransform _rectTransform;
     // タイトル画面の処理.
     private TitleUpdate _titleUpdate;
-    // 入力情報.
+    // パッドの入力情報.
     private ControllerManager _controllerManager;
     // 選択するUIの関数.
-    private Menu _selectUiUpdate;
+    private Menu _menu;
 
     // 現在選ばれている選択番号.
     // 1.ゲームスタート.
@@ -31,7 +33,7 @@ public class TitleSelectUi : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         _titleUpdate = GameObject.Find("GameManager").GetComponent<TitleUpdate>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
-        _selectUiUpdate = GameObject.Find("GameManager").GetComponent<Menu>();
+        _menu = GameObject.Find("GameManager").GetComponent<Menu>();
     }
 
     void Update()
@@ -39,16 +41,16 @@ public class TitleSelectUi : MonoBehaviour
         // PressAnyButtonが押されていないときはスキップ.
         if (!_titleUpdate._pressAnyPush) return;
 
-        _selectUiUpdate.SelectMove(ref _selectNum);
-        _selectUiUpdate.CrossKeyPushFlameCount();
-        _selectUiUpdate.CrossKeyNoPush();
+        _menu.SelectMove(ref _selectNum);
+        _menu.CrossKeyPushFlameCount();
+        _menu.CrossKeyNoPush();
     }
 
     private void FixedUpdate()
     {
         // PressAnyButtonが押されていないときはスキップ.
         if (!_titleUpdate._pressAnyPush) return;
-        _selectUiUpdate.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXITEMNUM);
+        _menu.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXITEMNUM);
         SelectPosition();
     }
 
@@ -65,5 +67,6 @@ public class TitleSelectUi : MonoBehaviour
         }
     }
 
+    //選択している項目の番号.
     public int GetSelectNumber() { return _selectNum; }
 }

@@ -31,8 +31,6 @@ public class HuntingEnd : MonoBehaviour
     private void FixedUpdate()
     {
         HuntingEndBranch();
-
-
         SceneTransition();
     }
 
@@ -43,7 +41,7 @@ public class HuntingEnd : MonoBehaviour
         if (_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
         {
             // シーン切り替え時にイベント登録.
-            SceneManager.sceneLoaded += GameSceneLoaded;
+            SceneManager.sceneLoaded += SceneTransitionUpdate;
 
             // シーン切り替え.
             _sceneTransitionManager.ResultScene();
@@ -51,7 +49,7 @@ public class HuntingEnd : MonoBehaviour
     }
 
     // シーン遷移時に行う処理.
-    private void GameSceneLoaded(Scene next, LoadSceneMode mode)
+    private void SceneTransitionUpdate(Scene next, LoadSceneMode mode)
     {
         // シーン切り替え後のスクリプト追加.
         ResultBranch resultBranch = GameObject.Find("GameManager").GetComponent<ResultBranch>();
@@ -60,7 +58,7 @@ public class HuntingEnd : MonoBehaviour
         resultBranch._questClear = _QuestClear;
 
 
-        SceneManager.sceneLoaded -= GameSceneLoaded;
+        SceneManager.sceneLoaded -= SceneTransitionUpdate;
     }
 
     // モンスター又、プレイヤーの体力が0になった時.クエストのクリアどうか変更.

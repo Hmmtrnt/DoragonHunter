@@ -29,6 +29,8 @@ public partial class MonsterState : MonoBehaviour
         Initialization();
         _currentState.OnEnter(this, null);
         _randomNumber = 0;
+
+        
     }
 
     private void Update()
@@ -53,9 +55,9 @@ public partial class MonsterState : MonoBehaviour
         // 乱数を常に与える.
         _randomNumber = Random.Range(1, 101);
 
-        
 
-        
+        Debug.Log(_HitPoint);
+
         //_textHp.text = "MonsterHp:" + _HitPoint;
 
         // プレイヤーとモンスター同士の角度、距離によって処理を変更.

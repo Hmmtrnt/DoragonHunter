@@ -116,7 +116,7 @@ public partial class MonsterState
     private bool _takeDamage = false;
 
     // モンスターの体力量が多いか少ないか.
-    private bool _HitPointMany = false;
+    public bool _HitPointMany = false;
 
     // デバッグ用テキスト
     //private Text _text;

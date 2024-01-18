@@ -7,7 +7,7 @@ using UnityEngine;
 public class SelectSceneSelectUi : MonoBehaviour
 {
     // 選択項目数.
-    private enum SelectItem
+    public enum SelectItem
     {
         EASY,       // イージーモード.
         HATD,       // ハードモード.

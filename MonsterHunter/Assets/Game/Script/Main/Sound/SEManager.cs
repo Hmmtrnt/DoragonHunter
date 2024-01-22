@@ -21,16 +21,19 @@ public class SEManager : MonoBehaviour
 
 
     // SE素材.
+    // ハンター.
     public AudioClip[] _hunterAudio;
-
-    public AudioClip _test;
+    // モンスター.
+    public AudioClip[] _monsterAudio;
 
     // 発音
-    private AudioSource _audioSource;
+    private AudioSource _hunterSE;
+    private AudioSource _monsterSE;
 
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        _hunterSE = GameObject.Find("HunterSEAudio").GetComponent<AudioSource>();
+        _monsterSE = GameObject.Find("Dragon").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,6 +48,6 @@ public class SEManager : MonoBehaviour
     // SEを鳴らす.
     public void PlaySE(int SENunber)
     {
-        _audioSource.PlayOneShot(_hunterAudio[SENunber]);
+        _hunterSE.PlayOneShot(_hunterAudio[SENunber]);
     }
 }

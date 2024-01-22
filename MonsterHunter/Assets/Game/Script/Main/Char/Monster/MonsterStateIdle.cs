@@ -148,7 +148,7 @@ public partial class MonsterState
                     //}
 
                     // デバッグ用モーション遷移.
-                    owner.ChangeState(_rush);
+                    owner.ChangeState(_rotate);
                 }
                 // 背後.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])

@@ -10,6 +10,7 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._rotateMotion = true;
+            owner._currentRotateAttack = true;
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -43,11 +44,14 @@ public partial class MonsterState
                 }
                 owner._rotateCollisiton.SetActive(false);
             }
+
+            ParticleGenerateTime(owner);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._rotateMotion = false;
+            owner._currentRotateAttack = false;
         }
 
         public override void OnChangeState(MonsterState owner)
@@ -56,7 +60,18 @@ public partial class MonsterState
             {
                 owner.ChangeState(_idle);
             }
-            
+        }
+
+        // パーティクルをモーションを行っている時間で生成する.
+        private void ParticleGenerateTime(MonsterState owner)
+        {
+            if (owner._stateFlame == 90)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.LOOP, (int)footSmokePosition.TAIL);
+            }
+
+            owner._footSmokePrehub[(int)footSmokeEffect.LOOP].transform.position = 
+                owner._footSmokePosition[(int)footSmokePosition.TAIL].transform.position;
         }
     }
 }

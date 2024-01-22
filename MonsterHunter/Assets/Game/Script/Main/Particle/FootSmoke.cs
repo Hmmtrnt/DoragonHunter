@@ -8,19 +8,27 @@ public class FootSmoke : MonoBehaviour
 {
     // ê∂ë∂éûä‘
     private int _countLife;
+    // ÉÇÉìÉXÉ^Å[èÓïÒ.
+    private MonsterState _monsterState;
 
     void Start()
     {
-        
+        _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
+
     }
 
     private void FixedUpdate()
     {
         _countLife++;
 
-        if (_countLife == 200)
+        if (_countLife == 50)
         {
             Destroy(gameObject);
+        }
+
+        if(_monsterState._currentRotateAttack)
+        {
+            transform.position = _monsterState._footSmokePosition[2].transform.position;
         }
     }
 }

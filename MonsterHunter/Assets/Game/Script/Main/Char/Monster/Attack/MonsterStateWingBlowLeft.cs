@@ -10,6 +10,7 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._wingLeftMotion = true;
+            owner._currentWingAttackLeft = true;
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -32,6 +33,7 @@ public partial class MonsterState
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._wingLeftMotion = false;
+            owner._currentWingAttackLeft = false;
         }
 
         public override void OnChangeState(MonsterState owner)

@@ -109,6 +109,12 @@ public partial class MonsterState
     private bool _wingLeftMotion = false;// 左翼攻撃.
     private bool _wingRightMotion = false;// 右翼攻撃.
 
+
+    // 他のスクリプトに現在の状態情報を渡すための変数.
+    public bool _currentRotateAttack = false;
+    public bool _currentWingAttackLeft = false;
+    public bool _currentWingAttackRight = false;
+
     // 咆哮するかどうか.
     private bool _isRoar;
 

@@ -22,7 +22,7 @@ public partial class MonsterState : MonoBehaviour
 
 
     // Stateの初期化.
-    private StateBase _currentState = _idle;
+    public StateBase _currentState = _idle;
 
     private void Start()
     {
@@ -56,7 +56,7 @@ public partial class MonsterState : MonoBehaviour
         _randomNumber = Random.Range(1, 101);
 
 
-        Debug.Log(_HitPoint);
+        //Debug.Log(_HitPoint);
 
         //_textHp.text = "MonsterHp:" + _HitPoint;
 

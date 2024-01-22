@@ -24,8 +24,9 @@ public partial class MonsterState
         _fireBall = (GameObject)Resources.Load("FireBall");
         _fireBallPosition = GameObject.Find("BlessPosition");
         //_footSmokePrehub = (GameObject)Resources.Load("MonsterLegSmoke");
-        _footSmokePrehub[0] = (GameObject)Resources.Load("MonsterLegSmokeShort");
-        _footSmokePrehub[1] = (GameObject)Resources.Load("MonsterLegSmokeLoop");
+        _footSmokePrehub[0] = (GameObject)Resources.Load("MonsterLegSmoke");
+        _footSmokePrehub[1] = (GameObject)Resources.Load("MonsterTailSmoke");
+        _footSmokePrehub[2] = (GameObject)Resources.Load("MonsterWingSmoke");
 
         _colliderChildren = GetComponentsInChildren<MeshCollider>();
 

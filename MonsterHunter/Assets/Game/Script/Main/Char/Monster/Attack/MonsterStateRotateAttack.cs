@@ -67,10 +67,10 @@ public partial class MonsterState
         {
             if (owner._stateFlame == 90)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.LOOP, (int)footSmokePosition.TAIL);
+                owner.FootSmokeSpawn((int)footSmokeEffect.TAIL, (int)footSmokePosition.TAIL);
             }
 
-            owner._footSmokePrehub[(int)footSmokeEffect.LOOP].transform.position = 
+            owner._footSmokePrehub[(int)footSmokeEffect.TAIL].transform.position = 
                 owner._footSmokePosition[(int)footSmokePosition.TAIL].transform.position;
         }
     }

@@ -27,8 +27,9 @@ public partial class MonsterState
     // 足煙エフェクトの違い.
     enum footSmokeEffect
     {
-        SHORT,
-        LOOP,
+        LEG,
+        TAIL,
+        WING,
         NONE,
     }
 
@@ -68,7 +69,7 @@ public partial class MonsterState
     public GameObject[] _footSmokePosition;
 
     // 足煙エフェクトプレハブ.
-    private GameObject[] _footSmokePrehub = new GameObject[2];
+    private GameObject[] _footSmokePrehub = new GameObject[3];
 
 
     // 子オブジェクトの当たり判定.
@@ -148,9 +149,4 @@ public partial class MonsterState
 
     // モンスターの体力量が多いか少ないか.
     public bool _HitPointMany = false;
-
-    // デバッグ用テキスト
-    //private Text _text;
-    //private Text _textHp;
-
 }

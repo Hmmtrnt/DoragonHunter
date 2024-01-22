@@ -57,11 +57,11 @@ public partial class MonsterState
         {
             if (owner._stateFlame == 60)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.TAIL);
+                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.TAIL);
             }
             if (owner._stateFlame == 110)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.TAIL);
+                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.TAIL);
             }
         }
     }

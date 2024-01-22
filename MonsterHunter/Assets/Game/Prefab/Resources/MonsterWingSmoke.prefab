@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1806372545207426331}
   - component: {fileID: 6643358305626463986}
   - component: {fileID: 5131607093190545166}
-  - component: {fileID: 4839307082819221823}
+  - component: {fileID: 1887566612703240562}
   m_Layer: 0
-  m_Name: MonsterLegSmokeLoop
+  m_Name: MonsterWingSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4838,7 +4838,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4839307082819221823
+--- !u!114 &1887566612703240562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4847,6 +4847,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7528520646334793858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81bba39d2e587d544ad2a85f67591111, type: 3}
+  m_Script: {fileID: 11500000, guid: c1d1507a09e0a3b4194a2b36eda432b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

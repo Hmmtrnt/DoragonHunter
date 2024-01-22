@@ -79,23 +79,23 @@ public partial class MonsterState
         {
             if(owner._stateFlame == 60)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGRIGHT);
+                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGRIGHT);
             }
             if(owner._stateFlame == 80)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGLEFT);
+                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGLEFT);
             }
             if (owner._stateFlame == 90)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGRIGHT);
+                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGRIGHT);
             }
             if (owner._stateFlame == 110)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGLEFT);
+                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGLEFT);
             }
             if (owner._stateFlame == 130)
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGRIGHT);
+                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGRIGHT);
             }
         }
     }

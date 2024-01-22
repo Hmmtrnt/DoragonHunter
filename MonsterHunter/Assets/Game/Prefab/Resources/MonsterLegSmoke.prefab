@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5131607093190545166}
   - component: {fileID: 4839307082819221823}
   m_Layer: 0
-  m_Name: MonsterLegSmokeShort
+  m_Name: MonsterLegSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

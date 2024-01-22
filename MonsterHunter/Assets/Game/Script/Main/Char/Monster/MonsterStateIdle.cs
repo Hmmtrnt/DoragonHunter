@@ -148,7 +148,8 @@ public partial class MonsterState
                     //}
 
                     // デバッグ用モーション遷移.
-                    owner.ChangeState(_rotate);
+                    //owner.ChangeState(_wingBlowLeft);
+                    owner.ChangeState(_wingBlowRight);
                 }
                 // 背後.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])

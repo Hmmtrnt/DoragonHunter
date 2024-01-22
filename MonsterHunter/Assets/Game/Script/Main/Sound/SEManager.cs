@@ -6,15 +6,22 @@ using UnityEngine;
 
 public class SEManager : MonoBehaviour
 {
-    public enum SE
+    public enum HunterSE
     {
-        Slash,// aŒ‚‰¹.
-        RoundSlash,// ‹Cn‘å‰ñ“]a‚è.
-        SENum// SE”.
+        SLASH,// aŒ‚‰¹.
+        ROUNDSLASH,// ‹Cn‘å‰ñ“]a‚è.
+        SENUM// SE”.
     }
 
+    public enum MonsterSE
+    {
+        ROAR,// ™ôšK.
+        SENUM// SE”.
+    }
+
+
     // SE‘fŞ.
-    public AudioClip[] _audio;
+    public AudioClip[] _hunterAudio;
 
     public AudioClip _test;
 
@@ -38,6 +45,6 @@ public class SEManager : MonoBehaviour
     // SE‚ğ–Â‚ç‚·.
     public void PlaySE(int SENunber)
     {
-        _audioSource.PlayOneShot(_audio[SENunber]);
+        _audioSource.PlayOneShot(_hunterAudio[SENunber]);
     }
 }

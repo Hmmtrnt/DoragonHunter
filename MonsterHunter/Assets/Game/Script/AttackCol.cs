@@ -10,7 +10,7 @@ public class AttackCol : MonoBehaviour
     private PlayerState _state;
     private PlayerHitStopManager _hitStop;
     private SEManager _seManager;
-    private SEManager.SE _se;
+    private SEManager.HunterSE _se;
     // 攻撃ヒットエフェクトのプレハブ取得.
     GameObject _HitEffectObject;
     // 攻撃ヒットエフェクトの生成位置.
@@ -87,11 +87,11 @@ public class AttackCol : MonoBehaviour
         // 気大回転刃斬りの時音を変更.
         if (_state.GetRoundSlash())
         {
-            _seManager.PlaySE((int)SEManager.SE.RoundSlash);
+            _seManager.PlaySE((int)SEManager.HunterSE.ROUNDSLASH);
         }
         else
         {
-            _seManager.PlaySE((int)SEManager.SE.Slash);
+            _seManager.PlaySE((int)SEManager.HunterSE.SLASH);
         }
     }
 

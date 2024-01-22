@@ -39,8 +39,8 @@ public partial class MonsterState
         }
         _idleMotion = true;
         // ‰è–i‚¦‚é.
-        //_isRoar = true;
-        _isRoar = false;
+        _isRoar = true;
+        //_isRoar = false;
 
 
         // UŒ‚“–‚½‚è”»’è‚ğ–³Œø.

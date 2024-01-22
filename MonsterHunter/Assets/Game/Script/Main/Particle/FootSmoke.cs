@@ -18,7 +18,7 @@ public class FootSmoke : MonoBehaviour
     {
         _countLife++;
 
-        if (_countLife == 30)
+        if (_countLife == 200)
         {
             Destroy(gameObject);
         }

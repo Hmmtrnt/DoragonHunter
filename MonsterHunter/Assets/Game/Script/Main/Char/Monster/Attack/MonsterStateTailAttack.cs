@@ -36,7 +36,7 @@ public partial class MonsterState
                     owner._tailCollisiton[colNum].SetActive(false);
                 }
             }
-
+            ParticleGenerateTime(owner);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -49,6 +49,19 @@ public partial class MonsterState
             if (owner._stateFlame >= 240)
             {
                 owner.ChangeState(_idle);
+            }
+        }
+
+        // パーティクルをモーションを行っている時間で生成する.
+        private void ParticleGenerateTime(MonsterState owner)
+        {
+            if (owner._stateFlame == 60)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.TAIL);
+            }
+            if (owner._stateFlame == 110)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.TAIL);
             }
         }
     }

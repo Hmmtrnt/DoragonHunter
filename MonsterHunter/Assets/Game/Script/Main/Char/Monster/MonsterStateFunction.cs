@@ -23,20 +23,21 @@ public partial class MonsterState
 
         _fireBall = (GameObject)Resources.Load("FireBall");
         _fireBallPosition = GameObject.Find("BlessPosition");
-
+        //_footSmokePrehub = (GameObject)Resources.Load("MonsterLegSmoke");
+        _footSmokePrehub[0] = (GameObject)Resources.Load("MonsterLegSmokeShort");
+        _footSmokePrehub[1] = (GameObject)Resources.Load("MonsterLegSmokeLoop");
 
         _colliderChildren = GetComponentsInChildren<MeshCollider>();
 
         _animator = GetComponent<Animator>();
 
-        //_text = GameObject.Find("DebugText").GetComponent<Text>();
-        //_textHp = GameObject.Find("MonsterHp").GetComponent<Text>();
 
         for (int i = 0; i < (int)viewDirection.NONE; i++)
         {
             _viewDirection[i] = false;
         }
         _idleMotion = true;
+        // 初手吠える.
         //_isRoar = true;
         _isRoar = false;
 
@@ -275,7 +276,13 @@ public partial class MonsterState
         }
     }
 
-
+    // 足煙エフェクトの生成.
+    private void FootSmokeSpawn(int footSmokeKinds, int footSmokePosition)
+    {
+        Instantiate(_footSmokePrehub[footSmokeKinds],
+                _footSmokePosition[footSmokePosition].transform.position,
+                Quaternion.identity);
+    }
 
     private float GetDistance()
     {

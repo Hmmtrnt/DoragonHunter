@@ -15,6 +15,24 @@ public partial class MonsterState
         NONE
     }
 
+    // 足煙エフェクトが出る位置.
+    enum footSmokePosition
+    {
+        WINGRIGHT,
+        WINGLEFT,
+        TAIL,
+        NONE
+    }
+
+    // 足煙エフェクトの違い.
+    enum footSmokeEffect
+    {
+        SHORT,
+        LOOP,
+        NONE,
+    }
+
+
     // 目標のプレイヤー.
     private GameObject _hunter;
     private Transform _trasnform;
@@ -44,6 +62,13 @@ public partial class MonsterState
     // 回転攻撃判定.
     [Header("回転攻撃判定")]
     public GameObject _rotateCollisiton;
+
+    // 足煙エフェクトの生成箇所.
+    [Header("足煙エフェクトの生成箇所")]
+    public GameObject[] _footSmokePosition;
+
+    // 足煙エフェクトプレハブ.
+    private GameObject[] _footSmokePrehub = new GameObject[2];
 
 
     // 子オブジェクトの当たり判定.

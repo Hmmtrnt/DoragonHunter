@@ -22,17 +22,12 @@ public partial class MonsterState
         {
             owner.TurnTowards(40);
 
-            if (owner._stateFlame == 0)
-            {
-                //owner._trasnform.position -= Vector3.forward * 0.15f;
-                owner._forwardSpeed = 0.15f;
-            }
-            else if (owner._stateFlame == 60)
+            if (owner._stateFlame == 60)
             {
                 //owner._trasnform.position -= Vector3.forward * 0.5f;
                 owner._forwardSpeed = 0.7f;
             }
-            else if (owner._stateFlame == 140)
+            else if (owner._stateFlame == 100)
             {
                 //owner._trasnform.position += Vector3.forward * 0.15f;
                 //owner._forwardSpeed = -0.15f;
@@ -57,12 +52,18 @@ public partial class MonsterState
                 owner._wingLeftCollisiton.SetActive(false);
             }
 
+            ParticleGenerateTime(owner);
+
             owner._trasnform.position += owner._moveVelocity;
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._rushMotion = false;
+            // デバッグ用座標初期化.
+            //owner._trasnform.position = new Vector3(500.0f, 0.4f, 500.0f);
+            // スピードを0にする.
+            owner._forwardSpeed = 0.0f;
         }
 
         public override void OnChangeState(MonsterState owner)
@@ -70,6 +71,31 @@ public partial class MonsterState
             if(owner._stateFlame >= 150)
             {
                 owner.ChangeState(_idle);
+            }
+        }
+
+        // パーティクルをモーションを行っている時間で生成する.
+        private void ParticleGenerateTime(MonsterState owner)
+        {
+            if(owner._stateFlame == 60)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGRIGHT);
+            }
+            if(owner._stateFlame == 80)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGLEFT);
+            }
+            if (owner._stateFlame == 90)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGRIGHT);
+            }
+            if (owner._stateFlame == 110)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGLEFT);
+            }
+            if (owner._stateFlame == 130)
+            {
+                owner.FootSmokeSpawn((int)footSmokeEffect.SHORT, (int)footSmokePosition.WINGRIGHT);
             }
         }
     }

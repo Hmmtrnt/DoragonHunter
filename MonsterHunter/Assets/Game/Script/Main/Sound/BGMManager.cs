@@ -8,16 +8,30 @@ public class BGMManager : MonoBehaviour
 {
     enum BGM
     {
+        MAIN,// MainSceneBGM.
         BGMNum// BGMêî.
     }
 
+    // BGMëfçﬁ.
+    public AudioClip[] _bgm;
+
+    // î≠âπ.
+    private AudioSource _sourceBGM;
+
     void Start()
     {
-        
+        _sourceBGM = GameObject.Find("GameManager").GetComponent<AudioSource>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        
+        Debug.Assert(_sourceBGM != null);   
     }
+
+    // BGMÇó¨ÇµÇƒÇ¢ÇÈ.
+    public void BGMLoopPlay()
+    {
+        _sourceBGM.Play();
+    }
+
 }

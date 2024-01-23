@@ -8,17 +8,19 @@ public class SEManager : MonoBehaviour
 {
     public enum HunterSE
     {
-        SLASH,// aŒ‚‰¹.
-        ROUNDSLASH,// ‹Cn‘å‰ñ“]a‚è.
-        DAMAGE,// ƒ_ƒ[ƒW.
-        SENUM// SE”.
+        SLASH,          // aŒ‚‰¹.
+        ROUNDSLASH,     // ‹Cn‘å‰ñ“]a‚è.
+        DAMAGE,         // ƒ_ƒ[ƒW.
+        DRAWSWORD,      // ”²“.
+        SHEATHINGSWORD, // ”[“.
+        SENUM           // SE”.
     }
 
     public enum MonsterSE
     {
-        ROAR,// ™ôšK.
-        FOOTSTEP,// ‘«‰¹.
-        SENUM// SE”.
+        ROAR,       // ™ôšK.
+        FOOTSTEP,   // ‘«‰¹.
+        SENUM       // SE”.
     }
 
 
@@ -34,7 +36,7 @@ public class SEManager : MonoBehaviour
 
     void Start()
     {
-        _hunterSE = GameObject.Find("HunterSEAudio").GetComponent<AudioSource>();
+        _hunterSE = GameObject.Find("HunterAudio").GetComponent<AudioSource>();
         _monsterSE = GameObject.Find("Dragon").GetComponent<AudioSource>();
     }
 

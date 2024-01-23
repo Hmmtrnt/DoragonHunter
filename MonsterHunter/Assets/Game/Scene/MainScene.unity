@@ -34288,6 +34288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828352926}
   - component: {fileID: 828352925}
+  - component: {fileID: 828352927}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -34363,6 +34364,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828352927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828352924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 254700129935ce7429c8c3b0458624e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &829533380
 GameObject:
   m_ObjectHideFlags: 0
@@ -65058,6 +65071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1689985867}
+  - component: {fileID: 1689985868}
   m_Layer: 0
   m_Name: BGMManager
   m_TagString: Untagged
@@ -65080,6 +65094,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1673373794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1689985868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689985866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cd8810d3cf8da48b0920846e4793ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bgm:
+  - {fileID: 8300000, guid: 9656b5a8ea3795444a166b22f3154e1c, type: 3}
 --- !u!43 &1690848751
 Mesh:
   m_ObjectHideFlags: 0
@@ -77102,7 +77130,7 @@ GameObject:
   - component: {fileID: 2070125229}
   - component: {fileID: 2070125230}
   m_Layer: 0
-  m_Name: HunterSEAudio
+  m_Name: HunterAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81523,6 +81551,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702664894183819105, guid: 164bd4039834f8042818cdb167d20dce,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140403625207876649, guid: 164bd4039834f8042818cdb167d20dce,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4215587874658060561, guid: 164bd4039834f8042818cdb167d20dce,
         type: 3}

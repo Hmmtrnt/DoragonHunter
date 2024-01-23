@@ -1,5 +1,6 @@
 ﻿/*アイドル状態から抜刀状態への移行*/
 
+using System.Buffers;
 using UnityEngine;
 
 public partial class PlayerState
@@ -11,6 +12,7 @@ public partial class PlayerState
             owner._drawnSwordMotion = true;
             owner._unsheathedSword = true;
             owner._motionFrame = 0;
+            owner.StateTransitionInitialization();
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -27,13 +29,13 @@ public partial class PlayerState
             {
                 owner.ForwardStep(5);
             }
+
+            DrawSwordSound(owner);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSwordMotion = false;
-
-            
         }
 
         public override void OnChangeState(PlayerState owner)
@@ -43,8 +45,15 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idleDrawnSword);
             }
+        }
 
-
+        // 抜刀効果音再生.
+        private void DrawSwordSound(PlayerState owner)
+        {
+            if(owner._stateFlame == 10)
+            {
+                owner._seManager.HunterPlaySE((int)SEManager.HunterSE.DRAWSWORD);
+            }
         }
 
 

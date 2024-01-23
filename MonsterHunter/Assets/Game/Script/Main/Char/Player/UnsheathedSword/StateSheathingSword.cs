@@ -1,5 +1,6 @@
 ﻿/*納刀状態に遷移*/
 
+using System.Buffers;
 using UnityEngine;
 
 public partial class PlayerState
@@ -29,7 +30,7 @@ public partial class PlayerState
                 owner.ForwardStep(10);
             }
 
-            
+            SheathingSwordSound(owner);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -52,6 +53,15 @@ public partial class PlayerState
             else
             {
                 owner.ChangeState(_idle);
+            }
+        }
+
+        // 納刀するときの音を再生.
+        private void SheathingSwordSound(PlayerState owner)
+        {
+            if (owner._stateFlame == 10)
+            {
+                owner._seManager.HunterPlaySE((int)SEManager.HunterSE.SHEATHINGSWORD);
             }
         }
     }

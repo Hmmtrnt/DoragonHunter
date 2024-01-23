@@ -8,6 +8,7 @@ public partial class PlayerState
     private void Initialization()
     {
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;

@@ -75,7 +75,7 @@ public partial class PlayerState : MonoBehaviour
         // 練気ゲージ赤.
         LimitStop(ref _currentRedRenkiGauge, ref _maxRedRenkiGauge);
 
-        // 体力が0になったらやられる.
+        // 体力が0以下の時.
         if(_hitPoint <= 0)
         {
             OnDead();

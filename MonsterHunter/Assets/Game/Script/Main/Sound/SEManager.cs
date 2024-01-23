@@ -10,6 +10,7 @@ public class SEManager : MonoBehaviour
     {
         SLASH,// 斬撃音.
         ROUNDSLASH,// 気刃大回転斬り.
+        DAMAGE,// ダメージ.
         SENUM// SE数.
     }
 

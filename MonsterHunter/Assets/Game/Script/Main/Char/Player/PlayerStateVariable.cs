@@ -26,6 +26,9 @@ public partial class PlayerState
     // コントローラーの入力情報.
     private ControllerManager _input;
 
+    // SEマネージャー.
+    private SEManager _seManager;
+
     // カメラの注視点.
     [SerializeField] private GameObject _cameraFollow;
 

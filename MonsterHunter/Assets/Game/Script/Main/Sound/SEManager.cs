@@ -16,6 +16,7 @@ public class SEManager : MonoBehaviour
     public enum MonsterSE
     {
         ROAR,// 咆哮.
+        FOOTSTEP,// 足音.
         SENUM// SE数.
     }
 
@@ -45,9 +46,14 @@ public class SEManager : MonoBehaviour
         //}
     }
 
-    // SEを鳴らす.
-    public void PlaySE(int SENunber)
+    // プレイヤーのSEを鳴らす.
+    public void HunterPlaySE(int SENunber)
     {
         _hunterSE.PlayOneShot(_hunterAudio[SENunber]);
+    }
+    // モンスターのSEを鳴らす.
+    public void MonsterPlaySE(int SENunber)
+    {
+        _monsterSE.PlayOneShot(_monsterAudio[SENunber]);
     }
 }

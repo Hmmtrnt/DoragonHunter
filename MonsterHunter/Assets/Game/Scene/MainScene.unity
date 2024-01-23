@@ -14865,11 +14865,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1621110608}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4057922323062932423, guid: f88bded5780498340b860522a0ff3e3e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 571299420}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88bded5780498340b860522a0ff3e3e, type: 3}
 --- !u!4 &441402894 stripped
 Transform:
@@ -25490,20 +25486,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &571299415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4057922323062932423, guid: f88bded5780498340b860522a0ff3e3e,
-    type: 3}
-  m_PrefabInstance: {fileID: 441402893}
-  m_PrefabAsset: {fileID: 0}
---- !u!81 &571299420
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571299415}
-  m_Enabled: 1
 --- !u!1 &571738501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8290288647221158123, guid: 744c7c042d094ac45bad0e7f2ef04262,
@@ -41975,6 +41957,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c59298dbce52d54a8190721b6df0afd, type: 3}
   _monsterAudio:
   - {fileID: 8300000, guid: f4c030fce9d1f0649b8fcd2cd0887f12, type: 3}
+  - {fileID: 8300000, guid: 55ab026f67582914684670a40e39bc83, type: 3}
 --- !u!1 &1023596726
 GameObject:
   m_ObjectHideFlags: 0
@@ -44667,6 +44650,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1560266764}
+    - targetCorrespondingSourceObject: {fileID: 3492968972683579849, guid: 3d9de063ff6fce2488834b2a348276e6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1560266768}
   m_SourcePrefab: {fileID: 100100000, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
 --- !u!43 &1083165378
 Mesh:
@@ -56357,7 +56344,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 20.3
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -56393,7 +56380,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.831
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -59713,6 +59700,14 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!81 &1560266768
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560266757}
+  m_Enabled: 1
 --- !u!1 &1563265855 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3204664079624053614, guid: 744c7c042d094ac45bad0e7f2ef04262,

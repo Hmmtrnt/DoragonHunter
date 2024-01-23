@@ -41,6 +41,9 @@ public partial class MonsterState
     // プレイヤーのステート情報.
     private PlayerState _playerState;
 
+    // SEを鳴らす.
+    private SEManager _seManager;
+
     // ファイアーボールのプレハブ.
     private GameObject _fireBall;
     // ファイアーボールの生成位置.

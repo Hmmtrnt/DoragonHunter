@@ -87,11 +87,11 @@ public class AttackCol : MonoBehaviour
         // 気大回転刃斬りの時音を変更.
         if (_state.GetRoundSlash())
         {
-            _seManager.PlaySE((int)SEManager.HunterSE.ROUNDSLASH);
+            _seManager.HunterPlaySE((int)SEManager.HunterSE.ROUNDSLASH);
         }
         else
         {
-            _seManager.PlaySE((int)SEManager.HunterSE.SLASH);
+            _seManager.HunterPlaySE((int)SEManager.HunterSE.SLASH);
         }
     }
 

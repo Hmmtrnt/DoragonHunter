@@ -1,5 +1,6 @@
 ﻿/*突進攻撃*/
 
+using System.Buffers;
 using UnityEngine;
 
 public partial class MonsterState
@@ -53,6 +54,7 @@ public partial class MonsterState
             }
 
             ParticleGenerateTime(owner);
+            FootStepSound(owner);
 
             owner._trasnform.position += owner._moveVelocity;
         }
@@ -77,25 +79,23 @@ public partial class MonsterState
         // パーティクルをモーションを行っている時間で生成する.
         private void ParticleGenerateTime(MonsterState owner)
         {
-            if(owner._stateFlame == 60)
+            if(owner._stateFlame == 60 || owner._stateFlame == 90 || owner._stateFlame == 130)
             {
                 owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGRIGHT);
             }
-            if(owner._stateFlame == 80)
+            if(owner._stateFlame == 80 || owner._stateFlame == 110)
             {
                 owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGLEFT);
             }
-            if (owner._stateFlame == 90)
+        }
+
+        // 足音を流す.
+        private void FootStepSound(MonsterState owner)
+        {
+            if(owner._stateFlame == 55 || owner._stateFlame == 75 || owner._stateFlame == 85 || 
+                owner._stateFlame == 105 || owner._stateFlame == 125 )
             {
-                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGRIGHT);
-            }
-            if (owner._stateFlame == 110)
-            {
-                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGLEFT);
-            }
-            if (owner._stateFlame == 130)
-            {
-                owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGRIGHT);
+                owner._seManager.MonsterPlaySE((int)SEManager.MonsterSE.FOOTSTEP);
             }
         }
     }

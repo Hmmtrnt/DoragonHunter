@@ -20,7 +20,7 @@ public partial class MonsterState
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
         _playerState = _hunter.GetComponent<PlayerState>();
-
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fireBall = (GameObject)Resources.Load("FireBall");
         _fireBallPosition = GameObject.Find("BlessPosition");
         //_footSmokePrehub = (GameObject)Resources.Load("MonsterLegSmoke");

@@ -1,6 +1,7 @@
 /*™ôšK*/
 
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public partial class MonsterState
 {
@@ -29,7 +30,7 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-
+            RoarSound(owner);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -44,6 +45,16 @@ public partial class MonsterState
                 owner.ChangeState(_idle);
                 //Debug.Log("’Ê‚é");
             }
+        }
+
+        // ™ôšK‚Ì‰¹‚ð—¬‚·.
+        private void RoarSound(MonsterState owner)
+        {
+            if(owner._stateFlame == 90)
+            {
+                owner._seManager.MonsterPlaySE((int)SEManager.MonsterSE.ROAR);
+            }
+            
         }
     }
 }

@@ -219,6 +219,9 @@ public partial class PlayerState
     private float _deceleration = 0;
 
     // 以下デバッグ用変数
+    // メニュー画面
+    private bool _openMenu = false;
+
     // モンスターオブジェクト.
     private GameObject _Monster;
     // モンスターのState.

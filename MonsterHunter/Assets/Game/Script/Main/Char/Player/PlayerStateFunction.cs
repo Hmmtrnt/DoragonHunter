@@ -377,6 +377,21 @@ public partial class PlayerState
         }
     }
 
+    // メニュー画面の開閉制御.
+    private void MenuOpneAndClose()
+    {
+        if(_input._MenuButtonDown)
+        {
+            if(_openMenu)
+            {
+                _openMenu = false;
+            }
+            else
+            {
+                _openMenu = true;
+            }
+        }
+    }
     
 
     // ダッシュしているかどうかの情報取得.
@@ -428,4 +443,7 @@ public partial class PlayerState
         _currentDistance = (_debugSphere.transform.position - _transform.position).magnitude;
         return _currentDistance;
     }
+
+    // メニュー画面を開いているかどうか.
+    public bool GetOpenMenu() { return _openMenu; }
 }

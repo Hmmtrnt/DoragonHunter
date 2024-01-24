@@ -47,7 +47,8 @@ public partial class PlayerState : MonoBehaviour
     {
         GetStickInput();
         AnimTransition();
-        
+        MenuOpneAndClose();
+
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 

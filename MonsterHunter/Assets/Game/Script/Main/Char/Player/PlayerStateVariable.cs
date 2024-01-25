@@ -218,10 +218,12 @@ public partial class PlayerState
     // 減速.
     private float _deceleration = 0;
 
-    // 以下デバッグ用変数
-    // メニュー画面
-    private bool _openMenu = false;
+    // メニュー画面を開いているか.
+    public bool _openMenu = false;
+    // オプション画面を開いているか.
+    public bool _openOption = false;
 
+    // 以下デバッグ用変数
     // モンスターオブジェクト.
     private GameObject _Monster;
     // モンスターのState.

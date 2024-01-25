@@ -33,7 +33,7 @@ public partial class MonsterState
 
             // デバッグ用.
             // 近距離.
-            //if(owner._isNearDistance)
+            //if (owner._isNearDistance)
             //{
             //    // 正面(主にかみつき).
             //    if (owner._viewDirection[(int)viewDirection.FORWARD])
@@ -51,27 +51,27 @@ public partial class MonsterState
             //    }
             //}
 
-            // 近距離.
+            //// 近距離.
             //if (owner._isNearDistance)
             //{
             //    // 正面(主にかみつき).
             //    if (owner._viewDirection[(int)viewDirection.FORWARD])
             //    {
-            //        //if (owner._randomNumber <= 30)
-            //        //{
-            //        //    owner.ChangeState(_bite);
-            //        //}
-            //        //else if (owner._randomNumber <= 70)
-            //        //{
-            //        //    owner.ChangeState(_rush);
-            //        //}
-            //        //else
-            //        //{
-            //        //    owner.ChangeState(_rotate);
-            //        //}
+            //        if (owner._randomNumber <= 30)
+            //        {
+            //            owner.ChangeState(_bite);
+            //        }
+            //        else if (owner._randomNumber <= 70)
+            //        {
+            //            owner.ChangeState(_rush);
+            //        }
+            //        else
+            //        {
+            //            owner.ChangeState(_rotate);
+            //        }
 
             //        // デバッグ用状態遷移.
-            //        owner.ChangeState(_bite);
+            //        //owner.ChangeState(_bite);
             //    }
             //    // 後ろ.
             //    else if (owner._viewDirection[(int)viewDirection.BACKWARD])
@@ -138,17 +138,17 @@ public partial class MonsterState
             //    // 正面.
             //    if (owner._viewDirection[(int)viewDirection.FORWARD])
             //    {
-            //        //if (owner._randomNumber <= 60)
-            //        //{
-            //        //    owner.ChangeState(_rush);
-            //        //}
-            //        //else
-            //        //{
-            //        //    owner.ChangeState(_bless);
-            //        //}
+            //        if (owner._randomNumber <= 60)
+            //        {
+            //            owner.ChangeState(_rush);
+            //        }
+            //        else
+            //        {
+            //            owner.ChangeState(_bless);
+            //        }
 
             //        // デバッグ用モーション遷移.
-            //        owner.ChangeState(_rush);
+            //        //owner.ChangeState(_rush);
             //    }
             //    // 背後.
             //    else if (owner._viewDirection[(int)viewDirection.BACKWARD])

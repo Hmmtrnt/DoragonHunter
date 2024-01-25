@@ -380,15 +380,32 @@ public partial class PlayerState
     // メニュー画面の開閉制御.
     private void MenuOpneAndClose()
     {
-        if(_input._MenuButtonDown)
+        //if(_input._MenuButtonDown)
+        //{
+        //    if(_openMenu)
+        //    {
+        //        _openMenu = false;
+        //    }
+        //    else
+        //    {
+        //        _openMenu = true;
+        //    }
+        //}
+
+        // 開くとき
+        if(!_openMenu)
         {
-            if(_openMenu)
-            {
-                _openMenu = false;
-            }
-            else
+            if(_input._MenuButtonDown)
             {
                 _openMenu = true;
+            }
+        }
+        // 閉じるとき
+        else
+        {
+            if(_input._BButtonDown)
+            {
+                _openMenu = false;
             }
         }
     }
@@ -446,4 +463,7 @@ public partial class PlayerState
 
     // メニュー画面を開いているかどうか.
     public bool GetOpenMenu() { return _openMenu; }
+
+    // オプション画面を開いているかどうか.
+    public bool GetOpenOption() { return _openOption; }
 }

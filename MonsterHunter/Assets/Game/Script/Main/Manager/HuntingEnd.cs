@@ -38,14 +38,14 @@ public class HuntingEnd : MonoBehaviour
     private void SceneTransition()
     {
         // デバッグ用シーン遷移.
-        //if (_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
-        //{
-        //    // シーン切り替え時にイベント登録.
-        //    SceneManager.sceneLoaded += SceneTransitionUpdate;
+        if (_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
+        {
+            // シーン切り替え時にイベント登録.
+            SceneManager.sceneLoaded += SceneTransitionUpdate;
 
-        //    // シーン切り替え.
-        //    _sceneTransitionManager.ResultScene();
-        //}
+            // シーン切り替え.
+            _sceneTransitionManager.ResultScene();
+        }
     }
 
     // シーン遷移時に行う処理.

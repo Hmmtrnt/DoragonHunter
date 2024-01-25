@@ -1,3 +1,5 @@
+/*メニュー画面の表示非表示*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +8,16 @@ public class MainSceneMenuUi : MonoBehaviour
 {
     // プレイヤー情報.
     private PlayerState _playerState;
-    // メニュー画面のオブジェクト.
-    private GameObject _menuCanvas;
+    // MenuUI.
+    private GameObject _menuUI;
+    // OptionUI.
+    private GameObject _optionMenuUI;
 
     void Start()
     {
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
-        _menuCanvas = GameObject.Find("Menu").gameObject;
+        _menuUI = GameObject.Find("Menu").gameObject;
+        _optionMenuUI = GameObject.Find("OptionMenu").gameObject;
     }
 
     void Update()
@@ -22,6 +27,7 @@ public class MainSceneMenuUi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _menuCanvas.SetActive(_playerState.GetOpenMenu());
+        _menuUI.SetActive(_playerState.GetOpenMenu());
+        _optionMenuUI.SetActive(_playerState.GetOpenOption());
     }
 }

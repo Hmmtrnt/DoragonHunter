@@ -61,7 +61,7 @@ public partial class MonsterState
         }
         else
         {
-            _HitPoint = 3000;
+            _HitPoint = 2000;
         }
     }
 

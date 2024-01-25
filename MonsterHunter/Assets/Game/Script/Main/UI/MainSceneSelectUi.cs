@@ -8,12 +8,12 @@ using UnityEngine;
 
 public class MainSceneSelectUi : MonoBehaviour
 {
-    private enum SelectItem
+    public enum SelectItem
     {
-        OPTION,// 設定.
-        PAUSE,// 一時停止.
-        RETIREMENT,// リタイア.
-        MAXNUM// 項目数.
+        OPTION,     // 設定.
+        PAUSE,      // 一時停止.
+        RETIREMENT, // リタイア.
+        MAXNUM      // 項目数.
     }
 
     // UIの座標.
@@ -26,7 +26,7 @@ public class MainSceneSelectUi : MonoBehaviour
     private ControllerManager _controllerManager;
 
     // 現在選ばれている選択番号.
-    private int _selectNum = (int)SelectItem.OPTION;
+    public int _selectNum = (int)SelectItem.OPTION;
 
     void Start()
     {
@@ -34,7 +34,8 @@ public class MainSceneSelectUi : MonoBehaviour
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
-    }
+        _selectNum = (int)SelectItem.OPTION;
+}
 
     void Update()
     {
@@ -44,6 +45,7 @@ public class MainSceneSelectUi : MonoBehaviour
         _menu.CrossKeyPushFlameCount();
         _menu.CrossKeyNoPush();
         CloseInit();
+        OpenOption();
     }
 
     private void FixedUpdate()
@@ -77,6 +79,16 @@ public class MainSceneSelectUi : MonoBehaviour
         if(_controllerManager._BButtonDown)
         {
             _selectNum = (int)SelectItem.OPTION;
+        }
+    }
+
+    // 設定画面を開く.
+    private void OpenOption()
+    {
+        // 設定画面を選んで決定.
+        if(_controllerManager._AButtonDown && _selectNum == (int)SelectItem.OPTION)
+        {
+            _playerState._openOption = true;
         }
     }
 

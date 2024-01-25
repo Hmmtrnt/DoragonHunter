@@ -222,8 +222,10 @@ public partial class PlayerState
     private float _deceleration = 0;
 
     // メニュー画面を開いているか.
+    // お引越し予定
     public bool _openMenu = false;
     // オプション画面を開いているか.
+    // お引越し予定
     public bool _openOption = false;
 
     // 以下デバッグ用変数

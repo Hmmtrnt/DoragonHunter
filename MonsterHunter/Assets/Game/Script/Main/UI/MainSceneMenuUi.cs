@@ -12,12 +12,15 @@ public class MainSceneMenuUi : MonoBehaviour
     private GameObject _menuUI;
     // OptionUI.
     private GameObject _optionMenuUI;
+    // ˆêŽž’âŽ~’†‚ÌUI
+    private GameObject _pauseKeepUI;
 
     void Start()
     {
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _menuUI = GameObject.Find("Menu").gameObject;
         _optionMenuUI = GameObject.Find("OptionMenu").gameObject;
+        _pauseKeepUI = GameObject.Find("PauseCanvas").gameObject;
     }
 
     void Update()

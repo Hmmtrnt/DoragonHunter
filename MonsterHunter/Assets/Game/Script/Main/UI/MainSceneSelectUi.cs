@@ -39,8 +39,8 @@ public class MainSceneSelectUi : MonoBehaviour
 
     void Update()
     {
-        // メニュー画面を開いた時に処理.
-        if (!_playerState.GetOpenMenu()) return;
+        // メニュー画面を閉じているまた、オプション画面を開いている時に処理.
+        if (!_playerState.GetOpenMenu() || _playerState.GetOpenOption()) return;
         _menu.SelectMove(ref _selectNum);
         _menu.CrossKeyPushFlameCount();
         _menu.CrossKeyNoPush();
@@ -50,8 +50,8 @@ public class MainSceneSelectUi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // メニュー画面を開いた時に処理.
-        if(!_playerState.GetOpenMenu()) return;
+        // メニュー画面を閉じているまた、オプション画面を開いている時に処理.
+        if (!_playerState.GetOpenMenu() || _playerState.GetOpenOption()) return;
         _menu.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXNUM);
         SelectPosition();
     }

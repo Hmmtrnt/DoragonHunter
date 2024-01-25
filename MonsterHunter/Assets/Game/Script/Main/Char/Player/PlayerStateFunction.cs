@@ -406,6 +406,12 @@ public partial class PlayerState
         {
             if(_input._BButtonDown)
             {
+                if(_openOption)
+                {
+                    _openOption = false;
+                    return;
+                }
+
                 _openMenu = false;
             }
         }

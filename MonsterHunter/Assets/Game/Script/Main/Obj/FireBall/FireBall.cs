@@ -33,7 +33,11 @@ public class FireBall : MonoBehaviour
         // èâë¨Çó^Ç¶ÇÈ
         _rigidbody.AddForce(_direction * _speed);
 
-        _effect.SetBool(_fireballTrailsActiveString, true);
+        if(_effect != null )
+        {
+            _effect.SetBool(_fireballTrailsActiveString, true);
+        }
+        
     }
 
     private void FixedUpdate()

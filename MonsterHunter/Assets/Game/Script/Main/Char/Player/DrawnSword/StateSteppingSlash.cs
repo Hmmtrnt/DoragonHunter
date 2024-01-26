@@ -49,6 +49,9 @@ public partial class PlayerState
                 owner._weaponActive = false;
             }
 
+            // 空振り効果音再生.
+            owner.SEPlay(40, (int)SEManager.HunterSE.MISSINGSLASH);
+
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -103,6 +106,14 @@ public partial class PlayerState
             }
         }
 
-        
+        // 空振り音再生.
+        private void MissingSlashSound(PlayerState owner)
+        {
+            if(owner._stateFlame == 0)
+            {
+                owner._seManager.HunterPlaySE((int)SEManager.HunterSE.MISSINGSLASH);
+            }
+            
+        }
     }
 }

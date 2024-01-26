@@ -33,23 +33,23 @@ public partial class MonsterState
 
             // デバッグ用.
             // 近距離.
-            if (owner._isNearDistance)
-            {
-                // 正面(主にかみつき).
-                if (owner._viewDirection[(int)viewDirection.FORWARD])
-                {
-                    owner.ChangeState(_rush);
-                }
-            }
-            // 遠距離.
-            else
-            {
-                // 正面(主にかみつき).
-                if (owner._viewDirection[(int)viewDirection.FORWARD])
-                {
-                    owner.ChangeState(_rush);
-                }
-            }
+            //if (owner._isNearDistance)
+            //{
+            //    // 正面(主にかみつき).
+            //    if (owner._viewDirection[(int)viewDirection.FORWARD])
+            //    {
+            //        owner.ChangeState(_bless);
+            //    }
+            //}
+            //// 遠距離.
+            //else
+            //{
+            //    // 正面(主にかみつき).
+            //    if (owner._viewDirection[(int)viewDirection.FORWARD])
+            //    {
+            //        owner.ChangeState(_bless);
+            //    }
+            //}
 
             //// 近距離.
             //if (owner._isNearDistance)

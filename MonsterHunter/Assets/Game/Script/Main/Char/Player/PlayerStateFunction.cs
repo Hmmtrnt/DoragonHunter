@@ -417,6 +417,33 @@ public partial class PlayerState
         }
     }
     
+    // SE‚ğ–Â‚ç‚·‚Æ‚«‚Ìˆ—.
+    private void SEPlay(int flameNum1, int seName)
+    {
+        if(_stateFlame == flameNum1)
+        {
+            _seManager.HunterPlaySE(seName); 
+        }
+    }
+
+    private void SEPlay(int flameNum1, int flameNum2, int seName)
+    {
+        if (_stateFlame == flameNum1 ||
+            _stateFlame == flameNum2)
+        {
+            _seManager.HunterPlaySE(seName);
+        }
+    }
+
+    private void SEPlay(int flameNum1, int flameNum2, int flameNum3, int seName)
+    {
+        if (_stateFlame == flameNum1 ||
+            _stateFlame == flameNum2 ||
+            _stateFlame == flameNum3)
+        {
+            _seManager.HunterPlaySE(seName);
+        }
+    }
 
     // ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìî•ñæ“¾.
     public bool GetIsDashing() { return _isDashing; }

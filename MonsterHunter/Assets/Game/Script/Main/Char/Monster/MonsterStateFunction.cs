@@ -62,7 +62,7 @@ public partial class MonsterState
         else
         {
             // HACK:Œã‚Å‘Ì—Í‚ð’¼‚·.
-            _HitPoint = 100000;
+            _HitPoint = 1000;
         }
     }
 

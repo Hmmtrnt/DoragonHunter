@@ -30,7 +30,8 @@ public partial class PlayerState
                 owner.ForwardStep(5);
             }
 
-            DrawSwordSound(owner);
+            // 抜刀効果音再生.
+            owner.SEPlay(10, (int)SEManager.HunterSE.DRAWSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -46,16 +47,5 @@ public partial class PlayerState
                 owner.ChangeState(_idleDrawnSword);
             }
         }
-
-        // 抜刀効果音再生.
-        private void DrawSwordSound(PlayerState owner)
-        {
-            if(owner._stateFlame == 10)
-            {
-                owner._seManager.HunterPlaySE((int)SEManager.HunterSE.DRAWSWORD);
-            }
-        }
-
-
     }
 }

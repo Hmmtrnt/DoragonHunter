@@ -42079,9 +42079,10 @@ MonoBehaviour:
   _hunterAudio:
   - {fileID: 8300000, guid: 4ba02f4969595c443abfe796f4f73912, type: 3}
   - {fileID: 8300000, guid: 5c59298dbce52d54a8190721b6df0afd, type: 3}
-  - {fileID: 8300000, guid: 05c8da32f37461841a81849d5098a90b, type: 3}
+  - {fileID: 8300000, guid: 0ba26c44051f2c849a29b98fb92d685b, type: 3}
   - {fileID: 8300000, guid: 9067ad527a670ec44ab5aeda6cd1c196, type: 3}
   - {fileID: 8300000, guid: 2c2b454ccb9b78b4caddfb6e2344b7b7, type: 3}
+  - {fileID: 8300000, guid: d04d1351b9d2d1a4687f107abf35de23, type: 3}
   _monsterAudio:
   - {fileID: 8300000, guid: f4c030fce9d1f0649b8fcd2cd0887f12, type: 3}
   - {fileID: 8300000, guid: 5b87d95a353ea4d4fbd56a90cfdfb369, type: 3}
@@ -81824,6 +81825,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129297100565322720, guid: 770c66d9b238eb247bc35773e4e90b34,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1179510095998513291, guid: 770c66d9b238eb247bc35773e4e90b34,
         type: 3}
       propertyPath: m_Name
@@ -81927,6 +81933,11 @@ PrefabInstance:
     - target: {fileID: 3848192906420727423, guid: 770c66d9b238eb247bc35773e4e90b34,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712804276020345479, guid: 770c66d9b238eb247bc35773e4e90b34,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

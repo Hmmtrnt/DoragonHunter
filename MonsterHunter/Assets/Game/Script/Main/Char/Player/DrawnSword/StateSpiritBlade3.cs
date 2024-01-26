@@ -70,6 +70,9 @@ public partial class PlayerState
             {
                 owner.ForwardStep(4);
             }
+
+            // 空振り効果音再生.
+            owner.SEPlay(5, 15, 45,(int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

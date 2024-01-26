@@ -13,6 +13,7 @@ public class SEManager : MonoBehaviour
         DAMAGE,         // ƒ_ƒ[ƒW.
         DRAWSWORD,      // ”²“.
         SHEATHINGSWORD, // ”[“.
+        MISSINGSLASH,   // ‹óU‚è
         SENUM           // SE”.
     }
 

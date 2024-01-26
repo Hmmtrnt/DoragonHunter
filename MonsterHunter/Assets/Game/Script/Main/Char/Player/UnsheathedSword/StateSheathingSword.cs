@@ -30,7 +30,8 @@ public partial class PlayerState
                 owner.ForwardStep(10);
             }
 
-            SheathingSwordSound(owner);
+            // 納刀効果音再生.
+            owner.SEPlay(10,(int)SEManager.HunterSE.SHEATHINGSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -53,15 +54,6 @@ public partial class PlayerState
             else
             {
                 owner.ChangeState(_idle);
-            }
-        }
-
-        // 納刀するときの音を再生.
-        private void SheathingSwordSound(PlayerState owner)
-        {
-            if (owner._stateFlame == 10)
-            {
-                owner._seManager.HunterPlaySE((int)SEManager.HunterSE.SHEATHINGSWORD);
             }
         }
     }

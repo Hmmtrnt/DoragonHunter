@@ -38,7 +38,7 @@ public partial class MonsterState
                 // 正面(主にかみつき).
                 if (owner._viewDirection[(int)viewDirection.FORWARD])
                 {
-                    owner.ChangeState(_bless);
+                    owner.ChangeState(_rush);
                 }
             }
             // 遠距離.
@@ -47,7 +47,7 @@ public partial class MonsterState
                 // 正面(主にかみつき).
                 if (owner._viewDirection[(int)viewDirection.FORWARD])
                 {
-                    owner.ChangeState(_bless);
+                    owner.ChangeState(_rush);
                 }
             }
 

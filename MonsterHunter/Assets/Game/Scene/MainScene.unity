@@ -14810,7 +14810,7 @@ PrefabInstance:
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.5381233
+      value: 0.90306723
       objectReference: {fileID: 0}
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
@@ -14820,17 +14820,17 @@ PrefabInstance:
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.06602003
+      value: -0.06601607
       objectReference: {fileID: 0}
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.000076573495
+      value: 0.0005064624
       objectReference: {fileID: 0}
     - target: {fileID: 7850671224219463933, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
       propertyPath: m_Center.z
-      value: 1.0355409
+      value: 1.0355351
       objectReference: {fileID: 0}
     - target: {fileID: 7909341703242984116, guid: f88bded5780498340b860522a0ff3e3e,
         type: 3}
@@ -42084,7 +42084,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2c2b454ccb9b78b4caddfb6e2344b7b7, type: 3}
   _monsterAudio:
   - {fileID: 8300000, guid: f4c030fce9d1f0649b8fcd2cd0887f12, type: 3}
-  - {fileID: 8300000, guid: 4c14c17e17ec1f744ad724041c40b994, type: 3}
+  - {fileID: 8300000, guid: 5b87d95a353ea4d4fbd56a90cfdfb369, type: 3}
 --- !u!1 &1023596726
 GameObject:
   m_ObjectHideFlags: 0

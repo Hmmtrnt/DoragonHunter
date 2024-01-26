@@ -11,10 +11,15 @@ public class AttackCol : MonoBehaviour
     private PlayerHitStopManager _hitStop;
     private SEManager _seManager;
     private SEManager.HunterSE _se;
-    // 攻撃ヒットエフェクトのプレハブ取得.
-    GameObject _HitEffectObject;
+    // 弱い攻撃ヒットエフェクトのプレハブ取得.
+    GameObject _smallHitEffectObject;
+    // 強い攻撃ヒットエフェクトのプレハブ取得.
+    GameObject _hardHitEffectObject;
     // 攻撃ヒットエフェクトの生成位置.
-    GameObject _HitEffectPosition;
+    GameObject _hitEffectPosition;
+
+    // 攻撃ヒットエフェクトのポケット.
+    GameObject _hitEffectPocket = null;
 
     void Start()
     {
@@ -22,8 +27,9 @@ public class AttackCol : MonoBehaviour
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.
-        _HitEffectObject = (GameObject)Resources.Load("HunterHitEffect2");
-        _HitEffectPosition = GameObject.Find("EffectSpawnPosition");
+        _smallHitEffectObject = (GameObject)Resources.Load("SmallHitEffect");
+        _hardHitEffectObject = (GameObject)Resources.Load("HardHitEffect");
+        _hitEffectPosition = GameObject.Find("EffectSpawnPosition");
     }
 
     void Update()
@@ -75,7 +81,17 @@ public class AttackCol : MonoBehaviour
         _hitStop.StartHitStop(_state._hitStopTime);
 
         SEPlay();
-        AttackEffectSpawn();
+
+        if(_state.GetRoundSlash())
+        {
+            _hitEffectPocket = _hardHitEffectObject;
+        }
+        else
+        {
+            _hitEffectPocket = _smallHitEffectObject;
+        }
+
+        AttackEffectSpawn(_hitEffectPocket);
 
         // インスタンス生成.
         //Instantiate(_HitEffectObject, _HitEffectPosition.transform);
@@ -95,11 +111,13 @@ public class AttackCol : MonoBehaviour
         }
     }
 
-    // 攻撃ヒット時エフェクトを生成.
-    private void AttackEffectSpawn()
+    /// <summary>
+    /// 攻撃ヒット時エフェクトを生成.
+    /// </summary>
+    /// <param name="objectName">パーティクルを生成するヒットエフェクト</param>
+    private void AttackEffectSpawn(GameObject objectName)
     {
-        
         // 生成.
-        Instantiate(_HitEffectObject, _HitEffectPosition.transform.position, Quaternion.identity);
+        Instantiate(objectName, _hitEffectPosition.transform.position, Quaternion.identity);
     }
 }

@@ -22,7 +22,7 @@ public class AttackCol : MonoBehaviour
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.
-        _HitEffectObject = (GameObject)Resources.Load("HunterHitEffect");
+        _HitEffectObject = (GameObject)Resources.Load("HunterHitEffect2");
         _HitEffectPosition = GameObject.Find("EffectSpawnPosition");
     }
 

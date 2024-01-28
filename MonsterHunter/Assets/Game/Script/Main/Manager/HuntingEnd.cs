@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,8 @@ public class HuntingEnd : MonoBehaviour
     private PlayerState _playerState;
     // シーン遷移.
     private SceneTransitionManager _sceneTransitionManager;
+    // パッド入力情報.
+    private ControllerManager _controllerManager;
 
     // 狩猟成功したか.
     private bool _QuestClear = false;
@@ -25,6 +28,7 @@ public class HuntingEnd : MonoBehaviour
         _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
+        _controllerManager = GetComponent<ControllerManager>();
         _startSceneTransitionCount = 1000;
     }
 
@@ -46,6 +50,18 @@ public class HuntingEnd : MonoBehaviour
         //    // シーン切り替え.
         //    _sceneTransitionManager.ResultScene();
         //}
+
+        if(_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
+        {
+            if(_controllerManager._AButtonDown)
+            {
+                _sceneTransitionManager.TitleScene();
+            }
+            else if(_controllerManager._BButtonDown)
+            {
+                _sceneTransitionManager.SelectScene();
+            }
+        }
     }
 
     // シーン遷移時に行う処理.

@@ -98,4 +98,7 @@ public class HuntingEnd : MonoBehaviour
         if (!_QuestClear) return;
         _startSceneTransitionCount--;
     }
+
+    // クエストをクリアしたかどうか.
+    public bool GetQuestClear() { return _QuestClear; }
 }

@@ -8,6 +8,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
+            owner.StateTransitionInitialization();
             owner._runMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
@@ -21,6 +22,9 @@ public partial class PlayerState
         {
             owner.RotateDirection();
             Move(owner);
+
+            owner.SEPlay(10, (int)SEManager.HunterSE.FOOTSTEPLEFT);
+            owner.SEPlay(30, (int)SEManager.HunterSE.FOOTSTEPRIGHT);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

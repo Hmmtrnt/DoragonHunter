@@ -361,6 +361,24 @@ public partial class PlayerState
         // “ü—Íî•ñ‘ã“ü.
         _leftStickHorizontal = _input._LeftStickHorizontal;
         _leftStickVertical = _input._LeftStickVertical;
+
+        //if(_input._LeftStickHorizontal < 0)
+        //{
+        //    _leftStickHorizontal = 1;
+        //}
+        //else if( _input._LeftStickHorizontal > 0)
+        //{
+        //    _leftStickHorizontal = -1;
+        //}
+
+        //if (_input._LeftStickVertical < 0)
+        //{
+        //    _leftStickVertical = 1;
+        //}
+        //else if (_input._LeftStickVertical > 0)
+        //{
+        //    _leftStickVertical = -1;
+        //}
     }
 
     // ˆÚ“®‚Ì‰ñ“]ˆ—.

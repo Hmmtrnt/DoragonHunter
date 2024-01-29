@@ -103,9 +103,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9067ad527a670ec44ab5aeda6cd1c196, type: 3}
   - {fileID: 8300000, guid: 2c2b454ccb9b78b4caddfb6e2344b7b7, type: 3}
   - {fileID: 8300000, guid: d04d1351b9d2d1a4687f107abf35de23, type: 3}
+  - {fileID: 8300000, guid: a3ecb96fc3a79524e81839de2aece5af, type: 3}
+  - {fileID: 8300000, guid: ed82015365423b34999dc4396b4baf89, type: 3}
+  - {fileID: 8300000, guid: 55bafbe9377ff05469d1f1fd1d01a3d2, type: 3}
   _monsterAudio:
   - {fileID: 8300000, guid: f4c030fce9d1f0649b8fcd2cd0887f12, type: 3}
   - {fileID: 8300000, guid: 5b87d95a353ea4d4fbd56a90cfdfb369, type: 3}
+  - {fileID: 8300000, guid: 55ab026f67582914684670a40e39bc83, type: 3}
+  - {fileID: 8300000, guid: 8fcbb0aa97058c84195a25cf69b305b1, type: 3}
+  - {fileID: 8300000, guid: 617089bf08f52d744ada4f838cf67786, type: 3}
 --- !u!1 &7388302872533370906
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,8 @@ public class SEManager : MonoBehaviour
         SHEATHINGSWORD, // ”[“.
         MISSINGSLASH,   // ‹óU‚è
         DRINK,          // ˆù‚Þ.
+        FOOTSTEPLEFT,   // ‘«‰¹(¶).
+        FOOTSTEPRIGHT,  // ‘«‰¹(‰E).
         SENUM           // SE”.
     }
 

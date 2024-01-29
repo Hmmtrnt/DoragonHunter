@@ -31,9 +31,11 @@ public class SEManager : MonoBehaviour
 
     public enum MonsterSE
     {
-        ROAR,       // ™ôšK.
-        FOOTSTEP,   // ‘«‰¹.
-        SENUM       // SE”.
+        ROAR,           // ™ôšK.
+        FOOTSTEP,       // ‘«‰¹.
+        FOOTSMALLSTEP,  // ¬‚³‚¢‘«‰¹.
+        ROTATE,         // ‰ñ“]‚Ì‰¹.
+        SENUM           // SE”.
     }
 
     public enum AudioNumber

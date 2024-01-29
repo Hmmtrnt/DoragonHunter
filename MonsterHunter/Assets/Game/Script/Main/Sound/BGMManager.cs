@@ -8,8 +8,10 @@ public class BGMManager : MonoBehaviour
 {
     enum BGM
     {
-        MAIN,// MainSceneBGM.
-        BGMNum// BGMêî.
+        TITLE,  // TitleScene
+        SELECT, // SelectScene
+        MAIN,   // MainScene.
+        BGMNum  // BGMêî.
     }
 
     // BGMëfçﬁ.

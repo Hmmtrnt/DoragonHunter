@@ -9,10 +9,10 @@ public class SEManager : MonoBehaviour
     /*UI*/
     public enum UISE
     {
-        SELECT,// 選択UIの移動.
-        DECISION,// 決定.
-        QUESTSTART,// クエストスタート.
-        SENUM// SE数.
+        SELECT,     // 選択UIの移動.
+        DECISION,   // 決定.
+        QUESTSTART, // クエストスタート.
+        SENUM       // SE数.
     }
 
 

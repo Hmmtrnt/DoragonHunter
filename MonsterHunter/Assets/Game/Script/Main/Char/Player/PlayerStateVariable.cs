@@ -30,7 +30,7 @@ public partial class PlayerState
     private SEManager _seManager;
 
     // メニュー画面の選択している情報.
-    private MainSceneSelectUi _mainSceneSelectUi;
+    private MainSceneMenuSelectUi _mainSceneSelectUi;
 
     // カメラの注視点.
     [SerializeField] private GameObject _cameraFollow;

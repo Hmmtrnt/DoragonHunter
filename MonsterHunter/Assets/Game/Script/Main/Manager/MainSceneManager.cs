@@ -11,7 +11,7 @@ public class MainSceneManager : MonoBehaviour
     // BGMマネージャー.
     private BGMManager _bgmManager;
     // ポーズ画面.
-    private MainSceneSelectUi _mainSceneSelectUi;
+    private MainSceneMenuSelectUi _mainSceneSelectUi;
     // 一時停止.
     private PauseTimeStop _pauseTimeStop;
     // 一時停止しているかどうか.
@@ -21,7 +21,7 @@ public class MainSceneManager : MonoBehaviour
     {
         _controllerManager = GetComponent<ControllerManager>();
         _bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
-        _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneSelectUi>();
+        _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneMenuSelectUi>();
         _pauseTimeStop = GetComponent<PauseTimeStop>();
     }
 
@@ -38,7 +38,7 @@ public class MainSceneManager : MonoBehaviour
         }
 
         // 一時停止を押したときの処理.
-        if(_mainSceneSelectUi._selectNum == (int)MainSceneSelectUi.SelectItem.PAUSE && 
+        if(_mainSceneSelectUi._selectNum == (int)MainSceneMenuSelectUi.SelectItem.PAUSE && 
             _controllerManager._AButtonDown &&
             !_pauseStop)
         {

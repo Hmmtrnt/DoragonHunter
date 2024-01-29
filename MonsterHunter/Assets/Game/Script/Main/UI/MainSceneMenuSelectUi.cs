@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MainSceneSelectUi : MonoBehaviour
+public class MainSceneMenuSelectUi : MonoBehaviour
 {
     public enum SelectItem
     {
@@ -39,7 +39,7 @@ public class MainSceneSelectUi : MonoBehaviour
 
     void Update()
     {
-        // メニュー画面を閉じているまた、オプション画面を開いている時に処理.
+        // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
         if (!_playerState.GetOpenMenu() || _playerState.GetOpenOption()) return;
         _menu.SelectMove(ref _selectNum);
         _menu.CrossKeyPushFlameCount();
@@ -50,7 +50,7 @@ public class MainSceneSelectUi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // メニュー画面を閉じているまた、オプション画面を開いている時に処理.
+        // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
         if (!_playerState.GetOpenMenu() || _playerState.GetOpenOption()) return;
         _menu.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXNUM);
         SelectPosition();

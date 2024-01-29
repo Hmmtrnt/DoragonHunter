@@ -55,7 +55,7 @@ public partial class MonsterState
             // 行動パターン.
             if (owner._viewDirection[(int)viewDirection.FORWARD])
             {
-                owner.ChangeState(_rotate);
+                owner.ChangeState(_bless);
             }
 
             // 近距離.

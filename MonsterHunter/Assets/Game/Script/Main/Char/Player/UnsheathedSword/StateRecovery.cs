@@ -11,6 +11,7 @@ public partial class PlayerState
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
+            owner.StateTransitionInitialization();
             owner._isRecovery = true;
             owner._healMotion = true;
         }
@@ -30,7 +31,7 @@ public partial class PlayerState
             {
                 Recovery(owner);
             }
-            
+            owner.SEPlay(50, (int)SEManager.HunterSE.DRINK);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

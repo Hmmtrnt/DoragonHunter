@@ -22,12 +22,14 @@ public partial class MonsterState
             owner.TurnTowards(40);
 
             // ”­ŽË‚Ÿ.
-            if (owner._stateFlame == 60)
+            if (owner._stateFlame == 55)
             {
                 Instantiate(owner._fireBall, new Vector3(owner._fireBallPosition.transform.position.x,
                 owner._fireBallPosition.transform.position.y,
                 owner._fireBallPosition.transform.position.z), Quaternion.identity);
             }
+
+            owner.SEPlay(55, (int)SEManager.MonsterSE.BLESS);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

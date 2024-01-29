@@ -26,6 +26,7 @@ public class SEManager : MonoBehaviour
         DRAWSWORD,      // ”²“.
         SHEATHINGSWORD, // ”[“.
         MISSINGSLASH,   // ‹óU‚è
+        DRINK,          // ˆù‚Ş.
         SENUM           // SE”.
     }
 
@@ -35,6 +36,7 @@ public class SEManager : MonoBehaviour
         FOOTSTEP,       // ‘«‰¹.
         FOOTSMALLSTEP,  // ¬‚³‚¢‘«‰¹.
         ROTATE,         // ‰ñ“]‚Ì‰¹.
+        BLESS,          // ƒuƒŒƒX.
         SENUM           // SE”.
     }
 

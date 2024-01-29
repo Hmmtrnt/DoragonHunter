@@ -17,10 +17,13 @@ public class Menu : MonoBehaviour
     private int _firstInterval = 50;
     // 押し続ける際のインターバル.
     private int _pushingInterval = 5;
+    // サウンド.
+    private SEManager _seManager;
 
     private void Start()
     {
         _controllerManager = GetComponent<ControllerManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
     }
 
     // 十字キーを押している時間経過.
@@ -74,11 +77,13 @@ public class Menu : MonoBehaviour
             if (_controllerManager._UpCrossKey)
             {
                 SelectNum--;
+                _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.SELECT);
             }
             // 下に押したとき.
             else if (_controllerManager._DownCrossKey)
             {
                 SelectNum++;
+                _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.SELECT);
             }
         }
     }

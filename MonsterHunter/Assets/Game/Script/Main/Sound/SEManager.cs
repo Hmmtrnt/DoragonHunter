@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class SEManager : MonoBehaviour
 {
-    /*TitleScene*/
-    public enum TitleSE
+    /*UI*/
+    public enum UISE
     {
         SELECT,// 選択UIの移動.
         DECISION,// 決定.
@@ -76,6 +76,12 @@ public class SEManager : MonoBehaviour
         //{
         //    _audioSource.PlayOneShot(_test);
         //}
+    }
+
+    // UIのSEを鳴らす.
+    public void UIPlaySE(int Audio, int SENuber)
+    {
+        _source[Audio].PlayOneShot(_titleUiAudio[SENuber]);
     }
 
     // プレイヤーのSEを鳴らす.

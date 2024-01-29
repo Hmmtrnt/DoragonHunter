@@ -20,6 +20,8 @@ public class TitleUpdate : MonoBehaviour
     public GameObject[] _selectShadow;
     // 選択UIの処理.
     private TitleSelectUi _selectUi;
+    // タイトルSEの処理.
+    private SEManager _seManager;
 
     // PressAnyButtonを押したときtrueにする.
     public bool _pressAnyPush = false;
@@ -32,6 +34,7 @@ public class TitleUpdate : MonoBehaviour
         _gameStart = GameObject.Find("GAMESTART").gameObject;
         _option = GameObject.Find("OPTION").gameObject;
         _selectUi = GameObject.Find("Select").GetComponent<TitleSelectUi>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
 
         _gameStart.SetActive(false);
         _option.SetActive(false);
@@ -48,6 +51,8 @@ public class TitleUpdate : MonoBehaviour
         //{
         //    _sceneTransitionManager.MainScene();
         //}
+        if (_pressAnyPush) return;
+
         PressAnyPushflag();
     }
 
@@ -64,6 +69,7 @@ public class TitleUpdate : MonoBehaviour
         if(_controllerManager._AButtonDown && _selectUi.GetSelectNumber() == 0)
         {
             _sceneTransitionManager.SelectScene();
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
         }
         
     }
@@ -74,6 +80,7 @@ public class TitleUpdate : MonoBehaviour
         if(_controllerManager._PressAnyButton)
         {
             _pressAnyPush = true;
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
         }
     }
 

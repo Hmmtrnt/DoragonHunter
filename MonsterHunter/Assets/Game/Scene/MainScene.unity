@@ -82169,7 +82169,7 @@ PrefabInstance:
     - target: {fileID: 7541248059372599302, guid: 34575c971cf24d1489db80eef17fd56d,
         type: 3}
       propertyPath: _hunterAudio.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7541248059372599302, guid: 34575c971cf24d1489db80eef17fd56d,
         type: 3}
@@ -82180,7 +82180,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _hunterAudio.Array.data[6]
       value: 
-      objectReference: {fileID: 8300000, guid: d04d1351b9d2d1a4687f107abf35de23, type: 3}
+      objectReference: {fileID: 8300000, guid: a3ecb96fc3a79524e81839de2aece5af, type: 3}
     - target: {fileID: 7541248059372599302, guid: 34575c971cf24d1489db80eef17fd56d,
         type: 3}
       propertyPath: _monsterAudio.Array.data[2]

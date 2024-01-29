@@ -17,7 +17,8 @@ public partial class PlayerState
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
             KnockBackVector(owner);
-            owner._seManager.HunterPlaySE((int)SEManager.HunterSE.DAMAGE);
+            //owner._seManager.HunterPlaySE((int)MainSceneSEManager.HunterSE.DAMAGE);
+            owner._seManager.HunterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO2D, (int)MainSceneSEManager.HunterSE.DAMAGE);
         }
 
         public override void OnUpdate(PlayerState owner)

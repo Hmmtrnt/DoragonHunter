@@ -30,7 +30,8 @@ public partial class MonsterState
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            RoarSound(owner);
+            //RoarSound(owner);
+            owner.SEPlay(90, (int)MainSceneSEManager.MonsterSE.ROAR);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -48,14 +49,14 @@ public partial class MonsterState
         }
 
         // ™ôšK‚Ì‰¹‚ð—¬‚·.
-        private void RoarSound(MonsterState owner)
-        {
-            if(owner._stateFlame == 90)
-            {
-                owner._seManager.MonsterPlaySE((int)SEManager.MonsterSE.ROAR);
-            }
+        //private void RoarSound(MonsterState owner)
+        //{
+        //    if(owner._stateFlame == 90)
+        //    {
+        //        owner._seManager.MonsterPlaySE((int)MainSceneSEManager.MonsterSE.ROAR);
+        //    }
             
-        }
+        //}
     }
 }
 

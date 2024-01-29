@@ -50,7 +50,7 @@ public partial class PlayerState
             }
 
             // 空振り効果音再生.
-            owner.SEPlay(40, (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(40, (int)MainSceneSEManager.HunterSE.MISSINGSLASH);
 
         }
 
@@ -111,7 +111,7 @@ public partial class PlayerState
         {
             if(owner._stateFlame == 0)
             {
-                owner._seManager.HunterPlaySE((int)SEManager.HunterSE.MISSINGSLASH);
+                //owner._seManager.HunterPlaySE((int)MainSceneSEManager.HunterSE.MISSINGSLASH);
             }
             
         }

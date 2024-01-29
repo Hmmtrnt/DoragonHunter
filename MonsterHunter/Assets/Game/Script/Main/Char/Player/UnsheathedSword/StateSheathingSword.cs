@@ -31,7 +31,7 @@ public partial class PlayerState
             }
 
             // 納刀効果音再生.
-            owner.SEPlay(10,(int)SEManager.HunterSE.SHEATHINGSWORD);
+            owner.SEPlay(10,(int)MainSceneSEManager.HunterSE.SHEATHINGSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

@@ -20,7 +20,7 @@ public partial class MonsterState
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
         _playerState = _hunter.GetComponent<PlayerState>();
-        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<MainSceneSEManager>();
         _fireBall = (GameObject)Resources.Load("FireBall2");
         _fireBallPosition = GameObject.Find("BlessPosition");
         //_footSmokePrehub = (GameObject)Resources.Load("MonsterLegSmoke");
@@ -284,6 +284,50 @@ public partial class MonsterState
         Instantiate(_footSmokePrehub[footSmokeKinds],
                 _footSmokePosition[footSmokePosition].transform.position,
                 Quaternion.identity);
+    }
+
+    // SEÇñ¬ÇÁÇ∑èàóù.
+    private void SEPlay(int flameNum1, int seName)
+    {
+        if (_stateFlame == flameNum1)
+        {
+            //_seManager.HunterPlaySE(seName); 
+            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+        }
+    }
+
+    private void SEPlay(int flameNum1, int flameNum2, int seName)
+    {
+        if (_stateFlame == flameNum1 ||
+            _stateFlame == flameNum2)
+        {
+            //_seManager.HunterPlaySE(seName);
+            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+        }
+    }
+
+    private void SEPlay(int flameNum1, int flameNum2, int flameNum3, int seName)
+    {
+        if (_stateFlame == flameNum1 ||
+            _stateFlame == flameNum2 ||
+            _stateFlame == flameNum3)
+        {
+            //_seManager.HunterPlaySE(seName);
+            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+        }
+    }
+
+    private void SEPlay(int flameNum1, int flameNum2, int flameNum3, int flameNum4, int flameNum5, int seName)
+    {
+        if (_stateFlame == flameNum1 ||
+            _stateFlame == flameNum2 ||
+            _stateFlame == flameNum3 ||
+            _stateFlame == flameNum4 ||
+            _stateFlame == flameNum5)
+        {
+            //_seManager.HunterPlaySE(seName);
+            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+        }
     }
 
     private float GetDistance()

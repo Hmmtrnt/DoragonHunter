@@ -18,6 +18,8 @@ public class HuntingEnd : MonoBehaviour
 
     // 狩猟成功したか.
     private bool _QuestClear = false;
+    // 狩猟失敗したか.
+    private bool _QuestFailed = false;
 
     // 狩猟成功してシーン遷移を行うまでの時間.
     private int _startSceneTransitionCount = 0;
@@ -35,6 +37,7 @@ public class HuntingEnd : MonoBehaviour
     {
         HuntingEndBranch();
         SceneTransition();
+        QuestResult();
     }
 
     // シーン遷移を行う.
@@ -98,6 +101,21 @@ public class HuntingEnd : MonoBehaviour
         _startSceneTransitionCount--;
     }
 
+    // クエストの結果を決定.
+    private void QuestResult()
+    {
+        if(_playerState.GetHitPoint()==0)
+        {
+            _QuestFailed = true;
+        }
+        else if(_monsterState.GetHitPoint()==0) 
+        {
+            _QuestClear = true;
+        }
+    }
+
     // クエストをクリアしたかどうか.
     public bool GetQuestClear() { return _QuestClear; }
+    // クエストを失敗したかどうか.
+    public bool GetQuestFailed() { return _QuestFailed; }
 }

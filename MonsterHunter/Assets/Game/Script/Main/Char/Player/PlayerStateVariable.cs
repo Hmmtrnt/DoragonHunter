@@ -27,7 +27,7 @@ public partial class PlayerState
     private ControllerManager _input;
 
     // SEマネージャー.
-    private SEManager _seManager;
+    private MainSceneSEManager _seManager;
 
     // メニュー画面の選択している情報.
     private MainSceneSelectUi _mainSceneSelectUi;

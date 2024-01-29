@@ -42,7 +42,7 @@ public partial class MonsterState
     private PlayerState _playerState;
 
     // SEを鳴らす.
-    private SEManager _seManager;
+    private MainSceneSEManager _seManager;
 
     // ファイアーボールのプレハブ.
     private GameObject _fireBall;

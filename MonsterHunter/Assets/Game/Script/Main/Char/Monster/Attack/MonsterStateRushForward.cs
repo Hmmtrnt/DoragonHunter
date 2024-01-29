@@ -54,7 +54,8 @@ public partial class MonsterState
             }
 
             ParticleGenerateTime(owner);
-            FootStepSound(owner);
+            //FootStepSound(owner);
+            owner.SEPlay(55, 75, 85, 105, 125, (int)MainSceneSEManager.MonsterSE.FOOTSTEP);
 
             owner._trasnform.position += owner._moveVelocity;
         }
@@ -90,13 +91,14 @@ public partial class MonsterState
         }
 
         // 足音を流す.
-        private void FootStepSound(MonsterState owner)
-        {
-            if(owner._stateFlame == 55 || owner._stateFlame == 75 || owner._stateFlame == 85 || 
-                owner._stateFlame == 105 || owner._stateFlame == 125 )
-            {
-                owner._seManager.MonsterPlaySE((int)SEManager.MonsterSE.FOOTSTEP);
-            }
-        }
+        //private void FootStepSound(MonsterState owner)
+        //{
+        //    if(owner._stateFlame == 55 || owner._stateFlame == 75 || owner._stateFlame == 85 || 
+        //        owner._stateFlame == 105 || owner._stateFlame == 125 )
+        //    {
+        //        //owner._seManager.MonsterPlaySE((int)MainSceneSEManager.MonsterSE.FOOTSTEP);
+        //        owner._seManager.PlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, (int)MainSceneSEManager.MonsterSE.FOOTSTEP);
+        //    }
+        //}
     }
 }

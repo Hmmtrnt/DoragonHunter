@@ -31,7 +31,7 @@ public partial class MonsterState
         public override void OnFixedUpdate(MonsterState owner)
         {
             //RoarSound(owner);
-            owner.SEPlay(90, (int)MainSceneSEManager.MonsterSE.ROAR);
+            owner.SEPlay(90, (int)SEManager.MonsterSE.ROAR);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

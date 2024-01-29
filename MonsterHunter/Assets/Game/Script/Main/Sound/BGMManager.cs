@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainSceneBGMManager : MonoBehaviour
+public class BGMManager : MonoBehaviour
 {
     enum BGM
     {

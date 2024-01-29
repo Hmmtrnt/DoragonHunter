@@ -49,7 +49,7 @@ public partial class PlayerState
             }
 
             // 空振り効果音再生.
-            owner.SEPlay(10, (int)MainSceneSEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(10, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

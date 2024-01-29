@@ -20,7 +20,7 @@ public partial class MonsterState
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
         _playerState = _hunter.GetComponent<PlayerState>();
-        _seManager = GameObject.Find("SEManager").GetComponent<MainSceneSEManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fireBall = (GameObject)Resources.Load("FireBall2");
         _fireBallPosition = GameObject.Find("BlessPosition");
         //_footSmokePrehub = (GameObject)Resources.Load("MonsterLegSmoke");
@@ -292,7 +292,7 @@ public partial class MonsterState
         if (_stateFlame == flameNum1)
         {
             //_seManager.HunterPlaySE(seName); 
-            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+            _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
         }
     }
 
@@ -302,7 +302,7 @@ public partial class MonsterState
             _stateFlame == flameNum2)
         {
             //_seManager.HunterPlaySE(seName);
-            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+            _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
         }
     }
 
@@ -313,7 +313,7 @@ public partial class MonsterState
             _stateFlame == flameNum3)
         {
             //_seManager.HunterPlaySE(seName);
-            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+            _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
         }
     }
 
@@ -326,7 +326,7 @@ public partial class MonsterState
             _stateFlame == flameNum5)
         {
             //_seManager.HunterPlaySE(seName);
-            _seManager.MonsterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, seName);
+            _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
         }
     }
 

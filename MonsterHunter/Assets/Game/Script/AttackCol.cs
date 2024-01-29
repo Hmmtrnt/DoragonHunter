@@ -9,8 +9,8 @@ public class AttackCol : MonoBehaviour
 {
     private PlayerState _state;
     private PlayerHitStopManager _hitStop;
-    private MainSceneSEManager _seManager;
-    private MainSceneSEManager.HunterSE _se;
+    private SEManager _seManager;
+    private SEManager.HunterSE _se;
     // 弱い攻撃ヒットエフェクトのプレハブ取得.
     GameObject _smallHitEffectObject;
     // 強い攻撃ヒットエフェクトのプレハブ取得.
@@ -25,7 +25,7 @@ public class AttackCol : MonoBehaviour
     {
         _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
-        _seManager = GameObject.Find("SEManager").GetComponent<MainSceneSEManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.
         _smallHitEffectObject = (GameObject)Resources.Load("SmallHitEffect");
         _hardHitEffectObject = (GameObject)Resources.Load("HardHitEffect");
@@ -103,11 +103,12 @@ public class AttackCol : MonoBehaviour
         // 気大回転刃斬りの時音を変更.
         if (_state.GetRoundSlash())
         {
-            _seManager.HunterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO2D, (int)MainSceneSEManager.HunterSE.ROUNDSLASH);
+            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.HunterSE.ROUNDSLASH);
         }
         else
         {
-            _seManager.HunterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO2D, (int)MainSceneSEManager.HunterSE.SLASH);
+            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.HunterSE.SLASH);
+
         }
     }
 

@@ -9,7 +9,7 @@ public partial class PlayerState
     {
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
         _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneSelectUi>();
-        _seManager = GameObject.Find("SEManager").GetComponent<MainSceneSEManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
@@ -423,7 +423,7 @@ public partial class PlayerState
         if(_stateFlame == flameNum1)
         {
             //_seManager.HunterPlaySE(seName); 
-            _seManager.HunterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO2D, seName);
+            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
         }
     }
 
@@ -433,7 +433,7 @@ public partial class PlayerState
             _stateFlame == flameNum2)
         {
             //_seManager.HunterPlaySE(seName);
-            _seManager.HunterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO2D, seName);
+            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
         }
     }
 
@@ -444,7 +444,7 @@ public partial class PlayerState
             _stateFlame == flameNum3)
         {
             //_seManager.HunterPlaySE(seName);
-            _seManager.HunterPlaySE((int)MainSceneSEManager.AudioNumber.AUDIO2D, seName);
+            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
         }
     }
 

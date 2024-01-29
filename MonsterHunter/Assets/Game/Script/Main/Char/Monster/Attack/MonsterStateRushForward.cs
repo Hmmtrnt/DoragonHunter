@@ -55,7 +55,7 @@ public partial class MonsterState
 
             ParticleGenerateTime(owner);
             //FootStepSound(owner);
-            owner.SEPlay(55, 75, 85, 105, 125, (int)MainSceneSEManager.MonsterSE.FOOTSTEP);
+            owner.SEPlay(55, 75, 85, 105, 125, (int)SEManager.MonsterSE.FOOTSTEP);
 
             owner._trasnform.position += owner._moveVelocity;
         }

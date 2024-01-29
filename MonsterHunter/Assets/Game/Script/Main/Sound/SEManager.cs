@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainSceneSEManager : MonoBehaviour
+public class SEManager : MonoBehaviour
 {
     /*TitleScene*/
     public enum TitleSE

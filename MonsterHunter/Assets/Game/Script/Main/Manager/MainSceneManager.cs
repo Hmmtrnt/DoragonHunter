@@ -9,7 +9,7 @@ public class MainSceneManager : MonoBehaviour
     // パッドの入力情報.
     private ControllerManager _controllerManager;
     // BGMマネージャー.
-    private MainSceneBGMManager _bgmManager;
+    private BGMManager _bgmManager;
     // ポーズ画面.
     private MainSceneSelectUi _mainSceneSelectUi;
     // 一時停止.
@@ -20,7 +20,7 @@ public class MainSceneManager : MonoBehaviour
     void Start()
     {
         _controllerManager = GetComponent<ControllerManager>();
-        _bgmManager = GameObject.Find("BGMManager").GetComponent<MainSceneBGMManager>();
+        _bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
         _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneSelectUi>();
         _pauseTimeStop = GetComponent<PauseTimeStop>();
     }

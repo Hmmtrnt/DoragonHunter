@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5446838337842305255}
-  - component: {fileID: 3242285812740405149}
+  - component: {fileID: 2586083764702280997}
   m_Layer: 0
   m_Name: BGMManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6598651679148437151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3242285812740405149
+--- !u!114 &2586083764702280997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636438636481388497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9cd8810d3cf8da48b0920846e4793ed, type: 3}
+  m_Script: {fileID: 11500000, guid: e104d6a3ed456eb43aaa4224250bfed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _bgm:
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 151276003502239160}
-  - component: {fileID: 8187826455322737339}
+  - component: {fileID: 7541248059372599302}
   m_Layer: 0
   m_Name: SEManager
   m_TagString: Untagged
@@ -78,7 +78,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6598651679148437151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8187826455322737339
+--- !u!114 &7541248059372599302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,9 +87,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4845359702851322522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fc49564c693ca24cb845f8eb6f80f24, type: 3}
+  m_Script: {fileID: 11500000, guid: b48b2b652aee635478ea6a81a82c2eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _titleUiAudio:
+  - {fileID: 8300000, guid: 28aae44adb16d42489379f563f403e09, type: 3}
+  - {fileID: 8300000, guid: ef5bda9ac37b2dd4397a884350812602, type: 3}
+  - {fileID: 8300000, guid: ca234cb6b2acbff44a13fb09a9e81484, type: 3}
   _hunterAudio:
   - {fileID: 8300000, guid: 4ba02f4969595c443abfe796f4f73912, type: 3}
   - {fileID: 8300000, guid: 5c59298dbce52d54a8190721b6df0afd, type: 3}

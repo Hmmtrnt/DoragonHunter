@@ -5,19 +5,25 @@ using UnityEngine.UI;
 
 public class SESlider : MonoBehaviour
 {
-    private Image _image;
+    private Image _imageSlider;
     // スライダー情報取得.
     private MainSceneOptionSelectUi _optionUI;
+    // アンカー.
+    private RectTransform _anchor;
 
-    // Start is called before the first frame update
     void Start()
     {
-        _image = GetComponent<Image>();
+        _imageSlider = GetComponent<Image>();
         _optionUI = GameObject.Find("OptionSelectUI").GetComponent<MainSceneOptionSelectUi>();
+        _anchor = GameObject.Find("SEButton").GetComponent<RectTransform>();
     }
 
     private void FixedUpdate()
     {
-        _image.fillAmount = _optionUI.GetVolumeSlider((int)MainSceneOptionSelectUi.SelectSlider.SE);
+        _imageSlider.fillAmount = _optionUI.GetVolumeSlider((int)MainSceneOptionSelectUi.SelectSlider.SE);
+
+        _anchor.anchorMin = new Vector2(_imageSlider.fillAmount, _anchor.anchorMin.y);
+        _anchor.anchorMax = new Vector2(_imageSlider.fillAmount, _anchor.anchorMax.y);
+        _anchor.anchoredPosition = Vector2.zero;
     }
 }

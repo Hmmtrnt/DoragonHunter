@@ -19,6 +19,7 @@ public class MainSceneOptionSelectUi : MonoBehaviour
 
     public enum SelectSlider
     {
+        MASTER,
         BGM, 
         SE,
         MAXNUM
@@ -32,7 +33,7 @@ public class MainSceneOptionSelectUi : MonoBehaviour
     private ControllerManager _controllerManager;
 
     // 音量調節のスライダー.
-    public float[] _volumeSlider = new float[2];
+    private float[] _volumeSlider = new float[3];
     // スライダーの移動量.
     private float _sliderMovement = 0.001f;
 
@@ -138,29 +139,40 @@ public class MainSceneOptionSelectUi : MonoBehaviour
         // 右.
         if(_controllerManager._RightLeftCrossKey > 0)
         {
-            if(_selectNum == (int)SelectItem.BGM)
+
+            if (_selectNum == (int)SelectItem.MASTER)
+            {
+                _volumeSlider[(int)SelectSlider.MASTER] += _sliderMovement;
+            }
+            else if(_selectNum == (int)SelectItem.BGM)
             {
                 _volumeSlider[(int)SelectSlider.BGM] += _sliderMovement;
             }
             else if(_selectNum == (int)SelectItem.SE)
             {
+                
                 _volumeSlider[(int)SelectSlider.SE] += _sliderMovement;
             }
         }
         // 左.
         else if(_controllerManager._RightLeftCrossKey < 0)
         {
-            if (_selectNum == (int)SelectItem.BGM)
+            if (_selectNum == (int)SelectItem.MASTER)
+            {
+                _volumeSlider[(int)SelectSlider.MASTER] -= _sliderMovement;
+            }
+            else if(_selectNum == (int)SelectItem.BGM)
             {
                 _volumeSlider[(int)SelectSlider.BGM] -= _sliderMovement;
             }
             else if (_selectNum == (int)SelectItem.SE)
             {
+                
                 _volumeSlider[(int)SelectSlider.SE] -= _sliderMovement;
             }
         }
-
-        for(int SelectSliderNum = 0; SelectSliderNum < (int)SelectSlider.MAXNUM; SelectSliderNum++)
+        
+        for (int SelectSliderNum = 0; SelectSliderNum < (int)SelectSlider.MAXNUM; SelectSliderNum++)
         {
             // 値の限界値.
             if (_volumeSlider[SelectSliderNum] > 1.0f)

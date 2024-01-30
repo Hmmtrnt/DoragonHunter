@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class MainSceneManager : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class MainSceneManager : MonoBehaviour
     private PauseTimeStop _pauseTimeStop;
     // 一時停止しているかどうか.
     private bool _pauseStop = false;
+
+    // メニュー画面を開いているか.
+    public bool _openMenu = false;
+    // オプション画面を開いているか.
+    public bool _openOption = false;
 
     void Start()
     {
@@ -48,6 +54,38 @@ public class MainSceneManager : MonoBehaviour
         {
             _pauseStop = false;
         }
-        
+        MenuOpneAndClose();
     }
+
+    // メニュー画面の開閉制御.
+    private void MenuOpneAndClose()
+    {
+        // 開くとき
+        if (!_openMenu)
+        {
+            if (_controllerManager._MenuButtonDown)
+            {
+                _openMenu = true;
+            }
+        }
+        // 閉じるとき
+        else
+        {
+            if (_controllerManager._BButtonDown)
+            {
+                if (_openOption)
+                {
+                    _openOption = false;
+                    return;
+                }
+
+                _openMenu = false;
+            }
+        }
+    }
+
+    // メニュー画面を開いているかどうか.
+    public bool GetOpenMenu() { return _openMenu; }
+    // オプション画面を開いているかどうか.
+    public bool GetOpenOption() { return _openOption; }
 }

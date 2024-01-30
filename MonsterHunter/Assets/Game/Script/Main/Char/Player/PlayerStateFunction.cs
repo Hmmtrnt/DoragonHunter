@@ -16,6 +16,7 @@ public partial class PlayerState
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _Monster = GameObject.FindWithTag("Monster");
         _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
+        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _weaponObject.SetActive(false);
         _weaponActive = false;
     }
@@ -361,24 +362,6 @@ public partial class PlayerState
         // 入力情報代入.
         _leftStickHorizontal = _input._LeftStickHorizontal;
         _leftStickVertical = _input._LeftStickVertical;
-
-        //if(_input._LeftStickHorizontal < 0)
-        //{
-        //    _leftStickHorizontal = 1;
-        //}
-        //else if( _input._LeftStickHorizontal > 0)
-        //{
-        //    _leftStickHorizontal = -1;
-        //}
-
-        //if (_input._LeftStickVertical < 0)
-        //{
-        //    _leftStickVertical = 1;
-        //}
-        //else if (_input._LeftStickVertical > 0)
-        //{
-        //    _leftStickVertical = -1;
-        //}
     }
 
     // 移動時の回転処理.
@@ -396,45 +379,6 @@ public partial class PlayerState
         }
     }
 
-    // メニュー画面の開閉制御.
-    private void MenuOpneAndClose()
-    {
-        //if(_input._MenuButtonDown)
-        //{
-        //    if(_openMenu)
-        //    {
-        //        _openMenu = false;
-        //    }
-        //    else
-        //    {
-        //        _openMenu = true;
-        //    }
-        //}
-
-        // 開くとき
-        if(!_openMenu)
-        {
-            if(_input._MenuButtonDown)
-            {
-                _openMenu = true;
-            }
-        }
-        // 閉じるとき
-        else
-        {
-            if(_input._BButtonDown)
-            {
-                if(_openOption)
-                {
-                    _openOption = false;
-                    return;
-                }
-
-                _openMenu = false;
-            }
-        }
-    }
-    
     // SEを鳴らすときの処理.
     private void SEPlay(int flameNum1, int seName)
     {
@@ -464,6 +408,12 @@ public partial class PlayerState
             //_seManager.HunterPlaySE(seName);
             _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
         }
+    }
+
+    // メニューを開いているかの情報を代入
+    private void OpenMenu()
+    {
+        _openMenu = _mainSceneManager.GetOpenMenu();
     }
 
     // ダッシュしているかどうかの情報取得.
@@ -515,10 +465,4 @@ public partial class PlayerState
         _currentDistance = (_debugSphere.transform.position - _transform.position).magnitude;
         return _currentDistance;
     }
-
-    // メニュー画面を開いているかどうか.
-    public bool GetOpenMenu() { return _openMenu; }
-
-    // オプション画面を開いているかどうか.
-    public bool GetOpenOption() { return _openOption; }
 }

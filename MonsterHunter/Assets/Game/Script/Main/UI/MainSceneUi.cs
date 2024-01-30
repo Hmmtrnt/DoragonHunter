@@ -22,10 +22,14 @@ public class MainSceneUi : MonoBehaviour
     // UI.
     public GameObject[] _ui;
 
+    // ÉVÅ[ÉìÇÃèÓïÒ.
+    private MainSceneManager _mainSceneManager;
+
     void Start()
     {
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
+        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
     }
 
     void Update()
@@ -35,8 +39,8 @@ public class MainSceneUi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _ui[(int)UIKinds.MENU].SetActive(_playerState.GetOpenMenu());
-        _ui[(int)UIKinds.OPTION].SetActive(_playerState.GetOpenOption());
+        _ui[(int)UIKinds.MENU].SetActive(_mainSceneManager.GetOpenMenu());
+        _ui[(int)UIKinds.OPTION].SetActive(_mainSceneManager.GetOpenOption());
         _ui[(int)UIKinds.CLEAR].SetActive(_huntingEnd.GetQuestClear());
         _ui[(int)UIKinds.FAILED].SetActive(_huntingEnd.GetQuestFailed());
     }

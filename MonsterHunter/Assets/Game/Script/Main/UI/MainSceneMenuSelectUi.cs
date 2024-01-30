@@ -24,6 +24,9 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     private PlayerState _playerState;
     // パッドの入力情報.
     private ControllerManager _controllerManager;
+    // メインシーンの情報.
+    private MainSceneManager _mainSceneManager;
+
 
     // 現在選ばれている選択番号.
     public int _selectNum = (int)SelectItem.OPTION;
@@ -34,13 +37,14 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
+        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _selectNum = (int)SelectItem.OPTION;
 }
 
     void Update()
     {
         // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
-        if (!_playerState.GetOpenMenu() || _playerState.GetOpenOption()) return;
+        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption()) return;
         _menu.SelectMove(ref _selectNum);
         _menu.CrossKeyPushFlameCount();
         _menu.CrossKeyNoPush();
@@ -51,7 +55,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     private void FixedUpdate()
     {
         // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
-        if (!_playerState.GetOpenMenu() || _playerState.GetOpenOption()) return;
+        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption()) return;
         _menu.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXNUM);
         SelectPosition();
     }
@@ -88,7 +92,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         // 設定画面を選んで決定.
         if(_controllerManager._AButtonDown && _selectNum == (int)SelectItem.OPTION)
         {
-            _playerState._openOption = true;
+            _mainSceneManager._openOption = true;
         }
     }
 

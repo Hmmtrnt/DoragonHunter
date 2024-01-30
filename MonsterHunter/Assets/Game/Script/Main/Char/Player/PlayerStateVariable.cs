@@ -35,6 +35,9 @@ public partial class PlayerState
     // カメラの注視点.
     [SerializeField] private GameObject _cameraFollow;
 
+    // メインシーンの情報.
+    private MainSceneManager _mainSceneManager;
+
     /*アニメーション*/
     private Animator _animator;
     //--納刀状態--//
@@ -221,12 +224,8 @@ public partial class PlayerState
     // 減速.
     private float _deceleration = 0;
 
-    // メニュー画面を開いているか.
-    // お引越し予定
-    public bool _openMenu = false;
-    // オプション画面を開いているか.
-    // お引越し予定
-    public bool _openOption = false;
+    // メニューを開いているか取得.
+    private bool _openMenu = false;
 
     // 以下デバッグ用変数
     // モンスターオブジェクト.

@@ -47,7 +47,6 @@ public partial class PlayerState : MonoBehaviour
     {
         GetStickInput();
         AnimTransition();
-        MenuOpneAndClose();
 
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
@@ -95,6 +94,7 @@ public partial class PlayerState : MonoBehaviour
         //RedRenkiNaturalConsume();
         StickDirection();
         ApplyRedRenkiGauge();
+        OpenMenu();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -103,11 +103,14 @@ public partial class PlayerState : MonoBehaviour
         {
             //Debug.Log("Monster");
             transform.position = new Vector3 (transform.position.x, 0.1f, transform.position.z);
+            Debug.Log(collision.transform.tag);
         }
         else if (collision.transform.tag == "MonsterAtCol")
         {
             //Debug.Log("MonsterAtCol");
         }
+
+        
 
     }
 

@@ -28,24 +28,27 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // 抜刀移動
+            // 抜刀移動.
             if(owner._leftStickHorizontal != 0 || 
                 owner._leftStickVertical != 0)
             {
                 owner.ChangeState(_runDrawnSword);
             }
-            // 踏み込み斬り
-            else if (owner._input._YButtonDown)
+
+            if (owner._openMenu) return;
+
+            // 踏み込み斬り.
+            if (owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);
             }
             // 突き.
-            else if(owner._input._BButtonDown)
+            else if (owner._input._BButtonDown)
             {
                 owner.ChangeState(_piercing);
             }
             // 気刃斬り1.
-            else if(owner._input._RightTrigger >= 0.5)
+            else if (owner._input._RightTrigger >= 0.5)
             {
                 owner.ChangeState(_spiritBlade1);
             }

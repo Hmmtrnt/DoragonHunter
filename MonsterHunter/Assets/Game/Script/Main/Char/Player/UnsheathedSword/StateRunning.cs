@@ -42,13 +42,16 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idle);
             }
+
+            if (owner._openMenu) return;
+
             // ダッシュ状態.
-            else if (owner._input._RBButton && owner._stamina >= owner._maxStamina / 5)
+            if (owner._input._RBButton && owner._stamina >= owner._maxStamina / 5)
             {
                 owner.ChangeState(_dash);
             }
             // 疲労ダッシュ状態.
-            else if(owner._input._RBButton && owner._stamina <= owner._maxStamina / 5)
+            else if (owner._input._RBButton && owner._stamina <= owner._maxStamina / 5)
             {
                 owner.ChangeState(_fatigueDash);
             }
@@ -64,7 +67,7 @@ public partial class PlayerState
                 owner.ChangeState(_recovery);
             }
             // 踏み込み斬り.
-            else if(owner._input._YButtonDown)
+            else if (owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);
             }

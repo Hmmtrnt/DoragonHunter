@@ -34356,6 +34356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254700129935ce7429c8c3b0458624e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _openMenu: 0
+  _openOption: 0
 --- !u!82 &828352928
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44735,6 +44737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TrackedObjectOffset.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930269693300086263, guid: 3d9de063ff6fce2488834b2a348276e6,
+        type: 3}
+      propertyPath: m_IgnoreTag
+      value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 8930269693300086263, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}

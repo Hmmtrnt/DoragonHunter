@@ -57,7 +57,7 @@ public partial class PlayerState
                 }
 
                 if ((owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0) && owner._input._RBButton)
+                    owner._leftStickVertical != 0) && owner._input._RBButton && !owner._openMenu)
                 {
                     owner.ChangeState(_dash);
                 }

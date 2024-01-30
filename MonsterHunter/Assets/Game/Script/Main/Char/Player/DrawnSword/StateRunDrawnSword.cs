@@ -36,8 +36,11 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idleDrawnSword);
             }
+
+            if (owner._openMenu) return;
+
             // 踏み込み斬り.
-            else if (owner._input._YButtonDown)
+            if (owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);
             }

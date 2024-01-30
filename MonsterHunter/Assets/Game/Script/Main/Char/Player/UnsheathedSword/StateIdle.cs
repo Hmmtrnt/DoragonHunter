@@ -31,10 +31,11 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
+            // 移動.
             if (owner._leftStickHorizontal != 0.0f ||
                 owner._leftStickVertical != 0.0f)
             {
-                if (owner._input._RBButton)
+                if (owner._input._RBButton && !owner._openMenu)
                 {
                     // ダッシュ.
                     owner.ChangeState(_dash);
@@ -46,6 +47,8 @@ public partial class PlayerState
                 }
                 
             }
+
+            if (owner._openMenu) return;
 
             // HACK:のちにアイテムが何を選ばれているか.
             if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint)

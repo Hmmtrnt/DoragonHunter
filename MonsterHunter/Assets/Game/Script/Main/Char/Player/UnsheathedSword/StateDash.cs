@@ -34,6 +34,22 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
+
+            if(owner._openMenu)
+            {
+                // idle状態.
+                if (owner._leftStickHorizontal == 0 &&
+                    owner._leftStickVertical == 0)
+                {
+                    owner.ChangeState(_idle);
+                }
+                // run状態.
+                else
+                {
+                    owner.ChangeState(_running);
+                }
+            }
+
             // idle状態.
             if(owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)

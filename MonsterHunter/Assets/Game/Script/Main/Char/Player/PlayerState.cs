@@ -103,7 +103,7 @@ public partial class PlayerState : MonoBehaviour
         {
             //Debug.Log("Monster");
             transform.position = new Vector3 (transform.position.x, 0.1f, transform.position.z);
-            Debug.Log(collision.transform.tag);
+            //Debug.Log(collision.transform.tag);
         }
         else if (collision.transform.tag == "MonsterAtCol")
         {

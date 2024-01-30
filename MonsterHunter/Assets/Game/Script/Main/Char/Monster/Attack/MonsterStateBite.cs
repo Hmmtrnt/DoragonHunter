@@ -44,6 +44,8 @@ public partial class MonsterState
             //Debug.Log(owner._forwardSpeed);
 
             owner._trasnform.position += owner._moveVelocity;
+
+            owner.SEPlay(30, (int)SEManager.MonsterSE.BITE);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

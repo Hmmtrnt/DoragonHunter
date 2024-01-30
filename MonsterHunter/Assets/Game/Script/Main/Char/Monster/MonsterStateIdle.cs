@@ -53,10 +53,10 @@ public partial class MonsterState
 
             // デバッグ用.
             // 行動パターン.
-            if (owner._viewDirection[(int)viewDirection.FORWARD])
-            {
-                //owner.ChangeState(_bless);
-            }
+            //if (owner._viewDirection[(int)viewDirection.FORWARD])
+            //{
+            //    owner.ChangeState(_wingBlowRight);
+            //}
 
             // 近距離.
             //if (owner._isNearDistance)

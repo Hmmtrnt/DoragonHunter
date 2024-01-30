@@ -40,8 +40,11 @@ public class SEManager : MonoBehaviour
         ROAR,           // ™ôšK.
         FOOTSTEP,       // ‘«‰¹.
         FOOTSMALLSTEP,  // ¬‚³‚¢‘«‰¹.
-        ROTATE,         // ‰ñ“]Žž‚Ì‰¹.
+        ROTATE,         // ‰ñ“]Žž‚Ì–Â‚«º.
+        FALTER,         // ‹¯‚Þº.
+        BITE,           // Šš‚Ý‚Â‚­Žž‚Ì–Â‚«º
         BLESS,          // ƒuƒŒƒX.
+        GROAN,          // ™ï‚­.
 
         SENUM           // SE”.
     }

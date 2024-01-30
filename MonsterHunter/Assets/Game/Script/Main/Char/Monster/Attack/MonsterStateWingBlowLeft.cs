@@ -30,6 +30,9 @@ public partial class MonsterState
             }
 
             ParticleGenerateTime(owner);
+
+            owner.SEPlay(20, (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.SEPlay(30, (int)SEManager.MonsterSE.ROTATE);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

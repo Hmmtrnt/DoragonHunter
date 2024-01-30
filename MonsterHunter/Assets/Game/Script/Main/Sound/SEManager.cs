@@ -12,6 +12,7 @@ public class SEManager : MonoBehaviour
         SELECT,     // 選択UIの移動.
         DECISION,   // 決定.
         QUESTSTART, // クエストスタート.
+
         SENUM       // SE数.
     }
 
@@ -20,15 +21,17 @@ public class SEManager : MonoBehaviour
     /*MainScene*/
     public enum HunterSE
     {
-        SLASH,          // 斬撃音.
-        ROUNDSLASH,     // 気刃大回転斬り.
-        DAMAGE,         // ダメージ.
-        DRAWSWORD,      // 抜刀.
-        SHEATHINGSWORD, // 納刀.
-        MISSINGSLASH,   // 空振り
-        DRINK,          // 飲む.
-        FOOTSTEPLEFT,   // 足音(左).
-        FOOTSTEPRIGHT,  // 足音(右).
+        SLASH,              // 斬撃音.
+        ROUNDSLASH,         // 気刃大回転斬り.
+        DAMAGE,             // ダメージ.
+        DRAWSWORD,          // 抜刀.
+        SHEATHINGSWORD,     // 納刀.
+        MISSINGSLASH,       // 空振り
+        MISSINGROUNDSLASH,  // 空振り(回転斬り).
+        DRINK,              // 飲む.
+        FOOTSTEPLEFT,       // 足音(左).
+        FOOTSTEPRIGHT,      // 足音(右).
+
         SENUM           // SE数.
     }
 
@@ -39,6 +42,7 @@ public class SEManager : MonoBehaviour
         FOOTSMALLSTEP,  // 小さい足音.
         ROTATE,         // 回転時の音.
         BLESS,          // ブレス.
+
         SENUM           // SE数.
     }
 
@@ -46,6 +50,7 @@ public class SEManager : MonoBehaviour
     {
         AUDIO2D,// どの距離にいても同じ音量.
         AUDIO3D,// 距離に応じて音量変化.
+
         AUDIONUM// AudioSourceの数.
     }
 

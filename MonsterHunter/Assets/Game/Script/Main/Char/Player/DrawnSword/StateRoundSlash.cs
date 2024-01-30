@@ -57,6 +57,8 @@ public partial class PlayerState
             {
                 owner.ForwardStep(8);
             }
+
+            owner.SEPlay(15, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 5576676743398731897}
   - component: {fileID: 5407108825218663062}
   - component: {fileID: 8839939386938246237}
+  - component: {fileID: 5450663277604676863}
   m_Layer: 5
   m_Name: BGMSlider
   m_TagString: Untagged
@@ -320,6 +321,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5450663277604676863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394744883705847246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac3b08cd393c79458b3cd211d18ed51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &500446108552342651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,7 +1146,7 @@ GameObject:
   - component: {fileID: 2618125142496554427}
   - component: {fileID: 5998522821494199822}
   m_Layer: 5
-  m_Name: BGMButton
+  m_Name: SEButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3111,6 +3124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6a8e935a73acc4abe8b6c35573cb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _volumeSlider:
+  - 0
+  - 0
   _selectNum: 0
 --- !u!1 &5518103612487963294
 GameObject:
@@ -4033,8 +4049,9 @@ GameObject:
   - component: {fileID: 6471668675608425082}
   - component: {fileID: 1330651349058059339}
   - component: {fileID: 3671796677313993177}
+  - component: {fileID: 5251984807194622344}
   m_Layer: 5
-  m_Name: BGMSlider
+  m_Name: SESlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4097,6 +4114,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5251984807194622344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698669703130547395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd3e593349fb4a44aa6911f499b5978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7798427697617588953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4706,7 +4735,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.656
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

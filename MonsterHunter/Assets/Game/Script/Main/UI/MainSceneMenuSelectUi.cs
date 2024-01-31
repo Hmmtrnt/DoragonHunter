@@ -26,6 +26,8 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     private ControllerManager _controllerManager;
     // メインシーンの情報.
     private MainSceneManager _mainSceneManager;
+    // SEマネージャー.
+    private SEManager _seManager;
 
 
     // 現在選ばれている選択番号.
@@ -38,6 +40,8 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+
         _selectNum = (int)SelectItem.OPTION;
     }
 

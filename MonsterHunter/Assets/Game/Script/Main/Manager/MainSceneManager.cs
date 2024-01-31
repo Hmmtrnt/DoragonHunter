@@ -1,5 +1,6 @@
 /*メインシーンマネージャー*/
 
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,15 +16,21 @@ public class MainSceneManager : MonoBehaviour
     private MainSceneMenuSelectUi _mainSceneSelectUi;
     // 一時停止.
     private PauseTimeStop _pauseTimeStop;
+
+    private CinemachineVirtualCamera _cinemachineVirtualCamera;
+    private CinemachinePOV _cinemachinePOV;
+
     // 一時停止しているかどうか.
     private bool _pauseStop = false;
-
     // メニュー画面を開いているか.
     public bool _openMenu = false;
     // オプション画面を開いているか.
     public bool _openOption = false;
     // リタイア確認画面を開いているか.
     public bool _openRetireConfirmation = false;
+    // カメラの回転量の保持.
+    private float _originalHorizontalAxisMaxSpeed;
+    private float _originalVerticalAxisMaxSpeed;
 
     void Start()
     {
@@ -31,6 +38,11 @@ public class MainSceneManager : MonoBehaviour
         _bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
         _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneMenuSelectUi>();
         _pauseTimeStop = GetComponent<PauseTimeStop>();
+        _cinemachineVirtualCamera = GameObject.Find("CameraBase").GetComponent<CinemachineVirtualCamera>();
+        _cinemachinePOV = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
+        // カメラの元の回転する値を保持.
+        _originalHorizontalAxisMaxSpeed = _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed;
+        _originalVerticalAxisMaxSpeed = _cinemachinePOV.m_VerticalAxis.m_MaxSpeed;
     }
 
     void Update()
@@ -39,12 +51,18 @@ public class MainSceneManager : MonoBehaviour
         if(_pauseStop)
         {
             _openMenu = false;
+            _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
+            _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
             _pauseTimeStop.StopTime();
         }
         else
         {
+            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
+            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
             _pauseTimeStop.StartTime();
         }
+
+        //Debug.Log(_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed);
 
         // 一時停止を押したときの処理.
         if(_mainSceneSelectUi._selectNum == (int)MainSceneMenuSelectUi.SelectItem.PAUSE && 

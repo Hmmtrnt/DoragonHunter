@@ -31,6 +31,8 @@ public class MainSceneOptionSelectUi : MonoBehaviour
     private Menu _menu;
     // パッドの入力情報.
     private ControllerManager _controllerManager;
+    // 効果音マネージャー.
+    private SEManager _seManager;
 
     // 音量調節のスライダー.
     private float[] _volumeSlider = new float[3];
@@ -48,6 +50,7 @@ public class MainSceneOptionSelectUi : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _selectNum = (int)SelectItem.MASTER;
         for(int SliderNum = 0; SliderNum < _volumeSlider.Length; SliderNum++)
         {
@@ -63,6 +66,7 @@ public class MainSceneOptionSelectUi : MonoBehaviour
         SliderMovementIncrease();
         CloseInit();
         SliderMove();
+        CheckVolumeSE();
     }
 
     private void FixedUpdate()
@@ -133,7 +137,7 @@ public class MainSceneOptionSelectUi : MonoBehaviour
         }
     }
 
-    // スライダーを動かす.
+    // 各音量のスライダーを動かす.
     private void SliderMove()
     {
         // 右.
@@ -150,7 +154,6 @@ public class MainSceneOptionSelectUi : MonoBehaviour
             }
             else if(_selectNum == (int)SelectItem.SE)
             {
-                
                 _volumeSlider[(int)SelectSlider.SE] += _sliderMovement;
             }
         }
@@ -185,6 +188,16 @@ public class MainSceneOptionSelectUi : MonoBehaviour
             }
         }
     }
+
+    // 音量確認のためSEを流す.
+    private void CheckVolumeSE()
+    {
+        if (_controllerManager._XButtonDown)
+        {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.QUESTSTART);
+        }
+    }
+
 
     public float GetVolumeSlider(int sliderNum) { return _volumeSlider[sliderNum]; }
 }

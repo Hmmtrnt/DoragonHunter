@@ -22,6 +22,10 @@ public class TitleSelectUi : MonoBehaviour
     private ControllerManager _controllerManager;
     // 選択するUIの関数.
     private Menu _menu;
+    // UI全体の制御.
+    private TitleMenuManager _menuManager;
+    // SEマネージャー.
+    private SEManager _seManager;
 
     // 現在選ばれている選択番号.
     // 1.ゲームスタート.
@@ -34,12 +38,15 @@ public class TitleSelectUi : MonoBehaviour
         _titleUpdate = GameObject.Find("GameManager").GetComponent<TitleUpdate>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
+        _menuManager = GameObject.Find("TitleUI").GetComponent<TitleMenuManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
     }
 
     void Update()
     {
-        // PressAnyButtonが押されていないときはスキップ.
-        if (!_titleUpdate._pressAnyPush) return;
+        OptionOpenORClose();
+        // PressAnyButtonが押されていないとき、設定画面を開いている時はスキップ.
+        if (!_titleUpdate._pressAnyPush || _menuManager._openOption) return;
 
         _menu.SelectMove(_controllerManager._UpDownCrossKey, ref _selectNum);
         _menu.CrossKeyPushFlameCount(_controllerManager._UpDownCrossKey);
@@ -48,8 +55,8 @@ public class TitleSelectUi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // PressAnyButtonが押されていないときはスキップ.
-        if (!_titleUpdate._pressAnyPush) return;
+        // PressAnyButtonが押されていないとき、設定画面を開いている時はスキップ.
+        if (!_titleUpdate._pressAnyPush || _menuManager._openOption) return;
         _menu.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXITEMNUM);
         SelectPosition();
     }
@@ -64,6 +71,23 @@ public class TitleSelectUi : MonoBehaviour
         else if (_selectNum == (int)SelectItem.OPTION)
         {
             _rectTransform.anchoredPosition = new Vector3(500.0f, -300.0f, 0.0f);
+        }
+    }
+
+    // 設定画面の開閉.
+    private void OptionOpenORClose()
+    {
+        // 開くとき.
+        if(_controllerManager._AButtonDown && _selectNum == (int)SelectItem.OPTION)
+        {
+            _menuManager._openOption = true;
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
+        }
+        // 閉じるとき.
+        else if(_menuManager._openOption && _controllerManager._BButtonDown)
+        {
+            _menuManager._openOption = false;
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
         }
     }
 

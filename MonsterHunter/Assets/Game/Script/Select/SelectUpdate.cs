@@ -30,6 +30,7 @@ public class SelectUpdate : MonoBehaviour
     void Update()
     {
         DecidePush();
+        TitleTransitionScene();
     }
 
     private void FixedUpdate()
@@ -62,6 +63,15 @@ public class SelectUpdate : MonoBehaviour
         if(_controllerManager._AButtonDown)
         {
             _decidePush = true;
+        }
+    }
+
+    // タイトルシーンに戻る.
+    private void TitleTransitionScene()
+    {
+        if (_controllerManager._BButtonDown)
+        {
+            _sceneTransitionManager.TitleScene();
         }
     }
 

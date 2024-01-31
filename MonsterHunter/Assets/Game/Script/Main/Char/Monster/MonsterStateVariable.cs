@@ -152,4 +152,9 @@ public partial class MonsterState
 
     // モンスターの体力量が多いか少ないか.
     public bool _HitPointMany = false;
+
+    // 状態遷移を無視するかどうか.
+    [Header("状態遷移を無視するかどうか")]
+    public bool _stateIgnore = false;
+
 }

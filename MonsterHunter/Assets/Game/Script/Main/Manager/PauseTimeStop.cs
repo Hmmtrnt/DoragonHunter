@@ -1,4 +1,4 @@
-/*一時停止した時にゲーム全体の時間をストップ*/
+/*一時停止した時にゲーム全体の動きをストップ*/
 
 using System.Collections;
 using System.Collections.Generic;

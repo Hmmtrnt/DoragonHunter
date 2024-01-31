@@ -41,9 +41,9 @@ public class TitleSelectUi : MonoBehaviour
         // PressAnyButtonが押されていないときはスキップ.
         if (!_titleUpdate._pressAnyPush) return;
 
-        _menu.SelectMove(ref _selectNum);
-        _menu.CrossKeyPushFlameCount();
-        _menu.CrossKeyNoPush();
+        _menu.SelectMove(_controllerManager._UpDownCrossKey, ref _selectNum);
+        _menu.CrossKeyPushFlameCount(_controllerManager._UpDownCrossKey);
+        _menu.CrossKeyNoPush(_controllerManager._UpDownCrossKey);
     }
 
     private void FixedUpdate()

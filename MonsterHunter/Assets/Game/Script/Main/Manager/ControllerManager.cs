@@ -24,6 +24,8 @@ public class ControllerManager : MonoBehaviour
     public float _UpDownCrossKey = 0;
     public bool _UpCrossKey = false;
     public bool _DownCrossKey = false;
+    public bool _RightCrossKey = false;
+    public bool _LeftCrossKey = false;
 
 
     // トリガー入力情報.
@@ -91,6 +93,8 @@ public class ControllerManager : MonoBehaviour
         _UpDownCrossKey = Input.GetAxis("CrossKeyUpDown");
         _UpCrossKey = _UpDownCrossKey == 1;
         _DownCrossKey = _UpDownCrossKey == -1;
+        _RightCrossKey = _RightLeftCrossKey == 1;
+        _LeftCrossKey = _RightLeftCrossKey == -1;
 
         // トリガー入力情報取得.
         _LeftTrigger = Input.GetAxis("LTrigger");

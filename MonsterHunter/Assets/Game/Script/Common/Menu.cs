@@ -27,18 +27,18 @@ public class Menu : MonoBehaviour
     }
 
     // 十字キーを押している時間経過.
-    public void CrossKeyPushFlameCount()
+    public void CrossKeyPushFlameCount(float CrossKeyInputInformation)
     {
-        if(_controllerManager._UpDownCrossKey != 0)
+        if(CrossKeyInputInformation != 0)
         {
             _selectMoveInterval++;
         }
     }
 
     // 十字キーが押されていないときの処理.
-    public void CrossKeyNoPush()
+    public void CrossKeyNoPush(float CrossKeyInputInformation)
     {
-        if(_controllerManager._UpDownCrossKey == 0)
+        if(CrossKeyInputInformation == 0)
         {
             _firstSelect = false;
             _selectMoveInterval = 0;
@@ -49,10 +49,11 @@ public class Menu : MonoBehaviour
     /// 選択したUIの挙動.
     /// </summary>
     /// <param name="SelectNum">選択した項目の番号</param>
-    public void SelectMove(ref int SelectNum)
+    /// <param name="CrossKeyInputInformation ">十字キーの入力情報</param>
+    public void SelectMove(float CrossKeyInputInformation, ref int SelectNum)
     {
         // 十字キーを押していないときは処理を通さない.
-        if (_controllerManager._UpDownCrossKey == 0) return;
+        if (CrossKeyInputInformation == 0) return;
         // 最初のインターバルが終わったら処理を変更.
         if (!_firstSelect)
         {
@@ -74,13 +75,13 @@ public class Menu : MonoBehaviour
         if(_selectMoveInterval % Interval == 0)
         {
             // 上に押したとき.
-            if (_controllerManager._UpCrossKey)
+            if (_controllerManager._UpCrossKey || _controllerManager._RightCrossKey)
             {
                 SelectNum--;
                 _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.SELECT);
             }
             // 下に押したとき.
-            else if (_controllerManager._DownCrossKey)
+            else if (_controllerManager._DownCrossKey || _controllerManager._LeftCrossKey)
             {
                 SelectNum++;
                 _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.SELECT);

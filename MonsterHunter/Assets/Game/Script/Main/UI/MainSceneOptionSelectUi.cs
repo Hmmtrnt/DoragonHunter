@@ -57,9 +57,9 @@ public class MainSceneOptionSelectUi : MonoBehaviour
 
     void Update()
     {
-        _menu.SelectMove(ref _selectNum);
-        _menu.CrossKeyPushFlameCount();
-        _menu.CrossKeyNoPush();
+        _menu.SelectMove(_controllerManager._UpDownCrossKey, ref _selectNum);
+        _menu.CrossKeyPushFlameCount(_controllerManager._UpDownCrossKey);
+        _menu.CrossKeyNoPush(_controllerManager._UpDownCrossKey);
         SliderMovementIncrease();
         CloseInit();
         SliderMove();

@@ -12,7 +12,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     {
         OPTION,     // 設定.
         PAUSE,      // 一時停止.
-        RETIREMENT, // リタイア.
+        RETIRE,     // リタイア.
         MAXNUM      // 項目数.
     }
 
@@ -39,25 +39,33 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _selectNum = (int)SelectItem.OPTION;
-}
+    }
+
+    private void OnEnable()
+    {
+        _selectNum = (int)SelectItem.OPTION;
+    }
 
     void Update()
     {
         // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
-        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption()) return;
-        _menu.SelectMove(ref _selectNum);
-        _menu.CrossKeyPushFlameCount();
-        _menu.CrossKeyNoPush();
-        CloseInit();
+        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption() ||
+            _mainSceneManager.GetOpenRetireConfirmation()) return;
+        _menu.SelectMove(_controllerManager._UpDownCrossKey, ref _selectNum);
+        _menu.CrossKeyPushFlameCount(_controllerManager._UpDownCrossKey);
+        _menu.CrossKeyNoPush(_controllerManager._UpDownCrossKey);
         OpenOption();
+        OpenRetire();
     }
 
     private void FixedUpdate()
     {
         // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
-        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption()) return;
+        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption() ||
+            _mainSceneManager.GetOpenRetireConfirmation()) return;
         _menu.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXNUM);
         SelectPosition();
+        
     }
 
     // 選択されている項目の座標を代入.
@@ -71,18 +79,9 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         {
             _rectTransform.anchoredPosition = new Vector3(100.0f, -60.0f, 0.0f);
         }
-        else if(_selectNum == (int)SelectItem.RETIREMENT)
+        else if(_selectNum == (int)SelectItem.RETIRE)
         {
             _rectTransform.anchoredPosition = new Vector3(100.0f, -100.0f, 0.0f);
-        }
-    }
-
-    // 閉じるときに初期化.
-    private void CloseInit()
-    {
-        if(_controllerManager._BButtonDown)
-        {
-            _selectNum = (int)SelectItem.OPTION;
         }
     }
 
@@ -93,6 +92,15 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         if(_controllerManager._AButtonDown && _selectNum == (int)SelectItem.OPTION)
         {
             _mainSceneManager._openOption = true;
+        }
+    }
+
+    // リタイア確認画面を開く.
+    private void OpenRetire()
+    {
+        if(_controllerManager._AButtonDown && _selectNum ==(int)SelectItem.RETIRE)
+        {
+            _mainSceneManager._openRetireConfirmation = true;
         }
     }
 

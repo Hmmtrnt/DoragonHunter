@@ -22,6 +22,8 @@ public class MainSceneManager : MonoBehaviour
     public bool _openMenu = false;
     // オプション画面を開いているか.
     public bool _openOption = false;
+    // リタイア確認画面を開いているか.
+    public bool _openRetireConfirmation = false;
 
     void Start()
     {
@@ -36,6 +38,7 @@ public class MainSceneManager : MonoBehaviour
         // ゲームの流れを止めたり動かしたりする.
         if(_pauseStop)
         {
+            _openMenu = false;
             _pauseTimeStop.StopTime();
         }
         else
@@ -45,7 +48,7 @@ public class MainSceneManager : MonoBehaviour
 
         // 一時停止を押したときの処理.
         if(_mainSceneSelectUi._selectNum == (int)MainSceneMenuSelectUi.SelectItem.PAUSE && 
-            _controllerManager._AButtonDown &&
+            _controllerManager._AButtonDown && _openMenu &&
             !_pauseStop)
         {
             _pauseStop = true;
@@ -78,6 +81,11 @@ public class MainSceneManager : MonoBehaviour
                     _openOption = false;
                     return;
                 }
+                else if(_openRetireConfirmation)
+                {
+                    _openRetireConfirmation = false;
+                    return;
+                }
 
                 _openMenu = false;
             }
@@ -88,4 +96,6 @@ public class MainSceneManager : MonoBehaviour
     public bool GetOpenMenu() { return _openMenu; }
     // オプション画面を開いているかどうか.
     public bool GetOpenOption() { return _openOption; }
+    // リタイア確認画面を開いているかどうか.
+    public bool GetOpenRetireConfirmation() { return _openRetireConfirmation; }
 }

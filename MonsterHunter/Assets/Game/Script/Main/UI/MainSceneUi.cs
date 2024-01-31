@@ -10,6 +10,7 @@ public class MainSceneUi : MonoBehaviour
     {
         MENU,// メニュー.
         OPTION,// オプション.
+        RETIREMENT,// リタイア確認画面.
         CLEAR,// クリア.
         FAILED,// 失敗.
         UINUM,// UIの数.
@@ -41,6 +42,7 @@ public class MainSceneUi : MonoBehaviour
     {
         _ui[(int)UIKinds.MENU].SetActive(_mainSceneManager.GetOpenMenu());
         _ui[(int)UIKinds.OPTION].SetActive(_mainSceneManager.GetOpenOption());
+        _ui[(int)UIKinds.RETIREMENT].SetActive(_mainSceneManager.GetOpenRetireConfirmation());
         _ui[(int)UIKinds.CLEAR].SetActive(_huntingEnd.GetQuestClear());
         _ui[(int)UIKinds.FAILED].SetActive(_huntingEnd.GetQuestFailed());
     }

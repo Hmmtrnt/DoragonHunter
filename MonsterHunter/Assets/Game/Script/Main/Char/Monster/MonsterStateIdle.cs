@@ -6,6 +6,7 @@ public partial class MonsterState
 {
     public class MonsterStateIdle : StateBase
     {
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -57,6 +58,8 @@ public partial class MonsterState
             //{
             //    owner.ChangeState(_wingBlowRight);
             //}
+
+            if (owner._stateIgnore) return;
 
             // 近距離.
             if (owner._isNearDistance)

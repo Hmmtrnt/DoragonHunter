@@ -12,8 +12,8 @@ public class MainSceneOptionSelectUi : MonoBehaviour
     public enum SelectItem
     {
         MASTER, // マスター音量.
-        BGM,    // BGM
-        SE,     // SE
+        BGM,    // BGM.
+        SE,     // SE.
         MAXNUM
     }
 

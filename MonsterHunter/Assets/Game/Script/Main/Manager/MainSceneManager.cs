@@ -26,6 +26,8 @@ public class MainSceneManager : MonoBehaviour
     public bool _openMenu = false;
     // オプション画面を開いているか.
     public bool _openOption = false;
+    // ポーズ画面を開いているかどうか.
+    public bool _openPause = false;
     // リタイア確認画面を開いているか.
     public bool _openRetireConfirmation = false;
     // カメラの回転量の保持.
@@ -51,15 +53,17 @@ public class MainSceneManager : MonoBehaviour
         if(_pauseStop)
         {
             _openMenu = false;
-            _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
-            _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
-            _pauseTimeStop.StopTime();
+            _openPause = true;
+            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
+            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
+            //_pauseTimeStop.StopTime();
         }
         else
         {
+            _openPause = false;
             //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
             //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
-            _pauseTimeStop.StartTime();
+            //_pauseTimeStop.StartTime();
         }
 
         //Debug.Log(_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed);
@@ -114,6 +118,9 @@ public class MainSceneManager : MonoBehaviour
     public bool GetOpenMenu() { return _openMenu; }
     // オプション画面を開いているかどうか.
     public bool GetOpenOption() { return _openOption; }
+    // ポーズ画面を開いているかどうか.
+    public bool GetOpenPause() { return _openPause; }
+
     // リタイア確認画面を開いているかどうか.
     public bool GetOpenRetireConfirmation() { return _openRetireConfirmation; }
 }

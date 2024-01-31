@@ -17853,6 +17853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openMenu: 0
   _openOption: 0
+  _openPause: 0
   _openRetireConfirmation: 0
 --- !u!82 &828352928
 AudioSource:
@@ -24585,7 +24586,7 @@ PrefabInstance:
     - target: {fileID: 1695936925075908713, guid: 770c66d9b238eb247bc35773e4e90b34,
         type: 3}
       propertyPath: _ui.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1695936925075908713, guid: 770c66d9b238eb247bc35773e4e90b34,
         type: 3}
@@ -24606,10 +24607,15 @@ PrefabInstance:
         type: 3}
       propertyPath: _ui.Array.data[3]
       value: 
-      objectReference: {fileID: 1167031948}
+      objectReference: {fileID: 1951908430}
     - target: {fileID: 1695936925075908713, guid: 770c66d9b238eb247bc35773e4e90b34,
         type: 3}
       propertyPath: _ui.Array.data[4]
+      value: 
+      objectReference: {fileID: 1167031948}
+    - target: {fileID: 1695936925075908713, guid: 770c66d9b238eb247bc35773e4e90b34,
+        type: 3}
+      propertyPath: _ui.Array.data[5]
       value: 
       objectReference: {fileID: 1167031947}
     - target: {fileID: 3848192906420727423, guid: 770c66d9b238eb247bc35773e4e90b34,
@@ -35475,6 +35481,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1951908430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6293606663081443432, guid: 770c66d9b238eb247bc35773e4e90b34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1167031946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1953430604
 GameObject:
   m_ObjectHideFlags: 0

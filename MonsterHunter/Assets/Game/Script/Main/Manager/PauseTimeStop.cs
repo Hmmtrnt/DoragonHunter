@@ -28,8 +28,8 @@ public class PauseTimeStop : MonoBehaviour
         Time.timeScale = 0.0f;
 
         // ƒJƒƒ‰‚Ì‰ñ“]‚ğ–³Œø‚É‚·‚é.
-        //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
-        //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
+        _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
+        _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
     }
 
     // ˆê’â~‚ğ‰ğœ.
@@ -37,8 +37,8 @@ public class PauseTimeStop : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         // ƒJƒƒ‰‚Ì‰ñ“]‚ğ—LŒø‰».
-        //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
-        //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
+        _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
+        _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
     }
     
 }

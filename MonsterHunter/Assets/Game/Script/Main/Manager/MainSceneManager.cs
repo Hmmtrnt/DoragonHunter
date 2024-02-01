@@ -30,6 +30,9 @@ public class MainSceneManager : MonoBehaviour
     public bool _openPause = false;
     // リタイア確認画面を開いているか.
     public bool _openRetireConfirmation = false;
+    // プレイ中UIの表示非表示.
+    public bool _openGamePlayUi = true;
+
     // カメラの回転量の保持.
     private float _originalHorizontalAxisMaxSpeed;
     private float _originalVerticalAxisMaxSpeed;
@@ -132,9 +135,10 @@ public class MainSceneManager : MonoBehaviour
     public bool GetOpenOption() { return _openOption; }
     // ポーズ画面を開いているかどうか.
     public bool GetOpenPause() { return _openPause; }
-
     // リタイア確認画面を開いているかどうか.
     public bool GetOpenRetireConfirmation() { return _openRetireConfirmation; }
+    // プレイ中のUIを表示しているかどうか.
+    public bool GetGamePlayUI() { return _openGamePlayUi; }
 
     // 現在一時停止中かどうか.
     public bool GetPauseStop() { return _pauseStop; }

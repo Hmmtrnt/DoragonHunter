@@ -12,15 +12,12 @@ public class MainSceneUi : MonoBehaviour
         OPTION,     // オプション.
         RETIREMENT, // リタイア確認画面.
         PAUSE,      // 一時停止中画面.
-        CLEAR,      // クリア.
-        FAILED,     // 失敗.
+        GAMEPLAY,   // プレイ中に表示されるUI. 
         UINUM,      // UIの数.
     }
 
     // プレイヤー情報.
     private PlayerState _playerState;
-    // 狩猟終了時の処理.
-    private HuntingEnd _huntingEnd;
     // UI.
     public GameObject[] _ui;
 
@@ -30,7 +27,6 @@ public class MainSceneUi : MonoBehaviour
     void Start()
     {
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
-        _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
     }
 
@@ -45,7 +41,6 @@ public class MainSceneUi : MonoBehaviour
         _ui[(int)UIKinds.OPTION].SetActive(_mainSceneManager.GetOpenOption());
         _ui[(int)UIKinds.RETIREMENT].SetActive(_mainSceneManager.GetOpenRetireConfirmation());
         _ui[(int)UIKinds.PAUSE].SetActive(_mainSceneManager.GetOpenPause());
-        _ui[(int)UIKinds.CLEAR].SetActive(_huntingEnd.GetQuestClear());
-        _ui[(int)UIKinds.FAILED].SetActive(_huntingEnd.GetQuestFailed());
+        _ui[(int)UIKinds.GAMEPLAY].SetActive(_mainSceneManager.GetGamePlayUI());
     }
 }

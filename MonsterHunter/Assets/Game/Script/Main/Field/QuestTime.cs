@@ -26,7 +26,7 @@ public class QuestTime : MonoBehaviour
         // 短針の固定化.
         GameObject.Find("HourHand").transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * 50.0f);
 
-        Debug.Log("time" + Time.time);
+        //Debug.Log("time" + Time.time);
         //Debug.Log("Timer" + _timer);
     }
 }

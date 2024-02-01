@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class HuntingEnd : MonoBehaviour
 {
+    // メインシーンの情報.
+    private MainSceneManager _mainSceneManager;
+
     // モンスターの情報.
     private MonsterState _monsterState;
     // ハンターの情報.
@@ -26,6 +29,7 @@ public class HuntingEnd : MonoBehaviour
 
     void Start()
     {
+        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
@@ -55,14 +59,14 @@ public class HuntingEnd : MonoBehaviour
 
         if(_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
         {
-            if(_controllerManager._AButtonDown)
-            {
-                _sceneTransitionManager.TitleScene();
-            }
-            else if(_controllerManager._BButtonDown)
-            {
-                _sceneTransitionManager.SelectScene();
-            }
+            //if(_controllerManager._AButtonDown)
+            //{
+            //    _sceneTransitionManager.TitleScene();
+            //}
+            //else if(_controllerManager._BButtonDown)
+            //{
+            //    _sceneTransitionManager.SelectScene();
+            //}
         }
     }
 
@@ -107,10 +111,12 @@ public class HuntingEnd : MonoBehaviour
         if(_playerState.GetHitPoint()==0)
         {
             _QuestFailed = true;
+            _mainSceneManager._openGamePlayUi = false;
         }
         else if(_monsterState.GetHitPoint()==0) 
         {
             _QuestClear = true;
+            _mainSceneManager._openGamePlayUi = false;
         }
     }
 

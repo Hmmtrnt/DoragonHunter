@@ -27,10 +27,17 @@ public partial class PlayerState
             owner._currentRecoveryTime++;
             _recoveryTime++;
 
+            // 回復薬を減らす.
+            if(_recoveryTime == 50)
+            {
+                owner._cureMedicineNum--;
+            }
+            // 回復するタイミング指定.
             if(_recoveryTime >= 50 && _recoveryTime <=110)
             {
                 Recovery(owner);
             }
+            // ごくごく音.
             owner.SEPlay(50, (int)SEManager.HunterSE.DRINK);
         }
 

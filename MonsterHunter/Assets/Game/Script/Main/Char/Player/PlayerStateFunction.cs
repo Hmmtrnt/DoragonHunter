@@ -19,6 +19,7 @@ public partial class PlayerState
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _weaponObject.SetActive(false);
         _weaponActive = false;
+        _cureMedicineNum = 10;
     }
 
     // ó‘Ô‘JˆÚ‚Ì‰Šú‰».
@@ -465,4 +466,7 @@ public partial class PlayerState
         _currentDistance = (_debugSphere.transform.position - _transform.position).magnitude;
         return _currentDistance;
     }
+
+    // ‰ñ•œ–ò‚Ì”‚ğæ“¾.
+    public int GetCureMedicineNum() { return _cureMedicineNum; }
 }

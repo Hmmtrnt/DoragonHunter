@@ -211,6 +211,8 @@ public partial class PlayerState
     private Vector3 _stickDirection = Vector3.zero;
 
     /*回復*/
+    // 回復薬の数.
+    private int _cureMedicineNum = 0;
     // 回復しているかどうか.
     private bool _isRecovery = false;
     // 現在の回復時間.

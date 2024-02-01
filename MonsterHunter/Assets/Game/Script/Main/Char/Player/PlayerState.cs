@@ -67,8 +67,6 @@ public partial class PlayerState : MonoBehaviour
         //_stateFlame++;
 
         StateFlameManager();
-
-
         SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);
 

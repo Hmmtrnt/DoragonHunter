@@ -51,7 +51,8 @@ public partial class PlayerState
             if (owner._openMenu) return;
 
             // HACK:のちにアイテムが何を選ばれているか.
-            if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint)
+            if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint && 
+                owner._cureMedicineNum > 0)
             {
                 // 回復.
                 owner.ChangeState(_recovery);

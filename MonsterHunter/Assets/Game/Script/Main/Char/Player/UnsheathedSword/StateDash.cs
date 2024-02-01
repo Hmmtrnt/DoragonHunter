@@ -73,7 +73,8 @@ public partial class PlayerState
             }
             // 回復状態へ.
             // HACK:アイテムが選ばれている状態の条件も追加する.
-            else if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint)
+            else if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint &&
+                owner._cureMedicineNum > 0)
             {
                 owner.ChangeState(_recovery);
             }

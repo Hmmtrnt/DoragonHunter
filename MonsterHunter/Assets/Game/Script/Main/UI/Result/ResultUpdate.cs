@@ -19,6 +19,7 @@ public class ResultUpdate : MonoBehaviour
         CLEAR_BELT_DOWN,    // 下.
         FAILED_BELT_UP,     // 上.
         FAILED_BELT_DOWN,   // 下.
+        RESULT_BACKGROUND,  // 結果を表示するときの背景.
         MAXNUM              // 最大数.
     }
 
@@ -29,9 +30,14 @@ public class ResultUpdate : MonoBehaviour
     // 各UIの座標.
     private RectTransform[] _rectTransform = new RectTransform[(int)UIKinds.MAXNUM];
     // UIを表示非表示にするかどうか.
-    private bool[] _uiDisplayHide = new bool[(int)UIKinds.MAXNUM];
+    private bool[] _uiDisplay = new bool[(int)UIKinds.MAXNUM];
     // 終了してからの経過時間．
     private int _endCount = 0;
+
+    // 上下のベルトのアニメーション開始時間.
+    private const int _beltMoveStart = 60;
+    // スタンプロゴの表示時間.
+    private const int _stampLogDisPlayTime = 160;
 
     void Start()
     {
@@ -39,10 +45,11 @@ public class ResultUpdate : MonoBehaviour
 
         for(int UINumber = 0; UINumber < (int)UIKinds.MAXNUM; UINumber++)
         {
-            _uiDisplayHide[UINumber] = false;
+            _uiDisplay[UINumber] = false;
             _rectTransform[UINumber] = _ui[UINumber].GetComponent<RectTransform>();
         }
 
+        // 上下の枠の初期位置.
         _rectTransform[(int)UIKinds.CLEAR_BELT_UP].anchoredPosition = new Vector3(0, 200,0);
         _rectTransform[(int)UIKinds.CLEAR_BELT_DOWN].anchoredPosition = new Vector3(0, -200,0);
         _rectTransform[(int)UIKinds.FAILED_BELT_UP].anchoredPosition = new Vector3(0, 200, 0);
@@ -73,26 +80,27 @@ public class ResultUpdate : MonoBehaviour
     // UIの表示非表示.
     private void UIDisplayHide()
     {
-        _ui[(int)UIKinds.CLEAR].SetActive(_uiDisplayHide[(int)UIKinds.CLEAR]);
-        _ui[(int)UIKinds.FAILED].SetActive(_uiDisplayHide[(int)UIKinds.FAILED]);
-        _ui[(int)UIKinds.CLEAR_BELT_UP].SetActive(_uiDisplayHide[(int)UIKinds.CLEAR_BELT_UP]);
-        _ui[(int)UIKinds.CLEAR_BELT_DOWN].SetActive(_uiDisplayHide[(int)UIKinds.CLEAR_BELT_DOWN]);
-        _ui[(int)UIKinds.FAILED_BELT_UP].SetActive(_uiDisplayHide[(int)UIKinds.FAILED_BELT_UP]);
-        _ui[(int)UIKinds.FAILED_BELT_DOWN].SetActive(_uiDisplayHide[(int)UIKinds.FAILED_BELT_DOWN]);
+        _ui[(int)UIKinds.CLEAR].SetActive(_uiDisplay[(int)UIKinds.CLEAR]);
+        _ui[(int)UIKinds.FAILED].SetActive(_uiDisplay[(int)UIKinds.FAILED]);
+        _ui[(int)UIKinds.CLEAR_BELT_UP].SetActive(_uiDisplay[(int)UIKinds.CLEAR_BELT_UP]);
+        _ui[(int)UIKinds.CLEAR_BELT_DOWN].SetActive(_uiDisplay[(int)UIKinds.CLEAR_BELT_DOWN]);
+        _ui[(int)UIKinds.FAILED_BELT_UP].SetActive(_uiDisplay[(int)UIKinds.FAILED_BELT_UP]);
+        _ui[(int)UIKinds.FAILED_BELT_DOWN].SetActive(_uiDisplay[(int)UIKinds.FAILED_BELT_DOWN]);
+        _ui[(int)UIKinds.RESULT_BACKGROUND].SetActive(_uiDisplay[(int)UIKinds.RESULT_BACKGROUND]);
     }
 
     // クエストを終了した時にさせるアニメーション.
     private void UiAnim(int BeltUp, int BeltDown, int StampNunber)
     {
         BeltDisplay(BeltUp, BeltDown);
-        if (_endCount > 60)
+        if (_endCount > _beltMoveStart)
         {
             BeltMove(BeltUp, BeltDown);
         }
         // クエストをクリアした時の表現処理.
-        if (_endCount > 160)
+        if (_endCount > _stampLogDisPlayTime)
         {
-            _uiDisplayHide[StampNunber] = true;
+            _uiDisplay[StampNunber] = true;
             StampResultAnim(StampNunber);
         }
     }
@@ -109,20 +117,26 @@ public class ResultUpdate : MonoBehaviour
     // 上下の枠を表示
     private void BeltDisplay(int Up, int Down)
     {
-        _uiDisplayHide[Up] = true;
-        _uiDisplayHide[Down] = true;
+        _uiDisplay[Up] = true;
+        _uiDisplay[Down] = true;
     }
 
     // 上下の黒帯の挙動.
     private void BeltMove(int Up, int Down)
     {
-        _rectTransform[Up].DOAnchorPos(new Vector3(0.0f, 150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
-        _rectTransform[Down].DOAnchorPos(new Vector3(0.0f, -150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
+        _rectTransform[Up].DOAnchorPos(new Vector3(0.0f, 155.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
+        _rectTransform[Down].DOAnchorPos(new Vector3(0.0f, -155.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
     }
 
     // スタンプロゴの結果表示のアニメーション.
     private void StampResultAnim(int LogNumber)
     {
         _rectTransform[LogNumber].DOScale(new Vector3(3.1f, 3.1f, 3.1f), 0.5f).SetEase(Ease.OutElastic);
+    }
+
+    // リザルトを表示させるためにスタンプロゴや上下の線を非表示にする.
+    private void LogAndLineHide(int UiKind)
+    {
+        _uiDisplay[UiKind] = false;
     }
 }

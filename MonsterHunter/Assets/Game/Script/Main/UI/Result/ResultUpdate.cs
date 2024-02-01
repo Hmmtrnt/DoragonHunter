@@ -86,6 +86,7 @@ public class ResultUpdate : MonoBehaviour
         if(_endCount > 160)
         {
             _uiDisplayHide[(int)UIKinds.CLEAR] = true;
+            StampResultAnim((int)UIKinds.CLEAR);
         }
         
 
@@ -118,9 +119,13 @@ public class ResultUpdate : MonoBehaviour
     // 上下の黒帯の挙動.
     private void BeltMove()
     {
-        //_rectTransform[(int)UIKinds.BELTUP].DOMove(new Vector3(0.0f, 165.0f, 0.0f), 1f);
-        //_rectTransform[(int)UIKinds.BELTDOWN].DOMove(new Vector3(0.0f, -165.0f, 0.0f), 1f);
-        _rectTransform[(int)UIKinds.BELTUP].DOAnchorPos(new Vector3(0.0f, 150.0f, 0.0f), 0.5f).SetEase(Ease.Linear);
-        _rectTransform[(int)UIKinds.BELTDOWN].DOAnchorPos(new Vector3(0.0f, -150.0f, 0.0f), 0.5f).SetEase(Ease.Linear);
+        _rectTransform[(int)UIKinds.BELTUP].DOAnchorPos(new Vector3(0.0f, 150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
+        _rectTransform[(int)UIKinds.BELTDOWN].DOAnchorPos(new Vector3(0.0f, -150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
+    }
+
+    // スタンプロゴの結果表示のアニメーション.
+    private void StampResultAnim(int LogNumber)
+    {
+        _rectTransform[LogNumber].DOScale(new Vector3(3.1f, 3.1f, 3.1f), 0.5f).SetEase(Ease.OutElastic);
     }
 }

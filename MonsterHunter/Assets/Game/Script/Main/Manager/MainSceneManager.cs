@@ -34,6 +34,9 @@ public class MainSceneManager : MonoBehaviour
     private float _originalHorizontalAxisMaxSpeed;
     private float _originalVerticalAxisMaxSpeed;
 
+    // ゲーム全体の時間を停止するまでの時間
+    private int _pauseCount;
+
     void Start()
     {
         _controllerManager = GetComponent<ControllerManager>();
@@ -45,6 +48,8 @@ public class MainSceneManager : MonoBehaviour
         // カメラの元の回転する値を保持.
         _originalHorizontalAxisMaxSpeed = _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed;
         _originalVerticalAxisMaxSpeed = _cinemachinePOV.m_VerticalAxis.m_MaxSpeed;
+
+        _pauseCount = 15;
     }
 
     void Update()
@@ -54,16 +59,23 @@ public class MainSceneManager : MonoBehaviour
         {
             _openMenu = false;
             _openPause = true;
-            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
-            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
-            //_pauseTimeStop.StopTime();
+            _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
+            _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
+
+            if(_pauseCount == 0)
+            {
+                _pauseTimeStop.StopTime();
+            }
+
+            _pauseCount--;
         }
         else
         {
+            _pauseTimeStop.StartTime();
             _openPause = false;
-            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
-            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
-            //_pauseTimeStop.StartTime();
+            _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
+            _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
+            _pauseCount = 15;
         }
 
         //Debug.Log(_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed);
@@ -123,4 +135,7 @@ public class MainSceneManager : MonoBehaviour
 
     // リタイア確認画面を開いているかどうか.
     public bool GetOpenRetireConfirmation() { return _openRetireConfirmation; }
+
+    // 現在一時停止中かどうか.
+    public bool GetPauseStop() { return _pauseStop; }
 }

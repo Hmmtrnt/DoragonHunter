@@ -49,8 +49,10 @@ public partial class PlayerState : MonoBehaviour
         AnimTransition();
 
         _currentState.OnUpdate(this);
-        _currentState.OnChangeState(this);
-
+        if(!_mainSceneManager.GetPauseStop())
+        {
+            _currentState.OnChangeState(this);
+        }
         viewAngle();
     }
 

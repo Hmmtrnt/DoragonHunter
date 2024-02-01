@@ -11,12 +11,15 @@ public class ResultUpdate : MonoBehaviour
     // UIの種類.
     public enum UIKinds
     {
-        CLEAR,      // クリア.
-        FAILED,     // 失敗.
+        CLEAR,              // クリア.
+        FAILED,             // 失敗.
         // ベルト.
-        BELTUP,     // 上.
-        BELTDOWN,   // 下.
-        MAXNUM      // 最大数.
+        // クリア時.
+        CLEAR_BELT_UP,      // 上.
+        CLEAR_BELT_DOWN,    // 下.
+        FAILED_BELT_UP,     // 上.
+        FAILED_BELT_DOWN,   // 下.
+        MAXNUM              // 最大数.
     }
 
     // UIオブジェクト.
@@ -40,8 +43,11 @@ public class ResultUpdate : MonoBehaviour
             _rectTransform[UINumber] = _ui[UINumber].GetComponent<RectTransform>();
         }
 
-        _rectTransform[(int)UIKinds.BELTUP].anchoredPosition = new Vector3(0, 200,0);
-        _rectTransform[(int)UIKinds.BELTDOWN].anchoredPosition = new Vector3(0, -200,0);
+        _rectTransform[(int)UIKinds.CLEAR_BELT_UP].anchoredPosition = new Vector3(0, 200,0);
+        _rectTransform[(int)UIKinds.CLEAR_BELT_DOWN].anchoredPosition = new Vector3(0, -200,0);
+        _rectTransform[(int)UIKinds.FAILED_BELT_UP].anchoredPosition = new Vector3(0, 200, 0);
+        _rectTransform[(int)UIKinds.FAILED_BELT_DOWN].anchoredPosition = new Vector3(0, -200, 0);
+
     }
 
     void Update()
@@ -56,11 +62,11 @@ public class ResultUpdate : MonoBehaviour
 
         if (_huntingEnd.GetQuestClear())
         {
-            Clear();
+            UiAnim((int)UIKinds.CLEAR_BELT_UP, (int)UIKinds.CLEAR_BELT_DOWN, (int)UIKinds.CLEAR);
         }
         else if(_huntingEnd.GetQuestFailed())
         {
-            Failed();
+            UiAnim((int)UIKinds.FAILED_BELT_UP, (int)UIKinds.FAILED_BELT_DOWN, (int)UIKinds.FAILED);
         }
     }
 
@@ -69,35 +75,26 @@ public class ResultUpdate : MonoBehaviour
     {
         _ui[(int)UIKinds.CLEAR].SetActive(_uiDisplayHide[(int)UIKinds.CLEAR]);
         _ui[(int)UIKinds.FAILED].SetActive(_uiDisplayHide[(int)UIKinds.FAILED]);
-        _ui[(int)UIKinds.BELTUP].SetActive(_uiDisplayHide[(int)UIKinds.BELTUP]);
-        _ui[(int)UIKinds.BELTDOWN].SetActive(_uiDisplayHide[(int)UIKinds.BELTDOWN]);
+        _ui[(int)UIKinds.CLEAR_BELT_UP].SetActive(_uiDisplayHide[(int)UIKinds.CLEAR_BELT_UP]);
+        _ui[(int)UIKinds.CLEAR_BELT_DOWN].SetActive(_uiDisplayHide[(int)UIKinds.CLEAR_BELT_DOWN]);
+        _ui[(int)UIKinds.FAILED_BELT_UP].SetActive(_uiDisplayHide[(int)UIKinds.FAILED_BELT_UP]);
+        _ui[(int)UIKinds.FAILED_BELT_DOWN].SetActive(_uiDisplayHide[(int)UIKinds.FAILED_BELT_DOWN]);
     }
 
-    // クエストをクリアした時に呼び出す.
-    private void Clear()
+    // クエストを終了した時にさせるアニメーション.
+    private void UiAnim(int BeltUp, int BeltDown, int StampNunber)
     {
+        BeltDisplay(BeltUp, BeltDown);
+        if (_endCount > 60)
+        {
+            BeltMove(BeltUp, BeltDown);
+        }
         // クエストをクリアした時の表現処理.
-        BeltDisplay();
-
-        if(_endCount > 60)
+        if (_endCount > 160)
         {
-            BeltMove();
+            _uiDisplayHide[StampNunber] = true;
+            StampResultAnim(StampNunber);
         }
-        if(_endCount > 160)
-        {
-            _uiDisplayHide[(int)UIKinds.CLEAR] = true;
-            StampResultAnim((int)UIKinds.CLEAR);
-        }
-        
-
-
-
-    }
-
-    // クエストを失敗した時に呼び出す.
-    private void Failed()
-    {
-        // クエストを失敗した時の表現処理.
     }
 
     // クエスト終了してからカウント開始.
@@ -110,17 +107,17 @@ public class ResultUpdate : MonoBehaviour
     }
 
     // 上下の枠を表示
-    private void BeltDisplay()
+    private void BeltDisplay(int Up, int Down)
     {
-        _uiDisplayHide[(int)UIKinds.BELTUP] = true;
-        _uiDisplayHide[(int)UIKinds.BELTDOWN] = true;
+        _uiDisplayHide[Up] = true;
+        _uiDisplayHide[Down] = true;
     }
 
     // 上下の黒帯の挙動.
-    private void BeltMove()
+    private void BeltMove(int Up, int Down)
     {
-        _rectTransform[(int)UIKinds.BELTUP].DOAnchorPos(new Vector3(0.0f, 150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
-        _rectTransform[(int)UIKinds.BELTDOWN].DOAnchorPos(new Vector3(0.0f, -150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
+        _rectTransform[Up].DOAnchorPos(new Vector3(0.0f, 150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
+        _rectTransform[Down].DOAnchorPos(new Vector3(0.0f, -150.0f, 0.0f), 0.3f).SetEase(Ease.Linear);
     }
 
     // スタンプロゴの結果表示のアニメーション.

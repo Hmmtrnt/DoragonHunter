@@ -54,6 +54,12 @@ public partial class PlayerState : MonoBehaviour
             _currentState.OnChangeState(this);
         }
         viewAngle();
+
+        // デバッグ用死亡判定.
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            _hitPoint = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -62,7 +68,6 @@ public partial class PlayerState : MonoBehaviour
 
         StateFlameManager();
 
-        //Debug.Assert(_text != null);
 
         SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);

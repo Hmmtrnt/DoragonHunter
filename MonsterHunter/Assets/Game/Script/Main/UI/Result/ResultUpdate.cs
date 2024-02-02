@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using UnityEngine.UI;
 
 public class ResultUpdate : MonoBehaviour
 {
@@ -29,6 +29,9 @@ public class ResultUpdate : MonoBehaviour
     private HuntingEnd _huntingEnd;
     // 各UIの座標.
     private RectTransform[] _rectTransform = new RectTransform[(int)UIKinds.MAXNUM];
+    // 各UIの色.
+    private Image _image;
+
     // UIを表示非表示にするかどうか.
     private bool[] _uiDisplay = new bool[(int)UIKinds.MAXNUM];
     // 終了してからの経過時間．
@@ -39,6 +42,11 @@ public class ResultUpdate : MonoBehaviour
     // スタンプロゴの表示時間.
     private const int _stampLogDisPlayTime = 160;
 
+    // リザルト画面の背景のα値.
+    private byte _resultColorA = 0;
+    // リザルト画面の背景の限界α値.
+    private const byte _resultColorMaxA = 50;
+
     void Start()
     {
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
@@ -47,14 +55,17 @@ public class ResultUpdate : MonoBehaviour
         {
             _uiDisplay[UINumber] = false;
             _rectTransform[UINumber] = _ui[UINumber].GetComponent<RectTransform>();
+            
         }
+
+        _image = _ui[(int)UIKinds.RESULT_BACKGROUND].GetComponent<Image>();
 
         // 上下の枠の初期位置.
         _rectTransform[(int)UIKinds.CLEAR_BELT_UP].anchoredPosition = new Vector3(0, 200,0);
         _rectTransform[(int)UIKinds.CLEAR_BELT_DOWN].anchoredPosition = new Vector3(0, -200,0);
         _rectTransform[(int)UIKinds.FAILED_BELT_UP].anchoredPosition = new Vector3(0, 200, 0);
         _rectTransform[(int)UIKinds.FAILED_BELT_DOWN].anchoredPosition = new Vector3(0, -200, 0);
-
+        _resultColorA = 0;
     }
 
     void Update()
@@ -80,13 +91,10 @@ public class ResultUpdate : MonoBehaviour
     // UIの表示非表示.
     private void UIDisplayHide()
     {
-        _ui[(int)UIKinds.CLEAR].SetActive(_uiDisplay[(int)UIKinds.CLEAR]);
-        _ui[(int)UIKinds.FAILED].SetActive(_uiDisplay[(int)UIKinds.FAILED]);
-        _ui[(int)UIKinds.CLEAR_BELT_UP].SetActive(_uiDisplay[(int)UIKinds.CLEAR_BELT_UP]);
-        _ui[(int)UIKinds.CLEAR_BELT_DOWN].SetActive(_uiDisplay[(int)UIKinds.CLEAR_BELT_DOWN]);
-        _ui[(int)UIKinds.FAILED_BELT_UP].SetActive(_uiDisplay[(int)UIKinds.FAILED_BELT_UP]);
-        _ui[(int)UIKinds.FAILED_BELT_DOWN].SetActive(_uiDisplay[(int)UIKinds.FAILED_BELT_DOWN]);
-        _ui[(int)UIKinds.RESULT_BACKGROUND].SetActive(_uiDisplay[(int)UIKinds.RESULT_BACKGROUND]);
+        for(int kinds = 0; kinds < (int)UIKinds.MAXNUM; kinds++)
+        {
+            _ui[kinds].SetActive(_uiDisplay[kinds]);
+        }
     }
 
     // クエストを終了した時にさせるアニメーション.
@@ -97,11 +105,20 @@ public class ResultUpdate : MonoBehaviour
         {
             BeltMove(BeltUp, BeltDown);
         }
-        // クエストをクリアした時の表現処理.
+        // クエストを終了した時の表現処理.
         if (_endCount > _stampLogDisPlayTime)
         {
             _uiDisplay[StampNunber] = true;
             StampResultAnim(StampNunber);
+        }
+
+        // スタンプロゴを押されてから少しずらして非表示にする.
+        if (_endCount > 300)
+        {
+            ImageDisplay(false, BeltUp, BeltDown, StampNunber);
+            ImageDisplay(true, (int)UIKinds.RESULT_BACKGROUND);
+            AlphaUpdate();
+            ResultBackgroundColor();
         }
     }
 
@@ -134,9 +151,30 @@ public class ResultUpdate : MonoBehaviour
         _rectTransform[LogNumber].DOScale(new Vector3(3.1f, 3.1f, 3.1f), 0.5f).SetEase(Ease.OutElastic);
     }
 
-    // リザルトを表示させるためにスタンプロゴや上下の線を非表示にする.
-    private void LogAndLineHide(int UiKind)
+    // 指定した画像を表示、非表示にする.
+    private void ImageDisplay(bool Active, params int[] UiKind)
     {
-        _uiDisplay[UiKind] = false;
+        int uiKinds = UiKind[0];
+
+        for(int kinds = 0;  kinds < UiKind.Length; kinds++)
+        {
+            uiKinds = UiKind[kinds];
+            _uiDisplay[uiKinds] = Active;
+        }
+    }
+
+    // α値を更新.
+    private void AlphaUpdate()
+    {
+        if(_resultColorA < _resultColorMaxA)
+        {
+            _resultColorA++;
+        }
+    }
+
+    // リザルト画面の背景の色を代入.
+    private void ResultBackgroundColor()
+    {
+        _image.color = new Color32(255, 255, 255, _resultColorA);
     }
 }

@@ -64,14 +64,14 @@ public class HuntingEnd : MonoBehaviour
 
         if(_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
         {
-            //if(_controllerManager._AButtonDown)
-            //{
-            //    _sceneTransitionManager.SelectScene();
-            //}
-            //else if(_controllerManager._BButtonDown)
-            //{
-            //    _sceneTransitionManager.TitleScene();
-            //}
+            if (_controllerManager._AButtonDown)
+            {
+                _sceneTransitionManager.SelectScene();
+            }
+            else if (_controllerManager._BButtonDown)
+            {
+                _sceneTransitionManager.TitleScene();
+            }
         }
     }
 

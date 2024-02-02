@@ -10,6 +10,12 @@ public class QuestTime : MonoBehaviour
     // 時間.
     private float _timer = 0;
 
+    // 秒.
+    private float _second = 0;
+    // 分.
+    private float _minutes = 0;
+
+
     void Start()
     {
         transform.localEulerAngles = Vector3.zero;
@@ -19,14 +25,38 @@ public class QuestTime : MonoBehaviour
 
     void Update()
     {
-        _timer = Time.time;
-        _timer = _timer / 60.0f;
+        Timing();
+        //_timer += Time.deltaTime;
+        //Debug.Log(_timer);
+        //_timer = _timer / 60.0f;
         // 長針の処理.
-        transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * _timer);
+        transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * _minutes);
         // 短針の固定化.
         GameObject.Find("HourHand").transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * 50.0f);
 
         //Debug.Log("time" + Time.time);
         //Debug.Log("Timer" + _timer);
     }
+
+    private void FixedUpdate()
+    {
+        Debug.Log(_minutes + ":" +  _second);
+    }
+
+    // クエスト時間を計測.
+    private void Timing()
+    {
+        _second += Time.deltaTime;
+
+        if(_second >= 60)
+        {
+            _minutes++;
+            _second = 0;
+        }
+    }
+
+    public int GetSecond() { return (int)_second; }
+
+    public int GetMinutes() { return (int)_minutes; }
+
 }

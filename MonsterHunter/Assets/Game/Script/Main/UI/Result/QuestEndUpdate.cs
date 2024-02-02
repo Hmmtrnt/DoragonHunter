@@ -1,4 +1,4 @@
-/*リザルト画面の処理*/
+/*クエスト終了画面の処理*/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class ResultUpdate : MonoBehaviour
+public class QuestEndUpdate : MonoBehaviour
 {
     // UIの種類.
     public enum UIKinds

@@ -26,6 +26,9 @@ public class HuntingEnd : MonoBehaviour
     // クエストを終了下かどうか.
     public bool _questEnd = false;
 
+    // クエストの時間を保存.
+    //private int _
+
     // 狩猟成功してシーン遷移を行うまでの時間.
     private int _startSceneTransitionCount = 0;
 
@@ -63,11 +66,11 @@ public class HuntingEnd : MonoBehaviour
         {
             //if(_controllerManager._AButtonDown)
             //{
-            //    _sceneTransitionManager.TitleScene();
+            //    _sceneTransitionManager.SelectScene();
             //}
             //else if(_controllerManager._BButtonDown)
             //{
-            //    _sceneTransitionManager.SelectScene();
+            //    _sceneTransitionManager.TitleScene();
             //}
         }
     }
@@ -76,10 +79,10 @@ public class HuntingEnd : MonoBehaviour
     private void SceneTransitionUpdate(Scene next, LoadSceneMode mode)
     {
         // シーン切り替え後のスクリプト追加.
-        ResultBranch resultBranch = GameObject.Find("GameManager").GetComponent<ResultBranch>();
+        ResultUpdate resultBranch = GameObject.Find("GameManager").GetComponent<ResultUpdate>();
 
         // クエスト終了時のクエスト状態を代入.
-        resultBranch._questClear = _QuestClear;
+        //resultBranch._questClear = _QuestClear;
 
 
         SceneManager.sceneLoaded -= SceneTransitionUpdate;

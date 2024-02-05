@@ -69,10 +69,25 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // 納刀アイドル.
-            if (owner._stateFlame >= owner._nextMotionFlame)
+            // 納刀待機.
+            if (owner._stateFlame >= owner._nextMotionFlame &&
+                (owner._leftStickHorizontal == 0 || owner._leftStickVertical == 0))
             {
                 owner.ChangeState(_idle);
+            }
+            // 移動.
+            else if(owner._stateFlame >= owner._nextMotionFlame && 
+                (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) && 
+                !owner._input._RBButton)
+            {
+                owner.ChangeState(_running);
+            }
+            // ダッシュ.
+            else if(owner._stateFlame >= owner._nextMotionFlame &&
+                (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) &&
+                owner._input._RBButton)
+            {
+                owner.ChangeState(_dash);
             }
         }
     }

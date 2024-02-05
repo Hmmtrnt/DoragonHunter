@@ -376,7 +376,7 @@ public partial class PlayerState
     {
         if(_transform.position.y < 0)
         {
-            _transform.position = new Vector3(transform.position.x, 0.1f, transform.position.z);
+            //_transform.position = new Vector3(transform.position.x, 0.2f, transform.position.z);
         }
     }
 

@@ -114,9 +114,6 @@ public partial class PlayerState : MonoBehaviour
         {
             //Debug.Log("MonsterAtCol");
         }
-
-        
-
     }
 
     private void OnTriggerEnter(Collider other)

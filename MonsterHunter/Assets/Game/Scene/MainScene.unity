@@ -18001,6 +18001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8cd11c4221119409ea48f1cde33975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _questEnd: 0
+  _Minute: 0
+  _Second: 0
 --- !u!114 &828352934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22764,7 +22767,7 @@ PrefabInstance:
     - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
       propertyPath: m_VerticalAxis.m_MinValue
-      value: -30
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
@@ -22879,6 +22882,11 @@ PrefabInstance:
     - target: {fileID: 7577456689820068954, guid: 3d9de063ff6fce2488834b2a348276e6,
         type: 3}
       propertyPath: m_TrackedObjectOffset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930269693300086263, guid: 3d9de063ff6fce2488834b2a348276e6,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8930269693300086263, guid: 3d9de063ff6fce2488834b2a348276e6,
@@ -38313,6 +38321,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hunter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621505602340050678, guid: 829f6e2a14d47a243bd9047f0b1bdfee,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

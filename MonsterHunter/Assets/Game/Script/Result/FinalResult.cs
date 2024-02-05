@@ -54,7 +54,7 @@ public class FinalResult : MonoBehaviour
     // ƒNƒŠƒA‚©¸”s‚©‚Åˆ—‚ğ•ªŠò.
     private void BranchUpdate(bool QuestResult)
     {
-        _ui[(int)UIKinds.STRING].SetActive(true);
+        //_ui[(int)UIKinds.STRING].SetActive(true);
         // ¬Œ÷.
         if(QuestResult) 
         {

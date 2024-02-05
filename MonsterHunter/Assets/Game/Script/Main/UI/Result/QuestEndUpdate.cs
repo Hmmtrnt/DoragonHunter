@@ -1,4 +1,4 @@
-/*クエスト終了画面の処理*/
+/*クエスト終了画面からリザルト表示までの処理*/
 
 using System.Collections;
 using System.Collections.Generic;

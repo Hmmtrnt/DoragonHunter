@@ -18,6 +18,8 @@ public class HuntingEnd : MonoBehaviour
     private SceneTransitionManager _sceneTransitionManager;
     // パッド入力情報.
     private ControllerManager _controllerManager;
+    // クエスト時間取得.
+    private QuestTime _questTime;
 
     // 狩猟成功したか.
     private bool _QuestClear = false;
@@ -27,7 +29,8 @@ public class HuntingEnd : MonoBehaviour
     public bool _questEnd = false;
 
     // クエストの時間を保存.
-    //private int _
+    public int _Minute = 0;
+    public int _Second = 0;
 
     // 狩猟成功してシーン遷移を行うまでの時間.
     private int _startSceneTransitionCount = 0;
@@ -39,6 +42,7 @@ public class HuntingEnd : MonoBehaviour
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
         _controllerManager = GetComponent<ControllerManager>();
+        _questTime = GameObject.Find("LongTimeShaft").GetComponent<QuestTime>();
         _startSceneTransitionCount = 1000;
     }
 
@@ -104,6 +108,10 @@ public class HuntingEnd : MonoBehaviour
         if(_playerState.GetHitPoint()==0 || _monsterState.GetHitPoint() == 0)
         {
             _questEnd = true;
+            _Minute = _questTime.GetMinutes();
+            _Second = _questTime.GetSecond();
+
+            
         }
     }
 

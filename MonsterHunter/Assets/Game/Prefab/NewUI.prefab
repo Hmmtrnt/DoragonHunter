@@ -3566,6 +3566,7 @@ GameObject:
   - component: {fileID: 3901261151758085191}
   - component: {fileID: 7271297132957086874}
   - component: {fileID: 4362122563530058974}
+  - component: {fileID: 4422709173103422418}
   m_Layer: 5
   m_Name: RankLog
   m_TagString: Untagged
@@ -3630,6 +3631,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4422709173103422418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812676089280854465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58503365c97b0ed48bc0ba9007a1c9e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rank: []
 --- !u!1 &2859081022249831831
 GameObject:
   m_ObjectHideFlags: 0
@@ -4162,7 +4176,7 @@ GameObject:
   - component: {fileID: 2947423810056217500}
   - component: {fileID: 2292516687988999100}
   m_Layer: 5
-  m_Name: ClearStamp
+  m_Name: JudgmentResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4984,6 +4998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4492223592813387178}
+  - component: {fileID: 3867122956052994474}
   m_Layer: 5
   m_Name: ClearTime
   m_TagString: Untagged
@@ -5017,6 +5032,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3867122956052994474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863331639977987220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09e34a785fa7d54795129115cb6aac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clearTime:
+  - {fileID: 6084801466142156068}
+  - {fileID: 6143310951336866427}
+  - {fileID: 3450758531566013466}
+  - {fileID: 5382856821717390590}
+  _timeNum:
+  - {fileID: 21300000, guid: 3c2d02314953b7a4ca7a57507ef8dea6, type: 3}
+  - {fileID: 21300000, guid: 8400d889e43dd424487dfbe4980b795f, type: 3}
+  - {fileID: 21300000, guid: 71e9842f782033849bcdc2f44ef8aaa6, type: 3}
+  - {fileID: 21300000, guid: bd93f18af40ef9b469e04e5b9933f085, type: 3}
+  - {fileID: 21300000, guid: 887c7e68f5684574d9faec76abb951ed, type: 3}
+  - {fileID: 21300000, guid: 599ed9ac85957214a9b0c3d4ba65f018, type: 3}
+  - {fileID: 21300000, guid: 80b2d23df3db62e4aa85a5c29bfd8b64, type: 3}
+  - {fileID: 21300000, guid: c2c4c87552a3a694e9799c079f2ff18d, type: 3}
+  - {fileID: 21300000, guid: 06c502af2686bf943bb4d7e696cc0145, type: 3}
+  - {fileID: 21300000, guid: 2cae5f4da1b232348b991f03bd9a9e69, type: 3}
 --- !u!1 &3932442118273543690
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class RankLog : MonoBehaviour
         A_RANK,
         B_RANK,
         C_RANK,
+        NONE,
         MAX_RANK
     }
 
@@ -48,16 +49,29 @@ public class RankLog : MonoBehaviour
     // スプライトを代入.
     private void RankSpriteSubstitute()
     {
-        // ランクの結果を代入.
-        _rankStep = _huntingEnd.GetRank();
-        _rankLog.sprite = _rank[_rankStep];
+        if(_huntingEnd.GetQuestClear())
+        {
+            // ランクの結果を代入.
+            _rankStep = _huntingEnd.GetRank();
+            _rankLog.sprite = _rank[_rankStep];
+        }
+        else
+        {
+            // 失敗時に-を代入.
+            _rankLog.sprite = _rank[(int)SpriteRank.NONE];
+        }
+        
         RankSizeChange();
     }
 
     // ランクによって描画の大きさを変更.
     private void RankSizeChange()
     {
-        if(_huntingEnd.GetRank() == (int)SpriteRank.S_RANK)
+        if(_rankLog.sprite == _rank[(int)SpriteRank.NONE])
+        {
+            _rectTransform.sizeDelta = new Vector2(56, 19);
+        }
+        else if(_huntingEnd.GetRank() == (int)SpriteRank.S_RANK)
         {
             _rectTransform.sizeDelta = new Vector2(276, 319);
         }

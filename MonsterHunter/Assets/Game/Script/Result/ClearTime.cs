@@ -39,7 +39,6 @@ public class ClearTime : MonoBehaviour
     private RectTransform[] _clearTimeTransform = new RectTransform[(int)ClearTimeDigit.MAX_DIGIT_NUM];
     // クリアタイムのスプライト.
     private Image[] _clearTimeSprite = new Image[(int)ClearTimeDigit.MAX_DIGIT_NUM];
-
     // クエストタイムの時間のスプライト.
     public Sprite[] _timeNum;
 

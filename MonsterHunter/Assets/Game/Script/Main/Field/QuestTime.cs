@@ -40,7 +40,7 @@ public class QuestTime : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_minutes + ":" +  _second);
+        //Debug.Log(_minutes + ":" +  _second);
     }
 
     // クエスト時間を計測.

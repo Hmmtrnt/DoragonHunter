@@ -32,6 +32,9 @@ public class HuntingEnd : MonoBehaviour
     public int _Minute = 0;
     public int _Second = 0;
 
+    // 現在のランク.
+    private int _currentRank = 0;
+
     // 狩猟成功してシーン遷移を行うまでの時間.
     private int _startSceneTransitionCount = 0;
 
@@ -48,6 +51,7 @@ public class HuntingEnd : MonoBehaviour
 
     private void FixedUpdate()
     {
+        RankDown();
         HuntingEndBranch();
         SceneTransition();
         QuestResult();
@@ -110,9 +114,25 @@ public class HuntingEnd : MonoBehaviour
             _questEnd = true;
             _Minute = _questTime.GetMinutes();
             _Second = _questTime.GetSecond();
-
-            
         }
+    }
+
+    // 時間経過でランクダウン.
+    private void RankDown()
+    {
+        if(_Minute >= 6)
+        {
+            _currentRank = 1;
+        }
+        else if(_Minute >= 12)
+        {
+            _currentRank = 2;
+        }
+        else if( _Minute >= 20)
+        { 
+            _currentRank = 3;
+        }
+        
     }
 
     // カウント開始.
@@ -144,4 +164,7 @@ public class HuntingEnd : MonoBehaviour
     public bool GetQuestFailed() { return _QuestFailed; }
     // クエストを終了したかどうか.
     public bool GetQuestEnd() { return _questEnd; }
+    // クエスト終了のランクを取得.
+    public int GetRank() { return _currentRank; }
+
 }

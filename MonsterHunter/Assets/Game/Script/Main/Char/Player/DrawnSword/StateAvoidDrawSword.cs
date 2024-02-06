@@ -40,7 +40,7 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            if (owner._avoidTime >= 30)
+            if (owner._avoidTime >= 40)
             {
                 // スティック傾けていたらRunに.
                 if ((owner._leftStickHorizontal != 0 ||
@@ -68,7 +68,7 @@ public partial class PlayerState
                 owner._rigidbody.velocity *= owner._deceleration;
             }
 
-            if (owner._avoidTime >= 30)
+            if (owner._avoidTime >= 40)
             {
                 //owner._rigidbody.velocity = new Vector3(0.0f,0.0f,0.0f);
                 owner._rigidbody.velocity *= 0.8f;

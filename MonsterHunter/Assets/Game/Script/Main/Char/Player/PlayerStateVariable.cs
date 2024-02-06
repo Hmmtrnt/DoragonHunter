@@ -187,7 +187,7 @@ public partial class PlayerState
     // ダッシュしているかどうか.
     private bool _isDashing = false;
     // ダッシュしているときのスタミナ消費量
-    private float _isDashStaminaCost = 0.7f;
+    private float _isDashStaminaCost = 0.2f;
 
     // 重力.
     private float _gravity = 0.0f;

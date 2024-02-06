@@ -70,6 +70,7 @@ public class HuntingEnd : MonoBehaviour
         //    _sceneTransitionManager.ResultScene();
         //}
 
+        // デバッグ用シーン遷移.
         if(_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
         {
             //if (_controllerManager._AButtonDown)

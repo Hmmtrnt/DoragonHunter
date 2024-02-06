@@ -11,6 +11,7 @@ public class BGMManager : MonoBehaviour
         TITLE,  // TitleScene
         SELECT, // SelectScene
         MAIN,   // MainScene.
+        VICTORY,// Victory
         BGMNum  // BGMêî.
     }
 

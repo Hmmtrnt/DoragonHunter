@@ -55,7 +55,6 @@ public class QuestEndUpdate : MonoBehaviour
         {
             _uiDisplay[UINumber] = false;
             _rectTransform[UINumber] = _ui[UINumber].GetComponent<RectTransform>();
-            
         }
 
         _image = _ui[(int)UIKinds.RESULT_BACKGROUND].GetComponent<Image>();

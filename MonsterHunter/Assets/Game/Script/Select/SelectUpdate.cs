@@ -12,6 +12,10 @@ public class SelectUpdate : MonoBehaviour
     private SceneTransitionManager _sceneTransitionManager;
     // 選択したUI.
     private SelectSceneSelectUi _SelectUi;
+    // SE.
+    private SEManager _seManager;
+    // フェード.
+    private Fade _fade;
     // 難易度説明のテキスト.
     private Text _explanationText;
     // 決定ボタンを押したかどうか.
@@ -19,11 +23,15 @@ public class SelectUpdate : MonoBehaviour
     // クエストの難易度.
     private bool _hard = false;
 
+    
+
     void Start()
     {
         _controllerManager = GetComponent<ControllerManager>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
         _SelectUi = GameObject.Find("SelectDraw").GetComponent<SelectSceneSelectUi>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _fade = GameObject.Find("Fade").GetComponent<Fade>();
         _explanationText = GameObject.Find("DifficultText").GetComponent<Text>();
     }
 
@@ -62,17 +70,28 @@ public class SelectUpdate : MonoBehaviour
     {
         if(_controllerManager._AButtonDown)
         {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.QUEST_START);
             _decidePush = true;
+            _fade._isFading = false;
         }
     }
 
     // タイトルシーンに戻る.
     private void TitleTransitionScene()
     {
+        // 決定ボタンを押したときはスキップ.
+        if (_decidePush) return;
+
         if (_controllerManager._BButtonDown)
+        {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
+            _fade._isFading = false;
+        }
+        if(_fade._fadeEnd) 
         {
             _sceneTransitionManager.TitleScene();
         }
+
     }
 
     // シーン遷移を行う.
@@ -82,8 +101,10 @@ public class SelectUpdate : MonoBehaviour
 
         // シーン遷移
         SceneManager.sceneLoaded += SceneTransitionUpdate;
-
-        _sceneTransitionManager.MainScene();
+        if(_fade._fadeEnd)
+        {
+            _sceneTransitionManager.MainScene();
+        }
     }
 
     // シーン遷移時に行う処理.

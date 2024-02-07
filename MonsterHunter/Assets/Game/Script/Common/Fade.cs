@@ -8,7 +8,7 @@ public class Fade : MonoBehaviour
     private Image _image;
     // フェードをしているかどうか.
     public bool _isFading = true;
-    public bool _FadeEnd = false;
+    public bool _fadeEnd = false;
 
     // フェードの透明度.
     private byte _colorA = 0;
@@ -53,7 +53,7 @@ public class Fade : MonoBehaviour
     private void FadeIn()
     {
         // 透明度が0の時はスキップ.
-        if (_image.color.a <= 0.01f)
+        if (_image.color.a <= 0.05f)
         {
             _colorA = 0;
             
@@ -68,7 +68,7 @@ public class Fade : MonoBehaviour
         if (_image.color.a >= 0.95f) 
         {
             _colorA = 255;
-            _FadeEnd = true;
+            _fadeEnd = true;
             return;
         }
         _colorA += _fadeOutSpeed;

@@ -77,7 +77,7 @@ public class TitleUpdate : MonoBehaviour
 
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
         }
-        if(_fade._FadeEnd)
+        if(_fade._fadeEnd)
         {
             _sceneTransitionManager.SelectScene();
         }

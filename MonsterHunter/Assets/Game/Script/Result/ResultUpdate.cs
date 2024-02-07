@@ -99,7 +99,11 @@ public class ResultUpdate : MonoBehaviour
     // ランクの透明度.
     private byte[] _rankTableColorA = new byte[(int)RankTable.MAX_NUM];
 
+    // パッドの入力情報.
+    private ControllerManager _controllerManager;
 
+    // アニメーションが終了.
+    private bool _animEnd = false;
 
     // リザルト画面の経過時間.
     private int _flameCount = 0;
@@ -108,6 +112,7 @@ public class ResultUpdate : MonoBehaviour
     {
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _questEndUpdate = GameObject.Find("ResultUi").GetComponent<QuestEndUpdate>();
+        _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         
         // クリアタイムUIの初期化.
         for(int ClearTimeUINum = 0;  ClearTimeUINum < (int)ClearTime.MAX_NUM; ClearTimeUINum++)
@@ -130,13 +135,13 @@ public class ResultUpdate : MonoBehaviour
             _rankTableTransform[RankTableUINum] = _rankTableUI[RankTableUINum].GetComponent <RectTransform>();
             _rankTableColorA[RankTableUINum] = 0;
         }
-        
+        _animEnd = false;
         
     }
 
     void Update()
     {
-        
+        AnimSkip();
     }
 
     private void FixedUpdate()
@@ -150,6 +155,10 @@ public class ResultUpdate : MonoBehaviour
     private void FlameCount()
     {
         _flameCount++;
+        if(_flameCount ==250)
+        {
+            _animEnd=true;
+        }
     }
 
     // UIに透明度を代入.
@@ -172,6 +181,9 @@ public class ResultUpdate : MonoBehaviour
     // 各UIの透明度.
     private void UIAlpha()
     {
+        // アニメーションが終了したらスキップ.
+        if (_animEnd) return;
+
         if(_flameCount > 50)
         {
             ClearTimeAnim();
@@ -246,5 +258,58 @@ public class ResultUpdate : MonoBehaviour
         _rankTableTransform[(int)RankTable.BACKGROUND].DOAnchorPos(new Vector3(-105.0f, -55.0f, 0.0f), 1.0f).SetEase(Ease.OutQuint);
     }
 
+    // リザルト画面のアニメーションスキップ.
+    private void AnimSkip()
+    {
+        // アニメーションが終了すると処理をしない.
+        if (_animEnd) return;
 
+        if (_controllerManager._PressAnyButton)
+        {
+            ClearTimeFinalPositionAndFinalAlhpa();
+            RankFinalPositionAndFinalAlpha();
+            RankTableFinalPositionAndFinalAlpha();
+            Debug.Log("通る");
+            _animEnd = true;
+        }
+    }
+
+    // クリアタイムの最終位置と透明度代入.
+    private void ClearTimeFinalPositionAndFinalAlhpa()
+    {
+        // 背景だけ透明度が違う.
+        _clearTimeColorA[(int)ClearTime.BACKGROUND] = 200;
+        _clearTimeTransform[(int)ClearTime.BACKGROUND].anchoredPosition = new Vector3(-155.0f, 40.0f, 0.0f);
+        for (int ClearTimeUINum = (int)ClearTime.STRING; ClearTimeUINum < (int)ClearTime.MAX_NUM; ClearTimeUINum++)
+        {
+            _clearTimeColorA[ClearTimeUINum] = 255;
+        }
+    }
+
+    // ランクの最終位置と透明度代入.
+    private void RankFinalPositionAndFinalAlpha()
+    {
+        // 背景だけ透明度が違う.
+        _rankColorA[(int)Rank.BACKGROUND] = 200;
+        _rankTransform[(int)Rank.BACKGROUND].anchoredPosition = new Vector3(155.0f, 40.0f, 0.0f);
+        for (int ClearTimeUINum = (int)Rank.STRING; ClearTimeUINum < (int)Rank.MAX_NUM; ClearTimeUINum++)
+        {
+            _rankColorA[ClearTimeUINum] = 255;
+        }
+    }
+
+    // ランク表の最終位置と透明度代入.
+    private void RankTableFinalPositionAndFinalAlpha()
+    {
+        // 背景だけ透明度が違う.
+        _rankTableColorA[(int)RankTable.BACKGROUND] = 200;
+        _rankTableTransform[(int)RankTable.BACKGROUND].anchoredPosition = new Vector3(-105.0f, -55.0f, 0.0f);
+        for (int ClearTimeUINum = (int)RankTable.RANK_S; ClearTimeUINum < (int)RankTable.MAX_NUM; ClearTimeUINum++)
+        {
+            _rankTableColorA[ClearTimeUINum] = 255;
+        }
+    }
+
+    // アニメーションが終了下かの情報取得.
+    public bool GetAnimEnd() { return _animEnd; }
 }

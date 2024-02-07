@@ -23,6 +23,10 @@ public class MainSceneConfirmationSelectUI : MonoBehaviour
     private SceneTransitionManager _sceneTransitionManager;
     // メインシーンの情報.
     private MainSceneManager _mainSceneManager;
+    // SE.
+    private SEManager _seManager;
+    // フェード.
+    private Fade _fade;
 
     // 現在選ばれている選択番号.
     public int _selectNum = (int)SelectItem.NO;
@@ -34,6 +38,8 @@ public class MainSceneConfirmationSelectUI : MonoBehaviour
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         _sceneTransitionManager = GameObject.Find("GameManager").GetComponent<SceneTransitionManager>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _fade = GameObject.Find("Fade").GetComponent<Fade>();
         _selectNum = (int)SelectItem.NO;
     }
 
@@ -74,9 +80,16 @@ public class MainSceneConfirmationSelectUI : MonoBehaviour
     {
         if(_selectNum == (int)SelectItem.NO && _controllerManager._AButtonDown)
         {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
             _mainSceneManager._openRetireConfirmation = false;
         }
         else if(_selectNum == (int)SelectItem.YES && _controllerManager._AButtonDown) 
+        {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
+            _fade._isFading = false;
+            
+        }
+        if(_fade._fadeEnd && _selectNum == (int)SelectItem.YES)
         {
             _sceneTransitionManager.SelectScene();
         }

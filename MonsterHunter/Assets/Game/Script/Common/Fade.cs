@@ -79,7 +79,4 @@ public class Fade : MonoBehaviour
     {
         _image.color = new Color32(0, 0, 0, _colorA);
     }
-
-    // “§–¾“x‚ÌŽæ“¾.
-    public byte GetAlpha() { return _colorA; }
 }

@@ -20,6 +20,12 @@ public class HuntingEnd : MonoBehaviour
     private ControllerManager _controllerManager;
     // クエスト時間取得.
     private QuestTime _questTime;
+    // リザルト更新処理.
+    private ResultUpdate _resultUpdate;
+    // SE.
+    private SEManager _seManager;
+    // フェード.
+    private Fade _fade;
 
     // 狩猟成功したか.
     private bool _QuestClear = false;
@@ -27,6 +33,8 @@ public class HuntingEnd : MonoBehaviour
     private bool _QuestFailed = false;
     // クエストを終了下かどうか.
     public bool _questEnd = false;
+    // セレクト画面に戻るかどうか.
+    private bool _selectSceneRemove = false;
 
     // クエストの時間を保存.
     public int _Minute = 0;
@@ -46,42 +54,57 @@ public class HuntingEnd : MonoBehaviour
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
         _controllerManager = GetComponent<ControllerManager>();
         _questTime = GameObject.Find("LongTimeShaft").GetComponent<QuestTime>();
+        _resultUpdate = GameObject.Find("ResultBackGround").GetComponent<ResultUpdate>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _fade = GameObject.Find("Fade").GetComponent<Fade>();
         _startSceneTransitionCount = 1000;
+        _selectSceneRemove = false;
+    }
+
+    private void Update()
+    {
+        SceneTransition();
     }
 
     private void FixedUpdate()
     {
         RankDown();
         HuntingEndBranch();
-        SceneTransition();
+        
         QuestResult();
     }
 
     // シーン遷移を行う.
     private void SceneTransition()
     {
-        // デバッグ用シーン遷移.
-        //if (_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
-        //{
-        //    // シーン切り替え時にイベント登録.
-        //    SceneManager.sceneLoaded += SceneTransitionUpdate;
-
-        //    // シーン切り替え.
-        //    _sceneTransitionManager.ResultScene();
-        //}
-
-        // デバッグ用シーン遷移.
-        if(_monsterState.GetHitPoint() == 0 || _playerState.GetHitPoint() == 0)
+        // フェード開始.
+        if(_resultUpdate.GetAnimEnd())
         {
-            //if (_controllerManager._AButtonDown)
-            //{
-            //    _sceneTransitionManager.SelectScene();
-            //}
-            //else if (_controllerManager._BButtonDown)
-            //{
-            //    _sceneTransitionManager.TitleScene();
-            //}
+            // 選択画面.
+            if (_controllerManager._AButtonDown)
+            {
+                _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
+                _selectSceneRemove = true;
+                _fade._isFading = false;
+            }
+            // タイトル画面.
+            else if (_controllerManager._BButtonDown)
+            {
+                _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
+                _selectSceneRemove = false;
+                _fade._isFading = false;
+            }
         }
+        // シーン遷移.
+        if(_fade._fadeEnd && _selectSceneRemove)
+        {
+            _sceneTransitionManager.SelectScene();
+        }
+        else if(_fade._fadeEnd && !_selectSceneRemove) 
+        {
+            _sceneTransitionManager.TitleScene();
+        }
+
     }
 
     // シーン遷移時に行う処理.

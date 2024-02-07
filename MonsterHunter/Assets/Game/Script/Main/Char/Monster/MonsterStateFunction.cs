@@ -16,6 +16,7 @@ public partial class MonsterState
     // ‰Šú‰».
     private void Initialization()
     {
+        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _hunter = GameObject.Find("Hunter");
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
@@ -55,9 +56,9 @@ public partial class MonsterState
         _rotateCollisiton.SetActive(false);
 
         // ‘Ì—Í‚ÌŒˆ’è.
-        if(_HitPointMany)
+        if(_mainSceneManager._hitPointMany)
         {
-            _HitPoint = 15000;
+            _HitPoint = 10000;
         }
         else
         {

@@ -111,10 +111,10 @@ public class SelectUpdate : MonoBehaviour
     private void SceneTransitionUpdate(Scene next, LoadSceneMode mode)
     {
         // シーン遷移先にあるスクリプト追加.
-        MonsterState monsterState　= GameObject.Find("Dragon").GetComponent<MonsterState>();
+        MainSceneManager mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
 
         // 難易度を選択した情報を代入.
-        monsterState._HitPointMany = _hard;
+        mainSceneManager._hitPointMany = _hard;
 
         SceneManager.sceneLoaded -= SceneTransitionUpdate;
     }

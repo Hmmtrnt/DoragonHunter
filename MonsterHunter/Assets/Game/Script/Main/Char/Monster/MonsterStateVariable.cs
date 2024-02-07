@@ -33,6 +33,8 @@ public partial class MonsterState
         NONE,
     }
 
+    // メインシーンの情報.
+    private MainSceneManager _mainSceneManager;
 
     // 目標のプレイヤー.
     private GameObject _hunter;
@@ -149,9 +151,6 @@ public partial class MonsterState
 
     // ダメージを受けるかどうか.
     private bool _takeDamage = false;
-
-    // モンスターの体力量が多いか少ないか.
-    public bool _HitPointMany = false;
 
     // 状態遷移を無視するかどうか.
     [Header("状態遷移を無視するかどうか")]

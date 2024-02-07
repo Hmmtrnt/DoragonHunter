@@ -310,6 +310,7 @@ public class ResultUpdate : MonoBehaviour
         }
     }
 
+
     // アニメーションが終了下かの情報取得.
     public bool GetAnimEnd() { return _animEnd; }
 }

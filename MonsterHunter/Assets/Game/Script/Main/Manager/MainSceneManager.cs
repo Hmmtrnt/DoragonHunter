@@ -49,6 +49,9 @@ public class MainSceneManager : MonoBehaviour
     // ゲーム全体の時間を停止するまでの時間
     private int _pauseCount;
 
+    // モンスターの体力が多いかどうか.
+    public bool _hitPointMany = false;
+
     void Start()
     {
         _controllerManager = GetComponent<ControllerManager>();

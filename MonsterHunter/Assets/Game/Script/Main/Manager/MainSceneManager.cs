@@ -21,6 +21,10 @@ public class MainSceneManager : MonoBehaviour
     private MonsterState _monsterState;
     // プレイヤーの情報.
     private PlayerState _playerState;
+    // SE.
+    private SEManager _seManager;
+    // 狩猟終了した時.
+    private HuntingEnd _huntingEnd;
 
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
     private CinemachinePOV _cinemachinePOV;
@@ -53,6 +57,8 @@ public class MainSceneManager : MonoBehaviour
         _pauseTimeStop = GetComponent<PauseTimeStop>();
         _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _cinemachineVirtualCamera = GameObject.Find("CameraBase").GetComponent<CinemachineVirtualCamera>();
         _cinemachinePOV = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
         // カメラの元の回転する値を保持.
@@ -95,10 +101,13 @@ public class MainSceneManager : MonoBehaviour
             _controllerManager._AButtonDown && _openMenu &&
             !_pauseStop)
         {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
             _pauseStop = true;
         }
+        // 再開.
         else if(_pauseStop && _controllerManager._PressAnyButton)
         {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
             _pauseStop = false;
         }
         MenuOpneAndClose();
@@ -113,18 +122,22 @@ public class MainSceneManager : MonoBehaviour
     private void MenuOpneAndClose()
     {
         // 開くとき
-        if (!_openMenu)
+        if (!_openMenu && !_huntingEnd._questEnd)
         {
             if (_controllerManager._MenuButtonDown)
             {
+                _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
                 _openMenu = true;
             }
         }
         // 閉じるとき
         else
         {
+            // メニュー画面からさらに開いている画面があれば
+            // その画面を優先的に閉じる.
             if (_controllerManager._BButtonDown)
             {
+                _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
                 if (_openOption)
                 {
                     _openOption = false;

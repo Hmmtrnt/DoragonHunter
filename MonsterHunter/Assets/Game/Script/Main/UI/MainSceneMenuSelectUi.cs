@@ -95,6 +95,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         // ê›íËâÊñ ÇëIÇÒÇ≈åàíË.
         if(_controllerManager._AButtonDown && _selectNum == (int)SelectItem.OPTION)
         {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
             _mainSceneManager._openOption = true;
         }
     }
@@ -104,6 +105,8 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     {
         if(_controllerManager._AButtonDown && _selectNum ==(int)SelectItem.RETIRE)
         {
+            Debug.Log("í ÇÈ");
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
             _mainSceneManager._openRetireConfirmation = true;
         }
     }

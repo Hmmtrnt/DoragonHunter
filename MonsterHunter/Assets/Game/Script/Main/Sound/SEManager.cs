@@ -9,11 +9,12 @@ public class SEManager : MonoBehaviour
     /*UI*/
     public enum UISE
     {
-        SELECT,     // 選択UIの移動.
-        DECISION,   // 決定.
-        QUESTSTART, // クエストスタート.
-
-        SENUM       // SE数.
+        SELECT,         // 選択UIの移動.
+        DECISION,       // 決定.
+        REMOVE_PUSH,    // 戻る.
+        QUEST_START,    // クエストスタート.
+        STAMP_PUSH,     // スタンプを押す.
+        SENUM           // SE数.
     }
 
 
@@ -32,7 +33,7 @@ public class SEManager : MonoBehaviour
         FOOTSTEPLEFT,       // 足音(左).
         FOOTSTEPRIGHT,      // 足音(右).
 
-        SENUM           // SE数.
+        SENUM               // SE数.
     }
 
     public enum MonsterSE
@@ -61,7 +62,7 @@ public class SEManager : MonoBehaviour
     // SE素材.
     /*TitleScene*/
     // UI.
-    public AudioClip[] _titleUiAudio;
+    public AudioClip[] _UiAudio;
     /*MainScene*/
     // ハンター.
     public AudioClip[] _hunterAudio;
@@ -95,7 +96,7 @@ public class SEManager : MonoBehaviour
     // UIのSEを鳴らす.
     public void UIPlaySE(int Audio, int SENuber)
     {
-        _source[Audio].PlayOneShot(_titleUiAudio[SENuber]);
+        _source[Audio].PlayOneShot(_UiAudio[SENuber]);
     }
 
     // プレイヤーのSEを鳴らす.

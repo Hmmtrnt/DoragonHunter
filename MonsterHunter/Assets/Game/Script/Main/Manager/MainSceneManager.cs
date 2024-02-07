@@ -3,6 +3,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -16,6 +17,10 @@ public class MainSceneManager : MonoBehaviour
     private MainSceneMenuSelectUi _mainSceneSelectUi;
     // 一時停止.
     private PauseTimeStop _pauseTimeStop;
+    // モンスターの情報.
+    private MonsterState _monsterState;
+    // プレイヤーの情報.
+    private PlayerState _playerState;
 
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
     private CinemachinePOV _cinemachinePOV;
@@ -46,6 +51,8 @@ public class MainSceneManager : MonoBehaviour
         _bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
         _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneMenuSelectUi>();
         _pauseTimeStop = GetComponent<PauseTimeStop>();
+        _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _cinemachineVirtualCamera = GameObject.Find("CameraBase").GetComponent<CinemachineVirtualCamera>();
         _cinemachinePOV = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
         // カメラの元の回転する値を保持.
@@ -97,6 +104,11 @@ public class MainSceneManager : MonoBehaviour
         MenuOpneAndClose();
     }
 
+    private void FixedUpdate()
+    {
+        BGMChange();
+    }
+
     // メニュー画面の開閉制御.
     private void MenuOpneAndClose()
     {
@@ -127,6 +139,20 @@ public class MainSceneManager : MonoBehaviour
                 _openMenu = false;
             }
         }
+    }
+
+    // モンスターを倒したときにBGMを変更する.
+    private void BGMChange()
+    {
+        if(_monsterState.GetHitPoint() <= 0)
+        {
+            _bgmManager.BGMChange((int)BGMManager.BGM.VICTORY);
+        }
+        else if(_playerState.GetHitPoint() <= 0)
+        {
+            _bgmManager.BGMChange((int)BGMManager.BGM.FAILED);
+        }
+        
     }
 
     // メニュー画面を開いているかどうか.

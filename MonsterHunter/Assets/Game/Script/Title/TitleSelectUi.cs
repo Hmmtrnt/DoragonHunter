@@ -87,7 +87,7 @@ public class TitleSelectUi : MonoBehaviour
         else if(_menuManager._openOption && _controllerManager._BButtonDown)
         {
             _menuManager._openOption = false;
-            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
         }
     }
 

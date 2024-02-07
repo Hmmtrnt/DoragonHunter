@@ -31,6 +31,8 @@ public class QuestEndUpdate : MonoBehaviour
     private RectTransform[] _rectTransform = new RectTransform[(int)UIKinds.MAXNUM];
     // 各UIの色.
     private Image _image;
+    // SE.
+    private SEManager _seManager;
 
     // UIを表示非表示にするかどうか.
     private bool[] _uiDisplay = new bool[(int)UIKinds.MAXNUM];
@@ -47,6 +49,9 @@ public class QuestEndUpdate : MonoBehaviour
     // リザルト画面の背景の限界α値.
     private const byte _resultColorMaxA = 50;
 
+    // SEを一度しか鳴らさない.
+    private bool _playSEFlag = true;
+
     void Start()
     {
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
@@ -58,6 +63,8 @@ public class QuestEndUpdate : MonoBehaviour
         }
 
         _image = _ui[(int)UIKinds.RESULT_BACKGROUND].GetComponent<Image>();
+
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
 
         // 上下の枠の初期位置.
         _rectTransform[(int)UIKinds.CLEAR_BELT_UP].anchoredPosition = new Vector3(0, 200,0);
@@ -77,6 +84,7 @@ public class QuestEndUpdate : MonoBehaviour
         StartCount();
         UIDisplayHide();
 
+        // 勝敗によってUIを変更.
         if (_huntingEnd.GetQuestClear())
         {
             UiAnim((int)UIKinds.CLEAR_BELT_UP, (int)UIKinds.CLEAR_BELT_DOWN, (int)UIKinds.CLEAR);
@@ -100,6 +108,7 @@ public class QuestEndUpdate : MonoBehaviour
     private void UiAnim(int BeltUp, int BeltDown, int StampNunber)
     {
         BeltDisplay(BeltUp, BeltDown);
+        // 上下の枠をアニメーションさせる.
         if (_endCount > _beltMoveStart)
         {
             BeltMove(BeltUp, BeltDown);
@@ -148,6 +157,12 @@ public class QuestEndUpdate : MonoBehaviour
     private void StampResultAnim(int LogNumber)
     {
         _rectTransform[LogNumber].DOScale(new Vector3(3.1f, 3.1f, 3.1f), 0.5f).SetEase(Ease.OutElastic);
+
+
+        if (!_playSEFlag) return;
+
+        _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.STAMP_PUSH);
+        _playSEFlag = false;
     }
 
     // 指定した画像を表示、非表示にする.

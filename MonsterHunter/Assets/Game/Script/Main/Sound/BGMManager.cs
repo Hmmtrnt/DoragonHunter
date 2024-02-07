@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    enum BGM
+    public enum BGM
     {
-        TITLE,  // TitleScene
-        SELECT, // SelectScene
+        TITLE,  // TitleScene.
+        SELECT, // SelectScene.
         MAIN,   // MainScene.
-        VICTORY,// Victory
+        VICTORY,// Victory.
+        FAILED, // Failed.
         BGMNum  // BGMêî.
     }
 
@@ -21,9 +22,13 @@ public class BGMManager : MonoBehaviour
     // î≠âπ.
     private AudioSource _sourceBGM;
 
+    // àÍìxèàóùÇ™í ÇÈÇ∆à»ç~í Ç≥Ç»Ç¢à◊.
+    private bool _executeFlag = true;
+
     void Start()
     {
         _sourceBGM = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        _executeFlag = true;
     }
 
     private void FixedUpdate()
@@ -31,10 +36,15 @@ public class BGMManager : MonoBehaviour
         Debug.Assert(_sourceBGM != null);   
     }
 
-    // BGMÇó¨ÇµÇƒÇ¢ÇÈ.
-    public void BGMLoopPlay()
+    // BGMÇïœçX.
+    public void BGMChange(int BGMNunber)
     {
+        if (!_executeFlag) return;
+
+        _sourceBGM.clip = _bgm[BGMNunber];
+
         _sourceBGM.Play();
+        _executeFlag = false;
     }
 
 }

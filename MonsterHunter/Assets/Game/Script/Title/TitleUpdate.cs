@@ -22,6 +22,8 @@ public class TitleUpdate : MonoBehaviour
     private TitleSelectUi _selectUi;
     // タイトルSEの処理.
     private SEManager _seManager;
+    // フェード.
+    private Fade _fade;
 
     // PressAnyButtonを押したときtrueにする.
     public bool _pressAnyPush = false;
@@ -35,6 +37,7 @@ public class TitleUpdate : MonoBehaviour
         _option = GameObject.Find("OPTION").gameObject;
         _selectUi = GameObject.Find("Select").GetComponent<TitleSelectUi>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _fade = GameObject.Find("Fade").GetComponent<Fade>();
 
         _gameStart.SetActive(false);
         _option.SetActive(false);
@@ -66,12 +69,18 @@ public class TitleUpdate : MonoBehaviour
     {
         // PressAnyButtonが押されていなければスキップ.
         if (!_pressAnyPush) return;
+        // フェードアウト開始.
         if(_controllerManager._AButtonDown && _selectUi.GetSelectNumber() == 0)
         {
-            _sceneTransitionManager.SelectScene();
+            //_sceneTransitionManager.SelectScene();
+            _fade._isFading = false;
+
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
         }
-        
+        if(_fade._FadeEnd)
+        {
+            _sceneTransitionManager.SelectScene();
+        }
     }
 
     // PressAnyBottonを押したときGameStartとOPTIONのUIを描画するためにflagをtrue.

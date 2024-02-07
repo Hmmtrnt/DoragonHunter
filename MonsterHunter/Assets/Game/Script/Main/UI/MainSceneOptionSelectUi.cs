@@ -194,7 +194,7 @@ public class MainSceneOptionSelectUi : MonoBehaviour
     {
         if (_controllerManager._XButtonDown)
         {
-            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.QUESTSTART);
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.QUEST_START);
         }
     }
 

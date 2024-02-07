@@ -57,7 +57,7 @@ public partial class MonsterState
         // ‘Ì—Í‚ÌŒˆ’è.
         if(_HitPointMany)
         {
-            _HitPoint = 10000;
+            _HitPoint = 15000;
         }
         else
         {

@@ -17,7 +17,7 @@ public partial class SelectPlayerState
 
         public override void OnFixedUpdate(SelectPlayerState owner)
         {
-
+            owner._rigidbody.velocity = Vector3.zero;
         }
 
         public override void OnExit(SelectPlayerState owner, StateBase nextState)

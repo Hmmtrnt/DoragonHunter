@@ -6,17 +6,21 @@ using UnityEngine;
 
 public class TitleGuide : MonoBehaviour
 {
+    // ボタンガイド.
+    public GameObject _guiedButton;
+
     // 範囲内にいるかどうか.
     private bool _collisionStay = false;
 
     void Start()
     {
-        _collisionStay=false;
+        _collisionStay = false;
+        _guiedButton.SetActive(_collisionStay);
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        
+        ButtonUIDraw();
     }
 
     private void OnTriggerStay(Collider other)
@@ -33,5 +37,11 @@ public class TitleGuide : MonoBehaviour
         {
             _collisionStay = false;
         }
+    }
+
+    // ボタンのUIの描画.
+    private void ButtonUIDraw()
+    {
+        _guiedButton.SetActive(_collisionStay);
     }
 }

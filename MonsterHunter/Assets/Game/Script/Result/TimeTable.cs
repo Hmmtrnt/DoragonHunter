@@ -46,17 +46,24 @@ public class TimeTable : MonoBehaviour
     // ランク表の時間.
     public GameObject[] _timeUi;
     // スプライト変更のために取得.
-    public Image[] _timeImage;
-
+    private Image[] _timeImage;
     // ランク表の画像.
     public Sprite[] _timeSprite;
 
+    // メインシーンの情報.
+    private MainSceneManager _mainSceneManager;
+
     void Start()
+    {
+        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+    }
+
+    void Update()
     {
         
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         
     }

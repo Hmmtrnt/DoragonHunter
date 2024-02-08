@@ -29,16 +29,17 @@ public class SelectUpdate : MonoBehaviour
     {
         _controllerManager = GetComponent<ControllerManager>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
-        _SelectUi = GameObject.Find("SelectDraw").GetComponent<SelectSceneSelectUi>();
+        //_SelectUi = GameObject.Find("SelectDraw").GetComponent<SelectSceneSelectUi>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fade = GameObject.Find("Fade").GetComponent<Fade>();
-        _explanationText = GameObject.Find("DifficultText").GetComponent<Text>();
+        //_explanationText = GameObject.Find("DifficultText").GetComponent<Text>();
     }
 
     void Update()
     {
-        DecidePush();
-        TitleTransitionScene();
+        //DecidePush();
+        //TitleTransitionScene();
+        
     }
 
     private void FixedUpdate()
@@ -47,8 +48,8 @@ public class SelectUpdate : MonoBehaviour
         {
             SceneTransition();
         }
-        Difficulty();
-        ExplanationDraw();
+        //Difficulty();
+        //ExplanationDraw();
     }
 
     // ìÔà’ìxÇÃê›íË.

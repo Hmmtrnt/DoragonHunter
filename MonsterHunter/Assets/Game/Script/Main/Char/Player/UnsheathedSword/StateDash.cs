@@ -93,7 +93,8 @@ public partial class PlayerState
         // 移動
         private void Move(PlayerState owner)
         {
-            owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._rigidbody.velocity.y, 0.0f);
+            owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + 
+                new Vector3(0.0f, owner._rigidbody.velocity.y, 0.0f);
         }
     }
 }

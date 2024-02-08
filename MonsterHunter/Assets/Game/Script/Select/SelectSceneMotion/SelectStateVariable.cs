@@ -4,8 +4,10 @@ using UnityEngine;
 
 public partial class SelectPlayerState
 {
-    // 受付の状態.
+    // 受付UI.
     private ReceptionFlag _receptionFlag;
+    // タイトル画面へ戻るUI.
+    private TitleGuide _titleGuide;
 
     // コントローラーの入力情報.
     private ControllerManager _input;

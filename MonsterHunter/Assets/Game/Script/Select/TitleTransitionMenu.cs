@@ -15,6 +15,8 @@ public class TitleTransitionMenu : MonoBehaviour
         MAX_NUM
     }
 
+    // タイトル画面に戻るUI.
+    private TitleGuide _titleGuide;
 
     // UIの座標
     private RectTransform _rectTransform;
@@ -28,12 +30,14 @@ public class TitleTransitionMenu : MonoBehaviour
     private Fade _fade;
     // シーン遷移管理.
     private SceneTransitionManager _sceneTransitionManager;
+    // 
 
     // 現在選ばれている選択番号.
     private int _selectNum = (int)SelectItem.NO;
 
     void Start()
     {
+        _titleGuide = GameObject.Find("TitleGuide").GetComponent<TitleGuide>();
         _rectTransform = GetComponent<RectTransform>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
@@ -48,6 +52,7 @@ public class TitleTransitionMenu : MonoBehaviour
         _menu.CrossKeyPushFlameCount(_controllerManager._RightLeftCrossKey);
         _menu.CrossKeyNoPush(_controllerManager._RightLeftCrossKey);
         TitleSceneTransition();
+        UINoDecide();
     }
 
     private void FixedUpdate()
@@ -81,6 +86,16 @@ public class TitleTransitionMenu : MonoBehaviour
         if (_fade._fadeEnd)
         {
             _sceneTransitionManager.TitleScene();
+        }
+    }
+
+    // いいえを押したときの処理.
+    private void UINoDecide()
+    {
+        if(_controllerManager._AButtonDown &&
+            _selectNum == (int)SelectItem.NO)
+        {
+            _titleGuide.SetSceneTransitionUIOpen(true);
         }
     }
 

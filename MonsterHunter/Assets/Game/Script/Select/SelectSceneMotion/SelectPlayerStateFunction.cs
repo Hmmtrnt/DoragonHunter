@@ -10,6 +10,7 @@ public partial class SelectPlayerState
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         _receptionFlag = GameObject.Find("ReceptioFlag").GetComponent<ReceptionFlag>();
+        _titleGuide = GameObject.Find("TitleGuide").GetComponent<TitleGuide>();
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _transform = transform;
@@ -65,7 +66,7 @@ public partial class SelectPlayerState
         _moveVelocity = moveForward + moveSide;
 
         // リストを開いているかどうか代入.
-        _openMenu = _receptionFlag.GetOpenQuestList();
+        _openMenu = _receptionFlag.GetOpenQuestList() || _titleGuide.GetSceneTransitionUIOpen();
     }
 
     // 左スティックの入力情報取得.

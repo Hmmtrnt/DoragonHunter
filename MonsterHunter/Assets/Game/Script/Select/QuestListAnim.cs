@@ -23,15 +23,17 @@ public class QuestListAnim : MonoBehaviour
     }
 
     // 各UI.
-    public GameObject[] _UI;
+    public GameObject[] _ui;
     // 各UIの座標.
     private RectTransform[] _rectTransforms = new RectTransform[(int)UIAnimNum.MAX_NUM];
     // 各UIの色.
-    private Image[] _images;
+    private Image[] _images = new Image[(int)UIAnimNum.MAX_NUM];
     // SE.
     private SEManager _seManager;
     // ゲームパッドの入力情報.
     private ControllerManager _controllerManager;
+    // 各UIの透明度.
+    private byte[] _uiColorA = new byte[(int)UIAnimNum.MAX_NUM];
 
     // 各UIの表示非表示.
     private bool[] _uiDisplay = new bool[(int)UIAnimNum.MAX_NUM];
@@ -44,15 +46,16 @@ public class QuestListAnim : MonoBehaviour
     {
         for(int UINum = 0; UINum < (int)UIAnimNum.MAX_NUM; UINum++)
         {
-            _rectTransforms[UINum] = _UI[UINum].GetComponent<RectTransform>();
-            _images[UINum] = _UI[UINum].GetComponent<Image>();
+            _rectTransforms[UINum] = _ui[UINum].GetComponent<RectTransform>();
+            _images[UINum] = _ui[UINum].GetComponent<Image>();
             _uiDisplay[UINum] = false;
-            _images[UINum].color = new Color32(0, 0, 0, 0);
+            _uiColorA[UINum] = 0;
+
+            _images[UINum].color = new Color32(255, 255, 255, _uiColorA[UINum]);
         }
         _questOpenCount = 0;
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
-
     }
 
     void Update()
@@ -64,6 +67,7 @@ public class QuestListAnim : MonoBehaviour
     {
         OpenCount();
         Anim();
+        UIColor();
     }
 
     private void OnDisable()
@@ -85,6 +89,15 @@ public class QuestListAnim : MonoBehaviour
             _rectTransforms[UINum].anchoredPosition = new Vector3(-414.0f,0.0f,0.0f);
         }
 
+    }
+
+    // UIの色を代入.
+    private void UIColor()
+    {
+        for (int UINum = 0; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
+        {
+            _images[UINum].color = new Color32(255, 255, 255, _uiColorA[UINum]);
+        }
     }
 
     // UIが非表示の時に起こす処理.
@@ -111,7 +124,6 @@ public class QuestListAnim : MonoBehaviour
     private void Anim()
     {
         QuestPaperAnim();
-        
     }
 
     // クエストの用紙のアニメーション.
@@ -136,6 +148,11 @@ public class QuestListAnim : MonoBehaviour
     {
         _rectTransforms[(int)UIAnimNum.PARCHMENT_ONE].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
         _rectTransforms[(int)UIAnimNum.PARCHMENT_ONE].DORotate(new Vector3(0.0f,0.0f,-10.0f), 0.5f).SetEase(Ease.OutQuad);
+
+        if (_uiColorA[(int)UIAnimNum.PARCHMENT_ONE] < 255)
+        {
+            _uiColorA[(int)UIAnimNum.PARCHMENT_ONE] += 5;
+        }
     }
 
     // 二枚目.
@@ -143,6 +160,11 @@ public class QuestListAnim : MonoBehaviour
     {
         _rectTransforms[(int)UIAnimNum.PARCHMENT_TWO].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
         _rectTransforms[(int)UIAnimNum.PARCHMENT_TWO].DORotate(new Vector3(0.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
+
+        if (_uiColorA[(int)UIAnimNum.PARCHMENT_TWO] < 255)
+        {
+            _uiColorA[(int)UIAnimNum.PARCHMENT_TWO] += 5;
+        }
     }
 
     // 三枚目.
@@ -150,6 +172,11 @@ public class QuestListAnim : MonoBehaviour
     {
         _rectTransforms[(int)UIAnimNum.PARCHMENT_THREE].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
         _rectTransforms[(int)UIAnimNum.PARCHMENT_THREE].DORotate(new Vector3(0.0f, 0.0f, 10.0f), 0.5f).SetEase(Ease.OutQuad);
+
+        if (_uiColorA[(int)UIAnimNum.PARCHMENT_THREE] < 255)
+        {
+            _uiColorA[(int)UIAnimNum.PARCHMENT_THREE] += 5;
+        }
     }
 
     // クエストの項目のアニメーション.

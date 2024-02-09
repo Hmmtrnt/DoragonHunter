@@ -95,7 +95,7 @@ public class TitleTransitionMenu : MonoBehaviour
         if(_controllerManager._AButtonDown &&
             _selectNum == (int)SelectItem.NO)
         {
-            _titleGuide.SetSceneTransitionUIOpen(true);
+            _titleGuide.SetSceneTransitionUIOpen(false);
         }
     }
 

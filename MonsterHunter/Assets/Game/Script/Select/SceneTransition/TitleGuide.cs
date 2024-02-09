@@ -18,6 +18,9 @@ public class TitleGuide : MonoBehaviour
     // UIの開閉.
     private bool _UIOpenAndClose = false;
 
+    // 閉じてからカウント開始.
+    private int _closeCount = 0;
+
     void Start()
     {
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
@@ -35,6 +38,7 @@ public class TitleGuide : MonoBehaviour
     private void FixedUpdate()
     {
         UIDraw();
+        CountDown();
     }
 
     private void OnTriggerStay(Collider other)
@@ -53,6 +57,19 @@ public class TitleGuide : MonoBehaviour
         }
     }
 
+    // カウント開始.
+    private void CountDown()
+    {
+        if (_closeCount > 0) 
+        {
+            _closeCount--;
+        }
+        if(_closeCount <= 0 )
+        {
+            _closeCount=0;
+        }
+    }
+
     // UIの描画.
     private void UIDraw()
     {
@@ -65,9 +82,10 @@ public class TitleGuide : MonoBehaviour
     {
         if(!_collisionStay) { return; }
 
-        if(_controllerManager._AButtonDown)
+        if(_controllerManager._AButtonDown && !_UIOpenAndClose && _closeCount == 0)
         {
             _UIOpenAndClose = true;
+            Debug.Log("通る");
         }
         else if(_controllerManager._BButtonDown)
         {
@@ -76,7 +94,11 @@ public class TitleGuide : MonoBehaviour
 
     }
 
-    public void SetSceneTransitionUIOpen(bool flag) { _UIOpenAndClose = flag; }
+    public void SetSceneTransitionUIOpen(bool flag) 
+    { 
+        _UIOpenAndClose = flag;
+        _closeCount = 5;
+    }
 
     public bool GetSceneTransitionUIOpen() { return _UIOpenAndClose; }
 }

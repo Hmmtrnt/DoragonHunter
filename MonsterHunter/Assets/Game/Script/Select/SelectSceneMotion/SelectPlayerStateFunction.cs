@@ -11,6 +11,7 @@ public partial class SelectPlayerState
         _animator = GetComponent<Animator>();
         _receptionFlag = GameObject.Find("ReceptioFlag").GetComponent<ReceptionFlag>();
         _titleGuide = GameObject.Find("TitleGuide").GetComponent<TitleGuide>();
+        _rankTable = GameObject.Find("RankTableGuide").GetComponent<RankTable>();
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _transform = transform;
@@ -66,7 +67,9 @@ public partial class SelectPlayerState
         _moveVelocity = moveForward + moveSide;
 
         // リストを開いているかどうか代入.
-        _openMenu = _receptionFlag.GetOpenQuestList() || _titleGuide.GetSceneTransitionUIOpen();
+        _openMenu = _receptionFlag.GetOpenQuestList() || 
+            _titleGuide.GetSceneTransitionUIOpen() || 
+            _rankTable.GetRankTableUI();
     }
 
     // 左スティックの入力情報取得.

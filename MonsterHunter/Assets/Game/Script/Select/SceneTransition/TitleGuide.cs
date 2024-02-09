@@ -85,7 +85,6 @@ public class TitleGuide : MonoBehaviour
         if(_controllerManager._AButtonDown && !_UIOpenAndClose && _closeCount == 0)
         {
             _UIOpenAndClose = true;
-            Debug.Log("’Ê‚é");
         }
         else if(_controllerManager._BButtonDown)
         {

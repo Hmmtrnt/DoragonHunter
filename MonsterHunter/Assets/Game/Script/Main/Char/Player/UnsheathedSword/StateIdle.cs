@@ -15,7 +15,6 @@ public partial class PlayerState
 
             if(prevState == _sheathingSword)
             {
-                Debug.Log("通った");
                 owner._motionFrame = 0;
             }
         }

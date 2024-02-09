@@ -76,5 +76,5 @@ public class RankTable : MonoBehaviour
 
     public void SetSceneTransitionUIOpen(bool flag) { _UIOpenAndClose = flag; }
 
-    public bool GetSceneTransitionUIOpen() { return _UIOpenAndClose; }
+    public bool GetRankTableUI() { return _UIOpenAndClose; }
 }

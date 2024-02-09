@@ -8,6 +8,8 @@ public partial class SelectPlayerState
     private ReceptionFlag _receptionFlag;
     // タイトル画面へ戻るUI.
     private TitleGuide _titleGuide;
+    // ランク表のUI.
+    private RankTable _rankTable;
 
     // コントローラーの入力情報.
     private ControllerManager _input;

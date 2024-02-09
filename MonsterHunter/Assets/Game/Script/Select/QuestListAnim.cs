@@ -26,8 +26,12 @@ public class QuestListAnim : MonoBehaviour
     public GameObject[] _UI;
     // 各UIの座標.
     private RectTransform[] _rectTransforms = new RectTransform[(int)UIAnimNum.MAX_NUM];
+    // 各UIの色.
+    private Image[] _images;
     // SE.
     private SEManager _seManager;
+    // ゲームパッドの入力情報.
+    private ControllerManager _controllerManager;
 
     // 各UIの表示非表示.
     private bool[] _uiDisplay = new bool[(int)UIAnimNum.MAX_NUM];
@@ -41,32 +45,60 @@ public class QuestListAnim : MonoBehaviour
         for(int UINum = 0; UINum < (int)UIAnimNum.MAX_NUM; UINum++)
         {
             _rectTransforms[UINum] = _UI[UINum].GetComponent<RectTransform>();
+            _images[UINum] = _UI[UINum].GetComponent<Image>();
             _uiDisplay[UINum] = false;
+            _images[UINum].color = new Color32(0, 0, 0, 0);
         }
         _questOpenCount = 0;
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
+
     }
 
     void Update()
     {
-        
+        //DisableUpdate();
     }
 
     private void FixedUpdate()
     {
         OpenCount();
+        Anim();
     }
 
     private void OnDisable()
     {
         // 非表示にするときに初期位置に設定.
         UIDisable();
+
+        
     }
 
     // 非表示になる瞬間の処理.
     private void UIDisable()
     {
         _questOpenCount = 0;
+
+        // 座標の初期化.
+        for(int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
+        {
+            _rectTransforms[UINum].anchoredPosition = new Vector3(-414.0f,0.0f,0.0f);
+        }
+
+    }
+
+    // UIが非表示の時に起こす処理.
+    private void DisableUpdate()
+    {
+        if(!_controllerManager._BButtonDown) { return; }
+
+        _questOpenCount = 0;
+
+        // 座標の初期化.
+        for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
+        {
+            _rectTransforms[UINum].anchoredPosition = new Vector3(-414.0f, 0.0f, 0.0f);
+        }
     }
 
     // クエストリストを開いたときに時間経過をさせる.
@@ -76,22 +108,52 @@ public class QuestListAnim : MonoBehaviour
     }
 
     // 全体のアニメーション.
-    private void Anim(int layerIndex)
+    private void Anim()
     {
+        QuestPaperAnim();
         
     }
 
     // クエストの用紙のアニメーション.
     private void QuestPaperAnim()
     {
-        if(_questOpenCount == 0 )
+        if (_questOpenCount >= 0)
         {
-            _rectTransforms[(int)UIAnimNum.PARCHMENT_ONE].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
-
+            QuestPaperOneAnim();
+        }
+        if (_questOpenCount >= 5)
+        {
+            QuestPaperTwoAnim();
+        }
+        if (_questOpenCount >= 10)
+        {
+            QuestPaperThreeAnim();
         }
     }
 
+    // クエスト用紙一枚目のアニメーション.
+    private void QuestPaperOneAnim()
+    {
+        _rectTransforms[(int)UIAnimNum.PARCHMENT_ONE].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
+        _rectTransforms[(int)UIAnimNum.PARCHMENT_ONE].DORotate(new Vector3(0.0f,0.0f,-10.0f), 0.5f).SetEase(Ease.OutQuad);
+    }
+
+    // 二枚目.
+    private void QuestPaperTwoAnim()
+    {
+        _rectTransforms[(int)UIAnimNum.PARCHMENT_TWO].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
+        _rectTransforms[(int)UIAnimNum.PARCHMENT_TWO].DORotate(new Vector3(0.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
+    }
+
+    // 三枚目.
+    private void QuestPaperThreeAnim()
+    {
+        _rectTransforms[(int)UIAnimNum.PARCHMENT_THREE].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
+        _rectTransforms[(int)UIAnimNum.PARCHMENT_THREE].DORotate(new Vector3(0.0f, 0.0f, 10.0f), 0.5f).SetEase(Ease.OutQuad);
+    }
+
     // クエストの項目のアニメーション.
+
 
     // クエストの説明のアニメーション.
 }

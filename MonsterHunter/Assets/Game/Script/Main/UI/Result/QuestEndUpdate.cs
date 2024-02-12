@@ -1,7 +1,5 @@
 /*クエスト終了画面からリザルト表示までの処理*/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;

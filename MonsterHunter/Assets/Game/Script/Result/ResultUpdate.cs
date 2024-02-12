@@ -40,39 +40,6 @@ public class ResultUpdate : MonoBehaviour
         MAX_NUM     // 最大数.
     }
 
-    // ランク表のUI番号.
-    enum RankTable
-    {
-        BACKGROUND,     // 背景.
-        // 以下、ロゴ.
-        RANK_S,         // Sランク.
-        S_MINUTE_TEN,   // Sランクの十分.
-        S_MINUTE_ONE,   // Sランクの一分.
-        S_COLON,        // Sランクタイムの:.
-        S_SECOND_TEN,   // Sランクの十秒.
-        S_SECOND_ONE,   // Sランクの一秒.
-        RANK_A,         // Aランク.
-        A_MINUTE_TEN,   // Aランクの十分.
-        A_MINUTE_ONE,   // Aランクの一分.
-        A_COLON,        // Aランクタイムの:.
-        A_SECOND_TEN,   // Aランクの十秒.
-        A_SECOND_ONE,   // Aランクの一秒.
-        RANK_B,         // Bランク.
-        B_MINUTE_TEN,   // Bランクの十分.
-        B_MINUTE_ONE,   // Bランクの一分.
-        B_COLON,        // Bランクタイムの:.
-        B_SECOND_TEN,   // Bランクの十秒.
-        B_SECOND_ONE,   // Bランクの一秒.
-        RANK_C,         // Cランク.
-        C_MINUTE_TEN,   // Cランクの十分.
-        C_MINUTE_ONE,   // Cランクの一分.
-        C_COLON,        // Cランクタイムの:.
-        C_SECOND_TEN,   // Cランクの十秒.
-        C_SECOND_ONE,   // Cランクの一秒.
-
-        MAX_NUM
-    }
-
     private HuntingEnd _huntingEnd;
     private QuestEndUpdate _questEndUpdate;
 
@@ -91,14 +58,7 @@ public class ResultUpdate : MonoBehaviour
     private RectTransform[] _rankTransform = new RectTransform[(int)Rank.MAX_NUM];
     // ランクの透明度.
     private byte[] _rankColorA = new byte[(int)Rank.MAX_NUM];
-
-    // ランク表のUI.
-    public GameObject[] _rankTableUI;
-    private Image[] _rankTableImage = new Image[(int)RankTable.MAX_NUM];
-    private RectTransform[] _rankTableTransform = new RectTransform[(int)RankTable.MAX_NUM];
-    // ランクの透明度.
-    private byte[] _rankTableColorA = new byte[(int)RankTable.MAX_NUM];
-
+    
     // パッドの入力情報.
     private ControllerManager _controllerManager;
 
@@ -128,13 +88,7 @@ public class ResultUpdate : MonoBehaviour
             _rankTransform[RankUINum] = _rankUI[RankUINum].GetComponent<RectTransform>();
             _rankColorA[RankUINum] = 0;
         }
-        // ランク表UIの初期化.
-        for(int RankTableUINum = 0; RankTableUINum < (int)RankTable.MAX_NUM; RankTableUINum++)
-        {
-            _rankTableImage[RankTableUINum] = _rankTableUI[RankTableUINum].GetComponent<Image>();
-            _rankTableTransform[RankTableUINum] = _rankTableUI[RankTableUINum].GetComponent <RectTransform>();
-            _rankTableColorA[RankTableUINum] = 0;
-        }
+        
         _animEnd = false;
         
     }
@@ -172,10 +126,6 @@ public class ResultUpdate : MonoBehaviour
         {
             _rankImage[rankUINum].color = new Color32(255, 255, 255, _rankColorA[rankUINum]);
         }
-        for(int RankTableUINum = 0; RankTableUINum < (int)RankTable.MAX_NUM; RankTableUINum++)
-        {
-            _rankTableImage[RankTableUINum].color = new Color32(255,255,255, _rankTableColorA[RankTableUINum]);
-        }
     }
 
     // 各UIの透明度.
@@ -191,10 +141,6 @@ public class ResultUpdate : MonoBehaviour
         if(_flameCount > 60)
         {
             RankAnim();
-        }
-        if(_flameCount > 70)
-        {
-            RankTableAnim();
         }
     }
 
@@ -239,25 +185,6 @@ public class ResultUpdate : MonoBehaviour
         }
     }
 
-    // ランク表のアニメーション.
-    private void RankTableAnim()
-    {
-        if (_rankTableColorA[(int)RankTable.BACKGROUND] <= 200)
-        {
-            _rankTableColorA[(int)RankTable.BACKGROUND] += 2;
-        }
-
-        for(int RankTableNum = (int)RankTable.RANK_S; RankTableNum < (int)RankTable.MAX_NUM; RankTableNum++)
-        {
-            if (_rankTableColorA[RankTableNum] != 255) 
-            {
-                _rankTableColorA[RankTableNum] += 5;
-            }
-        }
-
-        _rankTableTransform[(int)RankTable.BACKGROUND].DOAnchorPos(new Vector3(-105.0f, -55.0f, 0.0f), 1.0f).SetEase(Ease.OutQuint);
-    }
-
     // リザルト画面のアニメーションスキップ.
     private void AnimSkip()
     {
@@ -268,7 +195,6 @@ public class ResultUpdate : MonoBehaviour
         {
             ClearTimeFinalPositionAndFinalAlhpa();
             RankFinalPositionAndFinalAlpha();
-            RankTableFinalPositionAndFinalAlpha();
             Debug.Log("通る");
             _animEnd = true;
         }
@@ -295,18 +221,6 @@ public class ResultUpdate : MonoBehaviour
         for (int ClearTimeUINum = (int)Rank.STRING; ClearTimeUINum < (int)Rank.MAX_NUM; ClearTimeUINum++)
         {
             _rankColorA[ClearTimeUINum] = 255;
-        }
-    }
-
-    // ランク表の最終位置と透明度代入.
-    private void RankTableFinalPositionAndFinalAlpha()
-    {
-        // 背景だけ透明度が違う.
-        _rankTableColorA[(int)RankTable.BACKGROUND] = 200;
-        _rankTableTransform[(int)RankTable.BACKGROUND].anchoredPosition = new Vector3(-105.0f, -55.0f, 0.0f);
-        for (int ClearTimeUINum = (int)RankTable.RANK_S; ClearTimeUINum < (int)RankTable.MAX_NUM; ClearTimeUINum++)
-        {
-            _rankTableColorA[ClearTimeUINum] = 255;
         }
     }
 

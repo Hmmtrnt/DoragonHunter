@@ -1,6 +1,7 @@
 /*ランクのUIアニメーション*/
 
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,12 @@ public class RankAnim : MonoBehaviour
     public GameObject[] _ui;
     private Image _image;
     private RectTransform _rectTransform;
+    private SEManager _seManager;
 
     private HuntingEnd _end;
+
+    private ResultUpdate _resultUpdate;
+
     // 時間経過.
     private int _timeCount = 0;
     // 存在しているかどうか.
@@ -30,6 +35,8 @@ public class RankAnim : MonoBehaviour
     void Start()
     {
         _end = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
+        _resultUpdate = GameObject.Find("ResultBackGround").GetComponent<ResultUpdate>();
         _rectTransform = _ui[(int)UIKinds.RANK].GetComponent<RectTransform>();
         _timeCount = 0;
         _alpha = 0;
@@ -52,7 +59,16 @@ public class RankAnim : MonoBehaviour
         CountUp();
         Draw();
         Color();
-        Anim();
+        
+
+        if(_resultUpdate._animEnd)
+        {
+            AnimEnd();
+        }
+        else
+        {
+            Anim();
+        }
     }
 
     // 表示非表示.
@@ -90,11 +106,29 @@ public class RankAnim : MonoBehaviour
             //RankLogAnim();
         }
 
-        if(_timeCount == 300)
+        if(_timeCount == 260 && _end.GetRank() == 0)
         {
             _isEnable[(int)UIKinds.EFFECT] = true;
         }
+        if(_timeCount == 270)
+        {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.QUEST_START);
+        }
         //RankLogAnim();
+    }
+
+    // アニメーション終了時.
+    private void AnimEnd()
+    {
+        _alpha = 255;
+        _rectTransform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);
+        _rectTransform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        _isEnable[(int)UIKinds.RANK] = true;
+        if(_end.GetRank()==0)
+        {
+            _isEnable[(int)UIKinds.EFFECT] = true;
+        }
+        
     }
 
     // ランクのアニメーション.

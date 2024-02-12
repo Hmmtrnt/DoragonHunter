@@ -63,7 +63,7 @@ public class ResultUpdate : MonoBehaviour
     private ControllerManager _controllerManager;
 
     // アニメーションが終了.
-    private bool _animEnd = false;
+    public bool _animEnd = false;
 
     // リザルト画面の経過時間.
     private int _flameCount = 0;
@@ -109,7 +109,7 @@ public class ResultUpdate : MonoBehaviour
     private void FlameCount()
     {
         _flameCount++;
-        if(_flameCount ==250)
+        if(_flameCount ==400)
         {
             _animEnd=true;
         }
@@ -210,7 +210,7 @@ public class ResultUpdate : MonoBehaviour
     {
         // 背景だけ透明度が違う.
         _clearTimeColorA[(int)ClearTime.BACKGROUND] = 200;
-        _clearTimeTransform[(int)ClearTime.BACKGROUND].anchoredPosition = new Vector3(-155.0f, 40.0f, 0.0f);
+        _clearTimeTransform[(int)ClearTime.BACKGROUND].anchoredPosition = new Vector3(160.0f, 70.0f, 0.0f);
         for (int ClearTimeUINum = (int)ClearTime.STRING; ClearTimeUINum < (int)ClearTime.MAX_NUM; ClearTimeUINum++)
         {
             _clearTimeColorA[ClearTimeUINum] = 255;
@@ -222,7 +222,7 @@ public class ResultUpdate : MonoBehaviour
     {
         // 背景だけ透明度が違う.
         _rankColorA[(int)Rank.BACKGROUND] = 200;
-        _rankTransform[(int)Rank.BACKGROUND].anchoredPosition = new Vector3(155.0f, 40.0f, 0.0f);
+        _rankTransform[(int)Rank.BACKGROUND].anchoredPosition = new Vector3(-135.0f, -30.0f, 0.0f);
         for (int ClearTimeUINum = (int)Rank.STRING; ClearTimeUINum < (int)Rank.MAX_NUM; ClearTimeUINum++)
         {
             _rankColorA[ClearTimeUINum] = 255;

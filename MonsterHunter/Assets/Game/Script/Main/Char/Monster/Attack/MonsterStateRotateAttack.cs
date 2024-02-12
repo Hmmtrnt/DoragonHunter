@@ -11,6 +11,7 @@ public partial class MonsterState
             owner.StateTransitionInitialization();
             owner._rotateMotion = true;
             owner._currentRotateAttack = true;
+            owner._AttackPower = 10;
         }
 
         public override void OnUpdate(MonsterState owner)

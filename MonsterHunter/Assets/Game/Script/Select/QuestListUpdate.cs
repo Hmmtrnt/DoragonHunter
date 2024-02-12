@@ -16,8 +16,6 @@ public class QuestListUpdate : MonoBehaviour
     private SEManager _seManager;
     // フェード.
     private Fade _fade;
-    // 難易度説明のテキスト.
-    private Text _explanationText;
     // 決定ボタンを押したかどうか.
     private bool _decidePush = false;
     // クエストの難易度.
@@ -30,7 +28,6 @@ public class QuestListUpdate : MonoBehaviour
         _SelectUi = GameObject.Find("SelectDraw").GetComponent<SelectSceneSelectUi>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fade = GameObject.Find("Fade").GetComponent<Fade>();
-        _explanationText = GameObject.Find("DifficultText").GetComponent<Text>();
     }
 
     void Update()
@@ -45,7 +42,6 @@ public class QuestListUpdate : MonoBehaviour
             SceneTransition();
         }
         Difficulty();
-        ExplanationDraw();
     }
 
     // 難易度の設定.
@@ -97,17 +93,5 @@ public class QuestListUpdate : MonoBehaviour
         SceneManager.sceneLoaded -= SceneTransitionUpdate;
     }
 
-    // 難易度説明の表記(デバッグ用)
-    private void ExplanationDraw()
-    {
-        if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.EASY)
-        {
-            _explanationText.text = "モンスターの体力が少なく\n短時間で気軽にプレイできます。";
-        }
-        else if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.HATD)
-        {
-            _explanationText.text = "モンスターの体力が多く\n長時間がっつりとプレイできます。";
-        }
-
-    }
+    
 }

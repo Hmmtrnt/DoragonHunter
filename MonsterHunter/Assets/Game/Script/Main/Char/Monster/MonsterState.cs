@@ -40,10 +40,10 @@ public partial class MonsterState : MonoBehaviour
         ViewAngle();
 
         // デバッグ用死亡判定.
-        if(Input.GetKeyDown(KeyCode.RightControl)) 
-        {
-            _HitPoint = 0;
-        }
+        //if(Input.GetKeyDown(KeyCode.RightControl)) 
+        //{
+        //    _HitPoint = 0;
+        //}
     }
 
     private void FixedUpdate()

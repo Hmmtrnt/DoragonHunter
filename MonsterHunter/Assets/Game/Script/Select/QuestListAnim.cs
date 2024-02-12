@@ -18,8 +18,16 @@ public class QuestListAnim : MonoBehaviour
         SELECT_QUEST_HARD,      // 難しいの難易度の項目.
         HARD_STRING,            // 難しいの難易度の項目の文字.
         SELECTED_UI,            // 選択しているUI.
+        QUEST_TITLE,
         //EXPLANATION,            // 説明テキスト.
         MAX_NUM                 // 最大数.
+    }
+
+    enum QuestTitle
+    {
+        NORMAL,
+        HARD,
+        MAX_NUM
     }
 
     private Sequence _sequence;
@@ -43,6 +51,9 @@ public class QuestListAnim : MonoBehaviour
     // クエストを開いてからの経過時間．
     private int _questOpenCount = 0;
 
+    public Sprite[] _questSprite;
+    // 選択したUI.
+    private SelectSceneSelectUi _SelectUi;
 
     void Start()
     {
@@ -72,6 +83,7 @@ public class QuestListAnim : MonoBehaviour
         _questOpenCount = 0;
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
+        _SelectUi = GameObject.Find("SelectDraw").GetComponent<SelectSceneSelectUi>();
     }
 
     void Update()
@@ -84,6 +96,7 @@ public class QuestListAnim : MonoBehaviour
         OpenCount();
         Anim();
         UIColor();
+        QuestTitleSprite();
     }
 
     private void OnDisable()
@@ -170,6 +183,23 @@ public class QuestListAnim : MonoBehaviour
         if (_uiColorA[num] < 255)
         {
             _uiColorA[num] += 5;
+        }
+    }
+
+    // クエストタイトルの変更.
+    private void QuestTitleSprite()
+    {
+        if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.EASY)
+        {
+            _images[(int)UIAnimNum.QUEST_TITLE].sprite = _questSprite[(int)QuestTitle.NORMAL];
+            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = new Vector2(306, 66);
+            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        }
+        else if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.HATD)
+        {
+            _images[(int)UIAnimNum.QUEST_TITLE].sprite = _questSprite[(int)QuestTitle.HARD];
+            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = new Vector2(605, 67);
+            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = new Vector3(1.1f, 1.1f, 1.1f);
         }
     }
 

@@ -10,6 +10,7 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._tailMotion = true;
+            owner._AttackPower = 8;
         }
 
         public override void OnUpdate(MonsterState owner)

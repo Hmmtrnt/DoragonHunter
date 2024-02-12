@@ -12,6 +12,8 @@ public class TitleGuide : MonoBehaviour
     public GameObject _guiedButton;
     // ƒ^ƒCƒgƒ‹‰æ–Ê‚Ö–ß‚éUI.
     public GameObject _sceneTransition;
+    // Œø‰Ê‰¹.
+    private SEManager _seManager;
 
     // ”ÍˆÍ“à‚É‚¢‚é‚©‚Ç‚¤‚©.
     private bool _collisionStay = false;
@@ -24,6 +26,7 @@ public class TitleGuide : MonoBehaviour
     void Start()
     {
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _collisionStay = false;
         _UIOpenAndClose = false;
         _guiedButton.SetActive(_collisionStay);
@@ -84,11 +87,13 @@ public class TitleGuide : MonoBehaviour
 
         if(_controllerManager._AButtonDown && !_UIOpenAndClose && _closeCount == 0)
         {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
             _UIOpenAndClose = true;
         }
         else if(_controllerManager._BButtonDown)
         {
-             _UIOpenAndClose= false;
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
+            _UIOpenAndClose = false;
         }
 
     }

@@ -140,10 +140,10 @@ public class QuestListAnim : MonoBehaviour
     // クエストの用紙のアニメーション.
     private void QuestPaperAnim()
     {
+        // 紙の音を鳴らす.
         if(_questOpenCount == 1)
         {
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.QUEST_LIST);
-            Debug.Log("と");
         }
         // アニメーションを開始するタイミング指定.
         if (_questOpenCount >= 0)

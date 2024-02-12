@@ -95,6 +95,7 @@ public class TitleTransitionMenu : MonoBehaviour
         if(_controllerManager._AButtonDown &&
             _selectNum == (int)SelectItem.NO)
         {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
             _titleGuide.SetSceneTransitionUIOpen(false);
         }
     }

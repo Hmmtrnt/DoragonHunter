@@ -10,25 +10,13 @@ public class FinalResult : MonoBehaviour
     {
         CLEAR,
         FAILED,
-        STRING,
-        MAX_NUM
-    }
-
-    // 文字の画像.
-    enum ResultStringImage
-    {
-        SUCCESS,
-        FAILED,
+        MONSTER_ICON,
         MAX_NUM
     }
 
     private HuntingEnd _huntingEnd;
     // 結果表示のためのUI.
     public GameObject[] _ui;
-    // 文字の画像の情報.
-    private Image _stringImage;
-    // 文字のスプライト.
-    public Sprite[] _string;
 
 
     void Start()
@@ -38,7 +26,6 @@ public class FinalResult : MonoBehaviour
         {
             _ui[UINum].SetActive(false);
         }
-        _stringImage = _ui[(int)UIKinds.STRING].GetComponent<Image>();
     }
 
     void Update()
@@ -54,20 +41,18 @@ public class FinalResult : MonoBehaviour
     // クリアか失敗かで処理を分岐.
     private void BranchUpdate(bool QuestResult)
     {
-        //_ui[(int)UIKinds.STRING].SetActive(true);
+        _ui[(int)UIKinds.MONSTER_ICON].SetActive(true);
         // 成功時.
         if(QuestResult) 
         {
             _ui[(int)UIKinds.CLEAR].SetActive(true);
             _ui[(int)UIKinds.FAILED].SetActive(false);
-            _stringImage.sprite = _string[(int)ResultStringImage.SUCCESS];
         }
         // 失敗時.
         else 
         {
             _ui[(int)UIKinds.FAILED].SetActive(true);
             _ui[(int)UIKinds.CLEAR].SetActive(false);
-            _stringImage.sprite = _string[(int)ResultStringImage.FAILED];
         }
     }
 }

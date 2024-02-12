@@ -124,16 +124,19 @@ public class HuntingEnd : MonoBehaviour
     // デバッグ状態.
     private void HuntingEndBranch()
     {
+        // 敵の体力が尽きたらクリア.
         if(_monsterState.GetHitPoint() == 0)
         {
             _QuestClear = true;
         }
-        else if(_playerState.GetHitPoint() == 0)
+        // ハンターの体力が尽きる、また時間が過ぎたら失敗.
+        else if(_playerState.GetHitPoint() == 0 || _Minute >= 50)
         {
             _QuestClear= false;
         }
 
-        if(_playerState.GetHitPoint()==0 || _monsterState.GetHitPoint() == 0)
+
+        if (_playerState.GetHitPoint()==0 || _monsterState.GetHitPoint() == 0 || _Minute >= 50)
         {
             _questEnd = true;
             _Minute = _questTime.GetMinutes();
@@ -144,19 +147,38 @@ public class HuntingEnd : MonoBehaviour
     // 時間経過でランクダウン.
     private void RankDown()
     {
-        if(_Minute >= 6)
+        // ハードモードのタイム.
+        if (_mainSceneManager._hitPointMany)
         {
-            _currentRank = 1;
+            if (_Minute >= 5)
+            {
+                _currentRank = 1;
+            }
+            else if (_Minute >= 9)
+            {
+                _currentRank = 2;
+            }
+            else if (_Minute >= 13)
+            {
+                _currentRank = 3;
+            }
         }
-        else if(_Minute >= 12)
+        // ノーマルモードのタイム.
+        else if (!_mainSceneManager._hitPointMany)
         {
-            _currentRank = 2;
+            if (_Minute >= 3)
+            {
+                _currentRank = 1;
+            }
+            else if (_Minute >= 6)
+            {
+                _currentRank = 2;
+            }
+            else if (_Minute >= 10)
+            {
+                _currentRank = 3;
+            }
         }
-        else if( _Minute >= 20)
-        { 
-            _currentRank = 3;
-        }
-        
     }
 
     // カウント開始.

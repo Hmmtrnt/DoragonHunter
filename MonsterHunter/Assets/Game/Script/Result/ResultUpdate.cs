@@ -13,9 +13,10 @@ public class ResultUpdate : MonoBehaviour
         // äeï\é¶ÇÃîwåi.
         TITLE, 
         RANK,
-        RANK_TABLE,
+        GUIDE,
         CLEAR_TIME,
-        GUIDE
+        RANK_EFFECT,
+        MAX_NUM
     }
 
     // ÉNÉäÉAÉ^ÉCÉÄÇÃUIî‘çÜ.
@@ -36,7 +37,6 @@ public class ResultUpdate : MonoBehaviour
     {
         BACKGROUND, // îwåi.
         STRING,     // ï∂éöóÒ.
-        LOG,        // ÉçÉS.
         MAX_NUM     // ç≈ëÂêî.
     }
 
@@ -151,7 +151,7 @@ public class ResultUpdate : MonoBehaviour
         {
             _clearTimeColorA[(int)ClearTime.BACKGROUND]+=2;
         }
-        _clearTimeTransform[(int)ClearTime.BACKGROUND].DOAnchorPos(new Vector3(-155.0f,40.0f, 0.0f), 1.0f).SetEase(Ease.OutQuint);
+        _clearTimeTransform[(int)ClearTime.BACKGROUND].DOAnchorPos(new Vector3(160.0f,70.0f, 0.0f), 1.0f).SetEase(Ease.OutQuint);
 
         if (_flameCount < 150) return;
 
@@ -172,16 +172,21 @@ public class ResultUpdate : MonoBehaviour
         {
             _rankColorA[(int)Rank.BACKGROUND]+=2;
         }
-        _rankTransform[(int)Rank.BACKGROUND].DOAnchorPos(new Vector3(155.0f, 40.0f, 0.0f), 1.0f).SetEase(Ease.OutQuint);
+        _rankTransform[(int)Rank.BACKGROUND].DOAnchorPos(new Vector3(-135.0f, -30.0f, 0.0f), 1.0f).SetEase(Ease.OutQuint);
         if (_flameCount < 200) return;
 
 
-        for(int RankUINum = (int)Rank.STRING; RankUINum < (int)Rank.MAX_NUM; RankUINum++)
+        for (int RankUINum = (int)Rank.STRING; RankUINum < (int)Rank.MAX_NUM; RankUINum++)
         {
             if (_rankColorA[RankUINum] != 255)
             {
                 _rankColorA[RankUINum] += 5;
             }
+        }
+
+        if (_rankColorA[(int)Rank.STRING] != 255)
+        {
+            _rankColorA[(int)Rank.STRING] += 5;
         }
     }
 

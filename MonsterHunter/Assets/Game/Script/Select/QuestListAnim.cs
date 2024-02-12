@@ -163,8 +163,6 @@ public class QuestListAnim : MonoBehaviour
     // クエスト用紙のアニメーションテスト.
     private void QuestPaperAnim(int num, float RotateZ)
     {
-        //_sequence.Restart();
-
         _sequence.Append(_rectTransforms[num].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f));
         _sequence.Join(_rectTransforms[num].DORotate(new Vector3(0.0f, 0.0f, RotateZ), 0.5f));
 

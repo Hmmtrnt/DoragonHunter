@@ -53,11 +53,22 @@ public class QuestListAnim : MonoBehaviour
             _rectTransforms[UINum] = _ui[UINum].GetComponent<RectTransform>();
             _images[UINum] = _ui[UINum].GetComponent<Image>();
             _uiDisplay[UINum] = false;
-            _uiColorA[UINum] = 0;
+            //_uiColorA[UINum] = 0;
 
             _images[UINum].color = new Color32(255, 255, 255, _uiColorA[UINum]);
             
         }
+
+        for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
+        {
+            _uiColorA[UINum] = 0;
+        }
+
+        for (int UINum = (int)UIAnimNum.SELECT_QUEST_NORMAL; UINum < (int)UIAnimNum.MAX_NUM; UINum++)
+        {
+            _uiColorA[UINum] = 255;
+        }
+
         _questOpenCount = 0;
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
@@ -65,9 +76,7 @@ public class QuestListAnim : MonoBehaviour
 
     void Update()
     {
-        //DisableUpdate();
-        //Pos();
-        Test();
+        ColorInit();
     }
 
     private void FixedUpdate()
@@ -75,89 +84,33 @@ public class QuestListAnim : MonoBehaviour
         OpenCount();
         Anim();
         UIColor();
-
-        for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
-        {
-            Debug.Log(_rectTransforms[UINum].anchoredPosition);
-        }
-
-        //Debug.Log(_rectTransforms[(int)UIAnimNum.PARCHMENT_ONE].anchoredPosition);
     }
 
     private void OnDisable()
     {
-        // 非表示にするときに初期位置に設定.
         UIDisable();
-
-        
     }
 
-    private void OnEnable()
+    // 色の透明度を初期化.
+    private void ColorInit()
     {
-        //UIDisable();
-    }
-
-    private void Test()
-    {
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    _questOpenCount = 0;
-
-        //    for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
-        //    {
-
-        //        //_rectTransforms[UINum].DOPause();
-        //        //_rectTransforms[UINum].DORestart();
-        //        //_sequence.Pause()
-        //        //    .SetAutoKill(false)
-        //        //    .SetLink(_ui[UINum]);
-
-        //        //_rectTransforms[UINum].anchoredPosition = new Vector3(-414.0f, 0.0f, 0.0f);
-        //        //_rectTransforms[UINum].eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-        //        _uiColorA[UINum] = 0;
-
-
-
-        //        //_sequence.Restart();
-
-        //        //_sequence.Rewind();
-
-        //        //_sequence.Append(_rectTransforms[UINum].DOAnchorPos(new Vector3(-414.0f, 0.0f, 0.0f), 0.0f))
-        //        //    .Join(_rectTransforms[UINum].DORotate(new Vector3(0.0f, 0.0f, 0.0f), 0.0f));
-
-
-        //        _rectTransforms[UINum].DORewind();
-        //    }
-        //}
-
         if(_controllerManager._BButtonDown)
         {
             for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
             {
                 _uiColorA[UINum] = 0;
             }
-                
         }
     }
 
     // 非表示になる瞬間の処理.
     private void UIDisable()
     {
-
         _questOpenCount = 0;
 
         // 座標の初期化.
         for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
         {
-            //_rectTransforms[UINum].anchoredPosition = new Vector3(-414.0f, 0.0f, 0.0f);
-            //_rectTransforms[UINum].eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-            //_uiColorA[UINum] = 0;
-            ////_rectTransforms[UINum].DOPause();
-            ////_rectTransforms[UINum].DORestart();
-            //_sequence.Pause()
-            //    .SetAutoKill(false)
-            //    .SetLink(_ui[UINum]);
-
             _uiColorA[UINum] = 0;
             _rectTransforms[UINum].DORewind();
         }
@@ -166,29 +119,9 @@ public class QuestListAnim : MonoBehaviour
     // UIの色を代入.
     private void UIColor()
     {
-        for (int UINum = 0; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
+        for (int UINum = 0; UINum < (int)UIAnimNum.MAX_NUM; UINum++)
         {
             _images[UINum].color = new Color32(255, 255, 255, _uiColorA[UINum]);
-        }
-    }
-
-    // UIが非表示の時に起こす処理.
-    private void DisableUpdate()
-    {
-        if(!_controllerManager._BButtonDown) { return; }
-
-        _questOpenCount = 0;
-
-        // 座標の初期化.
-        for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
-        {
-            //_rectTransforms[UINum].anchoredPosition = new Vector3(-414.0f, 0.0f, 0.0f);
-            //_rectTransforms[UINum].eulerAngles = new Vector3(0.0f,0.0f, 0.0f);
-            //_uiColorA[UINum] = 0;
-            //_sequence.Pause();
-            //_sequence.SetAutoKill(false);
-            //_sequence.SetLink(_ui[UINum]);
-            //_rectTransforms[UINum].DORestart();
         }
     }
 
@@ -204,63 +137,31 @@ public class QuestListAnim : MonoBehaviour
         QuestPaperAnim();
     }
 
-    //座標確認.
-    private void Pos()
-    {
-        if (_controllerManager._BButtonDown)
-        //if (_controllerManager._XButtonDown)
-        {
-            for (int UINum = (int)UIAnimNum.PARCHMENT_ONE; UINum < (int)UIAnimNum.PARCHMENT_THREE + 1; UINum++)
-            {
-                _rectTransforms[UINum].anchoredPosition = new Vector3(-414.0f, 0.0f, 0.0f);
-                _rectTransforms[UINum].eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-                //_uiColorA[UINum] = 0;
-                _rectTransforms[UINum].DORestart();
-                //Debug.Log("to");
-            }
-        }
-    }
-
     // クエストの用紙のアニメーション.
     private void QuestPaperAnim()
     {
-
-        //QuestPaperAnim2((int)UIAnimNum.PARCHMENT_ONE, -10.0f);
+        if(_questOpenCount == 1)
+        {
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.QUEST_LIST);
+            Debug.Log("と");
+        }
         // アニメーションを開始するタイミング指定.
         if (_questOpenCount >= 0)
         {
-            //QuestPaperOneAnim();
-            //QuestPaperAnim((int)UIAnimNum.PARCHMENT_ONE, -10.0f);
-            QuestPaperAnim2((int)UIAnimNum.PARCHMENT_ONE, -10.0f);
+            QuestPaperAnim((int)UIAnimNum.PARCHMENT_ONE, -10.0f);
         }
         if (_questOpenCount >= 5)
         {
-            //QuestPaperTwoAnim();
-            //QuestPaperAnim((int)UIAnimNum.PARCHMENT_TWO, 0.0f);
-            QuestPaperAnim2((int)UIAnimNum.PARCHMENT_TWO, 0.0f);
+            QuestPaperAnim((int)UIAnimNum.PARCHMENT_TWO, 0.0f);
         }
         if (_questOpenCount >= 10)
         {
-            //QuestPaperThreeAnim();
-            //QuestPaperAnim((int)UIAnimNum.PARCHMENT_THREE, 10.0f);
-            QuestPaperAnim2((int)UIAnimNum.PARCHMENT_THREE, 10.0f);
-        }
-    }
-
-    // クエスト用紙のアニメーション.
-    private void QuestPaperAnim(int num, float RotateZ)
-    {
-        _rectTransforms[num].DOAnchorPos(new Vector3(414.0f, 0.0f, 0.0f), 0.5f).SetEase(Ease.OutQuad);
-        _rectTransforms[num].DORotate(new Vector3(0.0f, 0.0f, RotateZ), 0.5f).SetEase(Ease.OutQuad);
-
-        if (_uiColorA[num] < 255)
-        {
-            _uiColorA[num] += 5;
+            QuestPaperAnim((int)UIAnimNum.PARCHMENT_THREE, 10.0f);
         }
     }
 
     // クエスト用紙のアニメーションテスト.
-    private void QuestPaperAnim2(int num, float RotateZ)
+    private void QuestPaperAnim(int num, float RotateZ)
     {
         //_sequence.Restart();
 
@@ -275,6 +176,7 @@ public class QuestListAnim : MonoBehaviour
     }
 
     // クエストの項目のアニメーション.
+
 
 
     // クエストの説明のアニメーション.

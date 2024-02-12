@@ -14,6 +14,7 @@ public class SEManager : MonoBehaviour
         REMOVE_PUSH,    // 戻る.
         QUEST_START,    // クエストスタート.
         STAMP_PUSH,     // スタンプを押す.
+        QUEST_LIST,     // クエストリストの音.
         SENUM           // SE数.
     }
 

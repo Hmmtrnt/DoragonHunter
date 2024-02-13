@@ -16,7 +16,7 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateBite             _bite = new();          // 噛みつき攻撃.
     public static readonly MonsterStateRushForward      _rush = new();          // 突進攻撃.
     public static readonly MonsterStateWingBlowRight    _wingBlowRight = new(); // 右翼攻撃.
-    public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.
+    public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.s
     public static readonly MonsterStateTailAttack       _tail = new();          // 尻尾攻撃.
     public static readonly MonsterStatePowerFireBall    _powerFireBall = new(); // 大技火球.
 

@@ -20,6 +20,7 @@ public class RankAnim : MonoBehaviour
     private Image _image;
     private RectTransform _rectTransform;
     private SEManager _seManager;
+    private MonsterState _monsterState;
 
     private HuntingEnd _end;
 
@@ -37,6 +38,7 @@ public class RankAnim : MonoBehaviour
         _end = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _resultUpdate = GameObject.Find("ResultBackGround").GetComponent<ResultUpdate>();
+        _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
         _rectTransform = _ui[(int)UIKinds.RANK].GetComponent<RectTransform>();
         _timeCount = 0;
         _alpha = 0;
@@ -106,7 +108,7 @@ public class RankAnim : MonoBehaviour
             //RankLogAnim();
         }
 
-        if(_timeCount == 260 && _end.GetRank() == 0)
+        if(_timeCount == 260 && _end.GetRank() == 0 && _monsterState.GetHitPoint() <= 0)
         {
             _isEnable[(int)UIKinds.EFFECT] = true;
         }
@@ -124,7 +126,7 @@ public class RankAnim : MonoBehaviour
         _rectTransform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);
         _rectTransform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         _isEnable[(int)UIKinds.RANK] = true;
-        if(_end.GetRank()==0)
+        if(_end.GetRank()==0 && _monsterState.GetHitPoint() <= 0)
         {
             _isEnable[(int)UIKinds.EFFECT] = true;
         }

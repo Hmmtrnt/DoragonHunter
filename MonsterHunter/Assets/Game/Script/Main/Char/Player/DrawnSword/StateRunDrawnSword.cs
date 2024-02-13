@@ -44,6 +44,10 @@ public partial class PlayerState
             {
                 owner.ChangeState(_steppingSlash);
             }
+            else if(owner._input._BButtonDown)
+            {
+                owner.ChangeState(_piercing);
+            }
             // 気刃斬り1.
             else if (owner._input._RightTrigger >= 0.5f)
             {

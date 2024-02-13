@@ -9,7 +9,7 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSlashUp = true;
-            owner._nextMotionFlame = 35;
+            owner._nextMotionFlame = 30;
             owner.StateTransitionInitialization();
             owner._attackPower = 73;
             owner._isCauseDamage = true;
@@ -37,7 +37,7 @@ public partial class PlayerState
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 30)
+            else if(owner._stateFlame == 25)
             {
                 owner._weaponActive = false;
             }

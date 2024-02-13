@@ -192,12 +192,13 @@ public class HuntingEnd : MonoBehaviour
     // クエストの結果を決定.
     private void QuestResult()
     {
-        if(_playerState.GetHitPoint()==0)
+        if(_playerState.GetHitPoint()<=0)
         {
             _QuestFailed = true;
             _mainSceneManager._openGamePlayUi = false;
+            Debug.Log("to");
         }
-        else if(_monsterState.GetHitPoint()==0) 
+        else if(_monsterState.GetHitPoint()<=0) 
         {
             _QuestClear = true;
             _mainSceneManager._openGamePlayUi = false;

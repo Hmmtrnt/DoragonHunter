@@ -14,6 +14,8 @@ public class TitleGuide : MonoBehaviour
     public GameObject _sceneTransition;
     // 効果音.
     private SEManager _seManager;
+    // フェード.
+    private Fade _fade;
 
     // 範囲内にいるかどうか.
     private bool _collisionStay = false;
@@ -31,6 +33,7 @@ public class TitleGuide : MonoBehaviour
         _UIOpenAndClose = false;
         _guiedButton.SetActive(_collisionStay);
         _sceneTransition.SetActive(_UIOpenAndClose);
+        _fade = GameObject.Find("Fade").GetComponent<Fade>();
     }
 
     private void Update()
@@ -90,7 +93,7 @@ public class TitleGuide : MonoBehaviour
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
             _UIOpenAndClose = true;
         }
-        else if(_controllerManager._BButtonDown)
+        else if(_controllerManager._BButtonDown && _fade._isFading)
         {
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
             _UIOpenAndClose = false;

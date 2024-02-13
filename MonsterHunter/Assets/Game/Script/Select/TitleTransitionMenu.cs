@@ -93,7 +93,8 @@ public class TitleTransitionMenu : MonoBehaviour
     private void UINoDecide()
     {
         if(_controllerManager._AButtonDown &&
-            _selectNum == (int)SelectItem.NO)
+            _selectNum == (int)SelectItem.NO &&
+            _fade._isFading)
         {
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
             _titleGuide.SetSceneTransitionUIOpen(false);

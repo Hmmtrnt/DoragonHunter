@@ -11,8 +11,14 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._rushMotion = true;
-            //owner._trasnform.LookAt(owner._hunter.transform.position);
-            owner._AttackPower = 17;
+            if (owner._mainSceneManager._hitPointMany)
+            {
+                owner._AttackPower = 22;
+            }
+            else
+            {
+                owner._AttackPower = 17;
+            }
         }
 
         public override void OnUpdate(MonsterState owner)

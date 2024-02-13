@@ -11,7 +11,15 @@ public partial class MonsterState
             owner.StateTransitionInitialization();
             owner._rotateMotion = true;
             owner._currentRotateAttack = true;
-            owner._AttackPower = 10;
+            
+            if(owner._mainSceneManager._hitPointMany)
+            {
+                owner._AttackPower = 15;
+            }
+            else
+            {
+                owner._AttackPower = 10;
+            }
         }
 
         public override void OnUpdate(MonsterState owner)

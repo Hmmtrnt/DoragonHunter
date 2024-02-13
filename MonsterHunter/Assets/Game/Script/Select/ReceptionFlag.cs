@@ -12,6 +12,8 @@ public class ReceptionFlag : MonoBehaviour
     public GameObject _ReceptionistList;
     // ボタンUI.
     public GameObject _buttonUI;
+    // フェード.
+    private Fade _fade;
 
     // 受付の前にいる.
     private bool _receptionistFlag = false;
@@ -26,6 +28,7 @@ public class ReceptionFlag : MonoBehaviour
         _openAndClose = false;
         _ReceptionistList.SetActive(_openAndClose);
         _buttonUI.SetActive(false);
+        _fade = GameObject.Find("Fade").GetComponent<Fade>();
     }
 
     void Update()
@@ -78,7 +81,7 @@ public class ReceptionFlag : MonoBehaviour
         }
         else
         {
-            if(_controllerManager._BButtonDown)
+            if(_controllerManager._BButtonDown && _fade._isFading)
             {
                 _openAndClose = false;
             }

@@ -10,7 +10,14 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._tailMotion = true;
-            owner._AttackPower = 8;
+            if (owner._mainSceneManager._hitPointMany)
+            {
+                owner._AttackPower = 13;
+            }
+            else
+            {
+                owner._AttackPower = 8;
+            }
         }
 
         public override void OnUpdate(MonsterState owner)

@@ -47,11 +47,11 @@ public partial class Player
 
             if(owner._unsheathedSword)
             {
-                owner.ChangeState(_idleDrawnSword);
+                owner.StateTransition(_idleDrawnSword);
             }
             else if(!owner._unsheathedSword)
             {
-                owner.ChangeState(_idle);
+                owner.StateTransition(_idle);
             }
         }
 

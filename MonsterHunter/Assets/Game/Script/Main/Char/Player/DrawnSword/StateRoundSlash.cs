@@ -73,21 +73,21 @@ public partial class Player
             if (owner._stateFlame >= owner._nextMotionFlame &&
                 (owner._leftStickHorizontal == 0 || owner._leftStickVertical == 0))
             {
-                owner.ChangeState(_idle);
+                owner.StateTransition(_idle);
             }
             // 移動.
             else if(owner._stateFlame >= owner._nextMotionFlame && 
                 (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) && 
                 !owner._input._RBButton)
             {
-                owner.ChangeState(_running);
+                owner.StateTransition(_running);
             }
             // ダッシュ.
             else if(owner._stateFlame >= owner._nextMotionFlame &&
                 (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) &&
                 owner._input._RBButton)
             {
-                owner.ChangeState(_dash);
+                owner.StateTransition(_dash);
             }
         }
     }

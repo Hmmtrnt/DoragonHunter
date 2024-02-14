@@ -43,12 +43,12 @@ public partial class Player
                 if (owner._input._RBButton && !owner._openMenu)
                 {
                     // ダッシュ.
-                    owner.ChangeState(_dash);
+                    owner.StateTransition(_dash);
                 }
                 else
                 {
                     // 移動.
-                    owner.ChangeState(_running);
+                    owner.StateTransition(_running);
                 }
                 
             }
@@ -60,18 +60,18 @@ public partial class Player
                 owner._cureMedicineNum > 0)
             {
                 // 回復.
-                owner.ChangeState(_recovery);
+                owner.StateTransition(_recovery);
             }
 
             // 抜刀する.
             if (owner._input._YButtonDown)
             {
-                owner.ChangeState(_drawSwordTransition);
+                owner.StateTransition(_drawSwordTransition);
             }
             // 気刃斬り1.
             if (owner._input._RightTrigger >= 0.5f)
             {
-                owner.ChangeState(_spiritBlade1);
+                owner.StateTransition(_spiritBlade1);
             }
         }
 

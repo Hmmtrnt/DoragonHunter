@@ -45,15 +45,15 @@ public partial class Player
             if (MotionTransition <= 25) return;
             if((owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0) && owner._input._RBButton)
             {
-                owner.ChangeState(_dash);
+                owner.StateTransition(_dash);
             }
             else if((owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0) && !owner._input._RBButton)
             {
-                owner.ChangeState(_running);
+                owner.StateTransition(_running);
             }
             else
             {
-                owner.ChangeState(_idle);
+                owner.StateTransition(_idle);
             }
         }
     }

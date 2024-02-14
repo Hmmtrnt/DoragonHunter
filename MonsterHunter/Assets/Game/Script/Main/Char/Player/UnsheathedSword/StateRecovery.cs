@@ -59,15 +59,15 @@ public partial class Player
             // アイドル状態へ
             if (isChange && !isMove)
             {
-                owner.ChangeState(_idle);
+                owner.StateTransition(_idle);
             }
             else if(isChange && isMove)
             {
-                owner.ChangeState(_running);
+                owner.StateTransition(_running);
             }
             else if(owner._input._AButtonDown)
             {
-                owner.ChangeState(_avoid);
+                owner.StateTransition(_avoid);
             }
         }
 

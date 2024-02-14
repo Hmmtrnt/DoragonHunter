@@ -67,7 +67,7 @@ public partial class Player
             // アイドル.
             if (owner._stateFlame >= 105)
             {
-                owner.ChangeState(_idleDrawnSword);
+                owner.StateTransition(_idleDrawnSword);
             }
             // 回避.
             else if (owner._stateFlame >= owner._nextMotionFlame &&
@@ -75,7 +75,7 @@ public partial class Player
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
             {
-                owner.ChangeState(_avoidDrawnSword);
+                owner.StateTransition(_avoidDrawnSword);
             }
             // 右回避.
             else if (owner._stateFlame >= owner._nextMotionFlame &&
@@ -83,7 +83,7 @@ public partial class Player
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
             {
-                owner.ChangeState(_rightAvoid);
+                owner.StateTransition(_rightAvoid);
             }
             // 左回避.
             else if (owner._stateFlame >= owner._nextMotionFlame &&
@@ -91,7 +91,7 @@ public partial class Player
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
             {
-                owner.ChangeState(_leftAvoid);
+                owner.StateTransition(_leftAvoid);
             }
             // 突きのちにつなげる.
             //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
@@ -102,7 +102,7 @@ public partial class Player
             else if (owner._stateFlame >= owner._nextMotionFlame && 
                 owner._input._RightTrigger >= 0.5)
             {
-                owner.ChangeState(_spiritBlade2);
+                owner.StateTransition(_spiritBlade2);
             }
 
         }

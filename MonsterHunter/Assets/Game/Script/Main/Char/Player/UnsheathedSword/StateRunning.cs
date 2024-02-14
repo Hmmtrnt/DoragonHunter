@@ -40,7 +40,7 @@ public partial class Player
             if (owner._leftStickHorizontal == 0.0f &&
                 owner._leftStickVertical == 0.0f)
             {
-                owner.ChangeState(_idle);
+                owner.StateTransition(_idle);
             }
 
             if (owner._openMenu) return;
@@ -48,34 +48,34 @@ public partial class Player
             // ダッシュ状態.
             if (owner._input._RBButton && owner._stamina >= owner._maxStamina / 5)
             {
-                owner.ChangeState(_dash);
+                owner.StateTransition(_dash);
             }
             // 疲労ダッシュ状態.
             else if (owner._input._RBButton && owner._stamina <= owner._maxStamina / 5)
             {
-                owner.ChangeState(_fatigueDash);
+                owner.StateTransition(_fatigueDash);
             }
             // 回避状態.
             else if (owner._input._AButtonDown && owner._stamina >= owner._maxStamina / 10)
             {
-                owner.ChangeState(_avoid);
+                owner.StateTransition(_avoid);
             }
             // 回復状態.
             // HACK:アイテムが選ばれている状態の条件も追加する
             else if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint &&
                 owner._cureMedicineNum > 0)
             {
-                owner.ChangeState(_recovery);
+                owner.StateTransition(_recovery);
             }
             // 踏み込み斬り.
             else if (owner._input._YButtonDown)
             {
-                owner.ChangeState(_steppingSlash);
+                owner.StateTransition(_steppingSlash);
             }
             // 気刃斬り1.
             if (owner._input._RightTrigger >= 0.5f)
             {
-                owner.ChangeState(_spiritBlade1);
+                owner.StateTransition(_spiritBlade1);
             }
         }
 

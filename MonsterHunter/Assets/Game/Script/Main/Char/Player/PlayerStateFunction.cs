@@ -37,13 +37,16 @@ public partial class Player
     }
 
     /// <summary>
-    /// ステート変更.
+    /// 状態遷移.
     /// </summary>
-    /// <param name="nextState">次の変更する状態</param>
-    private void ChangeState(StateBase nextState)
+    /// <param name="nextState">次に遷移する状態</param>
+    private void StateTransition(StateBase nextState)
     {
+        // 状態終了時.
         _currentState.OnExit(this, nextState);
+        // 次の状態の呼び出し.
         nextState.OnEnter(this, _currentState);
+        // 次に遷移する状態の代入.
         _currentState = nextState;
     }
 
@@ -348,13 +351,13 @@ public partial class Player
 
         _hitPoint = _hitPoint - _MonsterState.GetMonsterAttack();
 
-        ChangeState(_damage);
+        StateTransition(_damage);
     }
 
     // 体力が0になった時に呼び出す.
     private void OnDead()
     {
-        ChangeState(_dead);
+        StateTransition(_dead);
     }
 
     // 左スティックの入力情報取得.

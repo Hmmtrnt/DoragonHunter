@@ -34,7 +34,7 @@ public partial class Player
             if (owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)
             {
-                owner.ChangeState(_idleDrawnSword);
+                owner.StateTransition(_idleDrawnSword);
             }
 
             if (owner._openMenu) return;
@@ -42,26 +42,26 @@ public partial class Player
             // 踏み込み斬り.
             if (owner._input._YButtonDown)
             {
-                owner.ChangeState(_steppingSlash);
+                owner.StateTransition(_steppingSlash);
             }
             else if(owner._input._BButtonDown)
             {
-                owner.ChangeState(_piercing);
+                owner.StateTransition(_piercing);
             }
             // 気刃斬り1.
             else if (owner._input._RightTrigger >= 0.5f)
             {
-                owner.ChangeState(_spiritBlade1);
+                owner.StateTransition(_spiritBlade1);
             }
             // 回避.
             else if (owner._input._AButtonDown)
             {
-                owner.ChangeState(_avoidDrawnSword);
+                owner.StateTransition(_avoidDrawnSword);
             }
             // 納刀.
             else if(owner._input._XButtonDown || owner._input._RBButtonDown)
             {
-                owner.ChangeState(_sheathingSword);
+                owner.StateTransition(_sheathingSword);
             }
         }
 

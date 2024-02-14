@@ -46,7 +46,7 @@ public partial class Player
                 if ((owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
                 {
-                    owner.ChangeState(_runDrawnSword);
+                    owner.StateTransition(_runDrawnSword);
                 }
             }
 
@@ -55,7 +55,7 @@ public partial class Player
                 if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)
                 {
-                    owner.ChangeState(_idleDrawnSword);
+                    owner.StateTransition(_idleDrawnSword);
                 }
             }
         }

@@ -41,12 +41,12 @@ public partial class Player
                 if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)
                 {
-                    owner.ChangeState(_idle);
+                    owner.StateTransition(_idle);
                 }
                 // run状態.
                 else
                 {
-                    owner.ChangeState(_running);
+                    owner.StateTransition(_running);
                 }
             }
 
@@ -54,39 +54,39 @@ public partial class Player
             if(owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)
             {
-                owner.ChangeState(_idle);
+                owner.StateTransition(_idle);
             }
             // run状態.
             else if (owner._input._RBButtonUp)
             {
-                owner.ChangeState(_running);
+                owner.StateTransition(_running);
             }
             // avoid状態.
             else if (owner._input._AButtonDown && owner._stamina >= owner._maxStamina / 10)
             {
-                owner.ChangeState(_avoid);
+                owner.StateTransition(_avoid);
             }
             // fatigueDash状態.
             else if (owner._stamina <= owner._maxStamina / 5)
             {
-                owner.ChangeState(_fatigueDash);
+                owner.StateTransition(_fatigueDash);
             }
             // 回復状態へ.
             // HACK:アイテムが選ばれている状態の条件も追加する.
             else if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint &&
                 owner._cureMedicineNum > 0)
             {
-                owner.ChangeState(_recovery);
+                owner.StateTransition(_recovery);
             }
             // 踏み込み斬り.
             else if (owner._input._YButtonDown)
             {
-                owner.ChangeState(_steppingSlash);
+                owner.StateTransition(_steppingSlash);
             }
             // 気刃斬り1.
             if (owner._input._RightTrigger >= 0.5f)
             {
-                owner.ChangeState(_spiritBlade1);
+                owner.StateTransition(_spiritBlade1);
             }
         }
 

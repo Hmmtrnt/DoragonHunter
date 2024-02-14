@@ -53,7 +53,7 @@ public abstract class StateBase
     /// ステート終了時呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    /// <param name="nextState">次の状態</param>
+    /// <param name="nextState">次に遷移する状態</param>
     public virtual void OnExit(MonsterState owner, StateBase nextState) { }
     /// <summary>
     /// ステート遷移の呼び出し
@@ -82,7 +82,7 @@ public abstract class StateBase
     /// ステート終了時呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    /// <param name="nextState">次の状態</param>
+    /// <param name="nextState">次に遷移する状態</param>
     public virtual void OnExit(SelectPlayerState owner, StateBase nextState) { }
     /// <summary>
     /// ステート遷移の呼び出し

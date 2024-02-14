@@ -44,7 +44,7 @@ public partial class Player
             // デバッグ用
             if(owner._motionFrame >= 60)
             {
-                owner.ChangeState(_idleDrawnSword);
+                owner.StateTransition(_idleDrawnSword);
             }
         }
     }

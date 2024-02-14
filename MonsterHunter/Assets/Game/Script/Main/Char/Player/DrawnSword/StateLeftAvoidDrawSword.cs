@@ -41,7 +41,7 @@ public partial class Player
             // ƒAƒCƒhƒ‹.
             if (owner._avoidTime >= owner._nextMotionFlame)
             {
-                owner.ChangeState(_idleDrawnSword);
+                owner.StateTransition(_idleDrawnSword);
             }
 
 

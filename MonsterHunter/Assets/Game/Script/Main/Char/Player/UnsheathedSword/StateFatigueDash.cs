@@ -35,12 +35,12 @@ public partial class Player
             if(owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)
             {
-                owner.ChangeState(_idle);
+                owner.StateTransition(_idle);
             }
             // run状態.
             else if (owner._input._RBButtonUp)
             {
-                owner.ChangeState(_running);
+                owner.StateTransition(_running);
             }
 
             

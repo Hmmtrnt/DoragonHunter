@@ -53,13 +53,13 @@ public partial class Player
                 if ((owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
                 {
-                    owner.ChangeState(_running);
+                    owner.StateTransition(_running);
                 }
 
                 if ((owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0) && owner._input._RBButton && !owner._openMenu)
                 {
-                    owner.ChangeState(_dash);
+                    owner.StateTransition(_dash);
                 }
             }
 
@@ -68,7 +68,7 @@ public partial class Player
                 if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)
                 {
-                    owner.ChangeState(_idle);
+                    owner.StateTransition(_idle);
                 }
             }
         }

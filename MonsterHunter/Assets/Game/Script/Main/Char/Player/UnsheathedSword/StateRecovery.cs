@@ -2,26 +2,26 @@
 
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateRecovery : StateBase
     {
         // 回復時間
         private int _recoveryTime = 0;
 
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._isRecovery = true;
             owner._healMotion = true;
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
             
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             owner._rigidbody.velocity *= 0.8f;
             owner._currentRecoveryTime++;
@@ -41,7 +41,7 @@ public partial class PlayerState
             owner.SEPlay(50, (int)SEManager.HunterSE.DRINK);
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._isRecovery = false;
             owner._currentRecoveryTime = 0;
@@ -49,7 +49,7 @@ public partial class PlayerState
             owner._healMotion = false;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // 状態遷移ができるかどうか
             bool isChange = owner._currentRecoveryTime >= owner._maxRecoveryTime;
@@ -72,7 +72,7 @@ public partial class PlayerState
         }
 
         // 回復.
-        private void Recovery(PlayerState owner)
+        private void Recovery(Player owner)
         {
             //if (owner._hitPoint >= owner._maxHitPoint) return;
 

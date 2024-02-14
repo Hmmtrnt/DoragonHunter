@@ -41,7 +41,7 @@ public partial class MonsterState
     private Transform _trasnform;
     private Rigidbody _rigidbody;
     // プレイヤーのステート情報.
-    private PlayerState _playerState;
+    private Player _playerState;
 
     // SEを鳴らす.
     private SEManager _seManager;

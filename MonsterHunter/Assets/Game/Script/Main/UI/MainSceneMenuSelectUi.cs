@@ -21,7 +21,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     // 選択するUIの関数.
     private Menu _menu;
     // プレイヤー情報.
-    private PlayerState _playerState;
+    private Player _playerState;
     // パッドの入力情報.
     private ControllerManager _controllerManager;
     // メインシーンの情報.
@@ -37,7 +37,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     {
         _rectTransform = GetComponent<RectTransform>();
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
-        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();

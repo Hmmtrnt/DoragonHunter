@@ -2,33 +2,33 @@
 
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateRunDrawnSword : StateBase
     {
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnRunMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
 
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             Move(owner);
             owner.RotateDirection();
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._drawnRunMotion = false;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // 抜刀アイドル状態へ.
             if (owner._leftStickHorizontal == 0 &&
@@ -66,7 +66,7 @@ public partial class PlayerState
         }
 
         // 移動
-        private void Move(PlayerState owner)
+        private void Move(Player owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._rigidbody.velocity.y, 0.0f);
         }

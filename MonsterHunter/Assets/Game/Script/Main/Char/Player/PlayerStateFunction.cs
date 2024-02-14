@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     // ƒvƒŒƒCƒ„[î•ñ‚Ì‰Šú‰».
     private void Initialization()

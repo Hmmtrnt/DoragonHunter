@@ -2,14 +2,14 @@
 
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateDamage : StateBase
     {
         Vector3 knockBackVector = Vector3.zero;
 
 
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._hitPoint = owner._hitPoint - owner._MonsterState.GetMonsterAttack();
@@ -21,12 +21,12 @@ public partial class PlayerState
             owner._seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.HunterSE.DAMAGE);
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
             
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             //Debug.Log(_testTime);
             if (!owner._isProcess) return;
@@ -34,13 +34,13 @@ public partial class PlayerState
             KnockBack(owner);
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._damageMotion = false;
             owner._isProcess = false;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // 納刀かそうじゃないかで遷移先を変更
             if (owner._stateFlame <= 90) return;
@@ -56,7 +56,7 @@ public partial class PlayerState
         }
 
         // ノックバック先のベクトル取得.
-        private void KnockBackVector(PlayerState owner)
+        private void KnockBackVector(Player owner)
         {
             knockBackVector = owner._transform.position - owner._Monster.transform.position;
 
@@ -64,7 +64,7 @@ public partial class PlayerState
         }
 
         // ノックバック
-        private void KnockBack(PlayerState owner)
+        private void KnockBack(Player owner)
         {
             // 敵の中心点からベクトルを取得.
             //Vector3 dir = owner._transform.position - owner._Monster.transform.position;

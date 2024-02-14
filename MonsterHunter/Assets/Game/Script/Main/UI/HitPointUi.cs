@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class HitPointUi : MonoBehaviour
 {
     // プレイヤー情報.
-    private PlayerState _playerState;
+    private Player _playerState;
 
     // ゲージ.
     private Image _Gauge;
 
     void Start()
     {
-        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
 
         _Gauge = GetComponent<Image>();
     }

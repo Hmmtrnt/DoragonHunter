@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StaminaUi : MonoBehaviour
 {
     // プレイヤー情報
-    private PlayerState _playerState;
+    private Player _playerState;
 
     // スタミナゲージ.
     private Image _gauge;
@@ -26,7 +26,7 @@ public class StaminaUi : MonoBehaviour
         _gauge = GameObject.Find("StaminaGauge").GetComponent<Image>();
         _underGauge = GetComponent<Image>();
         _gauge.fillAmount = 1.0f;
-        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
     }
 
     void Update()

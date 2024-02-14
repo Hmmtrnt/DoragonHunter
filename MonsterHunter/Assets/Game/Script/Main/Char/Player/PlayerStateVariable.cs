@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class PlayerState
+public partial class Player
 {
     enum viewDirection
     {

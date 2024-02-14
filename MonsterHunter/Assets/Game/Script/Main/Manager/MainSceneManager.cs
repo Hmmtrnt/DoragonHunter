@@ -20,7 +20,7 @@ public class MainSceneManager : MonoBehaviour
     // モンスターの情報.
     private MonsterState _monsterState;
     // プレイヤーの情報.
-    private PlayerState _playerState;
+    private Player _playerState;
     // SE.
     private SEManager _seManager;
     // 狩猟終了した時.
@@ -59,7 +59,7 @@ public class MainSceneManager : MonoBehaviour
         _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneMenuSelectUi>();
         _pauseTimeStop = GetComponent<PauseTimeStop>();
         _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
-        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _cinemachineVirtualCamera = GameObject.Find("CameraBase").GetComponent<CinemachineVirtualCamera>();

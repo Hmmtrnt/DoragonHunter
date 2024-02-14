@@ -3,11 +3,11 @@
 using System.Buffers;
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateDrawnSwordTransition : StateBase
     {
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSwordMotion = true;
             owner._unsheathedSword = true;
@@ -15,12 +15,12 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
             owner._rigidbody.velocity *= 0.8f;
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             owner._motionFrame++;
 
@@ -34,12 +34,12 @@ public partial class PlayerState
             owner.SEPlay(10, (int)SEManager.HunterSE.DRAWSWORD);
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._drawnSwordMotion = false;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // デバッグ用
             if(owner._motionFrame >= 60)

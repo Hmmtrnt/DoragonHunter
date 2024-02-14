@@ -3,13 +3,13 @@
 using System.Buffers;
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateSheathingSword : StateBase
     {
         // デバッグ用変数
         private int MotionTransition = 0;
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSheathingSword = true;
             owner._unsheathedSword = false;
@@ -17,12 +17,12 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
 
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             MotionTransition++;
             if(owner._stateFlame <= 10)
@@ -34,13 +34,13 @@ public partial class PlayerState
             owner.SEPlay(10,(int)SEManager.HunterSE.SHEATHINGSWORD);
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._drawnSheathingSword = false;
             MotionTransition = 0;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             if (MotionTransition <= 25) return;
             if((owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0) && owner._input._RBButton)

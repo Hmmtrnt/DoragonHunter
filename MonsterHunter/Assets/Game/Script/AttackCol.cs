@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class AttackCol : MonoBehaviour
 {
-    private PlayerState _state;
+    private Player _state;
     private PlayerHitStopManager _hitStop;
     private SEManager _seManager;
     private SEManager.HunterSE _se;
@@ -23,7 +23,7 @@ public class AttackCol : MonoBehaviour
 
     void Start()
     {
-        _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _state = GameObject.Find("Hunter").GetComponent<Player>();
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.

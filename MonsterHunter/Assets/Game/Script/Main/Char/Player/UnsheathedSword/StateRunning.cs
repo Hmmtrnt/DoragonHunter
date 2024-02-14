@@ -2,23 +2,23 @@
 
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateRunning : StateBase
     {
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._runMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             owner.RotateDirection();
             Move(owner);
@@ -27,14 +27,14 @@ public partial class PlayerState
             owner.SEPlay(30, (int)SEManager.HunterSE.FOOTSTEPRIGHT);
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._runMotion = false;
             owner._isDashing = false;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // アイドル状態.
             if (owner._leftStickHorizontal == 0.0f &&
@@ -80,7 +80,7 @@ public partial class PlayerState
         }
 
         // 移動
-        private void Move(PlayerState owner)
+        private void Move(Player owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + 
                 new Vector3(0.0f, owner._rigidbody.velocity.y, 0.0f);

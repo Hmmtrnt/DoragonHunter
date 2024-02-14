@@ -3,11 +3,11 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateSpiritBlade2 : StateBase
     {
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade2 = true;
             owner._nextMotionFlame = 40;
@@ -19,12 +19,12 @@ public partial class PlayerState
             owner._hitStopTime = 0.01f;
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
 
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             //if (owner._stateFlame >= 10)
             //{
@@ -48,13 +48,13 @@ public partial class PlayerState
             owner.SEPlay(15, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._drawnSpiritBlade2 = false;
             owner._weaponActive = false;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // アイドル.
             //if (owner._attackFrame >= 60)

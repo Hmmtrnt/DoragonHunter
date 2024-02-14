@@ -2,14 +2,14 @@
 
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     /// <summary>
     /// アイドル状態.
     /// </summary>
     public class StateIdle : StateBase
     {
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._idleMotion = true;
 
@@ -19,22 +19,22 @@ public partial class PlayerState
             }
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
 
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             owner._motionFrame++;
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._idleMotion = false;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // 移動.
             if ((owner._leftStickHorizontal != 0.0f ||

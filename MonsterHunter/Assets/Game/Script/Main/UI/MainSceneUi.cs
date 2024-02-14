@@ -17,7 +17,7 @@ public class MainSceneUi : MonoBehaviour
     }
 
     // ƒvƒŒƒCƒ„[î•ñ.
-    private PlayerState _playerState;
+    private Player _playerState;
     // UI.
     public GameObject[] _ui;
 
@@ -26,7 +26,7 @@ public class MainSceneUi : MonoBehaviour
 
     void Start()
     {
-        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
     }
 

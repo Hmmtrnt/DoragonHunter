@@ -2,11 +2,11 @@
 
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateAvoid : StateBase
     {
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._isAvoiding = true;
             owner._avoidMotion = true;
@@ -18,13 +18,13 @@ public partial class PlayerState
             owner._flameAvoid = true;
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
 
             
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             owner._avoidTime++;
             MoveAvoid(owner);
@@ -37,7 +37,7 @@ public partial class PlayerState
 
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._isAvoiding = false;
             owner._avoidMotion = false;
@@ -45,7 +45,7 @@ public partial class PlayerState
             owner._rigidbody.velocity = Vector3.zero;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             if(owner._avoidTime >= 30)
             {
@@ -74,7 +74,7 @@ public partial class PlayerState
         }
 
         // 回避処理
-        private void MoveAvoid(PlayerState owner)
+        private void MoveAvoid(Player owner)
         {
             // 減速
             if (owner._avoidTime <= 10)

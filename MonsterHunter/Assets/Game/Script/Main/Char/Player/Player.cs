@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public partial class PlayerState : MonoBehaviour
+public partial class Player : MonoBehaviour
 {
     //--納刀状態--//
     private static readonly StateIdle                 _idle = new();                // アイドル.

@@ -3,11 +3,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public partial class PlayerState
+public partial class Player
 {
     public class StateSteppingSlash : StateBase
     {
-        public override void OnEnter(PlayerState owner, StateBase prevState)
+        public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSteppingSlash = true;
             owner._nextMotionFlame = 50;
@@ -21,12 +21,12 @@ public partial class PlayerState
             owner._hitStopTime = 0.05f;
         }
 
-        public override void OnUpdate(PlayerState owner)
+        public override void OnUpdate(Player owner)
         {
             
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
+        public override void OnFixedUpdate(Player owner)
         {
             if(owner._stateFlame == 40)
             {
@@ -54,14 +54,14 @@ public partial class PlayerState
 
         }
 
-        public override void OnExit(PlayerState owner, StateBase nextState)
+        public override void OnExit(Player owner, StateBase nextState)
         {
             owner._drawnSteppingSlash = false;
             //owner._isCauseDamage = false;
             owner._weaponActive = false;
         }
 
-        public override void OnChangeState(PlayerState owner)
+        public override void OnChangeState(Player owner)
         {
             // アイドル.
             if(owner._stateFlame>= 120)
@@ -107,7 +107,7 @@ public partial class PlayerState
         }
 
         // 空振り音再生.
-        private void MissingSlashSound(PlayerState owner)
+        private void MissingSlashSound(Player owner)
         {
             if(owner._stateFlame == 0)
             {

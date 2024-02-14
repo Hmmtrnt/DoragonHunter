@@ -32,7 +32,7 @@ public class ItemNum : MonoBehaviour
     private bool[] _disPlayNunber = new bool[(int)ItemNumber.MAXNUM];
 
     // ‰ñ•œ–ò‚Ì”‚Ìî•ñæ“¾.
-    private PlayerState _playerState;
+    private Player _playerState;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class ItemNum : MonoBehaviour
         {
             _rectTransform[Number] = _number[Number].GetComponent<RectTransform>();
         }
-        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
         for(int Number = 0; Number < (int)ItemNumber.MAXNUM; Number++)
         {
             _disPlayNunber[Number] = false;

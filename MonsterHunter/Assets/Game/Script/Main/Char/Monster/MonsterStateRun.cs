@@ -2,21 +2,21 @@
 
 using UnityEngine;
 
-public partial class MonsterState
+public partial class Monster
 {
     public class MonsterStateRun : StateBase
     {
-        public override void OnEnter(MonsterState owner, StateBase prevState)
+        public override void OnEnter(Monster owner, StateBase prevState)
         {
             
         }
 
-        public override void OnUpdate(MonsterState owner)
+        public override void OnUpdate(Monster owner)
         {
 
         }
 
-        public override void OnFixedUpdate(MonsterState owner)
+        public override void OnFixedUpdate(Monster owner)
         {
             //Vector3 dir = (owner._hunter.transform.position - owner.transform.position);
 
@@ -30,12 +30,12 @@ public partial class MonsterState
             owner.transform.LookAt(new Vector3(owner._hunter.transform.position.x, 0.0f, owner._hunter.transform.position.z));
         }
 
-        public override void OnExit(MonsterState owner, StateBase nextState)
+        public override void OnExit(Monster owner, StateBase nextState)
         {
             
         }
 
-        public override void OnChangeState(MonsterState owner)
+        public override void OnChangeState(Monster owner)
         {
             if (owner._collisionTag == "Player")
             {

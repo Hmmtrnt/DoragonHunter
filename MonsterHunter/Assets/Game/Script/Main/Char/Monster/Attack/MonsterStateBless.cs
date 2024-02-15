@@ -2,11 +2,11 @@
 
 using UnityEngine;
 
-public partial class MonsterState
+public partial class Monster
 {
     public class MonsterStateBless : StateBase
     {
-        public override void OnEnter(MonsterState owner, StateBase prevState)
+        public override void OnEnter(Monster owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._blessMotion = true;
@@ -20,12 +20,12 @@ public partial class MonsterState
             }
         }
 
-        public override void OnUpdate(MonsterState owner)
+        public override void OnUpdate(Monster owner)
         {
 
         }
 
-        public override void OnFixedUpdate(MonsterState owner)
+        public override void OnFixedUpdate(Monster owner)
         {
             owner.TurnTowards(40);
 
@@ -40,12 +40,12 @@ public partial class MonsterState
             owner.SEPlay(55, (int)SEManager.MonsterSE.BLESS);
         }
 
-        public override void OnExit(MonsterState owner, StateBase nextState)
+        public override void OnExit(Monster owner, StateBase nextState)
         {
             owner._blessMotion = false;
         }
 
-        public override void OnChangeState(MonsterState owner)
+        public override void OnChangeState(Monster owner)
         {
             if(owner._stateFlame >= 150)
             {

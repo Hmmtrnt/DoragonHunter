@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class MonsterState
+public partial class Monster
 {
     // ステートの変更.
     private void ChangeState(StateBase nextState)

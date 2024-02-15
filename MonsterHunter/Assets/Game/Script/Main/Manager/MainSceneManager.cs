@@ -18,7 +18,7 @@ public class MainSceneManager : MonoBehaviour
     // 一時停止.
     private PauseTimeStop _pauseTimeStop;
     // モンスターの情報.
-    private MonsterState _monsterState;
+    private Monster _monsterState;
     // プレイヤーの情報.
     private Player _playerState;
     // SE.
@@ -58,7 +58,7 @@ public class MainSceneManager : MonoBehaviour
         _bgmManager = GameObject.Find("BGMManager").GetComponent<BGMManager>();
         _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneMenuSelectUi>();
         _pauseTimeStop = GetComponent<PauseTimeStop>();
-        _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
+        _monsterState = GameObject.Find("Dragon").GetComponent<Monster>();
         _playerState = GameObject.Find("Hunter").GetComponent<Player>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();

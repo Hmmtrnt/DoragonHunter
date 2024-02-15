@@ -1,16 +1,14 @@
-﻿/*アイドル*/
+﻿/*待機状態*/
 
 using UnityEngine;
 
 public partial class Player
 {
-    /// <summary>
-    /// アイドル状態.
-    /// </summary>
     public class StateIdle : StateBase
     {
         public override void OnEnter(Player owner, StateBase prevState)
         {
+            // アニメーション開始.
             owner._idleMotion = true;
 
             if(prevState == _sheathingSword)

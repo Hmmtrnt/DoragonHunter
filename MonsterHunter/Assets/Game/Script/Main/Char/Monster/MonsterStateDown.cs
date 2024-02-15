@@ -2,21 +2,21 @@
 
 using UnityEngine;
 
-public partial class MonsterState
+public partial class Monster
 {
     public class MonsterStateDown : StateBase
     {
-        public override void OnEnter(MonsterState owner, StateBase prevState)
+        public override void OnEnter(Monster owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
         }
 
-        public override void OnUpdate(MonsterState owner)
+        public override void OnUpdate(Monster owner)
         {
             owner._deathMotion = true;
         }
 
-        public override void OnFixedUpdate(MonsterState owner)
+        public override void OnFixedUpdate(Monster owner)
         {
             
             // Ž€‚Ê‚Æ“–‚½‚è”»’è‚ðŠÑ’Ê‚³‚¹‚é.
@@ -37,12 +37,12 @@ public partial class MonsterState
 
         }
 
-        public override void OnExit(MonsterState owner, StateBase nextState)
+        public override void OnExit(Monster owner, StateBase nextState)
         {
             owner._deathMotion = false;
         }
 
-        public override void OnChangeState(MonsterState owner)
+        public override void OnChangeState(Monster owner)
         {
             
         }

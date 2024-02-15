@@ -1,14 +1,14 @@
-﻿/*モンスターステート*/
+﻿/*モンスター*/
 
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class MonsterState : MonoBehaviour
+public partial class Monster : MonoBehaviour
 {
     public static readonly MonsterStateRoar _roar = new();  // 咆哮.
     public static readonly MonsterStateIdle _idle = new();  // アイドル.
     public static readonly MonsterStateRun  _run = new();   // 移動.
-    public static readonly MonsterStateDown _down = new();  // 死ぬ.
+    public static readonly MonsterStateDown _down = new();  // やられる.
 
     public static readonly MonsterStateAt               _at = new();            // 攻撃(デバッグ用).
     public static readonly MonsterStateRotateAttack     _rotate = new();        // 回転攻撃.
@@ -16,8 +16,10 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateBite             _bite = new();          // 噛みつき攻撃.
     public static readonly MonsterStateRushForward      _rush = new();          // 突進攻撃.
     public static readonly MonsterStateWingBlowRight    _wingBlowRight = new(); // 右翼攻撃.
-    public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.s
+    public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.
     public static readonly MonsterStateTailAttack       _tail = new();          // 尻尾攻撃.
+
+
     public static readonly MonsterStatePowerFireBall    _powerFireBall = new(); // 大技火球.
 
 

@@ -2,11 +2,11 @@
 
 using UnityEngine;
 
-public partial class MonsterState
+public partial class Monster
 {
     public class MonsterStateTailAttack : StateBase
     {
-        public override void OnEnter(MonsterState owner, StateBase prevState)
+        public override void OnEnter(Monster owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._tailMotion = true;
@@ -20,12 +20,12 @@ public partial class MonsterState
             }
         }
 
-        public override void OnUpdate(MonsterState owner)
+        public override void OnUpdate(Monster owner)
         {
 
         }
 
-        public override void OnFixedUpdate(MonsterState owner)
+        public override void OnFixedUpdate(Monster owner)
         {
             
             if(owner._stateFlame == 30) 
@@ -47,12 +47,12 @@ public partial class MonsterState
             ParticleGenerateTime(owner);
         }
 
-        public override void OnExit(MonsterState owner, StateBase nextState)
+        public override void OnExit(Monster owner, StateBase nextState)
         {
             owner._tailMotion = false;
         }
 
-        public override void OnChangeState(MonsterState owner)
+        public override void OnChangeState(Monster owner)
         {
             if (owner._stateFlame >= 240)
             {
@@ -61,7 +61,7 @@ public partial class MonsterState
         }
 
         // パーティクルをモーションを行っている時間で生成する.
-        private void ParticleGenerateTime(MonsterState owner)
+        private void ParticleGenerateTime(Monster owner)
         {
             if (owner._stateFlame == 60)
             {

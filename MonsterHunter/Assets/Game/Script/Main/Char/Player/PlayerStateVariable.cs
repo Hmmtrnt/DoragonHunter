@@ -233,7 +233,7 @@ public partial class Player
     // モンスターオブジェクト.
     private GameObject _Monster;
     // モンスターのState.
-    private MonsterState _MonsterState;
+    private Monster _MonsterState;
 
     
 }

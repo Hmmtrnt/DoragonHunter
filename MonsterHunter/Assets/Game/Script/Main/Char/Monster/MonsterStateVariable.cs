@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class MonsterState
+public partial class Monster
 {
     // モンスターから見てハンターの位置はどこか.
     enum viewDirection

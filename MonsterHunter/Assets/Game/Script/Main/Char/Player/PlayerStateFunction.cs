@@ -15,7 +15,7 @@ public partial class Player
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _Monster = GameObject.FindWithTag("Monster");
-        _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
+        _MonsterState = GameObject.FindWithTag("Monster").GetComponent<Monster>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _weaponObject.SetActive(false);
         _weaponActive = false;

@@ -20,7 +20,7 @@ public class RankAnim : MonoBehaviour
     private Image _image;
     private RectTransform _rectTransform;
     private SEManager _seManager;
-    private MonsterState _monsterState;
+    private Monster _monsterState;
 
     private HuntingEnd _end;
 
@@ -38,7 +38,7 @@ public class RankAnim : MonoBehaviour
         _end = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _resultUpdate = GameObject.Find("ResultBackGround").GetComponent<ResultUpdate>();
-        _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
+        _monsterState = GameObject.Find("Dragon").GetComponent<Monster>();
         _rectTransform = _ui[(int)UIKinds.RANK].GetComponent<RectTransform>();
         _timeCount = 0;
         _alpha = 0;

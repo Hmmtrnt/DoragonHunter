@@ -2,31 +2,31 @@
 
 using UnityEngine;
 
-public partial class MonsterState
+public partial class Monster
 {
     public class MonsterStatePowerFireBall : StateBase
     {
-        public override void OnEnter(MonsterState owner, StateBase prevState)
+        public override void OnEnter(Monster owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
         }
 
-        public override void OnUpdate(MonsterState owner)
+        public override void OnUpdate(Monster owner)
         {
 
         }
 
-        public override void OnFixedUpdate(MonsterState owner)
+        public override void OnFixedUpdate(Monster owner)
         {
             Debug.Log("大技火球");
         }
 
-        public override void OnExit(MonsterState owner, StateBase nextState)
+        public override void OnExit(Monster owner, StateBase nextState)
         {
 
         }
 
-        public override void OnChangeState(MonsterState owner)
+        public override void OnChangeState(Monster owner)
         {
             if (owner._collisionTag == "Player")
             {

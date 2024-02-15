@@ -38,28 +38,28 @@ public abstract class StateBase
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="prevState">ひとつ前の状態</param>
-    public virtual void OnEnter(MonsterState owner, StateBase prevState) { }
+    public virtual void OnEnter(Monster owner, StateBase prevState) { }
     /// <summary>
     /// Update
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnUpdate(MonsterState owner) { }
+    public virtual void OnUpdate(Monster owner) { }
     /// <summary>
     /// FixedUpdate
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnFixedUpdate(MonsterState owner) { }
+    public virtual void OnFixedUpdate(Monster owner) { }
     /// <summary>
     /// ステート終了時呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="nextState">次に遷移する状態</param>
-    public virtual void OnExit(MonsterState owner, StateBase nextState) { }
+    public virtual void OnExit(Monster owner, StateBase nextState) { }
     /// <summary>
     /// ステート遷移の呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnChangeState(MonsterState owner) { }
+    public virtual void OnChangeState(Monster owner) { }
 
     /*選択画面のプレイヤー*/
     /// <summary>

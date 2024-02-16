@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public partial class Monster : MonoBehaviour
 {
-    public static readonly MonsterStateRoar _roar = new();  // 咆哮.
-    public static readonly MonsterStateIdle _idle = new();  // アイドル.
-    public static readonly MonsterStateRun  _run = new();   // 移動.
-    public static readonly MonsterStateDown _down = new();  // やられる.
+    public static readonly MonsterStateRoar             _roar = new();  // 咆哮.
+    public static readonly MonsterStateIdle             _idle = new();  // アイドル.
+    public static readonly MonsterStateRun              _run = new();   // 移動.
+    public static readonly MonsterStateDown             _down = new();  // やられる.
 
     public static readonly MonsterStateAt               _at = new();            // 攻撃(デバッグ用).
     public static readonly MonsterStateRotateAttack     _rotate = new();        // 回転攻撃.
@@ -40,12 +40,6 @@ public partial class Monster : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
         ViewAngle();
-
-        // デバッグ用死亡判定.
-        //if(Input.GetKeyDown(KeyCode.RightControl)) 
-        //{
-        //    _HitPoint = 0;
-        //}
     }
 
     private void FixedUpdate()
@@ -61,11 +55,6 @@ public partial class Monster : MonoBehaviour
         // 乱数を常に与える.
         _randomNumber = Random.Range(1, 101);
 
-
-        //Debug.Log(_HitPoint);
-
-        //_textHp.text = "MonsterHp:" + _HitPoint;
-
         // プレイヤーとモンスター同士の角度、距離によって処理を変更.
         PositionalRelationship();
         // アニメーション遷移.
@@ -78,7 +67,6 @@ public partial class Monster : MonoBehaviour
             
         }
 
-        //Debug.Log(_currentState);
         // 体力が0になった時の処理.
         if(_HitPoint <= 0)
         {
@@ -117,17 +105,6 @@ public partial class Monster : MonoBehaviour
         {
             _playerState.SetIsCauseDamage(false);
             _takeDamage = true;
-            //GetOnDamager();
         }
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        
-    }
-
-    
-
-
-
 }

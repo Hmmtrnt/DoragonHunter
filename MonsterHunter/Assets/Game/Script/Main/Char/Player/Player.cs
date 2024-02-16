@@ -54,18 +54,10 @@ public partial class Player : MonoBehaviour
             _currentState.OnChangeState(this);
         }
         viewAngle();
-
-        // デバッグ用死亡判定.
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    _hitPoint = 0;
-        //}
     }
 
     private void FixedUpdate()
     {
-        //_stateFlame++;
-
         StateFlameManager();
         SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);
@@ -96,7 +88,6 @@ public partial class Player : MonoBehaviour
 
         RenkiNaturalConsume();
         MaintainElapsedTimeRenkiGauge();
-        //RedRenkiNaturalConsume();
         StickDirection();
         ApplyRedRenkiGauge();
         OpenMenu();
@@ -104,48 +95,19 @@ public partial class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // モンスターに当たっても浮かないようにする.
         if (collision.transform.tag == "Monster")
         {
-            //Debug.Log("Monster");
             transform.position = new Vector3 (transform.position.x, 0.1f, transform.position.z);
-            //Debug.Log(collision.transform.tag);
-        }
-        else if (collision.transform.tag == "MonsterAtCol")
-        {
-            //Debug.Log("MonsterAtCol");
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // ダメージを受けつける.
-        if(other.gameObject.tag == "MonsterAtCol" /*&& !_flameAvoid*/ && _currentState != _damage)
+        if(other.gameObject.tag == "MonsterAtCol" && _currentState != _damage)
         {
             OnDamage();
-            //Debug.Log("MonsterAtCol");
         }
-
-
-        //else if (other.transform.tag == "MonsterHead")
-        //{
-        //    //Debug.Log("MonsterHead");
-        //}
-        //else if (other.transform.tag == "MonsterWingRight")
-        //{
-        //    //Debug.Log("MonsterWingRight");
-        //}
-        //else if (other.transform.tag == "MonsterWingLeft")
-        //{
-        //    //Debug.Log("MonsterWingLeft");
-        //}
-        //else if (other.transform.tag == "MonsterTail")
-        //{
-        //    //Debug.Log("MonsterTail");
-        //}
-        //else if (other.transform.tag == "MonsterBody")
-        //{
-        //    //Debug.Log("MonsterBody");
-        //}
-        
     }
 }

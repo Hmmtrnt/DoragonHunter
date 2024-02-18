@@ -1,18 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
+/*ƒ‚ƒ“ƒXƒ^[‚ª‹¯‚Ş‚Æ‚«‚Ìˆ—*/
+
 using UnityEngine;
 
-public class MonsterStateFalter : MonoBehaviour
+public partial class Monster
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MonsterStateFalter : StateBase
     {
-        
-    }
+        public override void OnEnter(Monster owner, StateBase prevState)
+        {
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void OnUpdate(Monster owner)
+        {
+
+        }
+
+        public override void OnFixedUpdate(Monster owner)
+        {
+
+        }
+
+        public override void OnExit(Monster owner, StateBase nextState)
+        {
+        }
+
+        public override void OnChangeState(Monster owner)
+        {
+        }
     }
 }

@@ -8,6 +8,8 @@ public partial class Monster
     {
         public override void OnEnter(Monster owner, StateBase prevState)
         {
+            owner._falterMotion = true;
+            
         }
 
         public override void OnUpdate(Monster owner)
@@ -22,10 +24,15 @@ public partial class Monster
 
         public override void OnExit(Monster owner, StateBase nextState)
         {
+            owner._falterMotion = false;
         }
 
         public override void OnChangeState(Monster owner)
         {
+            if(owner._stateFlame >= 300)
+            {
+                owner.ChangeState(_idle);
+            }
         }
     }
 }

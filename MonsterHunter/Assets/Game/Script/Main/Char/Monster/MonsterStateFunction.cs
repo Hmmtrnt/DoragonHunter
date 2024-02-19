@@ -100,6 +100,7 @@ public partial class Monster
         // bool
         _animator.SetBool("Roar", _roarMotion);
         _animator.SetBool("Idle", _idleMotion);
+        _animator.SetBool("Falter", _falterMotion);
         _animator.SetBool("Death", _deathMotion);
         _animator.SetBool("Bless", _blessMotion);
         _animator.SetBool("Bite", _biteMotion);

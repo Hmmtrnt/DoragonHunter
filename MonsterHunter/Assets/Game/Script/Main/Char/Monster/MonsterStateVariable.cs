@@ -105,6 +105,7 @@ public partial class Monster
     // bool
     private bool _roarMotion = false;// 咆哮.
     private bool _idleMotion = false;// 待機.
+    private bool _falterMotion = false;// 怯む.
     private bool _runMotion = false;// 走る.
     private bool _deathMotion = false;// 死.
     private bool _rotateMotion = false;// 回転攻撃.

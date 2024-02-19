@@ -24,7 +24,7 @@ public partial class Player
         public override void OnFixedUpdate(Player owner)
         {
             owner._avoidTime++;
-            MoveAvoid(owner);
+            owner.MoveAvoid();
             if (owner._stateFlame == 6)
             {
                 owner._flameAvoid = false;
@@ -58,30 +58,6 @@ public partial class Player
                     owner.StateTransition(_idleDrawnSword);
                 }
             }
-        }
-
-        private void MoveAvoid(Player owner)
-        {
-
-            if (owner._avoidTime <= 10)
-            {
-                owner._rigidbody.velocity *= owner._deceleration;
-            }
-
-            if (owner._avoidTime >= 40)
-            {
-                //owner._rigidbody.velocity = new Vector3(0.0f,0.0f,0.0f);
-                owner._rigidbody.velocity *= 0.8f;
-            }
-
-
-
-            if (!owner._isProcess) return;
-
-            owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
-
-            owner._isProcess = false;
-
         }
     }
 }

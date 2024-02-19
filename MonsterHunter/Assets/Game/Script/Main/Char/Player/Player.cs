@@ -19,6 +19,7 @@ public partial class Player : MonoBehaviour
     private static readonly StateAvoidDrawSword       _avoidDrawnSword = new();     // 抜刀回避.
     private static readonly StateRightAvoidDrawSword  _rightAvoid = new();          // 攻撃後の右回避.
     private static readonly StateLeftAvoidDrawSword   _leftAvoid = new();           // 攻撃後の左回避.
+    private static readonly StateBackAvoidDrawSword   _backAvoid = new();           // 攻撃後の後ろ回避.
     // 攻撃後の後ろ回避
     private static readonly StateSheathingSword       _sheathingSword = new();      // 納刀する.
     private static readonly StateSteppingSlash        _steppingSlash = new();       // 踏み込み斬り.

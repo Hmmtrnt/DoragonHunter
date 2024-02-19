@@ -77,11 +77,12 @@ public partial class Player
         _animator.SetBool("DrawRAvoid", _drawnRightAvoidMotion);
 
         _animator.SetBool("DrawLAvoid", _drawnLeftAvoidMotion);
+        _animator.SetBool("DrawBAvoid", _drawnBackAvoidMotion);
         _animator.SetBool("SheathingSword", _drawnSheathingSword);
         _animator.SetBool("SteppingSlash", _drawnSteppingSlash);
         _animator.SetBool("Thrust", _drawnThrustSlash);
-        _animator.SetBool("SlashUp", _drawnSlashUp);
 
+        _animator.SetBool("SlashUp", _drawnSlashUp);
         _animator.SetBool("SpiritBlade1", _drawnSpiritBlade1);
         _animator.SetBool("SpiritBlade2", _drawnSpiritBlade2);
         _animator.SetBool("SpiritBlade3", _drawnSpiritBlade3);
@@ -270,6 +271,29 @@ public partial class Player
     private void AutoRecoveryStamina()
     {
         _stamina += _autoRecaveryStamina;
+    }
+
+    private void MoveAvoid()
+    {
+
+        if (_avoidTime <= 10)
+        {
+            _rigidbody.velocity *= _deceleration;
+        }
+
+        if (_avoidTime >= 40)
+        {
+            _rigidbody.velocity *= 0.8f;
+        }
+
+
+
+        if (!_isProcess) return;
+
+        _rigidbody.AddForce(_avoidVelocity, ForceMode.Impulse);
+
+        _isProcess = false;
+
     }
 
     // òBãCÉQÅ[ÉWé©ëRè¡îÔ.

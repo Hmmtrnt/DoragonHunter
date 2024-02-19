@@ -25,7 +25,7 @@ public partial class Player
         {
             owner._avoidTime++;
             //MoveAvoid(owner);
-            MoveAvoid(owner);
+            owner.MoveAvoid();
             //Debug.Log(owner._isCauseDamage);
         }
 
@@ -43,29 +43,6 @@ public partial class Player
             {
                 owner.StateTransition(_idleDrawnSword);
             }
-
-
-        }
-
-        private void MoveAvoid(Player owner)
-        {
-            if (owner._avoidTime <= 10)
-            {
-                owner._rigidbody.velocity *= owner._deceleration;
-            }
-
-            if (owner._avoidTime >= 30)
-            {
-                owner._rigidbody.velocity *= 0.8f;
-            }
-
-
-
-            if (!owner._isProcess) return;
-
-            owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
-
-            owner._isProcess = false;
         }
     }
 }

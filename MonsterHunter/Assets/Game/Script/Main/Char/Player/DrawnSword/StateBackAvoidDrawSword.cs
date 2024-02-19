@@ -11,6 +11,7 @@ public partial class Player
             owner._drawnBackAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
+            owner._avoidVelocity = -owner._transform.forward * owner._avoidVelocityMagnification;
         }
 
         public override void OnUpdate(Player owner)

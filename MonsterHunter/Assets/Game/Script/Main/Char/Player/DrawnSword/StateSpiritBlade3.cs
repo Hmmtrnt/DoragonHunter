@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade3 = true;
-            owner._nextMotionFlame = 90;
+            owner._nextMotionFlame = 120;
             owner.StateTransitionInitialization();
             owner._attackPower = 40;
             owner._isCauseDamage = true;
@@ -20,47 +20,33 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
-        }
-
-        public override void OnFixedUpdate(Player owner)
-        {
-            //if (owner._stateFlame >= 10)
-            //{
-            //    owner._isCauseDamage = true;
-            //}
-            //if (owner._stateFlame >= 60)
-            //{
-            //    owner._isCauseDamage = false;
-            //}
-
             // 一撃目.
-            if(owner._stateFlame == 5)
+            if (owner._stateFlame == 10)
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 20)
+            else if (owner._stateFlame == 25)
             {
                 owner._weaponActive = false;
             }
             // 二撃目.
-            else if(owner._stateFlame == 25)
+            else if (owner._stateFlame == 30)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 40)
+            else if (owner._stateFlame == 45)
             {
                 owner._weaponActive = false;
             }
             // 三撃目.
-            else if (owner._stateFlame == 60)
+            else if (owner._stateFlame == 80)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
                 owner._attackPower = 100;
             }
-            else if (owner._stateFlame == 80)
+            else if (owner._stateFlame == 100)
             {
                 owner._weaponActive = false;
             }
@@ -72,7 +58,11 @@ public partial class Player
             }
 
             // 空振り効果音再生.
-            owner.SEPlay(5, 25, 60,(int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(10, 30, 80, (int)SEManager.HunterSE.MISSINGSLASH);
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -84,7 +74,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if (owner._stateFlame >= 120)
+            if (owner._stateFlame >= 180)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

@@ -10,7 +10,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritRoundSlash = true;
-            owner._nextMotionFlame = 90;
+            owner._nextMotionFlame = 120;
             owner._deceleration = 0.9f;
             owner.StateTransitionInitialization();
             owner._attackPower = 150;
@@ -22,7 +22,29 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
+            if (owner._stateFlame == 25)
+            {
+                owner._weaponActive = true;
+            }
+            else if (owner._stateFlame == 45)
+            {
+                owner._weaponActive = false;
+            }
 
+            if (owner._stateFlame <= 10)
+            {
+                owner.ForwardStep(20);
+            }
+            if (owner._stateFlame >= 10 && owner._stateFlame <= 50)
+            {
+                owner._rigidbody.velocity *= owner._deceleration;
+            }
+            else if (owner._stateFlame >= 50)
+            {
+                owner.ForwardStep(8);
+            }
+
+            owner.SEPlay(15, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
         }
 
         public override void OnFixedUpdate(Player owner)
@@ -36,29 +58,7 @@ public partial class Player
             //    owner._isCauseDamage = false;
             //}
 
-            if(owner._stateFlame == 15)
-            {
-                owner._weaponActive = true;
-            }
-            else if(owner._stateFlame == 35)
-            {
-                owner._weaponActive = false;
-            }
-
-            if(owner._stateFlame <= 10)
-            {
-                owner.ForwardStep(20);
-            }
-            if(owner._stateFlame >= 10 && owner._stateFlame <= 50)
-            {
-                owner._rigidbody.velocity *= owner._deceleration;
-            }
-            else if(owner._stateFlame >= 50)
-            {
-                owner.ForwardStep(8);
-            }
-
-            owner.SEPlay(15, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
+            
         }
 
         public override void OnExit(Player owner, StateBase nextState)

@@ -18,17 +18,22 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
-        }
-
-        public override void OnFixedUpdate(Player owner)
-        {
             owner._avoidTime++;
-            owner.MoveAvoid();
+            //owner.MoveAvoid();
             if (owner._stateFlame == 6)
             {
                 owner._flameAvoid = false;
             }
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
+            //owner._avoidTime++;
+            owner.MoveAvoid();
+            //if (owner._stateFlame == 6)
+            //{
+            //    owner._flameAvoid = false;
+            //}
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -40,7 +45,7 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
-            if (owner._avoidTime >= 40)
+            if (owner._avoidTime >= 60)
             {
                 // スティック傾けていたらRunに.
                 if ((owner._leftStickHorizontal != 0 ||

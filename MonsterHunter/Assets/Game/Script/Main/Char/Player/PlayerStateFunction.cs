@@ -279,12 +279,12 @@ public partial class Player
     private void MoveAvoid()
     {
 
-        if (_avoidTime <= 10)
+        if (_avoidTime <= 15)
         {
             _rigidbody.velocity *= _deceleration;
         }
 
-        if (_avoidTime >= 40)
+        if (_avoidTime >= 55)
         {
             _rigidbody.velocity *= 0.8f;
         }

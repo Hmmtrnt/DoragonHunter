@@ -201,7 +201,7 @@ public partial class Player
     // 現在の回避フレーム.
     private int _avoidTime = 0;
     // 最大回避フレーム.
-    private int _avoidMaxTime = 65;
+    private int _avoidMaxTime = 80;
     // 回避時のスタミナ消費量.
     private float _avoidStaminaCost = 25;
 

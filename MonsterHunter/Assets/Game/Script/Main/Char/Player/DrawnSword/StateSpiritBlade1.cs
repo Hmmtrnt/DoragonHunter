@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade1 = true;
-            owner._nextMotionFlame = 50;
+            owner._nextMotionFlame = 60;
             owner._deceleration = 0.9f;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
@@ -22,11 +22,6 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
-        }
-
-        public override void OnFixedUpdate(Player owner)
-        {
             if (owner._stateFlame >= 10)
             {
                 //owner._isCauseDamage = true;
@@ -38,22 +33,27 @@ public partial class Player
                 //owner._isCauseDamage = false;
             }
 
-            if(owner._stateFlame == 35)
+            if (owner._stateFlame == 45)
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 55)
+            else if (owner._stateFlame == 60)
             {
                 owner._weaponActive = false;
             }
 
-            if(owner._stateFlame <= 10)
+            if (owner._stateFlame <= 10)
             {
                 owner.ForwardStep(3);
             }
 
             // 空振り効果音再生.
-            owner.SEPlay(30, (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(40, (int)SEManager.HunterSE.MISSINGSLASH);
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
+            
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -65,7 +65,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if (owner._stateFlame >= 105)
+            if (owner._stateFlame >= 135)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

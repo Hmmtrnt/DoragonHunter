@@ -10,16 +10,11 @@ public partial class Player
         {
             // アニメーション開始.
             owner._idleMotion = true;
-
-            if(prevState == _sheathingSword)
-            {
-                owner._motionFrame = 0;
-            }
         }
 
         public override void OnUpdate(Player owner)
         {
-            owner._motionFrame++;
+            
         }
 
         public override void OnFixedUpdate(Player owner)
@@ -35,8 +30,8 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // 移動.
-            if ((owner._leftStickHorizontal != 0.0f ||
-                owner._leftStickVertical != 0.0f) && owner._motionFrame > 15)
+            if (owner._leftStickHorizontal != 0.0f ||
+                owner._leftStickVertical != 0.0f)
             {
                 if (owner._input._RBButton && !owner._openMenu)
                 {

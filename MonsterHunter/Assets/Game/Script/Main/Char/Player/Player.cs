@@ -66,7 +66,6 @@ public partial class Player : MonoBehaviour
         _currentState.OnFixedUpdate(this);
 
         CameraFollowUpdate();
-        GroundPenetrationDisable();
 
         // スタミナ.
         LimitStop(ref _stamina, ref _maxStamina);

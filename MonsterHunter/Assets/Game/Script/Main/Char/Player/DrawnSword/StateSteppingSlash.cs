@@ -36,8 +36,6 @@ public partial class Player
             {
                 owner._rigidbody.velocity *= 0.8f;
             }
-
-
             if (owner._stateFlame >= 80)
             {
                 owner._weaponActive = false;

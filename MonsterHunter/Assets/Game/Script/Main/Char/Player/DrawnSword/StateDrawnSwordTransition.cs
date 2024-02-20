@@ -43,10 +43,17 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
-            // デバッグ用
-            if(owner._motionFrame >= 80)
+            // 待機状態.
+            if(owner._motionFrame >= 90)
             {
-                owner.StateTransition(_idleDrawnSword);
+                if(owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0)
+                {
+                    owner.StateTransition(_runDrawnSword);
+                }
+                else if(owner._input._LeftStickHorizontal == 0 && owner._input._LeftStickVertical == 0)
+                {
+                    owner.StateTransition(_idleDrawnSword);
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSlashUp = true;
-            owner._nextMotionFlame = 30;
+            owner._nextMotionFlame = 40;
             owner.StateTransitionInitialization();
             owner._attackPower = 73;
             owner._isCauseDamage = true;
@@ -19,36 +19,28 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
-        }
-
-        public override void OnFixedUpdate(Player owner)
-        {
-            //if (owner._stateFlame >= 10)
-            //{
-            //    owner._isCauseDamage = true;
-            //}
-            //if (owner._stateFlame >= 60)
-            //{
-            //    owner._isCauseDamage = false;
-            //}
-
-            if(owner._stateFlame == 10)
+            if (owner._stateFlame == 15)
             {
                 owner._weaponActive = true;
             }
-            else if(owner._stateFlame == 25)
+            else if (owner._stateFlame == 25)
             {
                 owner._weaponActive = false;
             }
 
             // 前進させる.
-            if(owner._stateFlame <= 20)
+            if (owner._stateFlame <= 20)
             {
                 owner.ForwardStep(2);
             }
             // 空振り効果音再生.
             owner.SEPlay(10, (int)SEManager.HunterSE.MISSINGSLASH);
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
+            
+            
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -60,7 +52,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if (owner._stateFlame >= 90)
+            if (owner._stateFlame >= 120)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

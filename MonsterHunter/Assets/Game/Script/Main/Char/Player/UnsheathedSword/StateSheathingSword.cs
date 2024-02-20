@@ -19,19 +19,20 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
+            MotionTransition++;
+            if (owner._stateFlame <= 20)
+            {
+                owner.ForwardStep(10);
+            }
+            // 納刀効果音再生.
+            owner.SEPlay(15, (int)SEManager.HunterSE.SHEATHINGSWORD);
         }
 
         public override void OnFixedUpdate(Player owner)
         {
-            MotionTransition++;
-            if(owner._stateFlame <= 10)
-            {
-                owner.ForwardStep(10);
-            }
+            
 
-            // 納刀効果音再生.
-            owner.SEPlay(10,(int)SEManager.HunterSE.SHEATHINGSWORD);
+            
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -42,7 +43,7 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
-            if (MotionTransition <= 25) return;
+            if (MotionTransition <= 35) return;
             if((owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0) && owner._input._RBButton)
             {
                 owner.StateTransition(_dash);

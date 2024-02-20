@@ -23,17 +23,12 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-            
-        }
-
-        public override void OnFixedUpdate(Player owner)
-        {
-            if(owner._stateFlame == 45)
+            if (owner._stateFlame == 65)
             {
                 owner._weaponActive = true;
             }
 
-            if(owner._stateFlame <= 40 && owner._stateFlame >= 10)
+            if (owner._stateFlame <= 60 && owner._stateFlame >= 10)
             {
                 owner.ForwardStep(8);
             }
@@ -43,14 +38,18 @@ public partial class Player
             }
 
 
-            if(owner._stateFlame >= 60)
+            if (owner._stateFlame >= 80)
             {
-                //owner._isCauseDamage = false;
                 owner._weaponActive = false;
             }
 
             // 空振り効果音再生.
-            owner.SEPlay(40, (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(50, (int)SEManager.HunterSE.MISSINGSLASH);
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
+            
 
         }
 
@@ -64,7 +63,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if(owner._stateFlame>= 120)
+            if(owner._stateFlame>= 170)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

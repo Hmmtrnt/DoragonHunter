@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2639.3428, g: 4062.4082, b: 7294.341, a: 1}
+  m_IndirectSpecularColor: {r: 6959.632, g: 6606.3525, b: 6178.505, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4995,6 +4995,7 @@ GameObject:
   - component: {fileID: 1559500864}
   - component: {fileID: 1559500865}
   - component: {fileID: 1559500866}
+  - component: {fileID: 1559500867}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5225,6 +5226,21 @@ MonoBehaviour:
   _MasterSlider: {fileID: 386902006}
   _BGMSlider: {fileID: 973053799}
   _SESlider: {fileID: 450600268}
+--- !u!114 &1559500867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559500859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6019e8c79ffc8547a206a0ef093200d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _width: 1920
+  _height: 1080
+  _refreshRate: 60
 --- !u!1 &1571884753
 GameObject:
   m_ObjectHideFlags: 0

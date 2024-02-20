@@ -88,6 +88,14 @@ public partial class Player
             {
                 owner.StateTransition(_leftAvoid);
             }
+            // 後ろ回避.
+            else if (owner._stateFlame >= owner._nextMotionFlame &&
+                owner._viewDirection[(int)viewDirection.BACKWARD] &&
+                owner.GetDistance() > 1 &&
+                owner._input._AButtonDown)
+            {
+                owner.StateTransition(_backAvoid);
+            }
             // 突き.
             else if (owner._stateFlame >= owner._nextMotionFlame - 5 && 
                 (owner._input._YButtonDown || owner._input._BButtonDown))

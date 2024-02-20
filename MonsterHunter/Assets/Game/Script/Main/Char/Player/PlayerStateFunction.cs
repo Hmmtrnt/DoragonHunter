@@ -218,34 +218,37 @@ public partial class Player
         //if (!viewFlag) return;
 
         // ê≥ñ .
-        if (forwardAngle < 90 * 0.5f)
+        if (forwardAngle < 45)
         {
+            Debug.Log("ê≥ñ ");
             FoundFlag((int)viewDirection.FORWARD);
-            //_text.text = "ê≥ñ ";
         }
         // å„ÇÎ.
-        else if (forwardAngle > 135 && forwardAngle < 180)
+        else if (forwardAngle > 135)
         {
+            Debug.Log("å„ÇÎ");
             FoundFlag((int)viewDirection.BACKWARD);
-            //_text.text = "å„ÇÎ";
         }
         // âE.
-        else if (sideAngle < 90 * 0.5f)
+        else if (sideAngle < 45)
         {
+            Debug.Log("âE");
             FoundFlag((int)viewDirection.RIGHT);
-            //_text.text = "âE";
         }
         // ç∂.
-        else if (sideAngle > 135 && sideAngle < 180)
+        else if (sideAngle > 135)
         {
+            Debug.Log("ç∂");
             FoundFlag((int)viewDirection.LEFT);
-            //_text.text = "ç∂";
         }
-        else
+        else if(forwardAngle == 0 && sideAngle == 0)
         {
+            Debug.Log("NONE");
             FoundFlag((int)viewDirection.NONE);
-            //_text.text = "NONE";
         }
+
+        //Debug.Log("forward" + forwardAngle);
+        //Debug.Log("side" + sideAngle);
     }
 
     /// <summary>

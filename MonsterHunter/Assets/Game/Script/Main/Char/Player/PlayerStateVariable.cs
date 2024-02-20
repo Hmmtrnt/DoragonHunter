@@ -18,7 +18,7 @@ public partial class Player
     //public Text _text;
 
     // スティックがハンターのどの向きにいるかを取得
-    private bool[] _viewDirection = new bool[5];
+    private bool[] _viewDirection = new bool[(int)viewDirection.NONE];
 
     // スティックの傾きを表す球とハンターの距離
     private float _currentDistance;

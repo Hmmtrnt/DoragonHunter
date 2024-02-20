@@ -11,25 +11,26 @@ public partial class Player
             owner._drawnBackAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
-            owner._avoidVelocity = -owner._transform.forward * owner._avoidVelocityMagnification;
-            owner._nextMotionFlame = 50;
+            owner._avoidVelocity = -owner._transform.forward * (owner._avoidVelocityMagnification + 10);
+            owner._nextMotionFlame = 100;
             owner._deceleration = 0.9f;
             owner._flameAvoid = true;
         }
 
         public override void OnUpdate(Player owner)
         {
-
-        }
-
-        public override void OnFixedUpdate(Player owner)
-        {
             owner._avoidTime++;
-            owner.MoveAvoid();
             if (owner._stateFlame == 6)
             {
                 owner._flameAvoid = false;
             }
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
+            
+            owner.MoveAvoid();
+            
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -41,7 +42,17 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
-            // アイドル.
+            // 走る.
+            if (owner._avoidTime >= 90)
+            {
+                // スティック傾けていたらRunに.
+                if (owner._leftStickHorizontal != 0 ||
+                    owner._leftStickVertical != 0)
+                {
+                    owner.StateTransition(_runDrawnSword);
+                }
+            }
+            // 待機.
             if (owner._avoidTime >= owner._nextMotionFlame)
             {
                 owner.StateTransition(_idleDrawnSword);

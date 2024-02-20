@@ -28,7 +28,7 @@ public partial class Player
 
         public override void OnFixedUpdate(Player owner)
         {
-            if(owner._stateFlame == 40)
+            if(owner._stateFlame == 45)
             {
                 owner._weaponActive = true;
             }

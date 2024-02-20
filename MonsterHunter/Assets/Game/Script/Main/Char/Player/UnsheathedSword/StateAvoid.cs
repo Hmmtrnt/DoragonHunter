@@ -20,20 +20,20 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
-            
+            owner._avoidTime++;
+            if (owner._avoidTime == 6)
+            {
+                owner._flameAvoid = false;
+            }
         }
 
         public override void OnFixedUpdate(Player owner)
         {
-            owner._avoidTime++;
+            
             MoveAvoid(owner);
             
 
-            if(owner._avoidTime == 6)
-            {
-                owner._flameAvoid = false;
-            }
+            
 
         }
 
@@ -47,7 +47,7 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
-            if(owner._avoidTime >= 30)
+            if(owner._avoidTime >= 50)
             {
                 // スティック傾けていたらRunに
                 if ((owner._leftStickHorizontal != 0 ||
@@ -82,7 +82,7 @@ public partial class Player
                 owner._rigidbody.velocity *= owner._deceleration;
             }
             // 一気に減速
-            if (owner._avoidTime >= 30)
+            if (owner._avoidTime >= 45)
             {
                 owner._rigidbody.velocity *= 0.8f;
             }

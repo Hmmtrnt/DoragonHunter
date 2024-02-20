@@ -18,20 +18,22 @@ public partial class Player
         public override void OnUpdate(Player owner)
         {
             owner._rigidbody.velocity *= 0.8f;
-        }
 
-        public override void OnFixedUpdate(Player owner)
-        {
             owner._motionFrame++;
 
             // 前進させる.
-            if (owner._motionFrame <= 20&& owner._motionFrame >= 5)
+            if (owner._motionFrame >= 10 && owner._motionFrame <= 35)
             {
                 owner.ForwardStep(5);
             }
 
             // 抜刀効果音再生.
-            owner.SEPlay(10, (int)SEManager.HunterSE.DRAWSWORD);
+            owner.SEPlay(20, (int)SEManager.HunterSE.DRAWSWORD);
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
+            
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -42,7 +44,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // デバッグ用
-            if(owner._motionFrame >= 60)
+            if(owner._motionFrame >= 80)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

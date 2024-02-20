@@ -19,12 +19,12 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
+            owner._motionFrame++;
         }
 
         public override void OnFixedUpdate(Player owner)
         {
-            owner._motionFrame++;
+            
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -36,7 +36,7 @@ public partial class Player
         {
             // 移動.
             if ((owner._leftStickHorizontal != 0.0f ||
-                owner._leftStickVertical != 0.0f) && owner._motionFrame > 10)
+                owner._leftStickVertical != 0.0f) && owner._motionFrame > 15)
             {
                 if (owner._input._RBButton && !owner._openMenu)
                 {

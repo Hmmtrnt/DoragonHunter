@@ -13,7 +13,7 @@ public partial class Player
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.forward * owner._avoidVelocityMagnification;
             owner._nextMotionFlame = 50;
-            owner._deceleration = 0.93f;
+            owner._deceleration = 0.9f;
             owner._flameAvoid = true;
         }
 

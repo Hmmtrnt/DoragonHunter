@@ -56,11 +56,12 @@ public partial class Player : MonoBehaviour
             _currentState.OnChangeState(this);
         }
         viewAngle();
+        StateFlameManager();
     }
 
     private void FixedUpdate()
     {
-        StateFlameManager();
+        
         SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);
 

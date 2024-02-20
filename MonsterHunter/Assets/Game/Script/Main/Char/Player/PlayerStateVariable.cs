@@ -82,7 +82,7 @@ public partial class Player
 
     // プレイヤーのステータス.
     // 体力.
-    private float _hitPoint = 200;
+    private float _hitPoint = 1;
     // 体力最大値.
     private float _maxHitPoint = 200;
     // スタミナ.
@@ -201,7 +201,7 @@ public partial class Player
     // 現在の回避フレーム.
     private int _avoidTime = 0;
     // 最大回避フレーム.
-    private int _avoidMaxTime = 45;
+    private int _avoidMaxTime = 65;
     // 回避時のスタミナ消費量.
     private float _avoidStaminaCost = 25;
 
@@ -219,7 +219,7 @@ public partial class Player
     // 現在の回復時間.
     private int _currentRecoveryTime = 0;
     // 最大回復時間.
-    private int _maxRecoveryTime = 200;
+    private int _maxRecoveryTime = 300;
     // 回復量.
     private float _recoveryAmount = 0.8f;
 

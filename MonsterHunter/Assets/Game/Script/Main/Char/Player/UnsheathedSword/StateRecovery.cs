@@ -18,27 +18,25 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-            
-        }
-
-        public override void OnFixedUpdate(Player owner)
-        {
             owner._rigidbody.velocity *= 0.8f;
             owner._currentRecoveryTime++;
             _recoveryTime++;
-
             // 回復薬を減らす.
-            if(_recoveryTime == 50)
+            if (_recoveryTime == 80)
             {
                 owner._cureMedicineNum--;
             }
             // 回復するタイミング指定.
-            if(_recoveryTime >= 50 && _recoveryTime <=110)
+            if (_recoveryTime >= 80 && _recoveryTime <= 180)
             {
                 Recovery(owner);
             }
             // ごくごく音.
-            owner.SEPlay(50, (int)SEManager.HunterSE.DRINK);
+            owner.SEPlay(80, (int)SEManager.HunterSE.DRINK);
+        }
+
+        public override void OnFixedUpdate(Player owner)
+        {
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -74,8 +72,6 @@ public partial class Player
         // 回復.
         private void Recovery(Player owner)
         {
-            //if (owner._hitPoint >= owner._maxHitPoint) return;
-
             owner._hitPoint += owner._recoveryAmount;
 
             if(owner._hitPoint >= owner._maxHitPoint)

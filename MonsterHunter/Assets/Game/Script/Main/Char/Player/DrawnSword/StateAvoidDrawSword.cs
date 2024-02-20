@@ -1,4 +1,4 @@
-﻿/*抜刀回避*/
+﻿/*抜刀前転回避*/
 
 using UnityEngine;
 
@@ -45,16 +45,17 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
+            // 走る.
             if (owner._avoidTime >= 60)
             {
                 // スティック傾けていたらRunに.
-                if ((owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
+                if (owner._leftStickHorizontal != 0 ||
+                    owner._leftStickVertical != 0)
                 {
                     owner.StateTransition(_runDrawnSword);
                 }
             }
-
+            // 待機状態.
             if (owner._avoidTime >= owner._avoidMaxTime)
             {
                 if (owner._leftStickHorizontal == 0 &&

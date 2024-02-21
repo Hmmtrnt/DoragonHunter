@@ -15,6 +15,7 @@ public partial class Player
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 3;
             owner._hitStopTime = 0.01f;
+            owner._attackCol._isOneProcess = true;
         }
 
         public override void OnUpdate(Player owner)

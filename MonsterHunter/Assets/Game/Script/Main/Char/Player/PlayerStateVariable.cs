@@ -38,6 +38,9 @@ public partial class Player
     // メインシーンの情報.
     private MainSceneManager _mainSceneManager;
 
+    // 攻撃判定の情報.
+    private AttackCol _attackCol;
+
     /*アニメーション*/
     private Animator _animator;
     //--納刀状態--//

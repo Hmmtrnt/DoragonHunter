@@ -10,7 +10,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSteppingSlash = true;
-            owner._nextMotionFlame = 50;
+            owner._nextMotionFlame = 90;
             owner._rigidbody.velocity = Vector3.zero;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
@@ -19,16 +19,17 @@ public partial class Player
             //owner._weaponActive = true;
             owner._increaseAmountRenkiGauge = 7;
             owner._hitStopTime = 0.05f;
+            owner._attackCol._isOneProcess = true;
         }
 
         public override void OnUpdate(Player owner)
         {
-            if (owner._stateFlame == 65)
+            if (owner._stateFlame == 80)
             {
                 owner._weaponActive = true;
             }
 
-            if (owner._stateFlame <= 60 && owner._stateFlame >= 10)
+            if (owner._stateFlame <= 85 && owner._stateFlame >= 10)
             {
                 owner.ForwardStep(8);
             }
@@ -36,13 +37,13 @@ public partial class Player
             {
                 owner._rigidbody.velocity *= 0.8f;
             }
-            if (owner._stateFlame >= 80)
+            if (owner._stateFlame >= 100)
             {
                 owner._weaponActive = false;
             }
 
             // 空振り効果音再生.
-            owner.SEPlay(50, (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(60, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnFixedUpdate(Player owner)

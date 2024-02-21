@@ -33,6 +33,7 @@ public class SEManager : MonoBehaviour
         DRINK,              // ˆù‚Ş.
         FOOTSTEPLEFT,       // ‘«‰¹(¶).
         FOOTSTEPRIGHT,      // ‘«‰¹(‰E).
+        BOUNCE,             // ’e‚©‚ê‚½‰¹
 
         SENUM               // SE”.
     }

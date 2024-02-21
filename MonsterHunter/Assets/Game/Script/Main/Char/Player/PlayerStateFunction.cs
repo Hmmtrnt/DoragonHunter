@@ -19,6 +19,7 @@ public partial class Player
         _Monster = GameObject.FindWithTag("Monster");
         _MonsterState = GameObject.FindWithTag("Monster").GetComponent<Monster>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _attackCol = GameObject.Find("AttackCollider").GetComponent<AttackCol>();
         _weaponObject.SetActive(false);
         _weaponActive = false;
         _cureMedicineNum = 10;

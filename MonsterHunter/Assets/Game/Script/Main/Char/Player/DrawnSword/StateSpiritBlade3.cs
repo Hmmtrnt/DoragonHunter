@@ -95,7 +95,7 @@ public partial class Player
                 owner.StateTransition(_idleDrawnSword);
             }
             // 回避.
-            else if (owner._stateTime >= 2.0f &&
+            else if (owner._stateTime >= 1.7f &&
                 owner._viewDirection[(int)viewDirection.FORWARD] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -103,7 +103,7 @@ public partial class Player
                 owner.StateTransition(_avoidDrawnSword);
             }
             // 右回避.
-            else if (owner._stateTime >= 2.0f &&
+            else if (owner._stateTime >= 1.7f &&
                 owner._viewDirection[(int)viewDirection.RIGHT] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -111,7 +111,7 @@ public partial class Player
                 owner.StateTransition(_rightAvoid);
             }
             // 左回避.
-            else if (owner._stateTime >= 2.0f &&
+            else if (owner._stateTime >= 1.7f &&
                 owner._viewDirection[(int)viewDirection.LEFT] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -119,7 +119,7 @@ public partial class Player
                 owner.StateTransition(_leftAvoid);
             }
             // 後ろ回避.
-            else if (owner._stateTime >= 2.0f &&
+            else if (owner._stateTime >= 1.7f &&
                 owner._viewDirection[(int)viewDirection.BACKWARD] &&
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -132,7 +132,7 @@ public partial class Player
             //    owner.ChangeState(_piercing);
             //}
             // 気刃大回転斬り.
-            else if (owner._stateTime >= 2.0f && 
+            else if (owner._stateTime >= 1.7f && 
                 owner._input._RightTrigger >= 0.5)
             {
                 owner.StateTransition(_roundSlash);

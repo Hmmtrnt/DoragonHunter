@@ -10,7 +10,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade2 = true;
-            owner._nextMotionFlame = 45;
+            owner._nextMotionFlame = 50;
             owner.StateTransitionInitialization();
             owner._attackPower = 114;
             owner._isCauseDamage = true;
@@ -22,11 +22,11 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-            if (owner._stateFlame == 25)
+            if (owner._stateFlame == 30)
             {
                 owner._weaponActive = true;
             }
-            else if (owner._stateFlame == 50)
+            else if (owner._stateFlame == 45)
             {
                 owner._weaponActive = false;
             }

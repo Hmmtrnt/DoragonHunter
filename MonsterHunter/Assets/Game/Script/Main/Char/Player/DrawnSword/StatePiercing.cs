@@ -25,12 +25,12 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-            if (owner._stateTime >= 0.1f && !_test)
+            if (owner._stateTime >= 0.13f && !_test)
             {
                 _test = true;
                 owner._weaponActive = true;
             }
-            else if (owner._stateTime >= 0.2f)
+            else if (owner._stateTime >= 0.25f)
             {
                 owner._weaponActive = false;
             }
@@ -63,7 +63,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if (owner._stateTime >= 1.3f)
+            if (owner._stateTime >= 1.2f)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

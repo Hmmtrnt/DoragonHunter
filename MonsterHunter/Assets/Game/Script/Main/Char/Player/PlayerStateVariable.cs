@@ -231,7 +231,7 @@ public partial class Player
     // 最大回復時間.
     private int _maxRecoveryTime = 300;
     // 回復量.
-    private float _recoveryAmount = 0.8f;
+    private float _recoveryAmount = 0.5f;
 
     /*共通*/
     // 減速.

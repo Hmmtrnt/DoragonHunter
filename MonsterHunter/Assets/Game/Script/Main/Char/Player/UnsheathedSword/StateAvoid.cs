@@ -1,6 +1,7 @@
 ﻿/*回避*/
 
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public partial class Player
 {
@@ -16,15 +17,31 @@ public partial class Player
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
             owner._deceleration = 0.9f;
             owner._flameAvoid = true;
+            owner._rotateSpeed = 40.0f;
+
+            if(prevState == _avoid)
+            {
+                owner._animator.Play("Avoid", 0, 0);
+            }
+
+            owner.RotateDirection();
         }
 
         public override void OnUpdate(Player owner)
         {
             owner._avoidTime++;
+
             if (owner._avoidTime == 6)
             {
                 owner._flameAvoid = false;
             }
+
+            //Debug.Log(owner._avoidTime);
+            Debug.Log(owner._avoidAdvanceInput);
+
+            owner.GetAvoidAdvenceInput(30);
+
+
         }
 
         public override void OnFixedUpdate(Player owner)
@@ -43,11 +60,21 @@ public partial class Player
             owner._avoidMotion = false;
             owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
+            owner._avoidAdvanceInput = false;
+            owner._rotateSpeed = 10.0f;
         }
 
         public override void OnChangeState(Player owner)
         {
             if(owner._avoidTime >= 50)
+            {
+                if (owner._avoidAdvanceInput)
+                {
+                    owner.StateTransition(_avoid);
+                }
+            }
+
+            if(owner._avoidTime >= 55)
             {
                 // スティック傾けていたらRunに
                 if ((owner._leftStickHorizontal != 0 ||
@@ -96,6 +123,8 @@ public partial class Player
             owner._isProcess = false;
             
         }
+
+        
     }
 }
 

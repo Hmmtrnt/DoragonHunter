@@ -1,6 +1,7 @@
 /*プレイヤーステートの関数まとめ*/
 
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public partial class Player
 {
@@ -45,6 +46,14 @@ public partial class Player
         {
             _nextMotionFlame = NextStateTransitionTime;
         }
+    }
+
+    /// <summary>
+    /// 次の状態に遷移する時間をリセット.
+    /// </summary>
+    private void ResetNextStateTransitionTime()
+    {
+        _nextMotionFlame = 0;
     }
 
     // まだ使う予定なし.
@@ -324,6 +333,22 @@ public partial class Player
 
         _isProcess = false;
 
+    }
+
+    /// <summary>
+    /// 連続で回避するか先行入力情報を取得.
+    /// </summary>
+    /// <param name="AdvenceInputAcceptStartTime">先行入力受付開始時間</param>
+    /// <returns>_avoidAdvanceInput </returns>
+    private void GetAvoidAdvenceInput(int AdvenceInputAcceptStartTime)
+    {
+        if (_avoidTime >= AdvenceInputAcceptStartTime)
+        {
+            if (_input._AButtonDown)
+            {
+                _avoidAdvanceInput = true;
+            }
+        }
     }
 
     /// <summary>

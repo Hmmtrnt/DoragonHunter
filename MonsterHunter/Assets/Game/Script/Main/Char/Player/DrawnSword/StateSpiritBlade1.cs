@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade1 = true;
-            owner._nextMotionFlame = 70;
+            owner._nextMotionFlame = 80;
             owner._deceleration = 0.9f;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
@@ -107,7 +107,7 @@ public partial class Player
             //{
             //    owner.ChangeState(_piercing);
             //}
-            // 気刃斬り1.
+            // 気刃斬り2.
             else if (owner._stateFlame >= owner._nextMotionFlame && 
                 owner._input._RightTrigger >= 0.5)
             {

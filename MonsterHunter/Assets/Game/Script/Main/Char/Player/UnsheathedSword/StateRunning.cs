@@ -11,7 +11,10 @@ public partial class Player
             owner.StateTransitionInitialization();
             owner._runMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+            owner.ResetNextStateTransitionTime();
+
             owner.SetNextStateTransitionTime(_idle, 10);
+            
         }
 
         public override void OnUpdate(Player owner)
@@ -23,9 +26,6 @@ public partial class Player
         {
             owner.RotateDirection();
             Move(owner);
-
-            //owner.SEPlay(10, (int)SEManager.HunterSE.FOOTSTEPLEFT);
-            //owner.SEPlay(30, (int)SEManager.HunterSE.FOOTSTEPRIGHT);
         }
 
         public override void OnExit(Player owner, StateBase nextState)
@@ -33,6 +33,7 @@ public partial class Player
             owner._runMotion = false;
             owner._isDashing = false;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+            owner.ResetNextStateTransitionTime();
         }
 
         public override void OnChangeState(Player owner)

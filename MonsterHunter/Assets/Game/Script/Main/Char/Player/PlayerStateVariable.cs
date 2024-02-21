@@ -210,6 +210,8 @@ public partial class Player
 
     // 回避しているかどうか.
     private bool _isAvoiding = false;
+    // 回避をするかの先行入力を取得する.
+    private bool _avoidAdvanceInput = false;
 
     // スティックの傾きとプレイヤー間の方向ベクトル.
     private Vector3 _stickDirection = Vector3.zero;

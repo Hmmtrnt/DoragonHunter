@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade1 = true;
-            owner._nextMotionFlame = 60;
+            owner._nextMotionFlame = 70;
             owner._deceleration = 0.9f;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
@@ -43,7 +43,7 @@ public partial class Player
                 owner._weaponActive = false;
             }
 
-            if (owner._stateFlame <= 10)
+            if (owner._stateFlame <= 15)
             {
                 owner.ForwardStep(3);
             }

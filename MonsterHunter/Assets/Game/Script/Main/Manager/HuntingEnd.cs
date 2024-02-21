@@ -196,7 +196,6 @@ public class HuntingEnd : MonoBehaviour
         {
             _QuestFailed = true;
             _mainSceneManager._openGamePlayUi = false;
-            Debug.Log("to");
         }
         else if(_monsterState.GetHitPoint()<=0) 
         {

@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade3 = true;
-            owner._nextMotionFlame = 120;
+            owner._nextMotionFlame = 100;
             owner.StateTransitionInitialization();
             owner._attackPower = 40;
             owner._isCauseDamage = true;
@@ -26,28 +26,30 @@ public partial class Player
             {
                 owner._weaponActive = true;
             }
-            else if (owner._stateFlame == 25)
+            else if (owner._stateFlame == 20)
             {
                 owner._weaponActive = false;
             }
             // 二撃目.
-            else if (owner._stateFlame == 30)
+            else if (owner._stateFlame == 22)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
+                owner._attackCol._isOneProcess= true;
             }
             else if (owner._stateFlame == 45)
             {
                 owner._weaponActive = false;
             }
             // 三撃目.
-            else if (owner._stateFlame == 80)
+            else if (owner._stateFlame == 60)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
+                owner._attackCol._isOneProcess = true;
                 owner._attackPower = 100;
             }
-            else if (owner._stateFlame == 100)
+            else if (owner._stateFlame == 95)
             {
                 owner._weaponActive = false;
             }

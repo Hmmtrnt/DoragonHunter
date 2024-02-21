@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade3 = true;
-            owner._nextMotionFlame = 100;
+            owner._nextMotionFlame = 110;
             owner.StateTransitionInitialization();
             owner._attackPower = 40;
             owner._isCauseDamage = true;
@@ -42,7 +42,7 @@ public partial class Player
                 owner._weaponActive = false;
             }
             // 三撃目.
-            else if (owner._stateFlame == 60)
+            else if (owner._stateFlame == 80)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;

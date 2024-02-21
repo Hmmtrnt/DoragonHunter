@@ -10,7 +10,7 @@ public partial class Player
         {
             owner._isAvoiding = true;
             owner._avoidMotion = true;
-            owner._stamina -= owner._avoidStaminaCost;
+            //owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;

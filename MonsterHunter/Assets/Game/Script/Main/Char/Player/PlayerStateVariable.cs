@@ -172,7 +172,7 @@ public partial class Player
 
     /*移動時の変数*/
     // 走る時の移動倍率.
-    private float _moveVelocityRunMagnification = 12;
+    private float _moveVelocityRunMagnification = 11;
     // ダッシュ時の移動倍率.
     private float _moveVelocityDashMagnigication = 20;
     // 疲労ダッシュ時の移動倍率.
@@ -186,7 +186,7 @@ public partial class Player
     // 移動速度.
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
     // 移動時の回転速度
-    private float _rotateSpeed = 30.0f;
+    private float _rotateSpeed = 10.0f;
 
     // ダッシュしているかどうか.
     private bool _isDashing = false;

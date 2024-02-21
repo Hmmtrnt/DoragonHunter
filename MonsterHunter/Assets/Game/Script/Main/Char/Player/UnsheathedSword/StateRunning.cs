@@ -11,6 +11,7 @@ public partial class Player
             owner.StateTransitionInitialization();
             owner._runMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+            owner.SetNextStateTransitionTime(_idle, 10);
         }
 
         public override void OnUpdate(Player owner)
@@ -43,7 +44,7 @@ public partial class Player
                 owner.StateTransition(_idle);
             }
 
-            if (owner._openMenu) return;
+            if (owner._openMenu || owner._stateFlame <= owner._nextMotionFlame) return;
 
             // ダッシュ状態.
             if (owner._input._RBButton && owner._stamina >= owner._maxStamina / 5)

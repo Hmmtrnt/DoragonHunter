@@ -27,7 +27,7 @@ public partial class Player
             {
                 owner._weaponActive = true;
             }
-            else if (owner._stateFlame == 45)
+            else if (owner._stateFlame == 49)
             {
                 owner._weaponActive = false;
             }

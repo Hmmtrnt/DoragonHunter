@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade1 = true;
-            owner._nextMotionFlame = 80;
+            owner._nextMotionFlame = 60;
             owner._deceleration = 0.9f;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
@@ -23,6 +23,8 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
+
+            Debug.Log(owner._stateFlame);
             if (owner._stateFlame >= 10)
             {
                 //owner._isCauseDamage = true;

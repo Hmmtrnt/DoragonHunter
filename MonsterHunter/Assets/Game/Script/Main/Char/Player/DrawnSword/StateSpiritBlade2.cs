@@ -10,7 +10,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade2 = true;
-            owner._nextMotionFlame = 50;
+            owner._nextMotionFlame = 55;
             owner.StateTransitionInitialization();
             owner._attackPower = 114;
             owner._isCauseDamage = true;

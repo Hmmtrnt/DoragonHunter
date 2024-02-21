@@ -9,7 +9,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSlashUp = true;
-            owner._nextMotionFlame = 40;
+            owner._nextMotionFlame = 30;
             owner.StateTransitionInitialization();
             owner._attackPower = 73;
             owner._isCauseDamage = true;
@@ -32,7 +32,7 @@ public partial class Player
             // 前進させる.
             if (owner._stateFlame <= 20)
             {
-                owner.ForwardStep(2);
+                owner.ForwardStep(3.5f);
             }
             // 空振り効果音再生.
             owner.SEPlay(10, (int)SEManager.HunterSE.MISSINGSLASH);
@@ -53,7 +53,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if (owner._stateFlame >= 120)
+            if (owner._stateFlame >= 130)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

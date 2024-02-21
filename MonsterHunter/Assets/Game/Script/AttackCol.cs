@@ -61,23 +61,23 @@ public class AttackCol : MonoBehaviour
 
         if (other.gameObject.tag == "MonsterHead")
         {
-            CauseDamageUpdate(1.2f, (int)Fleshy.HEAD);
+            CauseDamageUpdate(1.3f, (int)Fleshy.HEAD);
         }
         else if(other.gameObject.tag == "MonsterBody")
         {
-            CauseDamageUpdate(1.0f, (int)Fleshy.BODY);
+            CauseDamageUpdate(0.4f, (int)Fleshy.BODY);
         }
         else if (other.gameObject.tag == "MonsterWingRight")
         {
-            CauseDamageUpdate(0.9f, (int)Fleshy.WINGRIGHT);
+            CauseDamageUpdate(1.1f, (int)Fleshy.WINGRIGHT);
         }
         else if( other.gameObject.tag == "MonsterWingLeft")
         {
-            CauseDamageUpdate(0.9f, (int)Fleshy.WINGLEFT);
+            CauseDamageUpdate(1.1f, (int)Fleshy.WINGLEFT);
         }
         else if(other.gameObject.tag == "MonsterTail")
         {
-            CauseDamageUpdate(1.1f, (int)Fleshy.TAIL);
+            CauseDamageUpdate(0.5f, (int)Fleshy.TAIL);
         }
     }
 
@@ -173,8 +173,8 @@ public class AttackCol : MonoBehaviour
     private bool GetSoftFleshy(int FleshyNumber)
     {
         bool softFleshy = (FleshyNumber == (int)Fleshy.HEAD) ||
-            (FleshyNumber == (int)Fleshy.BODY) ||
-            (FleshyNumber == (int)Fleshy.TAIL);
+            (FleshyNumber == (int)Fleshy.WINGRIGHT) ||
+            (FleshyNumber == (int)Fleshy.WINGLEFT);
 
         return softFleshy;
     }

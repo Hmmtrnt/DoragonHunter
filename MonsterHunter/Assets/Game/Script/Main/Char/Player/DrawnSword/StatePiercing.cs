@@ -57,7 +57,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if (owner._stateFlame >= 90)
+            if (owner._stateFlame >= 70)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

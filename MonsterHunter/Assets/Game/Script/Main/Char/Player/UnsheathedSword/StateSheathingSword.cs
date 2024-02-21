@@ -20,7 +20,7 @@ public partial class Player
         public override void OnUpdate(Player owner)
         {
             MotionTransition++;
-            if (owner._stateFlame <= 20)
+            if (owner._stateTime <= 0.33f)
             {
                 owner.ForwardStep(10);
             }
@@ -43,7 +43,7 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
-            if (MotionTransition <= 35) return;
+            if (owner._stateTime <= 0.5f) return;
             if((owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0) && owner._input._RBButton)
             {
                 owner.StateTransition(_dash);

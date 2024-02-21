@@ -46,7 +46,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // 走る.
-            if (owner._avoidTime >= 60)
+            if (owner._stateTime >= 1.0f)
             {
                 // スティック傾けていたらRunに.
                 if (owner._leftStickHorizontal != 0 ||
@@ -56,7 +56,8 @@ public partial class Player
                 }
             }
             // 待機状態.
-            if (owner._avoidTime >= owner._avoidMaxTime)
+            //if (owner._avoidTime >= owner._avoidMaxTime)
+            if (owner._stateTime >= 1.3f)
             {
                 if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)

@@ -22,9 +22,9 @@ public partial class Player
             owner._motionFrame++;
 
             // 前進させる.
-            if (owner._motionFrame >= 10 && owner._motionFrame <= 35)
+            if (owner._stateTime >= 0.2f && owner._stateTime <= 0.5f)
             {
-                owner.ForwardStep(5);
+                owner.ForwardStep(5.5f);
             }
 
             // 抜刀効果音再生.
@@ -44,7 +44,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // 待機状態.
-            if(owner._motionFrame >= 90)
+            if(owner._stateTime >= 1.3f)
             {
                 if(owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0)
                 {

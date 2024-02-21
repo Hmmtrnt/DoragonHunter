@@ -6,6 +6,10 @@ public partial class Player
 {
     public class StateSpiritBlade3 : StateBase
     {
+        // 一度処理を通したら次から通さない.
+        //HACK:変数名を変更.
+        private bool _test = false;
+
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSpiritBlade3 = true;
@@ -17,45 +21,54 @@ public partial class Player
             //owner._currentRenkiGauge -= 20;
             owner._hitStopTime = 0.01f;
             owner._attackCol._isOneProcess = true;
+            _test = false;
         }
 
         public override void OnUpdate(Player owner)
         {
             // 一撃目.
-            if (owner._stateFlame == 10)
+            if ((owner._stateTime >= 0.15f && owner._stateTime <= 0.3f) && !_test)
             {
                 owner._weaponActive = true;
+                _test = true;
             }
-            else if (owner._stateFlame == 20)
+            if (owner._stateFlame >= 0.3f && _test)
             {
                 owner._weaponActive = false;
+                _test = false;
             }
+
             // 二撃目.
-            else if (owner._stateFlame == 22)
+            if ((owner._stateFlame >= 0.31f && owner._stateFlame <= 0.75f)&& !_test)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
                 owner._attackCol._isOneProcess= true;
+                _test = true;
             }
-            else if (owner._stateFlame == 45)
+            if (owner._stateFlame >= 0.75f && _test)
             {
                 owner._weaponActive = false;
+                _test = false;
             }
+
             // 三撃目.
-            else if (owner._stateFlame == 85)
+            if ((owner._stateFlame >= 1.4f && owner._stateFlame <= 1.9f) && !_test)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
                 owner._attackCol._isOneProcess = true;
                 owner._attackPower = 100;
+                _test = true;
             }
-            else if (owner._stateFlame == 110)
+            if (owner._stateFlame >= 1.9f && _test)
             {
                 owner._weaponActive = false;
+                _test = false;
             }
 
 
-            if (owner._stateFlame <= 60)
+            if (owner._stateTime <= 1.0f)
             {
                 owner.ForwardStep(4);
             }
@@ -77,12 +90,12 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if (owner._stateFlame >= 180)
+            if (owner._stateTime >= 3.0f)
             {
                 owner.StateTransition(_idleDrawnSword);
             }
             // 回避.
-            else if (owner._stateFlame >= owner._nextMotionFlame &&
+            else if (owner._stateTime >= 2.0f &&
                 owner._viewDirection[(int)viewDirection.FORWARD] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -90,7 +103,7 @@ public partial class Player
                 owner.StateTransition(_avoidDrawnSword);
             }
             // 右回避.
-            else if (owner._stateFlame >= owner._nextMotionFlame &&
+            else if (owner._stateTime >= 2.0f &&
                 owner._viewDirection[(int)viewDirection.RIGHT] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -98,7 +111,7 @@ public partial class Player
                 owner.StateTransition(_rightAvoid);
             }
             // 左回避.
-            else if (owner._stateFlame >= owner._nextMotionFlame &&
+            else if (owner._stateTime >= 2.0f &&
                 owner._viewDirection[(int)viewDirection.LEFT] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -106,7 +119,7 @@ public partial class Player
                 owner.StateTransition(_leftAvoid);
             }
             // 後ろ回避.
-            else if (owner._stateFlame >= owner._nextMotionFlame &&
+            else if (owner._stateTime >= 2.0f &&
                 owner._viewDirection[(int)viewDirection.BACKWARD] &&
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -119,7 +132,7 @@ public partial class Player
             //    owner.ChangeState(_piercing);
             //}
             // 気刃大回転斬り.
-            else if (owner._stateFlame >= owner._nextMotionFlame && 
+            else if (owner._stateTime >= 2.0f && 
                 owner._input._RightTrigger >= 0.5)
             {
                 owner.StateTransition(_roundSlash);

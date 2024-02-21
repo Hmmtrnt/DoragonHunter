@@ -11,6 +11,8 @@ public class AttackCol : MonoBehaviour
     private PlayerHitStopManager _hitStop;
     private SEManager _seManager;
     private SEManager.HunterSE _se;
+    // 攻撃を当てた時の流血エフェクトプレハブ取得.
+    GameObject _bloodEffectObject;
     // 弱い攻撃ヒットエフェクトのプレハブ取得.
     GameObject _smallHitEffectObject;
     // 強い攻撃ヒットエフェクトのプレハブ取得.
@@ -27,6 +29,7 @@ public class AttackCol : MonoBehaviour
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.
+        _bloodEffectObject = (GameObject)Resources.Load("Blood2");
         _smallHitEffectObject = (GameObject)Resources.Load("SmallHitEffect");
         _hardHitEffectObject = (GameObject)Resources.Load("HardHitEffect");
         _hitEffectPosition = GameObject.Find("EffectSpawnPosition");
@@ -120,5 +123,6 @@ public class AttackCol : MonoBehaviour
     {
         // 生成.
         Instantiate(objectName, _hitEffectPosition.transform.position, Quaternion.identity);
+        Instantiate(_bloodEffectObject, _hitEffectPosition.transform.position, Quaternion.identity);
     }
 }

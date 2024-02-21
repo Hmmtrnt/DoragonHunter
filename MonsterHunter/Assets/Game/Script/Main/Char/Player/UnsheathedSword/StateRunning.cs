@@ -23,8 +23,8 @@ public partial class Player
             owner.RotateDirection();
             Move(owner);
 
-            owner.SEPlay(10, (int)SEManager.HunterSE.FOOTSTEPLEFT);
-            owner.SEPlay(30, (int)SEManager.HunterSE.FOOTSTEPRIGHT);
+            //owner.SEPlay(10, (int)SEManager.HunterSE.FOOTSTEPLEFT);
+            //owner.SEPlay(30, (int)SEManager.HunterSE.FOOTSTEPRIGHT);
         }
 
         public override void OnExit(Player owner, StateBase nextState)

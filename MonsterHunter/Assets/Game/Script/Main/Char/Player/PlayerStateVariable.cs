@@ -85,7 +85,7 @@ public partial class Player
 
     // プレイヤーのステータス.
     // 体力.
-    private float _hitPoint = 1;
+    private float _hitPoint = 200;
     // 体力最大値.
     private float _maxHitPoint = 200;
     // スタミナ.

@@ -10,7 +10,7 @@ public partial class Player
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner._drawnSteppingSlash = true;
-            owner._nextMotionFlame = 90;
+            owner._nextMotionFlame = 80;
             owner._rigidbody.velocity = Vector3.zero;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
@@ -24,12 +24,12 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-            if (owner._stateFlame == 80)
+            if (owner._stateFlame == 65)
             {
                 owner._weaponActive = true;
             }
 
-            if (owner._stateFlame <= 85 && owner._stateFlame >= 10)
+            if (owner._stateFlame <= 70 && owner._stateFlame >= 10)
             {
                 owner.ForwardStep(8);
             }
@@ -62,7 +62,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // アイドル.
-            if(owner._stateFlame>= 170)
+            if(owner._stateFlame>= 150)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

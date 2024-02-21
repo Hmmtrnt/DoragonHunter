@@ -66,15 +66,16 @@ public partial class Player
 
         public override void OnChangeState(Player owner)
         {
-            if(owner._avoidTime >= 50)
-            {
-                if (owner._avoidAdvanceInput)
-                {
-                    owner.StateTransition(_avoid);
-                }
-            }
+            //if(owner._avoidTime >= 50)
+            //{
+            //    if (owner._avoidAdvanceInput)
+            //    {
+            //        owner.StateTransition(_avoid);
+            //    }
+            //}
 
-            if(owner._avoidTime >= 55)
+            //if(owner._avoidTime >= 55)
+            if (owner._stateTime >= 1.0f)
             {
                 // スティック傾けていたらRunに
                 if ((owner._leftStickHorizontal != 0 ||
@@ -90,7 +91,7 @@ public partial class Player
                 }
             }
 
-            if (owner._avoidTime >= owner._avoidMaxTime)
+            if (owner._stateTime >= 1.2f)
             {
                 if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)
@@ -104,12 +105,23 @@ public partial class Player
         private void MoveAvoid(Player owner)
         {
             // 減速
-            if (owner._avoidTime <= 10)
+            //if (owner._stateTime <= 0.1f)
+            //{
+            //    owner._rigidbody.velocity *= owner._deceleration;
+            //}
+            //// 一気に減速
+            //if (owner._stateTime >= 0.9f)
+            //{
+            //    owner._rigidbody.velocity *= 0.8f;
+            //}
+
+            // 減速
+            if (owner._stateTime <= 0.1f)
             {
                 owner._rigidbody.velocity *= owner._deceleration;
             }
             // 一気に減速
-            if (owner._avoidTime >= 45)
+            if (owner._stateTime >= 0.9f)
             {
                 owner._rigidbody.velocity *= 0.8f;
             }

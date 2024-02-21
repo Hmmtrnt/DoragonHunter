@@ -75,6 +75,9 @@ public partial class Player
 
     // 次のモーションに遷移するフレーム.
     private float _nextMotionFlame = 0;
+    // 次のモーションに遷移する時間.
+    private float _nextMotionTime = 0;
+
     // フレーム回避の状態.
     private bool _flameAvoid = false;
 
@@ -85,7 +88,7 @@ public partial class Player
 
     // プレイヤーのステータス.
     // 体力.
-    private float _hitPoint = 200;
+    private float _hitPoint = 1;
     // 体力最大値.
     private float _maxHitPoint = 200;
     // スタミナ.
@@ -99,6 +102,8 @@ public partial class Player
     private int _motionFrame = 0;
     // 現在の状態のフレーム数.
     public int _stateFlame = 0;
+    // 現在の状態の時間.
+    public float _stateTime = 0;
     // ヒットストップ中かどうか.
     public bool _currentHitStop = false;
     // ヒットストップ時間.

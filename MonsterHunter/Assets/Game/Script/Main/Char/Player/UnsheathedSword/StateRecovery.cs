@@ -8,12 +8,16 @@ public partial class Player
     {
         // 回復時間
         private int _recoveryTime = 0;
+        // 一度処理を通したら次から通さない.
+        //HACK:変数名を変更.
+        private bool _test = false;
 
         public override void OnEnter(Player owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._isRecovery = true;
             owner._healMotion = true;
+            _test = false;
         }
 
         public override void OnUpdate(Player owner)
@@ -22,12 +26,13 @@ public partial class Player
             owner._currentRecoveryTime++;
             _recoveryTime++;
             // 回復薬を減らす.
-            if (_recoveryTime == 80)
+            if (owner._stateTime >= 1.2f && !_test)
             {
                 owner._cureMedicineNum--;
+                _test = true;
             }
             // 回復するタイミング指定.
-            if (_recoveryTime >= 80 && _recoveryTime <= 180)
+            if (owner._stateTime >= 1.2f && owner._stateTime <= 2.3f)
             {
                 Recovery(owner);
             }
@@ -45,12 +50,14 @@ public partial class Player
             owner._currentRecoveryTime = 0;
             _recoveryTime = 0;
             owner._healMotion = false;
+            _test = false;
         }
 
         public override void OnChangeState(Player owner)
         {
             // 状態遷移ができるかどうか
-            bool isChange = owner._currentRecoveryTime >= owner._maxRecoveryTime;
+            //bool isChange = owner._currentRecoveryTime >= owner._maxRecoveryTime;
+            bool isChange = owner._stateTime >= 3.3f;
             // 動いているかどうか
             bool isMove = owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0;
 

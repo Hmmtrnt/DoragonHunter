@@ -73,6 +73,8 @@ public partial class Player
     {
         // 状態終了時.
         _currentState.OnExit(this, nextState);
+        // 各状態の時間をリセット.
+        ResetTime();
         // 次の状態の呼び出し.
         nextState.OnEnter(this, _currentState);
         // 次に遷移する状態の代入.
@@ -134,6 +136,25 @@ public partial class Player
         {
             _stateFlame++;
         }
+    }
+
+    /// <summary>
+    /// 各状態の経過時間を計測.
+    /// </summary>
+    private void StateTime()
+    {
+        if(!_currentHitStop)
+        {
+            _stateTime += Time.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// 各状態の経過時間をリセット.
+    /// </summary>
+    private void ResetTime()
+    {
+        _stateTime = 0;
     }
 
     /// <summary>

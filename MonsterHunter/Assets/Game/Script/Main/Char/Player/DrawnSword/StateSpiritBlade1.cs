@@ -28,19 +28,6 @@ public partial class Player
 
         public override void OnUpdate(Player owner)
         {
-
-            
-            //if (owner._stateFlame >= 10)
-            //{
-            //    //owner._isCauseDamage = true;
-            //    // 減速させる
-            //    //owner._rigidbody.velocity *= owner._deceleration;
-            //}
-            //if (owner._stateFlame >= 60)
-            //{
-            //    //owner._isCauseDamage = false;
-            //}
-
             if (owner._stateTime >= 0.75f && !_test)
             {
                 owner._weaponActive = true;

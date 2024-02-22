@@ -24,6 +24,7 @@ public partial class Player
             owner._hitStopTime = 0.1f;
             owner._attackCol._isOneProcess = true;
             _test = false;
+            owner._nextMotionTime = 2.0f;
         }
 
         public override void OnUpdate(Player owner)
@@ -77,20 +78,20 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // 納刀待機.
-            if (owner._stateTime >= 2.0f &&
+            if (owner._stateTime >= owner._nextMotionTime &&
                 (owner._leftStickHorizontal == 0 || owner._leftStickVertical == 0))
             {
                 owner.StateTransition(_idle);
             }
             // 移動.
-            else if(owner._stateTime >= 2.0f && 
+            else if(owner._stateTime >= owner._nextMotionTime && 
                 (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) && 
                 !owner._input._RBButton)
             {
                 owner.StateTransition(_running);
             }
             // ダッシュ.
-            else if(owner._stateTime >= 2.0f &&
+            else if(owner._stateTime >= owner._nextMotionTime &&
                 (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) &&
                 owner._input._RBButton)
             {
@@ -99,5 +100,3 @@ public partial class Player
         }
     }
 }
-
-

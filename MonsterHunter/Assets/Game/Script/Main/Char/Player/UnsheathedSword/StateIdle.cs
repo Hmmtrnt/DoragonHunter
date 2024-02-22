@@ -30,21 +30,7 @@ public partial class Player
         public override void OnChangeState(Player owner)
         {
             // 移動.
-            if (owner._leftStickHorizontal != 0.0f ||
-                owner._leftStickVertical != 0.0f)
-            {
-                if (owner._input._RBButton && !owner._openMenu)
-                {
-                    // ダッシュ.
-                    owner.StateTransition(_dash);
-                }
-                else
-                {
-                    // 移動.
-                    owner.StateTransition(_running);
-                }
-                
-            }
+            owner.TransitionRun();
 
             if (owner._openMenu) return;
 

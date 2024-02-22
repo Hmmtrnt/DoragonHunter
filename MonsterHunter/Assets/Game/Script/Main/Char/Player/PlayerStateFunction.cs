@@ -461,6 +461,36 @@ public partial class Player
     }
 
     /// <summary>
+    /// スティックを倒すと移動状態に遷移.
+    /// </summary>
+    private void TransitionRun()
+    {
+        if(_leftStickHorizontal != 0.0f ||
+            _leftStickVertical != 0.0f)
+        {
+            RunOrDash();
+        }
+    }
+
+    /// <summary>
+    /// 走るかダッシュするかを決める.
+    /// </summary>
+    private void RunOrDash()
+    {
+        // メニュー開いているときはダッシュしない.
+        if (_input._RBButton && !_openMenu)
+        {
+            // ダッシュ.
+            StateTransition(_dash);
+        }
+        else
+        {
+            // 移動.
+            StateTransition(_running);
+        }
+    }
+
+    /// <summary>
     /// ダメージを受けた時に体力を減らし状態遷移.
     /// </summary>
     private void OnDamage()

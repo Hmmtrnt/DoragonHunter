@@ -78,17 +78,19 @@ public partial class Player
             if (owner._stateTime >= 1.0f)
             {
                 // スティック傾けていたらRunに
-                if ((owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
-                {
-                    owner.StateTransition(_running);
-                }
+                //if ((owner._leftStickHorizontal != 0 ||
+                //    owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
+                //{
+                //    owner.StateTransition(_running);
+                //}
 
-                if ((owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0) && owner._input._RBButton && !owner._openMenu)
-                {
-                    owner.StateTransition(_dash);
-                }
+                //if ((owner._leftStickHorizontal != 0 ||
+                //    owner._leftStickVertical != 0) && owner._input._RBButton && !owner._openMenu)
+                //{
+                //    owner.StateTransition(_dash);
+                //}
+
+                owner.TransitionRun();
             }
 
             if (owner._stateTime >= 1.2f)

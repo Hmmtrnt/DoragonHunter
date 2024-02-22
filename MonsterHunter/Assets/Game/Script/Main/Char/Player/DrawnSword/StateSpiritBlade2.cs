@@ -23,17 +23,18 @@ public partial class Player
             owner._hitStopTime = 0.01f;
             owner._attackCol._isOneProcess = true;
             _test = false;
+            owner._nextMotionTime = 0.65f;
         }
 
         public override void OnUpdate(Player owner)
         {
-            if (owner._stateTime >= 0.5f && !_test)
+            if (owner._stateTime >= 0.45f && !_test)
             {
                 owner._weaponActive = true;
                 _test = true;
             }
 
-            if (owner._stateTime >= 0.75f)
+            if (owner._stateTime >= 0.6f)
             {
                 owner._weaponActive = false;
             }
@@ -86,7 +87,7 @@ public partial class Player
                 owner.StateTransition(_idleDrawnSword);
             }
             // 回避.
-            else if (owner._stateTime >= 0.95f &&
+            else if (owner._stateTime >= owner._nextMotionTime &&
                 owner._viewDirection[(int)viewDirection.FORWARD] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -94,7 +95,7 @@ public partial class Player
                 owner.StateTransition(_avoidDrawnSword);
             }
             // 右回避.
-            else if (owner._stateTime >= 0.95f && 
+            else if (owner._stateTime >= owner._nextMotionTime && 
                 owner._viewDirection[(int)viewDirection.RIGHT] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -102,7 +103,7 @@ public partial class Player
                 owner.StateTransition(_rightAvoid);
             }
             // 左回避.
-            else if (owner._stateTime >= 0.95f &&
+            else if (owner._stateTime >= owner._nextMotionTime &&
                 owner._viewDirection[(int)viewDirection.LEFT] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -110,7 +111,7 @@ public partial class Player
                 owner.StateTransition(_leftAvoid);
             }
             // 後ろ回避.
-            else if (owner._stateTime >= 0.95f &&
+            else if (owner._stateTime >= owner._nextMotionTime &&
                 owner._viewDirection[(int)viewDirection.BACKWARD] &&
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)
@@ -123,7 +124,7 @@ public partial class Player
             //    owner.ChangeState(_slashUp);
             //}
             // 気刃斬り3.
-            else if (owner._stateTime >= 0.95f &&
+            else if (owner._stateTime >= owner._nextMotionTime &&
                 owner._input._RightTrigger >= 0.5)
             {
                 owner.StateTransition(_spiritBlade3);

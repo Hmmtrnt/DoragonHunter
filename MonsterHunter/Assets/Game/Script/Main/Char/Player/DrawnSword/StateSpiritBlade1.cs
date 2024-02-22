@@ -34,7 +34,7 @@ public partial class Player
                 owner._weaponActive = true;
             }
 
-            if (owner._stateTime >= 0.85f)
+            if (owner._stateTime >= 0.88f)
             {
                 owner._weaponActive = false;
             }

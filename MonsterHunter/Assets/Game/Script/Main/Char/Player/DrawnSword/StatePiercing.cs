@@ -68,7 +68,7 @@ public partial class Player
                 owner.StateTransition(_idleDrawnSword);
             }
             // 回避.
-            else if (owner._stateTime >= 0.53f &&
+            else if (owner._stateTime >= 0.45f &&
                 owner._viewDirection[(int)viewDirection.FORWARD] && 
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)

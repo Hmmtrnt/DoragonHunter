@@ -82,7 +82,7 @@ public partial class Player
             //    owner._viewDirection[(int)viewDirection.FORWARD] && 
             //    owner.GetDistance() > 1 && 
             //    owner._input._AButtonDown)
-            else if (owner._stateTime >= 1.3f &&
+            else if (owner._stateTime >= 1.15f &&
                 owner._viewDirection[(int)viewDirection.FORWARD] &&
                 owner.GetDistance() > 1 &&
                 owner._input._AButtonDown)

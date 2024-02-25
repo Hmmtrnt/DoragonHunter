@@ -27,8 +27,10 @@ public class AttackCol : MonoBehaviour
     GameObject _smallHitEffectObject;
     // 強い攻撃ヒットエフェクトのプレハブ取得.
     GameObject _hardHitEffectObject;
-    // 攻撃ヒットエフェクトの生成位置.
-    GameObject _hitEffectPosition;
+    // ダメージ表記のプレハブ取得.
+    GameObject _DamageUiObject;
+    //エフェクトの生成位置.
+    GameObject _EffectPosition;
 
     // 攻撃ヒットエフェクトのポケット.
     GameObject _hitEffectPocket = null;
@@ -45,7 +47,8 @@ public class AttackCol : MonoBehaviour
         _bloodEffectObject = (GameObject)Resources.Load("Blood2");
         _smallHitEffectObject = (GameObject)Resources.Load("SmallHitEffect");
         _hardHitEffectObject = (GameObject)Resources.Load("HardHitEffect");
-        _hitEffectPosition = GameObject.Find("EffectSpawnPosition");
+        _DamageUiObject = (GameObject)Resources.Load("DamageUI");
+        _EffectPosition = GameObject.Find("EffectSpawnPosition");
         _isOneProcess = true;
     }
 
@@ -120,7 +123,8 @@ public class AttackCol : MonoBehaviour
             _hitEffectPocket = _smallHitEffectObject;
         }
 
-        AttackEffectSpawn(_hitEffectPocket, FleshyNumber);
+        EffectSpawn(_hitEffectPocket, FleshyNumber);
+        UISpawn();
 
         _isOneProcess = false;
     }
@@ -150,15 +154,22 @@ public class AttackCol : MonoBehaviour
     /// </summary>
     /// <param name="objectName">パーティクルを生成するヒットエフェクト</param>
     /// <param name="FleshyNumber">肉質の番号</param>
-    private void AttackEffectSpawn(GameObject objectName, int FleshyNumber)
+    private void EffectSpawn(GameObject objectName, int FleshyNumber)
     {
         // 生成.
-        Instantiate(objectName, _hitEffectPosition.transform.position, Quaternion.identity);
+        Instantiate(objectName, _EffectPosition.transform.position, Quaternion.identity);
         if (GetSoftFleshy(FleshyNumber))
         {
-            Instantiate(_bloodEffectObject, _hitEffectPosition.transform.position, Quaternion.identity);
+            Instantiate(_bloodEffectObject, _EffectPosition.transform.position, Quaternion.identity);
         }
-        
+    }
+
+    /// <summary>
+    /// UIのプレハブ生成
+    /// </summary>
+    private void UISpawn()
+    {
+        Instantiate(_DamageUiObject, _EffectPosition.transform.position, Quaternion.identity);
     }
 
     // 肉質番号をだいにゅ

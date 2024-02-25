@@ -28,33 +28,40 @@ public partial class Player
         public override void OnUpdate(Player owner)
         {
             // 一撃目.
-            if ((owner._stateTime >= 0.15f && owner._stateTime <= 0.3f) && !_test)
+            if ((owner._stateTime >= 0.15f && owner._stateTime <= 0.28f) && !_test)
             {
                 owner._weaponActive = true;
                 _test = true;
             }
-            if (owner._stateFlame >= 0.3f && _test)
+            if ((owner._stateTime >= 0.29f && owner._stateTime <= 0.3f) && _test)
             {
                 owner._weaponActive = false;
                 _test = false;
             }
 
+            //bool flag = (owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test;
+
             // 二撃目.
-            if ((owner._stateFlame >= 0.31f && owner._stateFlame <= 0.75f)&& !_test)
+            if ((owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
-                owner._attackCol._isOneProcess= true;
+                owner._attackCol._isOneProcess = true;
                 _test = true;
+                //Debug.Log("と");
+
             }
-            if (owner._stateFlame >= 0.75f && _test)
+
+            //Debug.Log(flag);
+
+            if ((owner._stateTime >= 0.75f && owner._stateTime <= 0.8f) && _test)
             {
                 owner._weaponActive = false;
                 _test = false;
             }
 
             // 三撃目.
-            if ((owner._stateFlame >= 1.4f && owner._stateFlame <= 1.9f) && !_test)
+            if ((owner._stateTime >= 1.2f && owner._stateTime <= 1.6f) && !_test)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
@@ -62,17 +69,19 @@ public partial class Player
                 owner._attackPower = 100;
                 _test = true;
             }
-            if (owner._stateFlame >= 1.9f && _test)
+
+            if (owner._stateTime >= 1.65f && _test)
             {
                 owner._weaponActive = false;
                 _test = false;
             }
 
-
             if (owner._stateTime <= 1.0f)
             {
                 owner.ForwardStep(4);
             }
+
+            //Debug.Log(owner._stateTime);
 
             // 空振り効果音再生.
             owner.SEPlay(10, 30, 80, (int)SEManager.HunterSE.MISSINGSLASH);

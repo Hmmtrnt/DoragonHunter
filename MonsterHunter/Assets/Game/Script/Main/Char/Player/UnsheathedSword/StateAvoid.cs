@@ -37,7 +37,7 @@ public partial class Player
             }
 
             //Debug.Log(owner._avoidTime);
-            Debug.Log(owner._avoidAdvanceInput);
+            //Debug.Log(owner._avoidAdvanceInput);
 
             owner.GetAvoidAdvenceInput(30);
 

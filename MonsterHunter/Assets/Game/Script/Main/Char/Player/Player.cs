@@ -58,7 +58,7 @@ public partial class Player : MonoBehaviour
         viewAngle();
         StateFlameManager();
         StateTime();
-        Debug.Log(_stateTime.ToString());
+        //Debug.Log(_stateTime.ToString());
     }
 
     private void FixedUpdate()

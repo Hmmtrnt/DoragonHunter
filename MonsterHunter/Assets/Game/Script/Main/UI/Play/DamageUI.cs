@@ -13,7 +13,7 @@ public class DamageUI : MonoBehaviour
     // 上に移動地.
     public float _moveSpeed = 0.4f;
     // 一度処理を通したら通らないようにする.
-    private bool _isProcess = false;
+    public bool _isProcess = false;
 
     void Start()
     {
@@ -25,23 +25,31 @@ public class DamageUI : MonoBehaviour
 
     void Update()
     {
-        if (!_isProcess)
-        {
-            _damageText.text = Convert.ToString((int)_player.GetHunterAttack());
-            _isProcess = true;
-        }
+        GetDamage();
 
         transform.LookAt(Camera.main.transform);
         transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
 
-        _damageText.color = 
-            Color.Lerp(_damageText.color, 
-            new Color(1.0f, 200.0f / 255.0f, 0.0f, 0.0f), 
+        _damageText.color =
+            Color.Lerp(_damageText.color,
+            new Color(1.0f, 200.0f / 255.0f, 0.0f, 0.0f),
             _fadeOutSpeed * Time.deltaTime);
 
-        if(_damageText.color.a <= 0.1f )
+        if (_damageText.color.a <= 0.1f)
         {
             Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// ダメージ量を取得.
+    /// </summary>
+    public void GetDamage()
+    {
+        if (!_isProcess)
+        {
+            _damageText.text = Convert.ToString((int)_player.GetHunterAttack());
+            _isProcess = true;
         }
     }
 }

@@ -124,7 +124,7 @@ public class AttackCol : MonoBehaviour
         }
 
         EffectSpawn(_hitEffectPocket, FleshyNumber);
-        UISpawn();
+        DamageUISpawn();
 
         _isOneProcess = false;
     }
@@ -167,7 +167,7 @@ public class AttackCol : MonoBehaviour
     /// <summary>
     /// UIのプレハブ生成
     /// </summary>
-    private void UISpawn()
+    private void DamageUISpawn()
     {
         Instantiate(_DamageUiObject, _EffectPosition.transform.position, Quaternion.identity);
     }

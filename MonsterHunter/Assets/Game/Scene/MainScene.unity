@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6476.046, g: 6274.7275, b: 6028.0747, a: 1}
+  m_IndirectSpecularColor: {r: 6475.999, g: 6274.743, b: 6028.153, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14386,7 +14386,6 @@ GameObject:
   - component: {fileID: 828352933}
   - component: {fileID: 828352932}
   - component: {fileID: 828352934}
-  - component: {fileID: 828352935}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -14646,23 +14645,6 @@ MonoBehaviour:
   _MasterSlider: {fileID: 1625269076}
   _BGMSlider: {fileID: 1625269075}
   _SESlider: {fileID: 1625269074}
---- !u!114 &828352935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828352924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643f28ec09704a1499d0b654e9e2db02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
-  _target: {fileID: 1625269077}
-  _targetUI: {fileID: 445189666329316091, guid: 2c820457708b5504a8424e529c4c4d77,
-    type: 3}
-  _worldoffset: {x: 0, y: 0, z: 0}
 --- !u!43 &833537455
 Mesh:
   m_ObjectHideFlags: 0
@@ -24858,7 +24840,7 @@ PrefabInstance:
     - target: {fileID: 1491851927069960382, guid: cb623015e863fda42b7ab5df72f283d2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3558273955314424896, guid: cb623015e863fda42b7ab5df72f283d2,
         type: 3}
@@ -36871,7 +36853,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _DamageUiObject
       value: 
-      objectReference: {fileID: 599706048987630410, guid: 2c820457708b5504a8424e529c4c4d77,
+      objectReference: {fileID: 7793439764969622810, guid: b7057d4950ed29a42a5da52825c24bf8,
+        type: 3}
+    - target: {fileID: 8164280843942989404, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _damageUiRectTransform
+      value: 
+      objectReference: {fileID: 6341727125855247815, guid: b7057d4950ed29a42a5da52825c24bf8,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

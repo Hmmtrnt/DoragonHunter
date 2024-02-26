@@ -8,6 +8,9 @@ public class DamageUI : MonoBehaviour
 {
     private Text _damageText;
     private PlayerState _player;
+
+    private RectTransform _rectTransform;
+
     // フェードアウトするスピード.
     public float _fadeOutSpeed = 1f;
     // 上に移動地.
@@ -19,7 +22,7 @@ public class DamageUI : MonoBehaviour
     {
         _damageText = GetComponentInChildren<Text>();
         _player = GameObject.Find("Hunter").GetComponent<PlayerState>();
-        
+        _rectTransform = GetComponent<RectTransform>();
         _isProcess = false;
     }
 
@@ -27,8 +30,12 @@ public class DamageUI : MonoBehaviour
     {
         GetDamage();
 
-        transform.LookAt(Camera.main.transform);
-        transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
+        //transform.LookAt(Camera.main.transform);
+        //transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
+
+        Vector3 pos = Vector3.up * _moveSpeed * Time.deltaTime;
+
+        _rectTransform.anchoredPosition = pos;
 
         _damageText.color =
             Color.Lerp(_damageText.color,
@@ -37,7 +44,7 @@ public class DamageUI : MonoBehaviour
 
         if (_damageText.color.a <= 0.1f)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

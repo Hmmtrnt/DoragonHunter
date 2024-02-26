@@ -31,6 +31,7 @@ public class AttackCol : MonoBehaviour
     public GameObject _DamageUiObject;
     // ダメージ表記のプレハブ.
     GameObject _DamageUiPrefab;
+    public RectTransform _damageUiRectTransform;
 
     //エフェクトの生成位置.
     GameObject _EffectPosition;
@@ -54,7 +55,6 @@ public class AttackCol : MonoBehaviour
         _bloodEffectObject = (GameObject)Resources.Load("Blood2");
         _smallHitEffectObject = (GameObject)Resources.Load("SmallHitEffect");
         _hardHitEffectObject = (GameObject)Resources.Load("HardHitEffect");
-        
         _EffectPosition = GameObject.Find("EffectSpawnPosition");
         _camera = GameObject.Find("CameraBase").GetComponent<Camera>();
         _isOneProcess = true;
@@ -180,17 +180,18 @@ public class AttackCol : MonoBehaviour
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(_EffectPosition.transform.position);
 
+        //Instantiate(_DamageUiObject, screenPos, Quaternion.identity);
+
+        _DamageUiPrefab = Instantiate(_DamageUiObject);
+
+        //_canvas.transform.position = Vector3.zero;
         
 
-        Instantiate(_DamageUiObject, screenPos, Quaternion.identity);
+        _DamageUiPrefab.transform.SetParent(_canvas.transform, false);
 
-        //_DamageUiPrefab = Instantiate(_DamageUiObject);
+        //_damageUiRectTransform.anchoredPosition = Vector3.zero;
 
-        //_canvas.transform.position = screenPos;
-
-        //Debug.Log(_canvas.transform);
-
-        //_DamageUiPrefab.transform.SetParent(_canvas.transform, false);
+        //Debug.Log(_damageUiRectTransform.anchoredPosition);
     }
 
     /// <summary>

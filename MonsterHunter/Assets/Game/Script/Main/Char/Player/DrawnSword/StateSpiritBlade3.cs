@@ -42,7 +42,7 @@ public partial class PlayerState
             //bool flag = (owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test;
 
             // 二撃目.
-            if ((owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test)
+            if ((owner._stateTime >= 0.32f && owner._stateTime <= 0.7f) && !_test)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;

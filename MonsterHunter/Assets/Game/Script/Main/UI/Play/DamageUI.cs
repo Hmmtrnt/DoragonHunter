@@ -11,6 +11,12 @@ public class DamageUI : MonoBehaviour
 
     private RectTransform _rectTransform;
 
+    private Transform _DamageUIWorldPos;
+
+    private Camera _targetCamera;
+
+    private Vector3 _screenPosition;
+
     // フェードアウトするスピード.
     public float _fadeOutSpeed = 1f;
     // 上に移動地.
@@ -18,12 +24,21 @@ public class DamageUI : MonoBehaviour
     // 一度処理を通したら通らないようにする.
     public bool _isProcess = false;
 
+
+
     void Start()
     {
         _damageText = GetComponentInChildren<Text>();
         _player = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _rectTransform = GetComponent<RectTransform>();
+        _DamageUIWorldPos = GameObject.Find("EffectSpawnPosition").GetComponent<Transform>();
+        _targetCamera = GameObject.Find("Camera").GetComponent<Camera>();
         _isProcess = false;
+
+        _screenPosition = _targetCamera.WorldToScreenPoint(_DamageUIWorldPos.position);
+
+        _screenPosition = new Vector3(_screenPosition.x * (800/1920), _screenPosition.y * (450/1080), _screenPosition.z);
+
     }
 
     void Update()
@@ -35,7 +50,9 @@ public class DamageUI : MonoBehaviour
 
         Vector3 pos = Vector3.up * _moveSpeed * Time.deltaTime;
 
-        _rectTransform.anchoredPosition = pos;
+        _rectTransform.anchoredPosition = _screenPosition;
+
+        Debug.Log(_screenPosition);
 
         _damageText.color =
             Color.Lerp(_damageText.color,

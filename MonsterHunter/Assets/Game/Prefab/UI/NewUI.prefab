@@ -9447,6 +9447,7 @@ MonoBehaviour:
   _rankUI:
   - {fileID: 4786352247705141759}
   - {fileID: 277551524378631628}
+  _animEnd: 0
 --- !u!1 &8606401867283732701
 GameObject:
   m_ObjectHideFlags: 0

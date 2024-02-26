@@ -3,11 +3,11 @@
 using UnityEngine;
 using static UnityEngine.UI.GridLayoutGroup;
 
-public partial class Player
+public partial class PlayerState
 {
     public class StateAvoid : StateBase
     {
-        public override void OnEnter(Player owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._isAvoiding = true;
             owner._avoidMotion = true;
@@ -27,7 +27,7 @@ public partial class Player
             owner.RotateDirection();
         }
 
-        public override void OnUpdate(Player owner)
+        public override void OnUpdate(PlayerState owner)
         {
             owner._avoidTime++;
 
@@ -44,7 +44,7 @@ public partial class Player
 
         }
 
-        public override void OnFixedUpdate(Player owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             
             MoveAvoid(owner);
@@ -54,7 +54,7 @@ public partial class Player
 
         }
 
-        public override void OnExit(Player owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._isAvoiding = false;
             owner._avoidMotion = false;
@@ -64,7 +64,7 @@ public partial class Player
             owner._rotateSpeed = 10.0f;
         }
 
-        public override void OnChangeState(Player owner)
+        public override void OnChangeState(PlayerState owner)
         {
             //if(owner._avoidTime >= 50)
             //{
@@ -104,7 +104,7 @@ public partial class Player
         }
 
         // 回避処理
-        private void MoveAvoid(Player owner)
+        private void MoveAvoid(PlayerState owner)
         {
             // 減速
             //if (owner._stateTime <= 0.1f)

@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class RedRenkiGaugeUi : MonoBehaviour
 {
-    private Player _playerState;
+    private PlayerState _playerState;
     private Image _gauge;
 
     void Start()
     {
-        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
+        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
 
         _gauge = GetComponent<Image>();
     }

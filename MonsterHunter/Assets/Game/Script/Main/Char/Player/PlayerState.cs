@@ -1,8 +1,8 @@
-﻿/*プレイヤー*/
+﻿/*プレイヤー行動全体の管理*/
 
 using UnityEngine;
 
-public partial class Player : MonoBehaviour
+public partial class PlayerState : MonoBehaviour
 {
     //--納刀状態--//
     private static readonly StateIdle                 _idle = new();                // アイドル.
@@ -29,6 +29,7 @@ public partial class Player : MonoBehaviour
     private static readonly StateSpiritBlade2         _spiritBlade2 = new();        // 気刃斬り2.
     private static readonly StateSpiritBlade3         _spiritBlade3 = new();        // 気刃斬り3.
     private static readonly StateRoundSlash           _roundSlash = new();          // 気刃大回転斬り.
+    // 必殺技.
 
     //--共通状態--//
     private static readonly StateDead                 _dead = new();                // やられた.

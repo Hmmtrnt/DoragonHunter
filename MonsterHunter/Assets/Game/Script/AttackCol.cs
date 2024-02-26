@@ -18,7 +18,7 @@ public class AttackCol : MonoBehaviour
         MAX_NUM
     }
 
-    private Player _state;
+    private PlayerState _state;
     private PlayerHitStopManager _hitStop;
     private SEManager _seManager;
     // 攻撃を当てた時の流血エフェクトプレハブ取得.
@@ -27,28 +27,36 @@ public class AttackCol : MonoBehaviour
     GameObject _smallHitEffectObject;
     // 強い攻撃ヒットエフェクトのプレハブ取得.
     GameObject _hardHitEffectObject;
-    // ダメージ表記のプレハブ取得.
-    GameObject _DamageUiObject;
+    // ダメージ表記.
+    public GameObject _DamageUiObject;
+    // ダメージ表記のプレハブ.
+    GameObject _DamageUiPrefab;
+
     //エフェクトの生成位置.
     GameObject _EffectPosition;
 
     // 攻撃ヒットエフェクトのポケット.
     GameObject _hitEffectPocket = null;
 
+    public GameObject _canvas;
+
+    Camera _camera;
+
     // 処理を複数同時に行わないようにするための変数.
     public bool _isOneProcess = true;
 
     void Start()
     {
-        _state = GameObject.Find("Hunter").GetComponent<Player>();
+        _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.
         _bloodEffectObject = (GameObject)Resources.Load("Blood2");
         _smallHitEffectObject = (GameObject)Resources.Load("SmallHitEffect");
         _hardHitEffectObject = (GameObject)Resources.Load("HardHitEffect");
-        _DamageUiObject = (GameObject)Resources.Load("DamageUI");
+        
         _EffectPosition = GameObject.Find("EffectSpawnPosition");
+        _camera = GameObject.Find("CameraBase").GetComponent<Camera>();
         _isOneProcess = true;
     }
 
@@ -92,9 +100,10 @@ public class AttackCol : MonoBehaviour
     // ダメージを与えた瞬間、肉質を変化やヒットストップ追加.
     // TODO:変数名が決まってない.
     /// <summary>
-    /// ダメージを与えた瞬間に更新する
+    /// ダメージを与えた瞬間に更新する.
     /// </summary>
     /// <param name="FleshyMagnification">モンスターの肉質倍率</param>
+    /// <param name="FleshyNumber">モンスターの肉質番号</param>
     private void CauseDamageUpdate(float FleshyMagnification, int FleshyNumber)
     {
         _state._MonsterFleshy = FleshyMagnification;
@@ -169,10 +178,21 @@ public class AttackCol : MonoBehaviour
     /// </summary>
     private void DamageUISpawn()
     {
-        Instantiate(_DamageUiObject, _EffectPosition.transform.position, Quaternion.identity);
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(_EffectPosition.transform.position);
+
+        
+
+        Instantiate(_DamageUiObject, screenPos, Quaternion.identity);
+
+        //_DamageUiPrefab = Instantiate(_DamageUiObject);
+
+        //_canvas.transform.position = screenPos;
+
+        //Debug.Log(_canvas.transform);
+
+        //_DamageUiPrefab.transform.SetParent(_canvas.transform, false);
     }
 
-    // 肉質番号をだいにゅ
     /// <summary>
     /// 肉質の番号を取得し、
     /// trueであれば攻撃が通り

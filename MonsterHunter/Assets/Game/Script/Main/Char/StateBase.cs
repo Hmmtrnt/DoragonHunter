@@ -8,28 +8,28 @@ public abstract class StateBase
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="prevState">ひとつ前の状態</param>
-    public virtual void OnEnter(Player owner, StateBase prevState) { }
+    public virtual void OnEnter(PlayerState owner, StateBase prevState) { }
     /// <summary>
     /// Update
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnUpdate(Player owner) { }
+    public virtual void OnUpdate(PlayerState owner) { }
     /// <summary>
     /// FixedUpdate
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnFixedUpdate(Player owner) { }
+    public virtual void OnFixedUpdate(PlayerState owner) { }
     /// <summary>
     /// ステート終了時呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="nextState">次に遷移する状態</param>
-    public virtual void OnExit(Player owner, StateBase nextState) { }
+    public virtual void OnExit(PlayerState owner, StateBase nextState) { }
     /// <summary>
     /// ステート遷移の呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnChangeState(Player owner) { }
+    public virtual void OnChangeState(PlayerState owner) { }
 
 
     /*モンスター*/
@@ -38,28 +38,28 @@ public abstract class StateBase
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="prevState">ひとつ前の状態</param>
-    public virtual void OnEnter(Monster owner, StateBase prevState) { }
+    public virtual void OnEnter(MonsterState owner, StateBase prevState) { }
     /// <summary>
     /// Update
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnUpdate(Monster owner) { }
+    public virtual void OnUpdate(MonsterState owner) { }
     /// <summary>
     /// FixedUpdate
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnFixedUpdate(Monster owner) { }
+    public virtual void OnFixedUpdate(MonsterState owner) { }
     /// <summary>
     /// ステート終了時呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="nextState">次に遷移する状態</param>
-    public virtual void OnExit(Monster owner, StateBase nextState) { }
+    public virtual void OnExit(MonsterState owner, StateBase nextState) { }
     /// <summary>
     /// ステート遷移の呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnChangeState(Monster owner) { }
+    public virtual void OnChangeState(MonsterState owner) { }
 
     /*選択画面のプレイヤー*/
     /// <summary>

@@ -3,11 +3,11 @@
 using UnityEngine;
 using static UnityEngine.UI.GridLayoutGroup;
 
-public partial class Monster
+public partial class MonsterState
 {
     public class MonsterStateRoar : StateBase
     {
-        public override void OnEnter(Monster owner, StateBase prevState)
+        public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner._isRoar = false;
             owner._roarMotion = true;
@@ -22,24 +22,24 @@ public partial class Monster
         //    owner.StateTransitionInitialization();
         //}
 
-        public override void OnUpdate(Monster owner)
+        public override void OnUpdate(MonsterState owner)
         {
             owner._isRoar = false;
             //Debug.Log(owner._isRoar);
         }
 
-        public override void OnFixedUpdate(Monster owner)
+        public override void OnFixedUpdate(MonsterState owner)
         {
             //RoarSound(owner);
             owner.SEPlay(90, (int)SEManager.MonsterSE.ROAR);
         }
 
-        public override void OnExit(Monster owner, StateBase nextState)
+        public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._roarMotion = false;
         }
 
-        public override void OnChangeState(Monster owner)
+        public override void OnChangeState(MonsterState owner)
         {
             if(owner._stateFlame >= 260)
             {

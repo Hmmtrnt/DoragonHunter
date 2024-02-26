@@ -11,9 +11,9 @@ public class HuntingEnd : MonoBehaviour
     private MainSceneManager _mainSceneManager;
 
     // モンスターの情報.
-    private Monster _monsterState;
+    private MonsterState _monsterState;
     // ハンターの情報.
-    private Player _playerState;
+    private PlayerState _playerState;
     // シーン遷移.
     private SceneTransitionManager _sceneTransitionManager;
     // パッド入力情報.
@@ -49,8 +49,8 @@ public class HuntingEnd : MonoBehaviour
     void Start()
     {
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
-        _monsterState = GameObject.Find("Dragon").GetComponent<Monster>();
-        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
+        _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
         _controllerManager = GetComponent<ControllerManager>();
         _questTime = GameObject.Find("LongTimeShaft").GetComponent<QuestTime>();

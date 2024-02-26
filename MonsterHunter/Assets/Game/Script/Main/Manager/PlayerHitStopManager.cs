@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class PlayerHitStopManager : MonoBehaviour
 {
-    private Player _playerState;
+    private PlayerState _playerState;
     private Animator _anim;
 
     private void Start()
     {
-        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
+        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _anim = GameObject.Find("Hunter").GetComponent<Animator>();
     }
 

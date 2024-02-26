@@ -5,13 +5,13 @@ using UnityEngine;
 public class DebugManager : MonoBehaviour
 {
     [SerializeField] private GameObject _Monster;
-    private Monster _monsterState;
+    private MonsterState _monsterState;
     [SerializeField] private Vector3 _respawnPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        _monsterState = _Monster.GetComponent<Monster>();
+        _monsterState = _Monster.GetComponent<MonsterState>();
     }
 
     // Update is called once per frame

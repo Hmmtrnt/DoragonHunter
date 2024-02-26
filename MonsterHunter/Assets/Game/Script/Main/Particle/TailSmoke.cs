@@ -9,11 +9,11 @@ public class TailSmoke : MonoBehaviour
     // ¶‘¶ŠÔ
     private int _countLife;
     // ƒ‚ƒ“ƒXƒ^[î•ñ.
-    private Monster _monsterState;
+    private MonsterState _monsterState;
 
     void Start()
     {
-        _monsterState = GameObject.Find("Dragon").GetComponent<Monster>();
+        _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
 
     }
 

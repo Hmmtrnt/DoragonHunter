@@ -2,32 +2,32 @@
 
 using UnityEngine;
 
-public partial class Player
+public partial class PlayerState
 {
     public class StateIdle : StateBase
     {
-        public override void OnEnter(Player owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             // アニメーション開始.
             owner._idleMotion = true;
         }
 
-        public override void OnUpdate(Player owner)
+        public override void OnUpdate(PlayerState owner)
         {
             
         }
 
-        public override void OnFixedUpdate(Player owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             
         }
 
-        public override void OnExit(Player owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._idleMotion = false;
         }
 
-        public override void OnChangeState(Player owner)
+        public override void OnChangeState(PlayerState owner)
         {
             // 移動.
             owner.TransitionRun();
@@ -53,9 +53,6 @@ public partial class Player
                 owner.StateTransition(_spiritBlade1);
             }
         }
-
-        // 移動処理の分岐
-        
     }
 }
 

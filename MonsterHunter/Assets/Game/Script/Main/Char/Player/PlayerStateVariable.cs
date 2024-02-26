@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class Player
+public partial class PlayerState
 {
     enum viewDirection
     {
@@ -244,7 +244,7 @@ public partial class Player
     // モンスターオブジェクト.
     private GameObject _Monster;
     // モンスターのState.
-    private Monster _MonsterState;
+    private MonsterState _MonsterState;
 
     
 }

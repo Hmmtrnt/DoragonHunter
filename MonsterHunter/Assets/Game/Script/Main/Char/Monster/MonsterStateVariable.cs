@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class Monster
+public partial class MonsterState
 {
     // モンスターから見てハンターの位置はどこか.
     enum viewDirection
@@ -41,7 +41,7 @@ public partial class Monster
     private Transform _trasnform;
     private Rigidbody _rigidbody;
     // プレイヤーのステート情報.
-    private Player _playerState;
+    private PlayerState _playerState;
 
     // SEを鳴らす.
     private SEManager _seManager;

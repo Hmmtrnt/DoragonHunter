@@ -14386,6 +14386,7 @@ GameObject:
   - component: {fileID: 828352933}
   - component: {fileID: 828352932}
   - component: {fileID: 828352934}
+  - component: {fileID: 828352935}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -14645,6 +14646,23 @@ MonoBehaviour:
   _MasterSlider: {fileID: 1625269076}
   _BGMSlider: {fileID: 1625269075}
   _SESlider: {fileID: 1625269074}
+--- !u!114 &828352935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828352924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643f28ec09704a1499d0b654e9e2db02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _target: {fileID: 1625269077}
+  _targetUI: {fileID: 445189666329316091, guid: 2c820457708b5504a8424e529c4c4d77,
+    type: 3}
+  _worldoffset: {x: 0, y: 0, z: 0}
 --- !u!43 &833537455
 Mesh:
   m_ObjectHideFlags: 0
@@ -19673,6 +19691,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1083424794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1179510095998513291, guid: 770c66d9b238eb247bc35773e4e90b34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1625269073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1099447166
 Mesh:
   m_ObjectHideFlags: 0
@@ -24834,7 +24858,7 @@ PrefabInstance:
     - target: {fileID: 1491851927069960382, guid: cb623015e863fda42b7ab5df72f283d2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3558273955314424896, guid: cb623015e863fda42b7ab5df72f283d2,
         type: 3}
@@ -36735,6 +36759,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4347513758223068157, guid: 0abed6887e99aae4ca7ce87493493c55,
+        type: 3}
+      propertyPath: probeLayerMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6585050523788204689, guid: 0abed6887e99aae4ca7ce87493493c55,
         type: 3}
       propertyPath: m_Name
@@ -36833,6 +36862,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8164280843942989404, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 1083424794}
+    - target: {fileID: 8164280843942989404, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _DamageUiObject
+      value: 
+      objectReference: {fileID: 599706048987630410, guid: 2c820457708b5504a8424e529c4c4d77,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

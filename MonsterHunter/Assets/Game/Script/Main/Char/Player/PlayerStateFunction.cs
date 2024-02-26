@@ -3,7 +3,7 @@
 using UnityEngine;
 using static UnityEngine.UI.GridLayoutGroup;
 
-public partial class Player
+public partial class PlayerState
 {
     /// <summary>
     /// ƒvƒŒƒCƒ„[î•ñ‚Ì‰Šú‰».
@@ -18,7 +18,7 @@ public partial class Player
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _Monster = GameObject.FindWithTag("Monster");
-        _MonsterState = GameObject.FindWithTag("Monster").GetComponent<Monster>();
+        _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _attackCol = GameObject.Find("AttackCollider").GetComponent<AttackCol>();
         _weaponObject.SetActive(false);

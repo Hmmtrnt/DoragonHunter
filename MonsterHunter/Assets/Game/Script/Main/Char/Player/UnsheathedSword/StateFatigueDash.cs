@@ -2,34 +2,34 @@
 
 using UnityEngine;
 
-public partial class Player
+public partial class PlayerState
 {
     public class StateFatigueDash : StateBase
     {
-        public override void OnEnter(Player owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._fatigueMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityFatigueDashMagnigication;
         }
 
-        public override void OnUpdate(Player owner)
+        public override void OnUpdate(PlayerState owner)
         {
 
         }
 
-        public override void OnFixedUpdate(Player owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             Move(owner);
             owner.RotateDirection();
             owner._stamina -= owner._isDashStaminaCost;
         }
 
-        public override void OnExit(Player owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._fatigueMotion = false;
         }
 
-        public override void OnChangeState(Player owner)
+        public override void OnChangeState(PlayerState owner)
         {
             // idle状態.
             if(owner._leftStickHorizontal == 0 &&
@@ -48,7 +48,7 @@ public partial class Player
 
 
         // 移動
-        private void Move(Player owner)
+        private void Move(PlayerState owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityFatigueDashMagnigication + new Vector3(0.0f, owner._gravity, 0.0f);
         }

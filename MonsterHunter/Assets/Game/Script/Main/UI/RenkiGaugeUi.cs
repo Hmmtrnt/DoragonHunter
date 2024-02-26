@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class RenkiGaugeUi : MonoBehaviour
 {
     // プレイヤー情報.
-    private Player _playerState;
+    private PlayerState _playerState;
 
     // ゲージ.
     private Image _Gauge;
 
     void Start()
     {
-        _playerState = GameObject.Find("Hunter").GetComponent<Player>();
+        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
 
         _Gauge = GetComponent<Image>();
     }

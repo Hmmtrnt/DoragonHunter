@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public partial class Player
+public partial class PlayerState
 {
     public class StateSpiritBlade2 : StateBase
     {
@@ -11,7 +11,7 @@ public partial class Player
         //HACK:変数名を変更.
         private bool _test = false;
 
-        public override void OnEnter(Player owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSpiritBlade2 = true;
             owner._nextMotionFlame = 55;
@@ -26,7 +26,7 @@ public partial class Player
             owner._nextMotionTime = 0.65f;
         }
 
-        public override void OnUpdate(Player owner)
+        public override void OnUpdate(PlayerState owner)
         {
             if (owner._stateTime >= 0.45f && !_test)
             {
@@ -43,7 +43,7 @@ public partial class Player
             owner.SEPlay(25, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
-        public override void OnFixedUpdate(Player owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             //if (owner._stateFlame >= 10)
             //{
@@ -57,13 +57,13 @@ public partial class Player
             
         }
 
-        public override void OnExit(Player owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSpiritBlade2 = false;
             owner._weaponActive = false;
         }
 
-        public override void OnChangeState(Player owner)
+        public override void OnChangeState(PlayerState owner)
         {
             // アイドル.
             //if (owner._attackFrame >= 60)

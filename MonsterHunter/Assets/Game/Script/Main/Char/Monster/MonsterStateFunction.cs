@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class Monster
+public partial class MonsterState
 {
     // ステートの変更.
     private void ChangeState(StateBase nextState)
@@ -20,7 +20,7 @@ public partial class Monster
         _hunter = GameObject.Find("Hunter");
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
-        _playerState = _hunter.GetComponent<Player>();
+        _playerState = _hunter.GetComponent<PlayerState>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fireBall = (GameObject)Resources.Load("FireBall2");
         _fireBallPosition = GameObject.Find("BlessPosition");
@@ -63,7 +63,7 @@ public partial class Monster
         else
         {
             // HACK:後で体力を直す.
-            _HitPoint = 5000;
+            _HitPoint = 100000;
         }
     }
 

@@ -2,31 +2,31 @@
 
 using UnityEngine;
 
-public partial class Player
+public partial class PlayerState
 {
     public class StateIdleDrawnSword : StateBase
     {
-        public override void OnEnter(Player owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnIdleMotion = true;
         }
 
-        public override void OnUpdate(Player owner)
+        public override void OnUpdate(PlayerState owner)
         {
 
         }
 
-        public override void OnFixedUpdate(Player owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
 
         }
 
-        public override void OnExit(Player owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnIdleMotion = false;
         }
 
-        public override void OnChangeState(Player owner)
+        public override void OnChangeState(PlayerState owner)
         {
             // 抜刀移動.
             if(owner._leftStickHorizontal != 0 || 

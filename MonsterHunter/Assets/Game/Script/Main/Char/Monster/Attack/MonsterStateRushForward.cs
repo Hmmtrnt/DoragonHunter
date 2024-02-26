@@ -3,11 +3,11 @@
 using System.Buffers;
 using UnityEngine;
 
-public partial class Monster
+public partial class MonsterState
 {
     public class MonsterStateRushForward : StateBase
     {
-        public override void OnEnter(Monster owner, StateBase prevState)
+        public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._rushMotion = true;
@@ -21,12 +21,12 @@ public partial class Monster
             }
         }
 
-        public override void OnUpdate(Monster owner)
+        public override void OnUpdate(MonsterState owner)
         {
 
         }
 
-        public override void OnFixedUpdate(Monster owner)
+        public override void OnFixedUpdate(MonsterState owner)
         {
             owner.TurnTowards(40);
 
@@ -67,7 +67,7 @@ public partial class Monster
             owner._trasnform.position += owner._moveVelocity;
         }
 
-        public override void OnExit(Monster owner, StateBase nextState)
+        public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._rushMotion = false;
             // デバッグ用座標初期化.
@@ -76,7 +76,7 @@ public partial class Monster
             owner._forwardSpeed = 0.0f;
         }
 
-        public override void OnChangeState(Monster owner)
+        public override void OnChangeState(MonsterState owner)
         {
             if(owner._stateFlame >= 150)
             {
@@ -85,7 +85,7 @@ public partial class Monster
         }
 
         // パーティクルをモーションを行っている時間で生成する.
-        private void ParticleGenerateTime(Monster owner)
+        private void ParticleGenerateTime(MonsterState owner)
         {
             if(owner._stateFlame == 60 || owner._stateFlame == 90 || owner._stateFlame == 130)
             {

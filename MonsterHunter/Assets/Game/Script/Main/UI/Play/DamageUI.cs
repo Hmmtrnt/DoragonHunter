@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DamageUI : MonoBehaviour
 {
     private Text _damageText;
-    private Player _player;
+    private PlayerState _player;
     // フェードアウトするスピード.
     public float _fadeOutSpeed = 1f;
     // 上に移動地.
@@ -18,7 +18,7 @@ public class DamageUI : MonoBehaviour
     void Start()
     {
         _damageText = GetComponentInChildren<Text>();
-        _player = GameObject.Find("Hunter").GetComponent<Player>();
+        _player = GameObject.Find("Hunter").GetComponent<PlayerState>();
         
         _isProcess = false;
     }

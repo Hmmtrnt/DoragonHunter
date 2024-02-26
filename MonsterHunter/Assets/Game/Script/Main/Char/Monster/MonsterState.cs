@@ -1,16 +1,19 @@
-﻿/*モンスター*/
+﻿/*モンスターの行動全体の管理*/
 
 using UnityEngine;
 using UnityEngine.UI;
 
-public partial class Monster : MonoBehaviour
+public partial class MonsterState : MonoBehaviour
 {
+    /*攻撃以外のモーション*/
     public static readonly MonsterStateRoar             _roar = new();          // 咆哮.
-    public static readonly MonsterStateIdle             _idle = new();          // アイドル.
+    public static readonly MonsterStateIdle             _idle = new();          // 待機.
     public static readonly MonsterStateRun              _run = new();           // 移動.
     public static readonly MonsterStateDown             _down = new();          // やられる.
     public static readonly MonsterStateFalter           _falter = new();        // 怯み.
+    // 疲労待機.
 
+    /*攻撃モーション*/
     public static readonly MonsterStateAt               _at = new();            // 攻撃(デバッグ用).
     public static readonly MonsterStateRotateAttack     _rotate = new();        // 回転攻撃.
     public static readonly MonsterStateBless            _bless = new();         // ブレス攻撃.

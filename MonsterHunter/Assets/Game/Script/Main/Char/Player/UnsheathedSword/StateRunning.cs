@@ -2,11 +2,11 @@
 
 using UnityEngine;
 
-public partial class Player
+public partial class PlayerState
 {
     public class StateRunning : StateBase
     {
-        public override void OnEnter(Player owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._runMotion = true;
@@ -17,18 +17,18 @@ public partial class Player
             
         }
 
-        public override void OnUpdate(Player owner)
+        public override void OnUpdate(PlayerState owner)
         {
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
-        public override void OnFixedUpdate(Player owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             owner.RotateDirection();
             Move(owner);
         }
 
-        public override void OnExit(Player owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._runMotion = false;
             owner._isDashing = false;
@@ -36,7 +36,7 @@ public partial class Player
             owner.ResetNextStateTransitionTime();
         }
 
-        public override void OnChangeState(Player owner)
+        public override void OnChangeState(PlayerState owner)
         {
             // アイドル状態.
             if (owner._leftStickHorizontal == 0.0f &&
@@ -82,7 +82,7 @@ public partial class Player
         }
 
         // 移動
-        private void Move(Player owner)
+        private void Move(PlayerState owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + 
                 new Vector3(0.0f, owner._rigidbody.velocity.y, 0.0f);

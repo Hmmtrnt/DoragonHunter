@@ -2,11 +2,11 @@
 
 using UnityEngine;
 
-public partial class Player
+public partial class PlayerState
 {
     public class StateRightAvoidDrawSword : StateBase
     {
-        public override void OnEnter(Player owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnRightAvoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
@@ -16,24 +16,24 @@ public partial class Player
             owner._deceleration = 0.9f;
         }
 
-        public override void OnUpdate(Player owner)
+        public override void OnUpdate(PlayerState owner)
         {
             owner._avoidTime++;
         }
 
-        public override void OnFixedUpdate(Player owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             owner.MoveAvoid();
         }
 
-        public override void OnExit(Player owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnRightAvoidMotion = false;
             owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
         }
 
-        public override void OnChangeState(Player owner)
+        public override void OnChangeState(PlayerState owner)
         {
             // ‘–‚é.
             if(owner._avoidTime >= 70)

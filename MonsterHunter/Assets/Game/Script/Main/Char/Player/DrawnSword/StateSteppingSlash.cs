@@ -22,7 +22,7 @@ public partial class PlayerState
             owner._attackPower = 81;
             //owner._weaponActive = true;
             owner._increaseAmountRenkiGauge = 7;
-            owner._hitStopTime = 0.05f;
+            owner._hitStopTime = 0.1f;
             owner._attackCol._isOneProcess = true;
             _test = false;
             owner._nextMotionTime = 1.13f;

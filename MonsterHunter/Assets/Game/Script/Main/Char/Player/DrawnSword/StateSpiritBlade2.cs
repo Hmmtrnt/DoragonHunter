@@ -20,7 +20,7 @@ public partial class PlayerState
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 10;
             //owner._currentRenkiGauge -= 15;
-            owner._hitStopTime = 0.01f;
+            owner._hitStopTime = 0.1f;
             owner._attackCol._isOneProcess = true;
             _test = false;
             owner._nextMotionTime = 0.65f;

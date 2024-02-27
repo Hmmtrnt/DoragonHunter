@@ -37,8 +37,15 @@ public class DamageUI : MonoBehaviour
 
         _screenPosition = _targetCamera.WorldToScreenPoint(_DamageUIWorldPos.position);
 
-        _screenPosition = new Vector3(_screenPosition.x * (800/1920), _screenPosition.y * (450/1080), _screenPosition.z);
 
+        float screenwidth = 800 / 1920;
+        float screenLength = 450 / 1080;
+
+        _screenPosition = new Vector3(_screenPosition.x * 0.416f, _screenPosition.y * 0.416f, _screenPosition.z);
+
+
+
+        transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
     }
 
     void Update()
@@ -52,7 +59,7 @@ public class DamageUI : MonoBehaviour
 
         _rectTransform.anchoredPosition = _screenPosition;
 
-        Debug.Log(_screenPosition);
+        
 
         _damageText.color =
             Color.Lerp(_damageText.color,
@@ -61,7 +68,7 @@ public class DamageUI : MonoBehaviour
 
         if (_damageText.color.a <= 0.1f)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 

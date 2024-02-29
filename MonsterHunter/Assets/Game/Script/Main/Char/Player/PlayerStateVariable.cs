@@ -194,7 +194,7 @@ public partial class PlayerState
     // 移動速度.
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
     // 移動時の回転速度
-    private float _rotateSpeed = 10.0f;
+    private float _rotateSpeed = 20.0f;
 
     // ダッシュしているかどうか.
     private bool _isDashing = false;

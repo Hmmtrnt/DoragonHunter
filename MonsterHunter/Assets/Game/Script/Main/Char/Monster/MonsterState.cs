@@ -24,9 +24,6 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.
     public static readonly MonsterStateTailAttack       _tail = new();          // 尻尾攻撃.
 
-    public static readonly MonsterStatePowerFireBall    _powerFireBall = new(); // 大技火球.
-
-
     // Stateの初期化.
     public StateBase _currentState = _idle;
 
@@ -35,8 +32,6 @@ public partial class MonsterState : MonoBehaviour
         Initialization();
         _currentState.OnEnter(this, null);
         _randomNumber = 0;
-
-        
     }
 
     private void Update()

@@ -19,6 +19,9 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
+
+            owner._transform.Rotate(0, owner._transform.rotation.y, 0);
+
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 

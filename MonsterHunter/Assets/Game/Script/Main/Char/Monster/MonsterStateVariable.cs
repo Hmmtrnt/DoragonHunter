@@ -105,6 +105,7 @@ public partial class MonsterState
     // bool
     private bool _roarMotion = false;// 咆哮.
     private bool _idleMotion = false;// 待機.
+    private bool _weakenMotion = false;// 弱った時の待機.
     private bool _falterMotion = false;// 怯む.
     private bool _runMotion = false;// 走る.
     private bool _deathMotion = false;// 死.
@@ -125,11 +126,16 @@ public partial class MonsterState
     // 咆哮するかどうか.
     private bool _isRoar;
 
-    // 以下デバッグ用
-
-    // デバッグ用ステータス
-    // 体力
+    // ステータス.
+    // 体力.
     private float _HitPoint = 0;
+    // 最大体力数.
+    private float _MaxHitPoint = 0;
+    // 弱るタイミングの体力の割合.
+    private float _weakenTimingHitPoint = 0;
+    // モンスターが弱っているかを取得.
+    private bool _weakenState = false;
+
     // 攻撃力
     private float _AttackPower = 10;
 
@@ -146,6 +152,8 @@ public partial class MonsterState
 
     // 状態のフレーム数
     private int _stateFlame = 0;
+    // 状態の時間
+    private float _stateTime = 0;
 
     // 状態管理のための乱数.
     private int _randomNumber = 0;

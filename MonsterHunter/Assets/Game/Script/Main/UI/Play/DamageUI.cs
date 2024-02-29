@@ -23,7 +23,8 @@ public class DamageUI : MonoBehaviour
     public float _moveSpeed = 0.4f;
     // 一度処理を通したら通らないようにする.
     public bool _isProcess = false;
-
+    // ダメージの値を受け取るタイミングをずらすための変数.
+    private int _getDamageTiming = 0;
 
 
     void Start()
@@ -43,14 +44,21 @@ public class DamageUI : MonoBehaviour
 
         _screenPosition = new Vector3(_screenPosition.x * 0.416f, _screenPosition.y * 0.416f, _screenPosition.z);
 
-
-
         transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+
+        _getDamageTiming = 0;
     }
 
     void Update()
     {
-        GetDamage();
+        if(_getDamageTiming == 1)
+        {
+            GetDamage();
+        }
+
+        _getDamageTiming++;
+
+        //Debug.Log(_player.GetHunterAttack());
 
         //transform.LookAt(Camera.main.transform);
         //transform.position += Vector3.up * _moveSpeed * Time.deltaTime;

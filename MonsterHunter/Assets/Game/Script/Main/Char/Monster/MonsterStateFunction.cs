@@ -58,12 +58,24 @@ public partial class MonsterState
         // 体力の決定.
         if(_mainSceneManager._hitPointMany)
         {
-            _HitPoint = 10000;
+            _MaxHitPoint = 10000;
         }
         else
         {
             // HACK:後で体力を直す.
-            _HitPoint = 100000;
+            _MaxHitPoint = 1000;
+        }
+
+        _weakenTimingHitPoint = _MaxHitPoint / 4;
+        _HitPoint = _MaxHitPoint;
+    }
+
+    // モンスターの状態を弱らせる.
+    private void WeakenState()
+    {
+        if(_HitPoint <= _weakenTimingHitPoint)
+        {
+            _weakenState = true;
         }
     }
 
@@ -100,6 +112,7 @@ public partial class MonsterState
         // bool
         _animator.SetBool("Roar", _roarMotion);
         _animator.SetBool("Idle", _idleMotion);
+        _animator.SetBool("WeakenIdle", _weakenMotion);
         _animator.SetBool("Falter", _falterMotion);
         _animator.SetBool("Death", _deathMotion);
         _animator.SetBool("Bless", _blessMotion);
@@ -109,6 +122,12 @@ public partial class MonsterState
         _animator.SetBool("WingRight", _wingRightMotion);
         _animator.SetBool("ForwardRush", _rushMotion);
         _animator.SetBool("Rota", _rotateMotion);
+    }
+
+    // 状態の経過時間取得.
+    private void StateTime()
+    {
+        _stateTime += Time.deltaTime;
     }
 
     // 咆哮モーションに遷移.
@@ -177,12 +196,6 @@ public partial class MonsterState
 
             }
         }
-        if (GetDistance() >= _longDistance)
-        {
-            //_text.text = "NONE";
-        }
-
-
     }
 
     // プレイヤーが今モンスターから見てどこにいるのかを取得する

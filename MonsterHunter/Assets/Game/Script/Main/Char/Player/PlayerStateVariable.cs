@@ -38,6 +38,9 @@ public partial class PlayerState
     // メインシーンの情報.
     private MainSceneManager _mainSceneManager;
 
+    // スティックの傾き具合に合わせる.
+    public GameObject _stickPosition;
+
     // 攻撃判定の情報.
     private AttackCol _attackCol;
 

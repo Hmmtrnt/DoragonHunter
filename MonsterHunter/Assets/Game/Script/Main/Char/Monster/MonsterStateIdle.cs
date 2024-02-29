@@ -1,5 +1,6 @@
 ﻿/*モンスターのアイドル*/
 
+using DG.Tweening.Core.Easing;
 using UnityEngine;
 
 public partial class MonsterState
@@ -11,7 +12,17 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             // アニメーション開始.
-            owner._idleMotion = true;
+            // 弱っている時とそうでないときでモーションを変更.
+            if (owner._weakenState)
+            {
+                owner._weakenMotion = true;
+            }
+            else
+            {
+                owner._idleMotion = true;
+            }
+            
+
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -27,10 +38,13 @@ public partial class MonsterState
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._idleMotion = false;
+            owner._weakenMotion = false;
+            Debug.Log(owner._weakenMotion);
         }
 
         public override void OnChangeState(MonsterState owner)
         {
+            //if (owner._stateTime <= 3) return;
             if (owner._stateFlame <= 100) return;
 
             // デバッグ用.
@@ -55,10 +69,10 @@ public partial class MonsterState
 
             // デバッグ用.
             // 行動パターン.
-            //if (owner._viewDirection[(int)viewDirection.FORWARD])
-            //{
-            //    owner.ChangeState(_falter);
-            //}
+            if (owner._viewDirection[(int)viewDirection.FORWARD])
+            {
+                //owner.ChangeState(_falter);
+            }
 
             if (owner._stateIgnore) return;
 

@@ -38,7 +38,8 @@ public partial class PlayerState : MonoBehaviour
     // 現在のState.
     private StateBase                                 _currentState = _idle;
 
-    public GameObject _debugSphere;// スティックのやつ.
+    // スティックの傾き具合に合わせる.
+    //public GameObject _stickPosition;
 
     void Start()
     {
@@ -59,7 +60,6 @@ public partial class PlayerState : MonoBehaviour
         viewAngle();
         StateFlameManager();
         StateTime();
-        //Debug.Log(_stateTime.ToString());
     }
 
     private void FixedUpdate()

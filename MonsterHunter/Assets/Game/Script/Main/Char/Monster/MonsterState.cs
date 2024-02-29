@@ -43,6 +43,11 @@ public partial class MonsterState : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
         ViewAngle();
+        WeakenState();
+        // 状態の経過時間を増やす.
+        //StateTime();
+
+        //Debug.Log(_weakenState);
     }
 
     private void FixedUpdate()
@@ -52,6 +57,8 @@ public partial class MonsterState : MonoBehaviour
 
         // 状態のフレームの時間を増やす.
         _stateFlame++;
+
+        
 
         _currentState.OnFixedUpdate(this);
 

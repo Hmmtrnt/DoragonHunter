@@ -8,13 +8,14 @@ public partial class MonsterState
     {
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
+            owner.StateTransitionInitialization();
             owner._falterMotion = true;
-            owner._stateFlame = 0;
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-            Debug.Log("’Ê‚é");
+
+
         }
 
         public override void OnFixedUpdate(MonsterState owner)
@@ -25,11 +26,12 @@ public partial class MonsterState
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._falterMotion = false;
+            owner._forwardSpeed = 0;
         }
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateFlame >= 300)
+            if(owner._stateTime >= 3.6f)
             {
                 owner.ChangeState(_idle);
             }

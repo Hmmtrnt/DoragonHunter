@@ -93,7 +93,7 @@ public partial class MonsterState
         _moveVelocity = moveForward + moveSide;
 
         // デバッグ用
-        //Debug.Log(_moveVelocity);
+        Debug.Log(_moveVelocity);
 
     }
 
@@ -101,6 +101,7 @@ public partial class MonsterState
     private void StateTransitionInitialization()
     {
         _stateFlame = 0;
+        _stateTime = 0;
     }
 
     // アニメーション遷移.

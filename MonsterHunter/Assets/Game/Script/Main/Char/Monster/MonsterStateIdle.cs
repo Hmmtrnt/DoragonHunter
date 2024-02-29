@@ -43,8 +43,8 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            //if (owner._stateTime <= 3) return;
-            if (owner._stateFlame <= 100) return;
+            if (owner._stateTime <= 2) return;
+            //if (owner._stateFlame <= 100) return;
 
             // デバッグ用.
             // 近距離.
@@ -70,7 +70,7 @@ public partial class MonsterState
             // 行動パターン.
             if (owner._viewDirection[(int)viewDirection.FORWARD])
             {
-                //owner.ChangeState(_falter);
+                owner.ChangeState(_falter);
             }
 
             if (owner._stateIgnore) return;

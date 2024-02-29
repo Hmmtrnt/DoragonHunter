@@ -46,7 +46,7 @@ public partial class MonsterState : MonoBehaviour
         ViewAngle();
         WeakenState();
         // 状態の経過時間を増やす.
-        //StateTime();
+        StateTime();
 
         //Debug.Log(_weakenState);
     }
@@ -85,8 +85,8 @@ public partial class MonsterState : MonoBehaviour
             ChangeFlater();
         }
 
-        Debug.Log(_currentState);
-        Debug.Log(_falterValue);
+        //Debug.Log(_currentState);
+        //Debug.Log(_falterValue);
 
         // 体力が0になった時の処理.
         if (_HitPoint <= 0)

@@ -14,8 +14,7 @@ public partial class MonsterState
 
         public override void OnUpdate(MonsterState owner)
         {
-
-
+            owner.SEPlay(0.2f, (int)SEManager.MonsterSE.FALTER);
         }
 
         public override void OnFixedUpdate(MonsterState owner)

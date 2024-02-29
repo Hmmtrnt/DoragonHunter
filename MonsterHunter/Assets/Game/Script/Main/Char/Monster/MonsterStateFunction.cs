@@ -63,7 +63,7 @@ public partial class MonsterState
         else
         {
             // HACK:後で体力を直す.
-            _MaxHitPoint = 5000;
+            _MaxHitPoint = 100;
         }
 
         _weakenTimingHitPoint = _MaxHitPoint / 4;
@@ -91,10 +91,6 @@ public partial class MonsterState
         Vector3 moveSide = transform.right * _sideSpeed;
         // 速度の代入
         _moveVelocity = moveForward + moveSide;
-
-        // デバッグ用
-        Debug.Log(_moveVelocity);
-
     }
 
     // 状態遷移時の初期化.
@@ -130,6 +126,8 @@ public partial class MonsterState
     private void StateTime()
     {
         _stateTime += Time.deltaTime;
+
+        
     }
 
     // 咆哮モーションに遷移.
@@ -321,9 +319,14 @@ public partial class MonsterState
     /// <param name="seName">鳴らす音楽の種類</param>
     private void SEPlay(float flameNum1, int seName)
     {
-        if (_stateTime >= flameNum1 && !_isPlayOneShot)
+        if ((_stateTime >= flameNum1 && _stateTime <= flameNum1 + 0.02f) && !_isPlayOneShot)
         {
-            _isPlayOneShot = true;
+            //_isPlayOneShot = true;
+
+            if(_currentState == _down)
+            {
+                Debug.Log("to");
+            }
             _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
         }
     }

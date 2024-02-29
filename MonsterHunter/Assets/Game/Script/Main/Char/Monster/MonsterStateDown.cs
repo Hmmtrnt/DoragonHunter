@@ -9,16 +9,18 @@ public partial class MonsterState
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
+
+            Debug.Log("to");
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-            owner._deathMotion = true;
-        }
-
-        public override void OnFixedUpdate(MonsterState owner)
-        {
             
+
+            owner.SEPlay(1, (int)SEManager.MonsterSE.DOWN);
+
+            owner._deathMotion = true;
+
             // Ž€‚Ê‚Æ“–‚½‚è”»’è‚ðŠÑ’Ê‚³‚¹‚é.
             foreach (MeshCollider collider in owner._colliderChildren)
             {
@@ -29,11 +31,15 @@ public partial class MonsterState
             owner._rushCollisiton.SetActive(false);
             owner._wingLeftCollisiton.SetActive(false);
             owner._wingRightCollisiton.SetActive(false);
-            for(int tailColNum = 0; tailColNum < owner._tailCollisiton.Length; tailColNum++)
+            for (int tailColNum = 0; tailColNum < owner._tailCollisiton.Length; tailColNum++)
             {
                 owner._tailCollisiton[tailColNum].SetActive(false);
             }
             owner._rotateCollisiton.SetActive(false);
+        }
+
+        public override void OnFixedUpdate(MonsterState owner)
+        {
 
         }
 

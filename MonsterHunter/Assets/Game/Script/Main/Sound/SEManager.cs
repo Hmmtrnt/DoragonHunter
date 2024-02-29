@@ -48,6 +48,7 @@ public class SEManager : MonoBehaviour
         BITE,           // Šš‚İ‚Â‚­‚Ì–Â‚«º
         BLESS,          // ƒuƒŒƒX.
         GROAN,          // ™ï‚­.
+        DOWN,           // ’Ê‚ê‚½‚Ìº.
 
         SENUM           // SE”.
     }

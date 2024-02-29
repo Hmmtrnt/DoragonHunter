@@ -70,7 +70,7 @@ public partial class MonsterState
             // 行動パターン.
             if (owner._viewDirection[(int)viewDirection.FORWARD])
             {
-                owner.ChangeState(_falter);
+                owner.ChangeState(_rotate);
             }
 
             if (owner._stateIgnore) return;

@@ -24,7 +24,9 @@ public partial class MonsterState
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            owner.SEPlay(0.4f, (int)SEManager.MonsterSE.GROAN);
+            owner.SEPlay(0.5f, (int)SEManager.MonsterSE.FOOTSMALLSTEP);
+            owner.SEPlay(1.8f, (int)SEManager.MonsterSE.ROTATE);
         }
 
         public override void OnFixedUpdate(MonsterState owner)
@@ -56,9 +58,7 @@ public partial class MonsterState
 
             ParticleGenerateTime(owner);
 
-            owner.SEPlay(20, (int)SEManager.MonsterSE.GROAN);
-            owner.SEPlay(25, (int)SEManager.MonsterSE.FOOTSMALLSTEP);
-            owner.SEPlay(90, (int)SEManager.MonsterSE.ROTATE);
+            
 
         }
 
@@ -70,7 +70,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateFlame >= 200)
+            if(owner._stateTime >= 4)
             {
                 owner.ChangeState(_idle);
             }
@@ -79,7 +79,7 @@ public partial class MonsterState
         // パーティクルをモーションを行っている時間で生成する.
         private void ParticleGenerateTime(MonsterState owner)
         {
-            if (owner._stateFlame == 90)
+            if (owner._stateTime >= 1.8f && owner._stateTime <=1.9f)
             {
                 owner.FootSmokeSpawn((int)footSmokeEffect.TAIL, (int)footSmokePosition.TAIL);
             }

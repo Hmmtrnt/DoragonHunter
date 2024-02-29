@@ -37,10 +37,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._collisionTag == "Player")
-            {
-                owner.ChangeState(_at);
-            }
+            
         }
     }
 }

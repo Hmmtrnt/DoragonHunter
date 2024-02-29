@@ -39,8 +39,9 @@ public class DamageUI : MonoBehaviour
         _screenPosition = _targetCamera.WorldToScreenPoint(_DamageUIWorldPos.position);
 
 
-        float screenwidth = 800 / 1920;
-        float screenLength = 450 / 1080;
+        // TODO:‚È‚º‚©’l‚ª0‚É‚È‚é
+        //float screenwidth = 800 / 1920;
+        //float screenLength = 450 / 1080;
 
         _screenPosition = new Vector3(_screenPosition.x * 0.416f, _screenPosition.y * 0.416f, _screenPosition.z);
 

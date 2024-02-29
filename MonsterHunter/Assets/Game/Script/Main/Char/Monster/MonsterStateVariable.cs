@@ -126,6 +126,11 @@ public partial class MonsterState
     // 咆哮するかどうか.
     private bool _isRoar;
 
+    // 怯み値.
+    private float _falterValue = 0;
+    // 怯み始める最大値.
+    private float _falterMaxValue = 1000;
+
     // ステータス.
     // 体力.
     private float _HitPoint = 0;

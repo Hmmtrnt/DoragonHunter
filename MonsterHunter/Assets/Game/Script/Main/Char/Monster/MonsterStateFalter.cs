@@ -9,12 +9,12 @@ public partial class MonsterState
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner._falterMotion = true;
-            
+            owner._stateFlame = 0;
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            Debug.Log("’Ê‚é");
         }
 
         public override void OnFixedUpdate(MonsterState owner)

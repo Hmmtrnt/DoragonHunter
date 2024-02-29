@@ -39,7 +39,6 @@ public partial class MonsterState
         {
             owner._idleMotion = false;
             owner._weakenMotion = false;
-            Debug.Log(owner._weakenMotion);
         }
 
         public override void OnChangeState(MonsterState owner)

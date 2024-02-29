@@ -1,5 +1,6 @@
 ﻿/*モンスターの行動全体の管理*/
 
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -74,11 +75,21 @@ public partial class MonsterState : MonoBehaviour
         if(_isRoar && _stateFlame >= 10)
         {
             RoarTransition();
-            
         }
 
+        // 怯み値がたまった時の処理.
+        if(_falterValue >= _falterMaxValue)
+        {
+            //Debug.Log("通る");
+
+            ChangeFlater();
+        }
+
+        Debug.Log(_currentState);
+        Debug.Log(_falterValue);
+
         // 体力が0になった時の処理.
-        if(_HitPoint <= 0)
+        if (_HitPoint <= 0)
         {
             ChangeStateDeath();
         }
@@ -88,6 +99,7 @@ public partial class MonsterState : MonoBehaviour
         if (_takeDamage)
         {
             GetOnDamager();
+            GetOnFalter();
             _takeDamage = false;
         }
     }

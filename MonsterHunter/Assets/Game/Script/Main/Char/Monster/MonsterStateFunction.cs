@@ -63,7 +63,7 @@ public partial class MonsterState
         else
         {
             // HACK:後で体力を直す.
-            _MaxHitPoint = 1000;
+            _MaxHitPoint = 5000;
         }
 
         _weakenTimingHitPoint = _MaxHitPoint / 4;
@@ -260,6 +260,17 @@ public partial class MonsterState
         }
     }
 
+    /// <summary>
+    /// 怯み値がたまった時の処理.
+    /// </summary>
+    private void ChangeFlater()
+    {
+        // 怯み値をリセット.
+        _falterValue = 0;
+        //_falterMaxValue = 0;
+        ChangeState(_falter);
+    }
+
     // 体力が0になると強制的にダウンする.
     private void ChangeStateDeath()
     {
@@ -362,6 +373,13 @@ public partial class MonsterState
     {
         _HitPoint = _HitPoint - _playerState.GetHunterAttack();
         return _HitPoint;
+    }
+
+    // 怯み値を蓄積.
+    private float GetOnFalter()
+    {
+        _falterValue = _falterValue + _playerState.GetHunterAttack();
+        return _falterValue;
     }
 
     public void SetHitPoint(float hitPoint)

@@ -170,4 +170,7 @@ public partial class MonsterState
     [Header("状態遷移を無視するかどうか")]
     public bool _stateIgnore = false;
 
+    // SEを同時に慣らさないようにする為の変数.
+    private bool _isPlayOneShot = false;
+
 }

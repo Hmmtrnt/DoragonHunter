@@ -102,6 +102,7 @@ public partial class MonsterState
     {
         _stateFlame = 0;
         _stateTime = 0;
+        _isPlayOneShot = false;
     }
 
     // アニメーション遷移.
@@ -313,12 +314,16 @@ public partial class MonsterState
                 Quaternion.identity);
     }
 
-    // SEを鳴らす処理.
-    private void SEPlay(int flameNum1, int seName)
+    /// <summary>
+    /// SEを鳴らす処理.
+    /// </summary>
+    /// <param name="flameNum1">鳴らすタイミングの秒数</param>
+    /// <param name="seName">鳴らす音楽の種類</param>
+    private void SEPlay(float flameNum1, int seName)
     {
-        if (_stateFlame == flameNum1)
+        if (_stateTime >= flameNum1 && !_isPlayOneShot)
         {
-            //_seManager.HunterPlaySE(seName); 
+            _isPlayOneShot = true;
             _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
         }
     }

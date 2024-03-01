@@ -68,9 +68,11 @@ public partial class MonsterState
 
             // デバッグ用.
             // 行動パターン.
-            if (owner._viewDirection[(int)viewDirection.FORWARD])
+            if (owner._viewDirection[(int)viewDirection.FORWARD] && owner._viewDirection[(int)viewDirection.FORWARD] &&
+                owner._viewDirection[(int)viewDirection.FORWARD] && owner._viewDirection[(int)viewDirection.FORWARD] &&
+                owner._stateIgnore)
             {
-                owner.ChangeState(_rotate);
+                //owner.ChangeState(_tail);
             }
 
             if (owner._stateIgnore) return;

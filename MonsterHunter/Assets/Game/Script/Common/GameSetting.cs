@@ -16,6 +16,7 @@ public class GameSetting : MonoBehaviour
     {
         FixedFPS();
         FixedScreenSize();
+        CursorNoDraw();
     }
 
     /// <summary>
@@ -34,6 +35,14 @@ public class GameSetting : MonoBehaviour
     private void FixedScreenSize()
     {
         Screen.SetResolution(_width, _height, FullScreenMode.FullScreenWindow, _refreshRate);
+    }
+
+    /// <summary>
+    /// マウスカーソルを表示させない
+    /// </summary>
+    private void CursorNoDraw()
+    {
+        Cursor.visible = false;
     }
 
 }

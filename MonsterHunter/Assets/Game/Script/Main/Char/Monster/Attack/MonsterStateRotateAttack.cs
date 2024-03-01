@@ -25,7 +25,9 @@ public partial class MonsterState
         public override void OnUpdate(MonsterState owner)
         {
             owner.SEPlay(0.4f, (int)SEManager.MonsterSE.GROAN);
+            owner.PlayOneShotReset(0.45f);
             owner.SEPlay(0.5f, (int)SEManager.MonsterSE.FOOTSMALLSTEP);
+            owner.PlayOneShotReset(1.7f);
             owner.SEPlay(1.8f, (int)SEManager.MonsterSE.ROTATE);
         }
 

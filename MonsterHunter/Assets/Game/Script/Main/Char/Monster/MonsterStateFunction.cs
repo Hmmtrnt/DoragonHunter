@@ -1,5 +1,6 @@
 /*モンスターの全体の関数*/
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,7 +64,7 @@ public partial class MonsterState
         else
         {
             // HACK:後で体力を直す.
-            _MaxHitPoint = 100;
+            _MaxHitPoint = 5000;
         }
 
         _weakenTimingHitPoint = _MaxHitPoint / 4;
@@ -319,51 +320,23 @@ public partial class MonsterState
     /// <param name="seName">鳴らす音楽の種類</param>
     private void SEPlay(float flameNum1, int seName)
     {
-        if ((_stateTime >= flameNum1 && _stateTime <= flameNum1 + 0.02f) && !_isPlayOneShot)
+        if ((_stateTime >= flameNum1 && _stateTime <= flameNum1 + 0.04f) && !_isPlayOneShot)
         {
-            //_isPlayOneShot = true;
-
-            if(_currentState == _down)
-            {
-                Debug.Log("to");
-            }
             _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
+
+            _isPlayOneShot = true;
         }
     }
 
-    private void SEPlay(int flameNum1, int flameNum2, int seName)
+    private void PlayOneShotReset(float time)
     {
-        if (_stateFlame == flameNum1 ||
-            _stateFlame == flameNum2)
+        if ((_stateTime >= time && _stateTime <= time + 0.04f) && _isPlayOneShot)
         {
-            //_seManager.HunterPlaySE(seName);
-            _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
+            _isPlayOneShot = false;
         }
     }
 
-    private void SEPlay(int flameNum1, int flameNum2, int flameNum3, int seName)
-    {
-        if (_stateFlame == flameNum1 ||
-            _stateFlame == flameNum2 ||
-            _stateFlame == flameNum3)
-        {
-            //_seManager.HunterPlaySE(seName);
-            _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
-        }
-    }
-
-    private void SEPlay(int flameNum1, int flameNum2, int flameNum3, int flameNum4, int flameNum5, int seName)
-    {
-        if (_stateFlame == flameNum1 ||
-            _stateFlame == flameNum2 ||
-            _stateFlame == flameNum3 ||
-            _stateFlame == flameNum4 ||
-            _stateFlame == flameNum5)
-        {
-            //_seManager.HunterPlaySE(seName);
-            _seManager.MonsterPlaySE((int)SEManager.AudioNumber.AUDIO3D, seName);
-        }
-    }
+    
 
     private float GetDistance()
     {

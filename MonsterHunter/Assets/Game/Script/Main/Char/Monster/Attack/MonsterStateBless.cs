@@ -37,7 +37,7 @@ public partial class MonsterState
                 owner._fireBallPosition.transform.position.z), Quaternion.identity);
             }
 
-            owner.SEPlay(55, (int)SEManager.MonsterSE.BLESS);
+            owner.SEPlay(0.8f, (int)SEManager.MonsterSE.BLESS);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

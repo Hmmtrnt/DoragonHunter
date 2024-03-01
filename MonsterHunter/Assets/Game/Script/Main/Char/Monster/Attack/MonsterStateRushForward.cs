@@ -62,7 +62,16 @@ public partial class MonsterState
 
             ParticleGenerateTime(owner);
             //FootStepSound(owner);
-            owner.SEPlay(55, 75, 85, 105, 125, (int)SEManager.MonsterSE.FOOTSTEP);
+            //owner.SEPlay(55, 75, 85, 105, 125, (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.SEPlay(1.1f, (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(1.4f);
+            owner.SEPlay(1.5f, (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(1.6f);
+            owner.SEPlay(1.7f, (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(2.0f);
+            owner.SEPlay(2.1f, (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(2.4f);
+            owner.SEPlay(2.5f, (int)SEManager.MonsterSE.FOOTSTEP);
 
             owner._trasnform.position += owner._moveVelocity;
         }

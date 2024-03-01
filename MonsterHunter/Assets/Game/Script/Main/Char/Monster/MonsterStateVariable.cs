@@ -124,7 +124,7 @@ public partial class MonsterState
     public bool _currentWingAttackRight = false;
 
     // 咆哮するかどうか.
-    private bool _isRoar;
+    private bool _isRoar = false;
 
     // 怯み値.
     private float _falterValue = 0;

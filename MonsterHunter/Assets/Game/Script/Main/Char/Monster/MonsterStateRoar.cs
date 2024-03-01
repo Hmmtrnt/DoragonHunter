@@ -26,6 +26,8 @@ public partial class MonsterState
         {
             owner._isRoar = false;
             owner.SEPlay(1.7f, (int)SEManager.MonsterSE.ROAR);
+
+            //owner.SEPlayTest(1.7f, (int)SEManager.MonsterSE.ROAR);
         }
 
         public override void OnFixedUpdate(MonsterState owner)

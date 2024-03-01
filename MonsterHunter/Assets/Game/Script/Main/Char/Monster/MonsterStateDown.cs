@@ -10,7 +10,7 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
 
-            Debug.Log("to");
+            //Debug.Log("to");
         }
 
         public override void OnUpdate(MonsterState owner)

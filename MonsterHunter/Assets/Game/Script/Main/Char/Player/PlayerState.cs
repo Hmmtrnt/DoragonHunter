@@ -20,7 +20,6 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateRightAvoidDrawSword  _rightAvoid = new();          // 攻撃後の右回避.
     private static readonly StateLeftAvoidDrawSword   _leftAvoid = new();           // 攻撃後の左回避.
     private static readonly StateBackAvoidDrawSword   _backAvoid = new();           // 攻撃後の後ろ回避.
-    // 攻撃後の後ろ回避
     private static readonly StateSheathingSword       _sheathingSword = new();      // 納刀する.
     private static readonly StateSteppingSlash        _steppingSlash = new();       // 踏み込み斬り.
     private static readonly StatePiercing             _piercing = new();            // 突き.
@@ -29,6 +28,8 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateSpiritBlade2         _spiritBlade2 = new();        // 気刃斬り2.
     private static readonly StateSpiritBlade3         _spiritBlade3 = new();        // 気刃斬り3.
     private static readonly StateRoundSlash           _roundSlash = new();          // 気刃大回転斬り.
+
+
     // 必殺技.
 
     //--共通状態--//

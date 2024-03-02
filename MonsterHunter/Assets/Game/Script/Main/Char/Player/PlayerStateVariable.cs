@@ -75,6 +75,8 @@ public partial class PlayerState
     private bool _drawnSpiritBlade2     = false;// 気刃斬り2.
     private bool _drawnSpiritBlade3     = false;// 気刃斬り3.
     private bool _drawnSpiritRoundSlash = false;// 気刃大回転斬り.
+    private bool _greatAttackStanceMotion     = false;// 必殺技の構え.
+    private bool _greatAttackSuccess    = false;// 必殺技成功.
 
     // 次のモーションに遷移するフレーム.
     private float _nextMotionFlame = 0;
@@ -111,6 +113,9 @@ public partial class PlayerState
     public bool _currentHitStop = false;
     // ヒットストップ時間.
     public float _hitStopTime = 0;
+
+    // カウンター有効かどうか.
+    private bool _counterValid = false;
 
     // モンスターに与えるダメージ.
     private float _attackDamage = 0.0f;

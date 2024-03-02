@@ -28,9 +28,8 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateSpiritBlade2         _spiritBlade2 = new();        // 気刃斬り2.
     private static readonly StateSpiritBlade3         _spiritBlade3 = new();        // 気刃斬り3.
     private static readonly StateRoundSlash           _roundSlash = new();          // 気刃大回転斬り.
-
-
-    // 必殺技.
+    private static readonly StateGreatAttackStance    _stance = new();              // 必殺技の構え.
+    private static readonly StateGreatAttackSuccess   _stanceSuccess = new();       // 必殺技成功.
 
     //--共通状態--//
     private static readonly StateDead                 _dead = new();                // やられた.
@@ -38,9 +37,6 @@ public partial class PlayerState : MonoBehaviour
 
     // 現在のState.
     private StateBase                                 _currentState = _idle;
-
-    // スティックの傾き具合に合わせる.
-    //public GameObject _stickPosition;
 
     void Start()
     {

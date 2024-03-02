@@ -120,6 +120,8 @@ public partial class PlayerState
         _animator.SetBool("SpiritBlade2", _drawnSpiritBlade2);
         _animator.SetBool("SpiritBlade3", _drawnSpiritBlade3);
         _animator.SetBool("SpiritRoundSlash", _drawnSpiritRoundSlash);
+        _animator.SetBool("GreatAttackStance", _greatAttackStanceMotion);
+        _animator.SetBool("GreatAttackSuccess", _greatAttackSuccess);
 
         /*共通*/
         // bool.
@@ -647,6 +649,12 @@ public partial class PlayerState
     public float GetCurrentRedRenkiGauge() { return _currentRedRenkiGauge; }
     // 気刃大回転斬りを行っている途中.
     public bool GetRoundSlash() { return _drawnSpiritRoundSlash; }
+
+    /// <summary>
+    /// カウンター受付しているかどうか取得.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetCounterValid() {  return _counterValid; }
 
     /// <summary>
     /// スティックの傾きによって距離を求める. 

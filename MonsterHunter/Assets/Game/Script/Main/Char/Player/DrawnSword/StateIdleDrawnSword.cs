@@ -43,7 +43,7 @@ public partial class PlayerState
                 owner.StateTransition(_steppingSlash);
             }
             // 突き.
-            else if (owner._input._BButtonDown)
+            else if (owner._input._BButtonDown && !owner._input._LBButton)
             {
                 owner.StateTransition(_piercing);
             }
@@ -57,6 +57,11 @@ public partial class PlayerState
             {
                 owner._unsheathedSword = false;
                 owner.StateTransition(_sheathingSword);
+            }
+            // 必殺技の構え
+            else if (owner._input._LBButton && owner._input._BButtonDown)
+            {
+                owner.StateTransition(_stance);
             }
 
         }

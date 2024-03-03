@@ -59,7 +59,7 @@ public partial class PlayerState
                 owner.StateTransition(_sheathingSword);
             }
             // 必殺技の構え
-            else if (owner._input._LBButton && owner._input._BButtonDown)
+            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
             {
                 owner.StateTransition(_stance);
             }

@@ -20,6 +20,7 @@ public class AttackCol : MonoBehaviour
 
     private PlayerState _state;
     private PlayerHitStopManager _hitStop;
+    private HuntingEnd _end;
     private SEManager _seManager;
     // 攻撃を当てた時の流血エフェクトプレハブ取得.
     GameObject _bloodEffectObject;
@@ -50,6 +51,7 @@ public class AttackCol : MonoBehaviour
     {
         _state = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _hitStop = GameObject.Find("HitStopManager").GetComponent<PlayerHitStopManager>();
+        _end = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.
         _bloodEffectObject = (GameObject)Resources.Load("Blood2");
@@ -133,7 +135,12 @@ public class AttackCol : MonoBehaviour
         }
 
         EffectSpawn(_hitEffectPocket, FleshyNumber);
-        DamageUISpawn();
+
+        if (!_end.GetQuestEnd())
+        {
+            DamageUISpawn();
+        }
+        
 
         _isOneProcess = false;
     }

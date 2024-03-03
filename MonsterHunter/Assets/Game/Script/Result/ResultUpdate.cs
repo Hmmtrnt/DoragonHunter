@@ -200,7 +200,7 @@ public class ResultUpdate : MonoBehaviour
         {
             ClearTimeFinalPositionAndFinalAlhpa();
             RankFinalPositionAndFinalAlpha();
-            Debug.Log("’Ê‚é");
+            
             _animEnd = true;
         }
     }

@@ -42,7 +42,7 @@ public partial class PlayerState
             //bool flag = (owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test;
 
             // 二撃目.
-            if ((owner._stateTime >= 0.32f && owner._stateTime <= 0.7f) && !_test)
+            if ((owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
@@ -135,6 +135,11 @@ public partial class PlayerState
                 owner._input._AButtonDown)
             {
                 owner.StateTransition(_backAvoid);
+            }
+            // 必殺技の構え
+            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
+            {
+                owner.StateTransition(_stance);
             }
             //// 突き.
             //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))

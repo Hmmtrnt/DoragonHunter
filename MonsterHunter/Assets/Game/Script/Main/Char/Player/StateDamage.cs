@@ -43,7 +43,7 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // 納刀かそうじゃないかで遷移先を変更
-            if (owner._stateFlame <= 90) return;
+            if (owner._stateTime <= 1.8f) return;
 
             if(owner._unsheathedSword)
             {
@@ -70,11 +70,11 @@ public partial class PlayerState
             //Vector3 dir = owner._transform.position - owner._Monster.transform.position;
             //dir = dir.normalized;
             //owner._rigidbody.AddForce(dir * 30, ForceMode.Impulse);
-            if(owner._stateFlame <= 40)
+            if(owner._stateTime <= 0.8f)
             {
                 owner._transform.position += knockBackVector * 0.15f;
             }
-            else if(owner._stateFlame <= 80)
+            else if(owner._stateTime <= 1.7f)
             {
                 owner._transform.position += knockBackVector * 0.3f;
             }

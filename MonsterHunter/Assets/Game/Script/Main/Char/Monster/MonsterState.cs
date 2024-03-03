@@ -40,9 +40,6 @@ public partial class MonsterState : MonoBehaviour
         WeakenState();
         // 状態の経過時間を増やす.
         StateTime();
-        //Debug.Log(_stateTime);
-
-        //Debug.Log(_weakenState);
     }
 
     private void FixedUpdate()
@@ -71,11 +68,12 @@ public partial class MonsterState : MonoBehaviour
             RoarTransition();
         }
 
-        // 怯み値がたまった時の処理.
-        if(_falterValue >= _falterMaxValue)
-        {
-            //Debug.Log("通る");
+        //Debug.Log(_HitPoint);
 
+        // 怯み値がたまった時と生きているときに処理.
+        if(_falterValue >= _falterMaxValue && _HitPoint > 0)
+        {
+            Debug.Log("to");
             ChangeFlater();
         }
 

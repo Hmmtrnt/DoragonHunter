@@ -11,7 +11,7 @@ public partial class PlayerState
         {
             owner._isAvoiding = true;
             owner._avoidMotion = true;
-            //owner._stamina -= owner._avoidStaminaCost;
+            owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
@@ -36,18 +36,15 @@ public partial class PlayerState
                 owner._flameAvoid = false;
             }
 
-            //Debug.Log(owner._avoidTime);
-            //Debug.Log(owner._avoidAdvanceInput);
-
             owner.GetAvoidAdvenceInput(30);
 
-
+            MoveAvoid(owner);
         }
 
         public override void OnFixedUpdate(PlayerState owner)
         {
             
-            MoveAvoid(owner);
+            
             
 
             
@@ -125,7 +122,7 @@ public partial class PlayerState
             // 一気に減速
             if (owner._stateTime >= 0.9f)
             {
-                owner._rigidbody.velocity *= 0.8f;
+                //owner._rigidbody.velocity *= 0.99f;
             }
 
 

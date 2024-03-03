@@ -118,6 +118,11 @@ public partial class PlayerState
             {
                 owner.StateTransition(_backAvoid);
             }
+            // 必殺技の構え
+            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
+            {
+                owner.StateTransition(_stance);
+            }
             //// 切り上げ.
             //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
             //{

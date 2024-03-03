@@ -106,6 +106,11 @@ public partial class PlayerState
             {
                 owner.StateTransition(_slashUp);
             }
+            // 必殺技の構え
+            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
+            {
+                owner.StateTransition(_stance);
+            }
             // 気刃斬り1.
             else if (owner._stateTime >= owner._nextMotionTime &&
                 owner._input._RightTrigger >= 0.5)

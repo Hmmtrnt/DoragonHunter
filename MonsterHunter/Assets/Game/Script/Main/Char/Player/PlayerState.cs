@@ -109,7 +109,16 @@ public partial class PlayerState : MonoBehaviour
         // ダメージを受けつける.
         if(other.gameObject.tag == "MonsterAtCol" && _currentState != _damage)
         {
-            OnDamage();
+            // カウンターの受付をしていない時はダメージを受ける.
+            if (!_counterValid)
+            {
+                OnDamage();
+            }
+            else if(_counterValid)
+            {
+                _counterSuccess = true;
+            }
+            
         }
     }
 }

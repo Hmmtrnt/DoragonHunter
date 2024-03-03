@@ -7,10 +7,6 @@ public partial class PlayerState
 {
     public class StateSteppingSlash : StateBase
     {
-        // 一度処理を通したら次から通さない.
-        //HACK:変数名を変更.
-        private bool _test = false;
-
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSteppingSlash = true;
@@ -24,17 +20,17 @@ public partial class PlayerState
             owner._increaseAmountRenkiGauge = 7;
             owner._hitStopTime = 0.1f;
             owner._attackCol._isOneProcess = true;
-            _test = false;
+            owner._isAttackProcess = false;
             owner._nextMotionTime = 1.13f;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
             //if (owner._stateFlame == 65)
-            if (owner._stateTime >= 0.9f && !_test )
+            if (owner._stateTime >= 0.9f && !owner._isAttackProcess)
             {
                 owner._weaponActive = true;
-                _test = true;
+                owner._isAttackProcess = true;
             }
 
             //if (owner._stateFlame <= 70 && owner._stateFlame >= 10)
@@ -47,7 +43,7 @@ public partial class PlayerState
                 owner._rigidbody.velocity *= 0.8f;
             }
             //if (owner._stateFlame >= 100)
-            if (owner._stateTime >= 1.7f)
+            if (owner._stateTime >= 1.6f)
             {
                 owner._weaponActive = false;
             }
@@ -67,7 +63,7 @@ public partial class PlayerState
             owner._drawnSteppingSlash = false;
             //owner._isCauseDamage = false;
             owner._weaponActive = false;
-            _test = false;
+            owner._isAttackProcess = false;
         }
 
         public override void OnChangeState(PlayerState owner)
@@ -113,6 +109,11 @@ public partial class PlayerState
                 owner._input._AButtonDown)
             {
                 owner.StateTransition(_backAvoid);
+            }
+            // 必殺技の構え
+            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
+            {
+                owner.StateTransition(_stance);
             }
             // 突き.
             else if(owner._stateTime >= owner._nextMotionTime &&

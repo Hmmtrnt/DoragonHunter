@@ -116,6 +116,8 @@ public partial class PlayerState
 
     // カウンター有効かどうか.
     private bool _counterValid = false;
+    // カウンター成功したかどうか.
+    private bool _counterSuccess = false;
 
     // モンスターに与えるダメージ.
     private float _attackDamage = 0.0f;
@@ -161,6 +163,8 @@ public partial class PlayerState
 
     // 一度通ったら二度は通らない
     private bool _isProcess = false;
+    // 攻撃判定を呼び出すとき一度通ったら二度は通らない.
+    private bool _isAttackProcess = false;
 
     // ダメージを与えられるかどうか.
     public bool _isCauseDamage = true;

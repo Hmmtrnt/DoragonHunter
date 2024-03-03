@@ -10,16 +10,20 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._falterMotion = true;
+            owner._biteCollisiton.SetActive(false);
+            owner._rushCollisiton.SetActive(false);
+            owner._wingRightCollisiton.SetActive(false);
+            owner._wingLeftCollisiton.SetActive(false);
+            for (int colNum = 0; colNum < owner._tailCollisiton.Length; colNum++)
+            {
+                owner._tailCollisiton[colNum].SetActive(false);
+            }
+            owner._rotateCollisiton.SetActive(false);
         }
 
         public override void OnUpdate(MonsterState owner)
         {
             owner.SEPlay(0.2f, (int)SEManager.MonsterSE.FALTER);
-        }
-
-        public override void OnFixedUpdate(MonsterState owner)
-        {
-
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

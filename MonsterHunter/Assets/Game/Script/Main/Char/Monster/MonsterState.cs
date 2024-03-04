@@ -11,7 +11,6 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateIdle             _idle = new();          // 待機.
     public static readonly MonsterStateDown             _down = new();          // やられる.
     public static readonly MonsterStateFalter           _falter = new();        // 怯み.
-    // 疲労待機.
 
     /*攻撃モーション*/
     public static readonly MonsterStateRotateAttack     _rotate = new();        // 回転攻撃.

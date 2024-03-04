@@ -18,13 +18,14 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
-            owner._avoidTime++;
+            //owner._avoidTime++;
+            owner.MoveAvoid();
         }
 
         public override void OnFixedUpdate(PlayerState owner)
         {
             
-            owner.MoveAvoid();
+            
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -37,7 +38,7 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // 走る.
-            if (owner._avoidTime >= 70)
+            if (owner._stateTime >= 1.18f)
             {
                 // スティック傾けていたらRunに.
                 if (owner._leftStickHorizontal != 0 ||
@@ -47,7 +48,7 @@ public partial class PlayerState
                 }
             }
             // 待機.
-            if (owner._avoidTime >= owner._nextMotionFlame)
+            if (owner._stateTime >= 1.28f)
             {
                 owner.StateTransition(_idleDrawnSword);
             }

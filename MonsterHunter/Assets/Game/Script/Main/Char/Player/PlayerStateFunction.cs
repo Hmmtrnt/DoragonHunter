@@ -337,16 +337,16 @@ public partial class PlayerState
     private void MoveAvoid()
     {
         // Œ¸‘¬.
-        if (_avoidTime <= 15)
-        {
-            _rigidbody.velocity *= _deceleration;
-        }
+        //if (_avoidTime <= 15)
+        //{
+        //    _rigidbody.velocity *= _deceleration;
+        //}
 
-        // ˆê‹C‚ÉŒ¸‘¬.
-        if (_avoidTime >= 55)
-        {
-            _rigidbody.velocity *= 0.8f;
-        }
+        //// ˆê‹C‚ÉŒ¸‘¬.
+        //if (_avoidTime >= 55)
+        //{
+        //    _rigidbody.velocity *= 0.8f;
+        //}
 
         // ˆê“xˆ—‚ğ’Ê‚·‚ÆŸ‚Í’Ê‚³‚È‚¢‚æ‚¤‚É‚·‚é.
         if (!_isProcess) return;

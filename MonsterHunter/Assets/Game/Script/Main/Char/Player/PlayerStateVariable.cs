@@ -215,7 +215,8 @@ public partial class PlayerState
 
     /*回避時の変数*/
     // 回避速度倍率.
-    private float _avoidVelocityMagnification = 50;
+    [Header("回避速度倍率")]
+    [SerializeField]private float _avoidVelocityMagnification = 25;
     // 回避速度.
     private Vector3 _avoidVelocity = Vector3.zero;
     // 現在の回避フレーム.

@@ -17,6 +17,8 @@ public class BGMManager : MonoBehaviour
     }
 
     // BGMëfçﬁ.
+    [Header("BGMëfçﬁ")]
+    [SerializeField, EnumIndex(typeof(BGM))]
     public AudioClip[] _bgm;
 
     // î≠âπ.

@@ -16,7 +16,7 @@ public partial class PlayerState
     }
 
     // 次の状態に遷移するときの時間.
-    public enum nextStateTransitionTime
+    public enum StateTransitionKinds
     {
         /*納刀時*/
         IDLE = 0,
@@ -45,15 +45,16 @@ public partial class PlayerState
         GREATATTACKSUCCESS,
         /*納刀抜刀共通処理*/
         DAMAGE,
+        DEAD,
 
         MAX
     }
 
     [Header("次の状態に遷移するときの時間")]
-    [SerializeField, EnumIndex(typeof(nextStateTransitionTime))]
-    private float[] _nextStateTransitionTime;
+    [SerializeField, EnumIndex(typeof(StateTransitionKinds))]
+    private float[] _stateTransitionTime;
+    private bool[] _stateTransitionFlag = new bool[(int)StateTransitionKinds.MAX];
 
-    
     // デバッグ用のテキスト
     //public Text _text;
 

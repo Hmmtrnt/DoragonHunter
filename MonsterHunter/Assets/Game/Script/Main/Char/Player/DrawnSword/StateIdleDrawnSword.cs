@@ -11,16 +11,6 @@ public partial class PlayerState
             owner._drawnIdleMotion = true;
         }
 
-        public override void OnUpdate(PlayerState owner)
-        {
-
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-
-        }
-
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnIdleMotion = false;
@@ -52,7 +42,7 @@ public partial class PlayerState
             {
                 owner.StateTransition(_spiritBlade1);
             }
-            // のちに納刀ステートを入れる.
+            // 納刀.
             else if (owner._input._XButtonDown || owner._input._RBButtonDown)
             {
                 owner._unsheathedSword = false;

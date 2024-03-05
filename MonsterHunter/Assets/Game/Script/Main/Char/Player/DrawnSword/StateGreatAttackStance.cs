@@ -23,8 +23,6 @@ public partial class PlayerState
             {
                 owner._counterValid = false;
             }
-
-            //Debug.Log(owner._counterSuccess);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

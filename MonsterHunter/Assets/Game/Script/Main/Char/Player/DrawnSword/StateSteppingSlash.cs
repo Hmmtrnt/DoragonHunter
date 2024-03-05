@@ -52,12 +52,6 @@ public partial class PlayerState
             owner.SEPlay(60, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-            
-
-        }
-
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSteppingSlash = false;
@@ -74,11 +68,7 @@ public partial class PlayerState
             {
                 owner.StateTransition(_idleDrawnSword);
             }
-            // 回避.
-            //else if (owner._stateFlame >= owner._nextMotionFlame && 
-            //    owner._viewDirection[(int)viewDirection.FORWARD] && 
-            //    owner.GetDistance() > 1 && 
-            //    owner._input._AButtonDown)
+            // 前回避.
             else if (owner._stateTime >= owner._nextMotionTime &&
                 owner._viewDirection[(int)viewDirection.FORWARD] &&
                 owner.GetDistance() > 1 &&

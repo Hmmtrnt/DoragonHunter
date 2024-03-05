@@ -1,6 +1,8 @@
 /*プレイヤーステートの関数まとめ*/
 
+using System.Buffers;
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 
 public partial class PlayerState
@@ -33,6 +35,78 @@ public partial class PlayerState
     {
         _stateFlame = 0;
         _maintainTime = 100;
+    }
+
+    /// <summary>
+    /// 状態遷移のフラグの代入.
+    /// </summary>
+    private void StateTransitionFlag()
+    {
+        /*以下、納刀時の状態*/
+        // 待機状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.IDLE] = _leftStickHorizontal == 0 && _leftStickVertical == 0;
+        // 回避状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.AVOID] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) && 
+            _input._AButtonDown;
+        // 走る状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.RUN] = _leftStickHorizontal != 0 || _leftStickVertical != 0;
+        // ダッシュ状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.DASH] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
+            _input._RBButtonDown;
+        // 疲労ダッシュ状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.FATIGUEDASH] = _stamina <= _maxStamina / 5;
+        // 回復状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.RECOVERY] = _input._XButtonDown && !_unsheathedSword &&
+            _hitPoint != _maxHitPoint && _cureMedicineNum > 0;
+
+        /*以下、抜刀時の状態*/
+        // 抜刀する状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.DRAWSWORDTRANSITION] = _input._YButtonDown;
+        // 待機状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE] = _leftStickHorizontal == 0 && _leftStickVertical == 0;
+        // 走る状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.DRAWRUN] = _leftStickHorizontal != 0 || _leftStickVertical != 0;
+        // 前回避状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.DRAWAVOID] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
+            _input._AButtonDown;
+        // 右回避状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.RIGHTAVOID] = _viewDirection[(int)viewDirection.RIGHT] &&
+                GetDistance() > 0.5f &&
+                _input._AButtonDown;
+        // 左回避状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.LEFTAVOID] = _viewDirection[(int)viewDirection.LEFT] &&
+            GetDistance() > 0.5f &&
+            _input._AButtonDown;
+        // 後ろ回避状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.BACKAVOID] = _viewDirection[(int)viewDirection.BACKWARD] &&
+            GetDistance() > 0.5f &&
+            _input._AButtonDown;
+        // 納刀する状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.SHEATHINGSWORD] = _input._XButtonDown || _input._RBButtonDown;
+        // 踏み込み斬り状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.STEPPINGSLASH] = _input._YButtonDown;
+        // 突き状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.PIERCING] = (_input._BButtonDown || _input._YButtonDown) && 
+            !_input._LBButton;
+        // 切り上げ状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.SLASHUP] = _input._BButtonDown || _input._YButtonDown;
+        // 気刃斬り1状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1] = _input._RightTrigger >= 0.5;
+        // 気刃斬り2状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE2] = _input._RightTrigger >= 0.5;
+        // 気刃斬り3状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE3] = _input._RightTrigger >= 0.5;
+        // 気刃大回転斬り状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.ROUNDSLASH] = _input._RightTrigger >= 0.5;
+        // 大技の構え状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE] = _input._LBButton && _input._BButtonDown &&
+            _applyRedRenkiGauge;
+        // 大技の成功状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSUCCESS] = _counterSuccess;
+
+        /*納刀、抜刀状態両方の共通の状態*/
+        // 体力が0いかになった状態.
+        _stateTransitionFlag[(int)StateTransitionKinds.DEAD] = _hitPoint <= 0;
     }
 
     /// <summary>
@@ -467,8 +541,7 @@ public partial class PlayerState
     /// </summary>
     private void TransitionRun()
     {
-        if(_leftStickHorizontal != 0.0f ||
-            _leftStickVertical != 0.0f)
+        if (_stateTransitionFlag[(int)StateTransitionKinds.RUN])
         {
             RunOrDash();
         }

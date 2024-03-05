@@ -63,26 +63,24 @@ public class SEManager : MonoBehaviour
 
 
     // SE素材.
-    /*TitleScene*/
     // UI.
+    [Header("UIの効果音")]
+    [SerializeField, EnumIndex(typeof(UISE))]
     public AudioClip[] _UiAudio;
-    /*MainScene*/
     // ハンター.
+    [Header("ハンターの効果音")]
+    [SerializeField, EnumIndex(typeof(HunterSE))]
     public AudioClip[] _hunterAudio;
     // モンスター.
+    [Header("モンスターの効果音")]
+    [SerializeField, EnumIndex(typeof(MonsterSE))]
     public AudioClip[] _monsterAudio;
 
-    // 発音
-    //private AudioSource _hunterSE;
-    //private AudioSource _monsterSE;
-
     // 発音.
-    private AudioSource[] _source = new AudioSource[2];
+    private AudioSource[] _source = new AudioSource[(int)AudioNumber.AUDIONUM];
 
     void Start()
     {
-        //_hunterSE = GameObject.Find("2DAudioSource").GetComponent<AudioSource>();
-        //_monsterSE = GameObject.Find("3DAudioSource").GetComponent<AudioSource>();
         _source[0] = GameObject.Find("2DAudioSource").GetComponent<AudioSource>();
         _source[1] = GameObject.Find("3DAudioSource").GetComponent<AudioSource>();
     }

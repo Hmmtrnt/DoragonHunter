@@ -32,8 +32,8 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateGreatAttackSuccess   _stanceSuccess = new();       // 必殺技成功.
 
     //--共通状態--//
-    private static readonly StateDead                 _dead = new();                // やられた.
     private static readonly StateDamage               _damage = new();              // ダメージを受けた.
+    private static readonly StateDead                 _dead = new();                // やられた.
 
     // 現在のState.
     private StateBase                                 _currentState = _idle;
@@ -46,6 +46,8 @@ public partial class PlayerState : MonoBehaviour
 
     void Update()
     {
+        StateTransitionFlag();
+
         GetStickInput();
         AnimTransition();
 

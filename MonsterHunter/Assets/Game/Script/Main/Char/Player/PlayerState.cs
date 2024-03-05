@@ -100,7 +100,7 @@ public partial class PlayerState : MonoBehaviour
         // モンスターに当たっても浮かないようにする.
         if (collision.transform.tag == "Monster")
         {
-            transform.position = new Vector3 (transform.position.x, 0.1f, transform.position.z);
+            _transform.position = new Vector3 (_transform.position.x, 0.1f, _transform.position.z);
         }
     }
 

@@ -1,7 +1,7 @@
 /*プレイヤーステートの関数まとめ*/
 
 using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
+
 
 public partial class PlayerState
 {

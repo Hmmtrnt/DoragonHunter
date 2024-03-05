@@ -1,5 +1,6 @@
 ﻿// プレイヤーの変数.
 
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public partial class PlayerState
 {
     enum viewDirection
     {
-        FORWARD,
+        FORWARD = 0,
         BACKWARD,
         RIGHT,
         LEFT,
@@ -15,10 +16,10 @@ public partial class PlayerState
     }
 
     // 次の状態に遷移するときの時間.
-    enum nextStateTransitionTime
+    public enum nextStateTransitionTime
     {
         /*納刀時*/
-        IDLE,
+        IDLE = 0,
         AVOID,
         RUN,
         DASH,
@@ -49,8 +50,10 @@ public partial class PlayerState
     }
 
     [Header("次の状態に遷移するときの時間")]
-    [SerializeField]private float[] _nextStateTransitionTime = new float[(int)nextStateTransitionTime.MAX];
+    [SerializeField, EnumIndex(typeof(nextStateTransitionTime))]
+    private float[] _nextStateTransitionTime;
 
+    
     // デバッグ用のテキスト
     //public Text _text;
 

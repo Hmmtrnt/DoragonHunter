@@ -53,32 +53,13 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            //if(owner._avoidTime >= 50)
-            //{
-            //    if (owner._avoidAdvanceInput)
-            //    {
-            //        owner.StateTransition(_avoid);
-            //    }
-            //}
-
-            //if(owner._avoidTime >= 55)
             if (owner._stateTime >= 1.0f)
             {
-                // スティック傾けていたらRunに
-                if (owner._stateTransitionFlag[(int)StateTransitionKinds.RUN])
-                {
-                    owner.StateTransition(_running);
-                }
-
-                if (owner._stateTransitionFlag[(int)StateTransitionKinds.RUN] && !owner._openMenu)
-                {
-                    owner.StateTransition(_dash);
-                }
-
-                owner.TransitionRun();
+                // スティック傾けていたら移動状態に.
+                owner.TransitionMove();
             }
 
-            if (owner._stateTime >= 1.2f)
+            if (owner._stateTime >= 1.05f)
             {
                 if (owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE])
                 {
@@ -90,29 +71,6 @@ public partial class PlayerState
         // 回避処理
         private void MoveAvoid(PlayerState owner)
         {
-            // 減速
-            //if (owner._stateTime <= 0.1f)
-            //{
-            //    owner._rigidbody.velocity *= owner._deceleration;
-            //}
-            //// 一気に減速
-            //if (owner._stateTime >= 0.9f)
-            //{
-            //    owner._rigidbody.velocity *= 0.8f;
-            //}
-
-            // 減速
-            if (owner._stateTime <= 0.1f)
-            {
-                owner._rigidbody.velocity *= owner._deceleration;
-            }
-            // 一気に減速
-            if (owner._stateTime >= 0.9f)
-            {
-                //owner._rigidbody.velocity *= 0.99f;
-            }
-
-
             // 最初の一フレームだけ加速
             if (!owner._isProcess) return;
             

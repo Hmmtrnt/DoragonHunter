@@ -536,10 +536,20 @@ public partial class PlayerState
         _rigidbody.velocity = _transform.forward * speedPower;
     }
 
+
+    private void TransitionState(bool transitionFlag, StateBase currentState)
+    {
+        if (transitionFlag)
+        {
+            StateTransition(currentState);
+        }
+    }
+
+
     /// <summary>
     /// スティックを倒すと移動状態に遷移.
     /// </summary>
-    private void TransitionRun()
+    private void TransitionMove()
     {
         if (_stateTransitionFlag[(int)StateTransitionKinds.RUN])
         {
@@ -553,16 +563,9 @@ public partial class PlayerState
     private void RunOrDash()
     {
         // メニュー開いているときはダッシュしない.
-        if (_input._RBButton && !_openMenu)
-        {
-            // ダッシュ.
-            StateTransition(_dash);
-        }
-        else
-        {
-            // 移動.
-            StateTransition(_running);
-        }
+        TransitionState(_input._RBButton && !_openMenu, _dash);
+        TransitionState(!_input._RBButton, _running);
+
     }
 
     /// <summary>

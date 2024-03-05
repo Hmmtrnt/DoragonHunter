@@ -12,16 +12,6 @@ public partial class PlayerState
             owner._idleMotion = true;
         }
 
-        public override void OnUpdate(PlayerState owner)
-        {
-            
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-            
-        }
-
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._idleMotion = false;
@@ -30,25 +20,16 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // 移動.
-            owner.TransitionRun();
+            owner.TransitionMove();
 
             if (owner._openMenu) return;
 
             // 回復.
-            if (owner._stateTransitionFlag[(int)StateTransitionKinds.RECOVERY])
-            {
-                owner.StateTransition(_recovery);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RECOVERY], _recovery);
             // 抜刀する.
-            if (owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWSWORDTRANSITION])
-            {
-                owner.StateTransition(_drawSwordTransition);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWSWORDTRANSITION], _drawSwordTransition);
             // 気刃斬り1.
-            if (owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1])
-            {
-                owner.StateTransition(_spiritBlade1);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
         }
     }
 }

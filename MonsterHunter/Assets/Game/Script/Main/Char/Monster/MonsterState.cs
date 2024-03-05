@@ -72,7 +72,6 @@ public partial class MonsterState : MonoBehaviour
         // 怯み値がたまった時と生きているときに処理.
         if(_falterValue >= _falterMaxValue && _HitPoint > 0)
         {
-            Debug.Log("to");
             ChangeFlater();
         }
 

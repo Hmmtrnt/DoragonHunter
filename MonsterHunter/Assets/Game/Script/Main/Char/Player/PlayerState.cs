@@ -4,11 +4,9 @@ using UnityEngine;
 
 public partial class PlayerState : MonoBehaviour
 {
-    
-
     void Start()
     {
-        Initialization();
+        VariableInitialization();
         _currentState.OnEnter(this, null);
     }
 

@@ -11,14 +11,6 @@ public partial class PlayerState
             owner.ResetTime();
             // アニメーション開始.
             owner._idleMotion = true;
-            // 次に状態遷移するときの時間指定.
-            //owner._nextMotionTime = owner._stateTransitionTime[(int)StateTransitionKinds.IDLE];
-
-        }
-
-        public override void OnUpdate(PlayerState owner)
-        {
-            Debug.Log(owner._stateTime);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

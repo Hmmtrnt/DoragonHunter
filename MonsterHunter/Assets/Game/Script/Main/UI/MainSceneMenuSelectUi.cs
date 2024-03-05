@@ -105,7 +105,6 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     {
         if(_controllerManager._AButtonDown && _selectNum ==(int)SelectItem.RETIRE)
         {
-            Debug.Log("’Ê‚é");
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
             _mainSceneManager._openRetireConfirmation = true;
         }

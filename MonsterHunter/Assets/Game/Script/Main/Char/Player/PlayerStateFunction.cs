@@ -10,7 +10,7 @@ public partial class PlayerState
     /// <summary>
     /// プレイヤー情報の初期化.
     /// </summary>
-    private void Initialization()
+    private void VariableInitialization()
     {
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
         _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneMenuSelectUi>();
@@ -46,13 +46,13 @@ public partial class PlayerState
         // 待機状態.
         _stateTransitionFlag[(int)StateTransitionKinds.IDLE] = _leftStickHorizontal == 0 && _leftStickVertical == 0;
         // 回避状態.
-        _stateTransitionFlag[(int)StateTransitionKinds.AVOID] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) && 
-            _input._AButtonDown;
+        _stateTransitionFlag[(int)StateTransitionKinds.AVOID] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
+            _stamina >= _maxStamina / 10 && _input._AButtonDown;
         // 走る状態.
         _stateTransitionFlag[(int)StateTransitionKinds.RUN] = _leftStickHorizontal != 0 || _leftStickVertical != 0;
         // ダッシュ状態.
         _stateTransitionFlag[(int)StateTransitionKinds.DASH] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
-            _input._RBButtonDown;
+            _input._RBButton;
         // 疲労ダッシュ状態.
         _stateTransitionFlag[(int)StateTransitionKinds.FATIGUEDASH] = _stamina <= _maxStamina / 5;
         // 回復状態.

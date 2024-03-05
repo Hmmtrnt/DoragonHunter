@@ -1,7 +1,6 @@
 ﻿/*回避*/
 
 using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
 
 public partial class PlayerState
 {
@@ -56,16 +55,8 @@ public partial class PlayerState
             {
                 // スティック傾けていたら移動状態に.
                 owner.TransitionMove();
-            }
-
-            if (owner._stateTime >= 1.00f)
-            {
+                //owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.AVOID], _avoid);
                 owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
-
-                //if (owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE])
-                //{
-                //    owner.StateTransition(_idle);
-                //}
             }
         }
 

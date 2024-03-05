@@ -15,7 +15,6 @@ public partial class PlayerState
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
-            owner._deceleration = 0.9f;
             owner._flameAvoid = true;
             owner._rotateSpeed = 40.0f;
 
@@ -59,12 +58,14 @@ public partial class PlayerState
                 owner.TransitionMove();
             }
 
-            if (owner._stateTime >= 1.05f)
+            if (owner._stateTime >= 1.00f)
             {
-                if (owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE])
-                {
-                    owner.StateTransition(_idle);
-                }
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
+
+                //if (owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE])
+                //{
+                //    owner.StateTransition(_idle);
+                //}
             }
         }
 

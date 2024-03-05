@@ -8,8 +8,17 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
+            owner.ResetTime();
             // アニメーション開始.
             owner._idleMotion = true;
+            // 次に状態遷移するときの時間指定.
+            //owner._nextMotionTime = owner._stateTransitionTime[(int)StateTransitionKinds.IDLE];
+
+        }
+
+        public override void OnUpdate(PlayerState owner)
+        {
+            Debug.Log(owner._stateTime);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -19,6 +28,12 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE])
+            {
+                return;
+            }
+
             // 移動.
             owner.TransitionMove();
 

@@ -565,7 +565,6 @@ public partial class PlayerState
         // メニュー開いているときはダッシュしない.
         TransitionState(_input._RBButton && !_openMenu, _dash);
         TransitionState(!_input._RBButton, _running);
-
     }
 
     /// <summary>

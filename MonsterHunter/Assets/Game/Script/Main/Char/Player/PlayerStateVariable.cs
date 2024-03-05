@@ -14,6 +14,43 @@ public partial class PlayerState
         NONE
     }
 
+    // 次の状態に遷移するときの時間.
+    enum nextStateTransitionTime
+    {
+        /*納刀時*/
+        IDLE,
+        AVOID,
+        RUN,
+        DASH,
+        FATIGUEDASH,
+        RECOVERY,
+        /*抜刀時*/
+        DRAWSWORDTRANSITION,
+        DRAWIDLE,
+        DRAWRUN,
+        DRAWAVOID,
+        RIGHTAVOID,
+        LEFTAVOID,
+        BACKAVOID,
+        SHEATHINGSWORD,
+        STEPPINGSLASH,
+        PIERCING,
+        SLASHUP,
+        SPIRITBLADE1,
+        SPIRITBLADE2,
+        SPIRITBLADE3,
+        ROUNDSLASH,
+        GREATATTACKSTANCE,
+        GREATATTACKSUCCESS,
+        /*納刀抜刀共通処理*/
+        DAMAGE,
+
+        MAX
+    }
+
+    [Header("次の状態に遷移するときの時間")]
+    [SerializeField]private float[] _nextStateTransitionTime = new float[(int)nextStateTransitionTime.MAX];
+
     // デバッグ用のテキスト
     //public Text _text;
 

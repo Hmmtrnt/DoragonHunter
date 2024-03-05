@@ -55,20 +55,6 @@ public partial class PlayerState
             owner.SEPlay(15, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
         }
 
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-            //if (owner._stateFlame >= 10)
-            //{
-            //    owner._isCauseDamage = true;
-            //}
-            //if (owner._stateFlame >= 60)
-            //{
-            //    owner._isCauseDamage = false;
-            //}
-
-            
-        }
-
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSpiritRoundSlash = false;
@@ -84,14 +70,14 @@ public partial class PlayerState
                 owner.StateTransition(_idle);
             }
             // 移動.
-            else if(owner._stateTime >= owner._nextMotionTime && 
+            else if(owner._stateTime >= owner._nextMotionTime - 0.2f && 
                 (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) && 
                 !owner._input._RBButton)
             {
                 owner.StateTransition(_running);
             }
             // ダッシュ.
-            else if(owner._stateTime >= owner._nextMotionTime &&
+            else if(owner._stateTime >= owner._nextMotionTime - 0.2f &&
                 (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) &&
                 owner._input._RBButton)
             {

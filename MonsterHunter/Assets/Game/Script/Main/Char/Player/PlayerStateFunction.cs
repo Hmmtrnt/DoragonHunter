@@ -49,7 +49,8 @@ public partial class PlayerState
         _stateTransitionFlag[(int)StateTransitionKinds.AVOID] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
             _stamina >= _maxStamina / 10 && _input._AButtonDown;
         // 走る状態.
-        _stateTransitionFlag[(int)StateTransitionKinds.RUN] = _leftStickHorizontal != 0 || _leftStickVertical != 0;
+        _stateTransitionFlag[(int)StateTransitionKinds.RUN] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) && 
+            !_input._RBButton;
         // ダッシュ状態.
         _stateTransitionFlag[(int)StateTransitionKinds.DASH] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
             _input._RBButton;
@@ -271,6 +272,8 @@ public partial class PlayerState
 
         RenkiGaugeDraw();
     }
+
+    
 
     /// <summary>
     /// 練気ゲージ赤になると効果を適用.

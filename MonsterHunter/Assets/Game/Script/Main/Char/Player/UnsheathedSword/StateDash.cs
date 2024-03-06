@@ -16,13 +16,8 @@ public partial class PlayerState
         public override void OnUpdate(PlayerState owner)
         {
             owner.FixedRotate();
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
             Move(owner);
             owner.RotateDirection();
-
             owner._stamina -= owner._isDashStaminaCost;
         }
 
@@ -34,60 +29,24 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
+            // 待機状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
 
-            if(owner._openMenu)
-            {
-                // idle状態.
-                if (owner._leftStickHorizontal == 0 &&
-                    owner._leftStickVertical == 0)
-                {
-                    owner.StateTransition(_idle);
-                }
-                // run状態.
-                else
-                {
-                    owner.StateTransition(_running);
-                }
-            }
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.DASH]) return;
 
-            // idle状態.
-            if(owner._leftStickHorizontal == 0 &&
-                owner._leftStickVertical == 0)
-            {
-                owner.StateTransition(_idle);
-            }
-            // run状態.
-            else if (owner._input._RBButtonUp)
-            {
-                owner.StateTransition(_running);
-            }
-            // avoid状態.
-            else if (owner._input._AButtonDown && owner._stamina >= owner._maxStamina / 10)
-            {
-                owner.StateTransition(_avoid);
-            }
-            // fatigueDash状態.
-            else if (owner._stamina <= owner._maxStamina / 5)
-            {
-                owner.StateTransition(_fatigueDash);
-            }
-            // 回復状態へ.
-            // HACK:アイテムが選ばれている状態の条件も追加する.
-            else if (owner._input._XButtonDown && !owner._unsheathedSword && owner._hitPoint != owner._maxHitPoint &&
-                owner._cureMedicineNum > 0)
-            {
-                owner.StateTransition(_recovery);
-            }
-            // 踏み込み斬り.
-            else if (owner._input._YButtonDown)
-            {
-                owner.StateTransition(_steppingSlash);
-            }
-            // 気刃斬り1.
-            if (owner._input._RightTrigger >= 0.5f)
-            {
-                owner.StateTransition(_spiritBlade1);
-            }
+            // 走る状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
+            // 回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.AVOID], _avoid);
+            // 疲労ダッシュ状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH] &&
+                owner._stateTransitionFlag[(int)StateTransitionKinds.FATIGUEDASH], _fatigueDash);
+            // 回復状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RECOVERY], _recovery);
+            // 踏み込み斬り状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.STEPPINGSLASH], _steppingSlash);
+            // 気刃斬り1状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
         }
 
         // 移動

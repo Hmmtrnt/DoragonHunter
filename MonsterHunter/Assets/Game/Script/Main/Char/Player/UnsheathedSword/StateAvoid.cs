@@ -54,9 +54,14 @@ public partial class PlayerState
             if (owner._stateTime >= 1.0f)
             {
                 // スティック傾けていたら移動状態に.
-                owner.TransitionMove();
-                //owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.AVOID], _avoid);
+                //owner.TransitionMove();
+
+                // 待機状態.
                 owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
+                // 走る状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
+                // ダッシュ状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
             }
         }
 

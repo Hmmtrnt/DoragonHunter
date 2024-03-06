@@ -1,7 +1,5 @@
 ﻿/*気刃斬り1*/
 
-using UnityEngine;
-
 public partial class PlayerState
 {
     public class StateSpiritBlade1 : StateBase

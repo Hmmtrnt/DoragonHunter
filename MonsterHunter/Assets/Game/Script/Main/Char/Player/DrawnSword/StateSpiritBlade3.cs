@@ -1,14 +1,28 @@
 ﻿/*気刃斬り3*/
 
-using UnityEngine;
-
 public partial class PlayerState
 {
     public class StateSpiritBlade3 : StateBase
     {
-        // 一度処理を通したら次から通さない.
-        //HACK:変数名を変更.
-        private bool _test = false;
+        // 攻撃判定発生タイミング.
+        private float[] _spawnColTiming = new float[3];
+        // 攻撃判定発生の処理の終了タイミング.
+        private float[] _spawnEndColTiming = new float[3];
+        // 攻撃判定消去タイミング.
+        private float[] _eraseColTiming = new float[3];
+        // 攻撃判定消去の処理の終了タイミング.
+        private float[] _eraseEndColTiming = new float[2];
+        // 前進させるタイミング.
+        private const float _forwardStopTiming = 1;
+        // 移動力.
+        private const float _speedPower = 4;
+        // SEを鳴らすタイミング.
+        private float[] _sePlayTiming = new float[3];
+        // SEを鳴らすフラグ.
+        private float[] _playOneShotResetTiming = new float[2];
+
+        // モーションキャンセル適応外の状態に遷移するタイミング.
+        private const float _TransitionTime = 2.1f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -18,77 +32,89 @@ public partial class PlayerState
             owner._attackPower = 40;
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 5;
-            //owner._currentRenkiGauge -= 20;
             owner._hitStopTime = 0.05f;
             owner._attackCol._isOneProcess = true;
-            _test = false;
+            owner._isAttackProcess = false;
             owner._nextMotionTime = 1.6f;
+
+            _spawnColTiming[0] = 0.15f;
+            _spawnColTiming[1] = 0.3f;
+            _spawnColTiming[2] = 1.25f;
+
+            _spawnEndColTiming[0] = 0.25f;
+            _spawnEndColTiming[1] = 0.7f;
+            _spawnEndColTiming[2] = 1.6f;
+
+            _eraseColTiming[0] = 0.26f;
+            _eraseColTiming[1] = 0.75f;
+            _eraseColTiming[2] = 1.65f;
+
+            _eraseEndColTiming[0] = 0.28f;
+            _eraseEndColTiming[1] = 0.8f;
+
+            _sePlayTiming[0] = 0.12f;
+            _sePlayTiming[1] = 0.36f;
+            _sePlayTiming[2] = 1.0f;
+            _playOneShotResetTiming[0] = 0.2f;
+            _playOneShotResetTiming[1] = 0.4f;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
             // 一撃目.
-            if ((owner._stateTime >= 0.15f && owner._stateTime <= 0.28f) && !_test)
+            if ((owner._stateTime >= _spawnColTiming[0] && owner._stateTime <= _spawnEndColTiming[0]) && !owner._isAttackProcess)
             {
                 owner._weaponActive = true;
-                _test = true;
+                owner._isAttackProcess = true;
             }
-            if ((owner._stateTime >= 0.29f && owner._stateTime <= 0.3f) && _test)
+            if ((owner._stateTime >= _eraseColTiming[0] && owner._stateTime <= _eraseEndColTiming[0]) && owner._isAttackProcess)
             {
                 owner._weaponActive = false;
-                _test = false;
+                owner._isAttackProcess = false;
             }
 
-            //bool flag = (owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_medicineConsume;
-
             // 二撃目.
-            if ((owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test)
+            if ((owner._stateTime >= _spawnColTiming[1] && owner._stateTime <= _spawnEndColTiming[1]) && !owner._isAttackProcess)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
                 owner._attackCol._isOneProcess = true;
-                _test = true;
-                //Debug.Log("と");
+                owner._isAttackProcess = true;
 
             }
-
-            //Debug.Log(flag);
-
-            if ((owner._stateTime >= 0.75f && owner._stateTime <= 0.8f) && _test)
+            if ((owner._stateTime >= _eraseColTiming[1] && owner._stateTime <= _eraseEndColTiming[1]) && owner._isAttackProcess)
             {
                 owner._weaponActive = false;
-                _test = false;
+                owner._isAttackProcess = false;
             }
 
             // 三撃目.
-            if ((owner._stateTime >= 1.2f && owner._stateTime <= 1.6f) && !_test)
+            if ((owner._stateTime >= _spawnColTiming[2] && owner._stateTime <= _spawnEndColTiming[2]) && !owner._isAttackProcess)
             {
                 owner._isCauseDamage = true;
                 owner._weaponActive = true;
                 owner._attackCol._isOneProcess = true;
                 owner._attackPower = 100;
-                _test = true;
+                owner._isAttackProcess = true;
             }
 
-            if (owner._stateTime >= 1.65f && _test)
+            if (owner._stateTime >= _eraseColTiming[2] && owner._isAttackProcess)
             {
                 owner._weaponActive = false;
-                _test = false;
+                owner._isAttackProcess = false;
             }
 
-            if (owner._stateTime <= 1.0f)
+            if (owner._stateTime <= _forwardStopTiming)
             {
-                owner.ForwardStep(4);
+                owner.ForwardStep(_speedPower);
             }
-
-            //Debug.Log(owner._stateTime);
 
             // 空振り効果音再生.
-            owner.SEPlay(10, 30, 80, (int)SEManager.HunterSE.MISSINGSLASH);
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
+            owner.SEPlayTest(_sePlayTiming[0], (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.PlayOneShotReset(_playOneShotResetTiming[0]);
+            owner.SEPlayTest(_sePlayTiming[1], (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.PlayOneShotReset(_playOneShotResetTiming[1]);
+            owner.SEPlayTest(_sePlayTiming[2], (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -99,62 +125,30 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // アイドル.
-            if (owner._stateTime >= 3.0f)
+            // モーションキャンセル適応外の遷移先.
+            if (owner._stateTime >= _TransitionTime)
             {
-                owner.StateTransition(_idleDrawnSword);
-            }
-            // 回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.FORWARD] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_avoidDrawnSword);
-            }
-            // 右回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.RIGHT] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_rightAvoid);
-            }
-            // 左回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.LEFT] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_leftAvoid);
-            }
-            // 後ろ回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.BACKWARD] &&
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_backAvoid);
-            }
-            // 必殺技の構え
-            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
-            {
-                owner.StateTransition(_stance);
-            }
-            //// 突き.
-            //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
-            //{
-            //    owner.ChangeState(_prick);
-            //}
-            // 気刃大回転斬り.
-            else if (owner._stateTime >= owner._nextMotionTime && 
-                owner._input._RightTrigger >= 0.5)
-            {
-                owner.StateTransition(_roundSlash);
+                // 抜刀待機状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE], _idleDrawnSword);
+                // 抜刀移動状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWRUN], _runDrawnSword);
             }
 
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.SPIRITBLADE3]) return;
+
+            // 回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWAVOID], _avoidDrawnSword);
+            // 右回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RIGHTAVOID], _rightAvoid);
+            // 左回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.LEFTAVOID], _leftAvoid);
+            // 後ろ回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.BACKAVOID], _backAvoid);
+            // 必殺技の構え状態
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE], _stance);
+            // 気大回転斬り状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.ROUNDSLASH], _roundSlash);
         }
     }
 }
-
-

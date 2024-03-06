@@ -1,8 +1,5 @@
 ﻿/*気刃斬り2*/
 
-using UnityEngine;
-using UnityEngine.Rendering;
-
 public partial class PlayerState
 {
     public class StateSpiritBlade2 : StateBase

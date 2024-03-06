@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6475.999, g: 6274.743, b: 6028.153, a: 1}
+  m_IndirectSpecularColor: {r: 6476.046, g: 6274.7275, b: 6028.0747, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -36454,12 +36454,17 @@ PrefabInstance:
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
       propertyPath: _stateTransitionTime.Array.data[10]
-      value: 1.18
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
       propertyPath: _stateTransitionTime.Array.data[11]
-      value: 1.18
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _stateTransitionTime.Array.data[12]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}

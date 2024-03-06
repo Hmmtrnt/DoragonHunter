@@ -7,7 +7,7 @@ public partial class PlayerState
     public class StateAvoidDrawSword : StateBase
     {
         // 状態遷移を行う際に少しずらして処理を通すための変数.
-        private const float _delayTransition = 0.3f;
+        private const float _delayTransition = 0.1f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {

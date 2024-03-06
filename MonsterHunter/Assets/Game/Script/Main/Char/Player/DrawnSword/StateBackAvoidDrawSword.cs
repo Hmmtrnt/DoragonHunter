@@ -12,7 +12,6 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnBackAvoidMotion = true;
-            owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.forward * owner._avoidVelocityMagnification;
             owner._nextMotionFlame = 100;

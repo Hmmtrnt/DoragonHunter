@@ -1,6 +1,5 @@
 ﻿/*踏み込み斬り*/
 
-using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class PlayerState
@@ -21,8 +20,8 @@ public partial class PlayerState
         private const float _decelerationPower = 0.8f;
         // SEを鳴らすタイミング.
         private const float _sePlayTiming = 0.72f;
-        // 待機状態に遷移するタイミング.
-        private const float _idleTransitionTime = 2.5f;
+        // モーションキャンセル適応外の状態に遷移するタイミング.
+        private const float _TransitionTime = 2.5f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -81,7 +80,7 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // モーションキャンセル適応外の遷移先.
-            if (owner._stateTime >= _idleTransitionTime) 
+            if (owner._stateTime >= _TransitionTime) 
             {
                 // 抜刀待機状態.
                 owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE], _idleDrawnSword);

@@ -1,7 +1,5 @@
 ﻿/*突き*/
 
-using UnityEngine;
-
 public partial class PlayerState
 {
     public class StatePrick : StateBase
@@ -14,8 +12,10 @@ public partial class PlayerState
         private const float _forwardStopTiming = 0.3f;
         // 移動力.
         private const float _speedPower = 2;
-        // 待機状態に遷移するタイミング.
-        private const float _idleTransitionTime = 1.2f;
+        // SEを鳴らすタイミング.
+        private const float _sePlayTiming = 0.12f;
+        // モーションキャンセル適応外の状態に遷移するタイミング.
+        private const float _TransitionTime = 1.2f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -43,8 +43,6 @@ public partial class PlayerState
                 owner._weaponActive = false;
             }
 
-
-
             // 前進させる.
             if (owner._stateTime <= _forwardStopTiming)
             {
@@ -53,7 +51,7 @@ public partial class PlayerState
 
             // 空振り効果音再生.
             //owner.SEPlay(10, (int)SEManager.HunterSE.MISSINGSLASH);
-            owner.SEPlayTest(0.12f, (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlayTest(_sePlayTiming, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -72,7 +70,7 @@ public partial class PlayerState
             //}
 
             // モーションキャンセル適応外の遷移先.
-            if (owner._stateTime >= _idleTransitionTime)
+            if (owner._stateTime >= _TransitionTime)
             {
                 // 抜刀待機状態.
                 owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE], _idleDrawnSword);

@@ -1,15 +1,22 @@
 ﻿/*斬り上げ*/
 
-using UnityEngine;
-
 public partial class PlayerState
 {
     public class StateSlashUp : StateBase
     {
+        // 攻撃判定発生タイミング.
+        private const float _spawnColTiming = 0.15f;
+        // 攻撃判定消去タイミング.
+        private const float _eraseColTiming = 0.45f;
+        // 前進させるタイミング.
+        private const float _forwardStopTiming = 0.1f;
+        // 移動力.
+        private const float _speedPower = 3.5f;
+        // SEを鳴らすタイミング.
+        private const float _sePlayTiming = 0.12f;
+        // モーションキャンセル適応外の状態に遷移するタイミング.
+        private const float _TransitionTime = 2.1f;
 
-        // 一度処理を通したら次から通さない.
-        //HACK:変数名を変更.
-        private bool _test = false;
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSlashUp = true;
@@ -20,36 +27,31 @@ public partial class PlayerState
             owner._increaseAmountRenkiGauge = 5;
             owner._hitStopTime = 0.05f;
             owner._attackCol._isOneProcess = true;
-            _test = false;
+            owner._isAttackProcess = false;
             owner._nextMotionTime = 0.48f;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
-            //if (owner._stateFlame == 15)
-            if (owner._stateTime >= 0.15f && !_test)
+            // 攻撃判定を生成.
+            if (owner._stateTime >= _spawnColTiming && !owner._isAttackProcess)
             {
-                _test = false;
+                owner._isAttackProcess = false;
                 owner._weaponActive = true;
             }
-            if (owner._stateTime >= 0.45f)
+            // 攻撃判定を消去.
+            if (owner._stateTime >= _eraseColTiming)
             {
                 owner._weaponActive = false;
             }
 
             // 前進させる.
-            if (owner._stateTime <= 0.1f)
+            if (owner._stateTime <= _forwardStopTiming)
             {
-                owner.ForwardStep(3.5f);
+                owner.ForwardStep(_speedPower);
             }
             // 空振り効果音再生.
-            owner.SEPlay(10, (int)SEManager.HunterSE.MISSINGSLASH);
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-            
-            
+            owner.SEPlayTest(_sePlayTiming, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -60,60 +62,32 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // アイドル.
-            if (owner._stateTime >= 2.1f)
+            // モーションキャンセル適応外の遷移先.
+            if (owner._stateTime >= _TransitionTime)
             {
-                owner.StateTransition(_idleDrawnSword);
+                // 抜刀待機状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE], _idleDrawnSword);
+                // 抜刀移動状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWRUN], _runDrawnSword);
             }
-            // 回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.FORWARD] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_avoidDrawnSword);
-            }
-            // 右回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.RIGHT] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_rightAvoid);
-            }
-            // 左回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.LEFT] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_leftAvoid);
-            }
-            // 後ろ回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.BACKWARD] &&
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_backAvoid);
-            }
-            // 必殺技の構え
-            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
-            {
-                owner.StateTransition(_stance);
-            }
-            // 突き.
-            else if (owner._stateTime >= owner._nextMotionTime && 
-                (owner._input._YButtonDown || owner._input._BButtonDown))
-            {
-                owner.StateTransition(_prick);
-            }
-            // 気刃斬り1.
-            else if (owner._stateTime >= owner._nextMotionTime && 
-                owner._input._RightTrigger >= 0.5)
-            {
-                owner.StateTransition(_spiritBlade1);
-            }
+
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.SLASHUP]) return;
+
+            // 回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWAVOID], _avoidDrawnSword);
+            // 右回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RIGHTAVOID], _rightAvoid);
+            // 左回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.LEFTAVOID], _leftAvoid);
+            // 後ろ回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.BACKAVOID], _backAvoid);
+            // 必殺技の構え状態
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE], _stance);
+            // 突き状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.PRICK], _prick);
+            // 気刃斬り1状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
         }
     }
 }

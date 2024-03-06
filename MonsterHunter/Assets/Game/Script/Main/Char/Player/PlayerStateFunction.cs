@@ -72,15 +72,15 @@ public partial class PlayerState
             _input._AButtonDown;
         // ‰E‰ñ”ğó‘Ô.
         _stateTransitionFlag[(int)StateTransitionKinds.RIGHTAVOID] = _viewDirection[(int)viewDirection.RIGHT] &&
-                GetDistance() > 0.5f &&
+                GetDistance() > 0.5f && _stamina >= _avoidStaminaCost &&
                 _input._AButtonDown;
         // ¶‰ñ”ğó‘Ô.
         _stateTransitionFlag[(int)StateTransitionKinds.LEFTAVOID] = _viewDirection[(int)viewDirection.LEFT] &&
-            GetDistance() > 0.5f &&
+            GetDistance() > 0.5f && _stamina >= _avoidStaminaCost &&
             _input._AButtonDown;
         // Œã‚ë‰ñ”ğó‘Ô.
         _stateTransitionFlag[(int)StateTransitionKinds.BACKAVOID] = _viewDirection[(int)viewDirection.BACKWARD] &&
-            GetDistance() > 0.5f &&
+            GetDistance() > 0.5f && _stamina >= _avoidStaminaCost &&
             _input._AButtonDown;
         // ”[“‚·‚éó‘Ô.
         _stateTransitionFlag[(int)StateTransitionKinds.SHEATHINGSWORD] = _input._XButtonDown || _input._RBButtonDown;

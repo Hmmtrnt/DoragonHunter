@@ -12,12 +12,12 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnLeftAvoidMotion = true;
-            owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.right * owner._avoidVelocityMagnification;
             owner._nextMotionFlame = 80;
             owner._deceleration = 0.9f;
             owner._rigidbody.velocity = Vector3.zero;
+            
         }
 
         public override void OnUpdate(PlayerState owner)

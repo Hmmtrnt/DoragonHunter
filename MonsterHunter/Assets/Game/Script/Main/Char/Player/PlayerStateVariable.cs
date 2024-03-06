@@ -22,7 +22,7 @@ public partial class PlayerState
     private static readonly StateBackAvoidDrawSword _backAvoid = new();             // 攻撃後の後ろ回避.
     private static readonly StateSheathingSword _sheathingSword = new();            // 納刀する.
     private static readonly StateSteppingSlash _steppingSlash = new();              // 踏み込み斬り.
-    private static readonly StatePiercing _piercing = new();                        // 突き.
+    private static readonly StatePrick _prick = new();                        // 突き.
     private static readonly StateSlashUp _slashUp = new();                          // 斬り上げ.
     private static readonly StateSpiritBlade1 _spiritBlade1 = new();                // 気刃斬り1.
     private static readonly StateSpiritBlade2 _spiritBlade2 = new();                // 気刃斬り2.
@@ -67,7 +67,7 @@ public partial class PlayerState
         BACKAVOID,
         SHEATHINGSWORD,
         STEPPINGSLASH,
-        PIERCING,
+        PRICK,
         SLASHUP,
         SPIRITBLADE1,
         SPIRITBLADE2,

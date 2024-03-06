@@ -52,7 +52,7 @@ public partial class PlayerState
             // 突き
             else if(owner._input._BButtonDown)
             {
-                owner.StateTransition(_piercing);
+                owner.StateTransition(_prick);
             }
             // 気刃斬り1.
             else if (owner._input._RightTrigger >= 0.5f)

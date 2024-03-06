@@ -18,42 +18,23 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.DRAWIDLE]) return;
+
             // 抜刀移動.
-            if(owner._leftStickHorizontal != 0 || 
-                owner._leftStickVertical != 0)
-            {
-                owner.StateTransition(_runDrawnSword);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWRUN], _runDrawnSword);
 
             if (owner._openMenu) return;
 
-            // 踏み込み斬り.
-            if (owner._input._YButtonDown)
-            {
-                owner.StateTransition(_steppingSlash);
-            }
-            // 突き.
-            else if (owner._input._BButtonDown && !owner._input._LBButton)
-            {
-                owner.StateTransition(_piercing);
-            }
+            // 踏み込み斬り状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.STEPPINGSLASH], _steppingSlash);
+            // 突き状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.PRICK], _prick);
             // 気刃斬り1.
-            else if (owner._input._RightTrigger >= 0.5)
-            {
-                owner.StateTransition(_spiritBlade1);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
             // 納刀.
-            else if (owner._input._XButtonDown || owner._input._RBButtonDown)
-            {
-                owner._unsheathedSword = false;
-                owner.StateTransition(_sheathingSword);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SHEATHINGSWORD], _sheathingSword);
             // 必殺技の構え
-            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
-            {
-                owner.StateTransition(_stance);
-            }
-
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE], _stance);
         }
     }
 }

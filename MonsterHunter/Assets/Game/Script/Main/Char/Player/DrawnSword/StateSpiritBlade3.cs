@@ -144,7 +144,7 @@ public partial class PlayerState
             //// 突き.
             //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
             //{
-            //    owner.ChangeState(_piercing);
+            //    owner.ChangeState(_prick);
             //}
             // 気刃大回転斬り.
             else if (owner._stateTime >= owner._nextMotionTime && 

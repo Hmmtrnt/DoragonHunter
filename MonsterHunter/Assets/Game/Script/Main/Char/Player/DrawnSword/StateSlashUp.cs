@@ -106,7 +106,7 @@ public partial class PlayerState
             else if (owner._stateTime >= owner._nextMotionTime && 
                 (owner._input._YButtonDown || owner._input._BButtonDown))
             {
-                owner.StateTransition(_piercing);
+                owner.StateTransition(_prick);
             }
             // 気刃斬り1.
             else if (owner._stateTime >= owner._nextMotionTime && 

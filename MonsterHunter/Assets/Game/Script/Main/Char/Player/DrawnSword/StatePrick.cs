@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class PlayerState
 {
-    public class StatePiercing : StateBase
+    public class StatePrick : StateBase
     {
         // 一度処理を通したら次から通さない.
         //HACK:変数名を変更.

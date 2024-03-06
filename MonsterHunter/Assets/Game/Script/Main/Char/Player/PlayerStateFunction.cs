@@ -234,6 +234,14 @@ public partial class PlayerState
     }
 
     /// <summary>
+    /// X²AY²‚Ì‰ñ“]‚ğŒÅ’è.
+    /// </summary>
+    private void FixedRotate()
+    {
+        _transform.Rotate(0, _transform.rotation.y, 0);
+    }
+
+    /// <summary>
     /// ˆê’è‚Éî•ñ‚ğ‘ã“ü.
     /// </summary>
     private void SubstituteVariableFixedUpdate()

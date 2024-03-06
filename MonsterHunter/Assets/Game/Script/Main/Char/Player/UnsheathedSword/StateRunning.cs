@@ -17,13 +17,9 @@ public partial class PlayerState
         public override void OnUpdate(PlayerState owner)
         {
 
-            owner._transform.Rotate(0, owner._transform.rotation.y, 0);
+            owner.FixedRotate();
 
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
             owner.RotateDirection();
             Move(owner);
         }
@@ -59,11 +55,12 @@ public partial class PlayerState
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
         }
 
-        // 移動
+        // 移動.
         private void Move(PlayerState owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + 
                 new Vector3(0.0f, owner._rigidbody.velocity.y, 0.0f);
+            // モーションの再生スピード代入.
             owner._currentRunSpeed = owner._rigidbody.velocity.magnitude / owner._moveVelocityMagnification;
         }
     }

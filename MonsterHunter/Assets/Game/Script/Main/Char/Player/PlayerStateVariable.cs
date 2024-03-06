@@ -262,14 +262,17 @@ public partial class PlayerState
 
     /*移動時の変数*/
     // 走る時の移動倍率.
-    private float _moveVelocityRunMagnification = 11;
+    [Header("走る時の移動倍率")]
+    [SerializeField] private float _moveVelocityRunMagnification = 11;
     // ダッシュ時の移動倍率.
-    private float _moveVelocityDashMagnigication = 20;
+    [Header("ダッシュ時の移動倍率")]
+    [SerializeField] private float _moveVelocityDashMagnigication = 20;
     // 疲労ダッシュ時の移動倍率.
-    private float _moveVelocityFatigueDashMagnigication = 5;
+    [Header("疲労ダッシュ時の移動倍率")]
+    [SerializeField] private float _moveVelocityFatigueDashMagnigication = 5;
 
     // 移動速度倍率.
-    private float _moveVelocityMagnification = 12;
+    private float _moveVelocityMagnification = 0;
     // 回復しながらの移動倍率.
     //private float _moveVelocityRecoveryMagnification = 10;
 

@@ -7,55 +7,44 @@ public partial class PlayerState
 {
     public class StateSheathingSword : StateBase
     {
-        // デバッグ用変数
-        private int MotionTransition = 0;
+        // 前進を始めるタイミング.
+        private const float _forwardStartTiming = 0.33f;
+        // 移動力.
+        private const float _forwardPower = 10;
+
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSheathingSword = true;
             owner._unsheathedSword = false;
-            MotionTransition = 0;
             owner.StateTransitionInitialization();
         }
 
         public override void OnUpdate(PlayerState owner)
         {
-            MotionTransition++;
-            if (owner._stateTime <= 0.33f)
+            if (owner._stateTime <= _forwardStartTiming)
             {
-                owner.ForwardStep(10);
+                owner.ForwardStep(_forwardPower);
             }
             // 納刀効果音再生.
-            owner.SEPlay(15, (int)SEManager.HunterSE.SHEATHINGSWORD);
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-            
-
-            
+            owner.SEPlayTest(0.18f, (int)SEManager.HunterSE.SHEATHINGSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnSheathingSword = false;
-            MotionTransition = 0;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
-            if (owner._stateTime <= 0.5f) return;
-            if((owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0) && owner._input._RBButton)
-            {
-                owner.StateTransition(_dash);
-            }
-            else if((owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0) && !owner._input._RBButton)
-            {
-                owner.StateTransition(_running);
-            }
-            else
-            {
-                owner.StateTransition(_idle);
-            }
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.SHEATHINGSWORD]) return;
+
+            // 待機状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
+            // 走る状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
+            // ダッシュ状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
         }
     }
 }

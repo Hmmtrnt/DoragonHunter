@@ -41,7 +41,7 @@ public partial class PlayerState : MonoBehaviour
         LimitStop(ref _currentRedRenkiGauge, _maxRedRenkiGauge);
 
         // 体力が0以下の時.
-        if(_hitPoint <= 0)
+        if(_currentHitPoint <= 0)
         {
             OnDead();
         }

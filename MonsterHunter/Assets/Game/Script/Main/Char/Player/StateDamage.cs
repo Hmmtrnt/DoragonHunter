@@ -12,7 +12,7 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
-            owner._hitPoint = owner._hitPoint - owner._MonsterState.GetMonsterAttack();
+            owner._currentHitPoint = owner._currentHitPoint - owner._MonsterState.GetMonsterAttack();
             owner._damageMotion = true;
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;

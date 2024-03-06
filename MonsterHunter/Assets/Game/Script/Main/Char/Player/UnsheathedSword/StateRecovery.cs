@@ -37,11 +37,8 @@ public partial class PlayerState
                 Recovery(owner);
             }
             // ごくごく音.
-            owner.SEPlay(80, (int)SEManager.HunterSE.DRINK);
-        }
+            owner.SEPlayTest(0.96f, (int)SEManager.HunterSE.DRINK);
 
-        public override void OnFixedUpdate(PlayerState owner)
-        {
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -55,35 +52,31 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // 状態遷移ができるかどうか
-            //bool isChange = owner._currentRecoveryTime >= owner._maxRecoveryTime;
-            bool isChange = owner._stateTime >= 3.3f;
-            // 動いているかどうか
-            bool isMove = owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0;
+            // 回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.AVOID], _avoid);
 
-            // アイドル状態へ
-            if (isChange && !isMove)
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.RECOVERY])
             {
-                owner.StateTransition(_idle);
+                return;
             }
-            else if(isChange && isMove)
-            {
-                owner.StateTransition(_running);
-            }
-            else if(owner._input._AButtonDown)
-            {
-                owner.StateTransition(_avoid);
-            }
+
+            // 待機状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
+            // 走る状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
+            // ダッシュ状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
         }
 
         // 回復.
         private void Recovery(PlayerState owner)
         {
-            owner._hitPoint += owner._recoveryAmount;
+            owner._currentHitPoint += owner._recoveryAmount;
 
-            if(owner._hitPoint >= owner._maxHitPoint)
+            if(owner._currentHitPoint >= owner._maxHitPoint)
             {
-                owner._hitPoint = owner._maxHitPoint;
+                owner._currentHitPoint = owner._maxHitPoint;
             }
         }
     }

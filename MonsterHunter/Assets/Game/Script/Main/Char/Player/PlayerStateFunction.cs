@@ -35,6 +35,7 @@ public partial class PlayerState
     {
         _stateFlame = 0;
         _maintainTime = 100;
+        _isPlayOneShot = false;
     }
 
     /// <summary>
@@ -58,7 +59,7 @@ public partial class PlayerState
         _stateTransitionFlag[(int)StateTransitionKinds.FATIGUEDASH] = _stamina <= _maxStamina / 5;
         // 回復状態.
         _stateTransitionFlag[(int)StateTransitionKinds.RECOVERY] = _input._XButtonDown && !_unsheathedSword &&
-            _hitPoint != _maxHitPoint && _cureMedicineNum > 0;
+            _currentHitPoint != _maxHitPoint && _cureMedicineNum > 0;
 
         /*以下、抜刀時の状態*/
         // 抜刀する状態.
@@ -107,7 +108,7 @@ public partial class PlayerState
 
         /*納刀、抜刀状態両方の共通の状態*/
         // 体力が0いかになった状態.
-        _stateTransitionFlag[(int)StateTransitionKinds.DEAD] = _hitPoint <= 0;
+        _stateTransitionFlag[(int)StateTransitionKinds.DEAD] = _currentHitPoint <= 0;
     }
 
     /// <summary>
@@ -520,9 +521,9 @@ public partial class PlayerState
     private void OnDamage()
     {
         // 体力が0の時は通さない.
-        if (_hitPoint <= 0) return;
+        if (_currentHitPoint <= 0) return;
 
-        _hitPoint = _hitPoint - _MonsterState.GetMonsterAttack();
+        _currentHitPoint = _currentHitPoint - _MonsterState.GetMonsterAttack();
 
         StateTransition(_damage);
     }
@@ -551,6 +552,38 @@ public partial class PlayerState
     private void RotateDirection()
     {
         transform.forward = Vector3.Slerp(transform.forward, _moveVelocity, Time.deltaTime * _rotateSpeed);
+    }
+
+    /// <summary>
+    /// SEを鳴らすときの処理.
+    /// </summary>
+    /// <param name="flameNum1">鳴らすフレーム数</param>
+    /// <param name="seName">SEの種類</param>
+    private void SEPlayTest(float flameNum1, int seName)
+    {
+        //if (_stateFlame == flameNum1)
+        //{
+        //    _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
+        //}
+
+        if ((_stateTime >= flameNum1 && _stateTime <= flameNum1 + 0.04f) && !_isPlayOneShot)
+        {
+            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
+
+            _isPlayOneShot = true;
+        }
+    }
+
+    /// <summary>
+    /// SE再生したかどうかのフラグをfalseにリセット.
+    /// </summary>
+    /// <param name="time">リセットするタイミング</param>
+    private void PlayOneShotReset(float time)
+    {
+        if ((_stateTime >= time && _stateTime <= time + 0.04f) && _isPlayOneShot)
+        {
+            _isPlayOneShot = false;
+        }
     }
 
     /// <summary>
@@ -641,7 +674,7 @@ public partial class PlayerState
     /// 残り体力.
     /// </summary>
     /// <returns>体力</returns>
-    public float GetHitPoint() { return _hitPoint; }
+    public float GetHitPoint() { return _currentHitPoint; }
 
     /// <summary>
     /// 体力最大値.

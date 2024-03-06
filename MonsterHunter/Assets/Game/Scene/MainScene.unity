@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6476.046, g: 6274.7275, b: 6028.0747, a: 1}
+  m_IndirectSpecularColor: {r: 6475.999, g: 6274.743, b: 6028.153, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14519,7 +14519,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828352924}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3982644097102281060, guid: ccca3db303f7307408201ee7eb93e4df,
     type: 2}
@@ -36585,6 +36585,16 @@ PrefabInstance:
       objectReference: {fileID: 534877903}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
+      propertyPath: _recoveryAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _currentHitPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
       propertyPath: _avoidStaminaCost
       value: 40
       objectReference: {fileID: 0}
@@ -36622,6 +36632,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _stateTransitionTime.Array.data[3]
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _stateTransitionTime.Array.data[4]
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _stateTransitionTime.Array.data[5]
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}

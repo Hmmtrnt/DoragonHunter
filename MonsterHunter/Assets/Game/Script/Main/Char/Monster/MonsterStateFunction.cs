@@ -328,6 +328,10 @@ public partial class MonsterState
         }
     }
 
+    /// <summary>
+    /// SE再生したかどうかのフラグをfalseにリセット.
+    /// </summary>
+    /// <param name="time">リセットするタイミング</param>
     private void PlayOneShotReset(float time)
     {
         if ((_stateTime >= time && _stateTime <= time + 0.04f) && _isPlayOneShot)

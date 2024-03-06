@@ -117,6 +117,9 @@ public partial class PlayerState
     // 攻撃判定の情報.
     private AttackCol _attackCol;
 
+    // SEを同時に慣らさないようにする為の変数.
+    private bool _isPlayOneShot = false;
+
     /*アニメーション*/
     private Animator _animator;
     //--納刀状態--//
@@ -162,8 +165,9 @@ public partial class PlayerState
     private bool _downMotion    = false;// ダウン.
 
     // プレイヤーのステータス.
-    // 体力.
-    private float _hitPoint = 200;
+    // 現在の体力.
+    [Header("現在の体力")]
+    [SerializeField] private float _currentHitPoint = 200;
     // 体力最大値.
     private float _maxHitPoint = 200;
     // スタミナ.
@@ -319,7 +323,8 @@ public partial class PlayerState
     // 最大回復時間.
     private int _maxRecoveryTime = 300;
     // 回復量.
-    private float _recoveryAmount = 0.5f;
+    [Header("回復量")]
+    [SerializeField] private float _recoveryAmount = 0.0f;
 
     /*共通*/
     // 減速.

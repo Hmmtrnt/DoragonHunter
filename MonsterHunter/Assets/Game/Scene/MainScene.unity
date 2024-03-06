@@ -36493,6 +36493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
+      propertyPath: _stateTransitionTime.Array.data[18]
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
       propertyPath: _nextStateTransitionTime.Array.data[0]
       value: 0
       objectReference: {fileID: 0}

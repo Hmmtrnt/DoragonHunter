@@ -7,9 +7,14 @@ public partial class PlayerState
 {
     public class StateSpiritBlade2 : StateBase
     {
-        // 一度処理を通したら次から通さない.
-        //HACK:変数名を変更.
-        private bool _test = false;
+        // 攻撃判定発生タイミング.
+        private const float _spawnColTiming = 0.45f;
+        // 攻撃判定消去タイミング.
+        private const float _eraseColTiming = 0.6f;
+        // SEを鳴らすタイミング.
+        private const float _sePlayTiming = 0.3f;
+        // モーションキャンセル適応外の状態に遷移するタイミング.
+        private const float _TransitionTime = 2;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -19,42 +24,28 @@ public partial class PlayerState
             owner._attackPower = 114;
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 10;
-            //owner._currentRenkiGauge -= 15;
             owner._hitStopTime = 0.1f;
             owner._attackCol._isOneProcess = true;
-            _test = false;
+            owner._isAttackProcess = false;
             owner._nextMotionTime = 0.65f;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
-            if (owner._stateTime >= 0.45f && !_test)
+            // 攻撃判定発生.
+            if (owner._stateTime >= _spawnColTiming && !owner._isAttackProcess)
             {
                 owner._weaponActive = true;
-                _test = true;
+                owner._isAttackProcess = true;
             }
-
-            if (owner._stateTime >= 0.6f)
+            // 攻撃判定消去.
+            if (owner._stateTime >= _eraseColTiming)
             {
                 owner._weaponActive = false;
             }
 
             // 空振り効果音再生.
-            owner.SEPlay(25, (int)SEManager.HunterSE.MISSINGSLASH);
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-            //if (owner._stateFlame >= 10)
-            //{
-            //    owner._isCauseDamage = true;
-            //}
-            //if (owner._stateFlame >= 60)
-            //{
-            //    owner._isCauseDamage = false;
-            //}
-
-            
+            owner.SEPlayTest(_sePlayTiming, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -65,75 +56,30 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // アイドル.
-            //if (owner._attackFrame >= 60)
-            //{
-            //    owner.ChangeState(_idleDrawnSword);
-            //}
-            //// 切り上げ.
-            //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
-            //{
-            //    owner.ChangeState(_slashUp);
-            //}
-            //// 気刃斬り3.
-            //else if (owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
-            //{
-            //    owner.ChangeState(_spiritBlade3);
-            //}
+            // モーションキャンセル適応外の遷移先.
+            if (owner._stateTime >= _TransitionTime)
+            {
+                // 抜刀待機状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE], _idleDrawnSword);
+                // 抜刀移動状態.
+                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWRUN], _runDrawnSword);
+            }
 
-            // アイドル.
-            if (owner._stateTime >= 2.0f)
-            {
-                owner.StateTransition(_idleDrawnSword);
-            }
-            // 回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.FORWARD] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_avoidDrawnSword);
-            }
-            // 右回避.
-            else if (owner._stateTime >= owner._nextMotionTime && 
-                owner._viewDirection[(int)viewDirection.RIGHT] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_rightAvoid);
-            }
-            // 左回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.LEFT] && 
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_leftAvoid);
-            }
-            // 後ろ回避.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._viewDirection[(int)viewDirection.BACKWARD] &&
-                owner.GetDistance() > 1 &&
-                owner._input._AButtonDown)
-            {
-                owner.StateTransition(_backAvoid);
-            }
-            // 必殺技の構え
-            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
-            {
-                owner.StateTransition(_stance);
-            }
-            //// 切り上げ.
-            //else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
-            //{
-            //    owner.ChangeState(_slashUp);
-            //}
-            // 気刃斬り3.
-            else if (owner._stateTime >= owner._nextMotionTime &&
-                owner._input._RightTrigger >= 0.5)
-            {
-                owner.StateTransition(_spiritBlade3);
-            }
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.SPIRITBLADE2]) return;
+
+            // 回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWAVOID], _avoidDrawnSword);
+            // 右回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RIGHTAVOID], _rightAvoid);
+            // 左回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.LEFTAVOID], _leftAvoid);
+            // 後ろ回避状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.BACKAVOID], _backAvoid);
+            // 必殺技の構え状態
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE], _stance);
+            // 気刃斬り3状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE3], _spiritBlade3);
         }
     }
 }

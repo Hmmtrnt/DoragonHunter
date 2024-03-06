@@ -90,7 +90,7 @@ public class SEManager : MonoBehaviour
         // ‰¹‚ª–Â‚é‚©‚Ç‚¤‚©Šm”F.
         //if(Input.GetKeyDown(KeyCode.LeftArrow))
         //{
-        //    _audioSource.PlayOneShot(_test);
+        //    _audioSource.PlayOneShot(_medicineConsume);
         //}
     }
 

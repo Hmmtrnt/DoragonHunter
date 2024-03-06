@@ -8,16 +8,19 @@ public partial class PlayerState
     {
         // 回復時間
         private int _recoveryTime = 0;
-        // 一度処理を通したら次から通さない.
-        //HACK:変数名を変更.
-        private bool _test = false;
+        // 回復薬を減らしたかどうか.
+        private bool _medicineConsume = false;
+        // 回復薬を減らすタイミング.
+        private float _medicineConsumeTiming = 1.2f;
+        // 回復終了タイミング.
+        private float _recoveryFinishTiming = 2.3f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._isRecovery = true;
             owner._healMotion = true;
-            _test = false;
+            _medicineConsume = false;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -26,13 +29,13 @@ public partial class PlayerState
             owner._currentRecoveryTime++;
             _recoveryTime++;
             // 回復薬を減らす.
-            if (owner._stateTime >= 1.2f && !_test)
+            if (owner._stateTime >= _medicineConsumeTiming && !_medicineConsume)
             {
                 owner._cureMedicineNum--;
-                _test = true;
+                _medicineConsume = true;
             }
             // 回復するタイミング指定.
-            if (owner._stateTime >= 1.2f && owner._stateTime <= 2.3f)
+            if (owner._stateTime >= _medicineConsumeTiming && owner._stateTime <= _recoveryFinishTiming)
             {
                 Recovery(owner);
             }
@@ -47,7 +50,7 @@ public partial class PlayerState
             owner._currentRecoveryTime = 0;
             _recoveryTime = 0;
             owner._healMotion = false;
-            _test = false;
+            _medicineConsume = false;
         }
 
         public override void OnChangeState(PlayerState owner)
@@ -74,6 +77,7 @@ public partial class PlayerState
         {
             owner._currentHitPoint += owner._recoveryAmount;
 
+            // 体力を上限突破しないようにする.
             if(owner._currentHitPoint >= owner._maxHitPoint)
             {
                 owner._currentHitPoint = owner._maxHitPoint;

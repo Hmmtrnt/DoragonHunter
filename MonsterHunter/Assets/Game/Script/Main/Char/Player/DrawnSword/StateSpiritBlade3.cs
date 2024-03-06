@@ -39,7 +39,7 @@ public partial class PlayerState
                 _test = false;
             }
 
-            //bool flag = (owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test;
+            //bool flag = (owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_medicineConsume;
 
             // 二撃目.
             if ((owner._stateTime >= 0.31f && owner._stateTime <= 0.7f) && !_test)

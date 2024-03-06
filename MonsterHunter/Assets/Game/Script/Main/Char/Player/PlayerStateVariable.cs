@@ -1,41 +1,39 @@
 ﻿// プレイヤーの変数.
 
-using System.Runtime.Serialization;
 using UnityEngine;
-using UnityEngine.UI;
 
 public partial class PlayerState
 {
     //--納刀状態--//
     private static readonly StateIdle _idle = new();                // アイドル.
-    private static readonly StateAvoid _avoid = new();               // 回避.
-    private static readonly StateRunning _running = new();             // 走る.
+    private static readonly StateAvoid _avoid = new();              // 回避.
+    private static readonly StateRunning _running = new();          // 走る.
     private static readonly StateDash _dash = new();                // ダッシュ.
-    private static readonly StateFatigueDash _fatigueDash = new();         // 疲労時のダッシュ.
-    private static readonly StateRecovery _recovery = new();            // 回復.
+    private static readonly StateFatigueDash _fatigueDash = new();  // 疲労時のダッシュ.
+    private static readonly StateRecovery _recovery = new();        // 回復.
 
     //--抜刀状態--//
     private static readonly StateDrawnSwordTransition _drawSwordTransition = new(); // 抜刀する.
-    private static readonly StateIdleDrawnSword _idleDrawnSword = new();      // アイドル.
-    private static readonly StateRunDrawnSword _runDrawnSword = new();       // 走る.
-    private static readonly StateAvoidDrawSword _avoidDrawnSword = new();     // 抜刀回避.
-    private static readonly StateRightAvoidDrawSword _rightAvoid = new();          // 攻撃後の右回避.
-    private static readonly StateLeftAvoidDrawSword _leftAvoid = new();           // 攻撃後の左回避.
-    private static readonly StateBackAvoidDrawSword _backAvoid = new();           // 攻撃後の後ろ回避.
-    private static readonly StateSheathingSword _sheathingSword = new();      // 納刀する.
-    private static readonly StateSteppingSlash _steppingSlash = new();       // 踏み込み斬り.
-    private static readonly StatePiercing _piercing = new();            // 突き.
-    private static readonly StateSlashUp _slashUp = new();             // 斬り上げ.
-    private static readonly StateSpiritBlade1 _spiritBlade1 = new();        // 気刃斬り1.
-    private static readonly StateSpiritBlade2 _spiritBlade2 = new();        // 気刃斬り2.
-    private static readonly StateSpiritBlade3 _spiritBlade3 = new();        // 気刃斬り3.
-    private static readonly StateRoundSlash _roundSlash = new();          // 気刃大回転斬り.
-    private static readonly StateGreatAttackStance _stance = new();              // 必殺技の構え.
-    private static readonly StateGreatAttackSuccess _stanceSuccess = new();       // 必殺技成功.
+    private static readonly StateIdleDrawnSword _idleDrawnSword = new();            // アイドル.
+    private static readonly StateRunDrawnSword _runDrawnSword = new();              // 走る.
+    private static readonly StateAvoidDrawSword _avoidDrawnSword = new();           // 抜刀回避.
+    private static readonly StateRightAvoidDrawSword _rightAvoid = new();           // 攻撃後の右回避.
+    private static readonly StateLeftAvoidDrawSword _leftAvoid = new();             // 攻撃後の左回避.
+    private static readonly StateBackAvoidDrawSword _backAvoid = new();             // 攻撃後の後ろ回避.
+    private static readonly StateSheathingSword _sheathingSword = new();            // 納刀する.
+    private static readonly StateSteppingSlash _steppingSlash = new();              // 踏み込み斬り.
+    private static readonly StatePiercing _piercing = new();                        // 突き.
+    private static readonly StateSlashUp _slashUp = new();                          // 斬り上げ.
+    private static readonly StateSpiritBlade1 _spiritBlade1 = new();                // 気刃斬り1.
+    private static readonly StateSpiritBlade2 _spiritBlade2 = new();                // 気刃斬り2.
+    private static readonly StateSpiritBlade3 _spiritBlade3 = new();                // 気刃斬り3.
+    private static readonly StateRoundSlash _roundSlash = new();                    // 気刃大回転斬り.
+    private static readonly StateGreatAttackStance _stance = new();                 // 必殺技の構え.
+    private static readonly StateGreatAttackSuccess _stanceSuccess = new();         // 必殺技成功.
 
     //--共通状態--//
-    private static readonly StateDamage _damage = new();              // ダメージを受けた.
-    private static readonly StateDead _dead = new();                // やられた.
+    private static readonly StateDamage _damage = new();    // ダメージを受けた.
+    private static readonly StateDead _dead = new();        // やられた.
 
     // 現在のState.
     private StateBase _currentState = _idle;
@@ -135,23 +133,23 @@ public partial class PlayerState
 
     //--抜刀状態--//
     // Setbool
-    private bool _drawnSwordMotion      = false;// 抜刀.
-    private bool _drawnIdleMotion       = false;// アイドル.
-    private bool _drawnRunMotion        = false;// 走る.
-    private bool _drawnAvoidMotion      = false;// 回避.
-    private bool _drawnRightAvoidMotion = false;// 右回避.
-    private bool _drawnLeftAvoidMotion  = false;// 左回避.
-    private bool _drawnBackAvoidMotion  = false;// 後ろ回避.
-    private bool _drawnSheathingSword   = false;// 納刀.
-    private bool _drawnSteppingSlash    = false;// 踏み込み斬り.
-    private bool _drawnThrustSlash      = false;// 突き.
-    private bool _drawnSlashUp          = false;// 斬り上げ.
-    private bool _drawnSpiritBlade1     = false;// 気刃斬り1.
-    private bool _drawnSpiritBlade2     = false;// 気刃斬り2.
-    private bool _drawnSpiritBlade3     = false;// 気刃斬り3.
-    private bool _drawnSpiritRoundSlash = false;// 気刃大回転斬り.
-    private bool _greatAttackStanceMotion     = false;// 必殺技の構え.
-    private bool _greatAttackSuccess    = false;// 必殺技成功.
+    private bool _drawnSwordMotion          = false;// 抜刀.
+    private bool _drawnIdleMotion           = false;// アイドル.
+    private bool _drawnRunMotion            = false;// 走る.
+    private bool _drawnAvoidMotion          = false;// 回避.
+    private bool _drawnRightAvoidMotion     = false;// 右回避.
+    private bool _drawnLeftAvoidMotion      = false;// 左回避.
+    private bool _drawnBackAvoidMotion      = false;// 後ろ回避.
+    private bool _drawnSheathingSword       = false;// 納刀.
+    private bool _drawnSteppingSlash        = false;// 踏み込み斬り.
+    private bool _drawnThrustSlash          = false;// 突き.
+    private bool _drawnSlashUp              = false;// 斬り上げ.
+    private bool _drawnSpiritBlade1         = false;// 気刃斬り1.
+    private bool _drawnSpiritBlade2         = false;// 気刃斬り2.
+    private bool _drawnSpiritBlade3         = false;// 気刃斬り3.
+    private bool _drawnSpiritRoundSlash     = false;// 気刃大回転斬り.
+    private bool _greatAttackStanceMotion   = false;// 必殺技の構え.
+    private bool _greatAttackSuccess        = false;// 必殺技成功.
 
     // 次のモーションに遷移するフレーム.
     private float _nextMotionFlame = 0;

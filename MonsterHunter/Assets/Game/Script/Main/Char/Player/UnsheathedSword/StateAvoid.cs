@@ -63,7 +63,7 @@ public partial class PlayerState
         // 回避処理
         private void MoveAvoid(PlayerState owner)
         {
-            // 最初の一フレームだけ加速
+            // 最初の一回だけ加速.
             if (!owner._isProcess) return;
             
             owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);

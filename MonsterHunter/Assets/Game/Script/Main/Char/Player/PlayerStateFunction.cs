@@ -260,63 +260,8 @@ public partial class PlayerState
         {
             _attackDamage *= 1.12f;
         }
-        //Debug.Log(_currentRenkiGauge);
 
         RenkiGaugeDraw();
-    }
-
-    // 現在使用していない.
-    /// <summary>
-    /// カメラの注視点の挙動.
-    /// </summary>
-    private void CameraFollowUpdate()
-    {
-        //if(_unsheathedSword)
-        //{
-        //    if(_cameraFollow.transform.position.z <= _transform.position.z + 0.3f )
-        //    {
-        //        _cameraFollow.transform.position += new Vector3(0.0f, 0.0f, 0.01f);
-        //    }
-        //}
-        //else
-        //{
-        //    if (_cameraFollow.transform.position.z >= _transform.position.z)
-        //    {
-        //        _cameraFollow.transform.position -= new Vector3(0.0f, 0.0f, 0.01f);
-        //    }
-        //}
-    }
-
-    /// <summary>
-    /// スティックがオブジェクトから見てどの向きに倒しているかを確認.
-    /// </summary>
-    private void StickDirection()
-    {
-        // 正面.
-        if (_viewDirection[(int)viewDirection.FORWARD])
-        {
-            //_text.text = "正面";
-            
-        }
-        // 背後.
-        else if (_viewDirection[(int)viewDirection.BACKWARD])
-        {
-            //_text.text = "背後";
-        }
-        // 右.
-        else if (_viewDirection[(int)viewDirection.RIGHT])
-        {
-            //_text.text = "右";
-        }
-        // 左.
-        else if (_viewDirection[(int)viewDirection.LEFT])
-        {
-            //_text.text = "左";
-        }
-        else
-        {
-            //_text.text = "NONE";
-        }
     }
 
     /// <summary>
@@ -467,17 +412,6 @@ public partial class PlayerState
         _maintainTimeRenkiGauge--;
     }
 
-    // 使っていない.
-    /// <summary>
-    /// 練気ゲージ赤自然消費.
-    /// </summary>
-    private void RedRenkiNaturalConsume()
-    {
-        // 練気ゲージ赤が下限突破以外に消費.
-        if(_currentRedRenkiGauge <= 0) return;
-        _currentRedRenkiGauge -= 0.05f;
-    }
-
     /// <summary>
     /// 錬気ゲージの増減処理.
     /// </summary>
@@ -513,7 +447,7 @@ public partial class PlayerState
     /// </summary>
     /// <param name="currentVariable">現在の変数</param>
     /// <param name="maxVariable">変数上限値</param>
-    private void LimitStop(ref float currentVariable, ref float maxVariable)
+    private void LimitStop(ref float currentVariable, float maxVariable)
     {
         // 上限突破防止.
         if (currentVariable >= maxVariable)
@@ -536,12 +470,16 @@ public partial class PlayerState
         _rigidbody.velocity = _transform.forward * speedPower;
     }
 
-
-    private void TransitionState(bool transitionFlag, StateBase currentState)
+    /// <summary>
+    /// 状態遷移を行う.
+    /// </summary>
+    /// <param name="transitionFlag">状態遷移を行うためのフラグ</param>
+    /// <param name="nextState">遷移先の状態</param>
+    private void TransitionState(bool transitionFlag, StateBase nextState)
     {
         if (transitionFlag)
         {
-            StateTransition(currentState);
+            StateTransition(nextState);
         }
     }
 
@@ -634,6 +572,7 @@ public partial class PlayerState
         }
     }
 
+    // 使わなくなる.
     /// <summary>
     /// SEを鳴らすときの処理.
     /// </summary>
@@ -659,7 +598,6 @@ public partial class PlayerState
         _openMenu = _mainSceneManager.GetOpenMenu();
     }
 
-    // 
     /// <summary>
     /// ダッシュしているかどうかの情報取得.
     /// </summary>

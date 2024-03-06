@@ -33,14 +33,12 @@ public partial class PlayerState : MonoBehaviour
         SubstituteVariableFixedUpdate();
         _currentState.OnFixedUpdate(this);
 
-        CameraFollowUpdate();
-
         // スタミナ.
-        LimitStop(ref _stamina, ref _maxStamina);
+        LimitStop(ref _stamina, _maxStamina);
         // 練気ゲージ.
-        LimitStop(ref _currentRenkiGauge, ref _maxRenkiGauge);
+        LimitStop(ref _currentRenkiGauge, _maxRenkiGauge);
         // 練気ゲージ赤.
-        LimitStop(ref _currentRedRenkiGauge, ref _maxRedRenkiGauge);
+        LimitStop(ref _currentRedRenkiGauge, _maxRedRenkiGauge);
 
         // 体力が0以下の時.
         if(_hitPoint <= 0)
@@ -58,7 +56,6 @@ public partial class PlayerState : MonoBehaviour
 
         RenkiNaturalConsume();
         MaintainElapsedTimeRenkiGauge();
-        StickDirection();
         ApplyRedRenkiGauge();
         OpenMenu();
     }

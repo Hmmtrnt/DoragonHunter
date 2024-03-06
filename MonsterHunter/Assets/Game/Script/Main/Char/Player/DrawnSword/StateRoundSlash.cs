@@ -1,15 +1,19 @@
 ﻿/*気刃大回転斬り*/
 
-using Unity.VisualScripting;
-using UnityEngine;
-
 public partial class PlayerState
 {
     public class StateRoundSlash : StateBase
     {
-        // 一度処理を通したら次から通さない.
-        //HACK:変数名を変更.
-        private bool _test = false;
+        // 攻撃判定発生タイミング.
+        private const float _spawnColTiming = 0.4f;
+        // 攻撃判定消去タイミング.
+        private const float _eraseColTiming = 0.6f;
+        // 前進させるタイミング.
+        private float[] _forwardStopTiming = new float[2];
+        // 移動力.
+        private float[] _speedPower = new float[2];
+        // SEを鳴らすタイミング.
+        private const float _sePlayTiming = 0.18f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -20,39 +24,43 @@ public partial class PlayerState
             owner._attackPower = 150;
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 20;
-            //owner._currentRenkiGauge -= 25;
             owner._hitStopTime = 0.3f;
             owner._attackCol._isOneProcess = true;
-            _test = false;
+            owner._isAttackProcess = false;
             owner._nextMotionTime = 2.0f;
+
+            _forwardStopTiming[0] = 0.18f;
+            _forwardStopTiming[1] = 0.88f;
+
+            _speedPower[0] = 15;
+            _speedPower[1] = 8;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
-            if (owner._stateTime >= 0.4f && !_test)
+            // 攻撃判定発生.
+            if (owner._stateTime >= _spawnColTiming && !owner._isAttackProcess)
             {
                 owner._weaponActive = true;
-                _test = true;
+                owner._isAttackProcess = true;
             }
-            if (owner._stateTime >= 0.6f)
+            // 攻撃判定消去.
+            if (owner._stateTime >= _eraseColTiming)
             {
                 owner._weaponActive = false;
             }
-
-            if (owner._stateTime <= 0.18f)
+            // 前進させる.
+            if (owner._stateTime <= _forwardStopTiming[0])
             {
-                owner.ForwardStep(20);
+                owner.ForwardStep(_speedPower[0]);
             }
-            if (owner._stateTime >= 0.18f && owner._stateTime <= 0.88f)
+            else if (owner._stateTime >= _forwardStopTiming[1])
             {
-                owner._rigidbody.velocity *= owner._deceleration;
-            }
-            else if (owner._stateTime >= 0.88f)
-            {
-                owner.ForwardStep(8);
+                owner.ForwardStep(_speedPower[1]);
             }
 
-            owner.SEPlay(15, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
+            // 空振り効果音再生.
+            owner.SEPlayTest(_sePlayTiming, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -63,26 +71,16 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // 納刀待機.
-            if (owner._stateTime >= owner._nextMotionTime &&
-                (owner._leftStickHorizontal == 0 || owner._leftStickVertical == 0))
-            {
-                owner.StateTransition(_idle);
-            }
-            // 移動.
-            else if(owner._stateTime >= owner._nextMotionTime - 0.2f && 
-                (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) && 
-                !owner._input._RBButton)
-            {
-                owner.StateTransition(_running);
-            }
-            // ダッシュ.
-            else if(owner._stateTime >= owner._nextMotionTime - 0.2f &&
-                (owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0) &&
-                owner._input._RBButton)
-            {
-                owner.StateTransition(_dash);
-            }
+
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.ROUNDSLASH]) return;
+
+            // 納刀待機状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
+            // 移動状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
+            // ダッシュ状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
         }
     }
 }

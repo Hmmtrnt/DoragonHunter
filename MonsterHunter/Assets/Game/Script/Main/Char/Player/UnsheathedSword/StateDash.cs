@@ -18,7 +18,7 @@ public partial class PlayerState
             owner.FixedRotate();
             Move(owner);
             owner.RotateDirection();
-            owner._stamina -= owner._isDashStaminaCost;
+            owner.ConsumeStamina();
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

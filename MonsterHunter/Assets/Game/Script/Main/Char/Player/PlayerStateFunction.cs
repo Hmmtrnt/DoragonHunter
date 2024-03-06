@@ -362,6 +362,11 @@ public partial class PlayerState
         }
     }
 
+    private void ConsumeStamina()
+    {
+        _stamina -= _isDashStaminaCost;
+    }
+
     /// <summary>
     /// スタミナの自動回復.
     /// </summary>

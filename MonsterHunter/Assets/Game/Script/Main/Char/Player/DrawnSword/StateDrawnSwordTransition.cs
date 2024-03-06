@@ -7,9 +7,12 @@ public partial class PlayerState
 {
     public class StateDrawnSwordTransition : StateBase
     {
-        // 前進させるスピード.
-        private const float _forwardSpeed = 0.8f;
-
+        // 前進させるタイミング.
+        private const float _forwardTiming = 0.2f;
+        // 前進を終了させるタイミング.
+        private const float _forwardStopTiming = 0.5f;
+        // 移動力.
+        private const float _forwardPower = 5.5f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -20,18 +23,13 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
-            owner._rigidbody.velocity *= _forwardSpeed;
-
-            owner._motionFrame++;
-
             // 前進させる.
-            if (owner._stateTime >= 0.2f && owner._stateTime <= 0.5f)
+            if (owner._stateTime >= _forwardTiming && owner._stateTime <= _forwardStopTiming)
             {
-                owner.ForwardStep(5.5f);
+                owner.ForwardStep(_forwardPower);
             }
 
             // 抜刀効果音再生.
-            //owner.SEPlay(20, (int)SEManager.HunterSE.DRAWSWORD);
             owner.SEPlayTest(0.24f, (int)SEManager.HunterSE.DRAWSWORD);
         }
 
@@ -42,18 +40,16 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // 待機状態.
-            if(owner._stateTime >= 1.3f)
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.DRAWSWORDTRANSITION])
             {
-                if(owner._input._LeftStickHorizontal != 0 || owner._input._LeftStickVertical != 0)
-                {
-                    owner.StateTransition(_runDrawnSword);
-                }
-                else if(owner._input._LeftStickHorizontal == 0 && owner._input._LeftStickVertical == 0)
-                {
-                    owner.StateTransition(_idleDrawnSword);
-                }
+                return;
             }
+
+            // 抜刀待機状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE], _idleDrawnSword);
+            // 抜刀移動状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWRUN], _runDrawnSword);
         }
     }
 }

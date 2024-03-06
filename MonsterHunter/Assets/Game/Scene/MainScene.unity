@@ -36585,6 +36585,11 @@ PrefabInstance:
       objectReference: {fileID: 534877903}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
+      propertyPath: _avoidStaminaCost
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
       propertyPath: _isDashStaminaCost
       value: 0.15
       objectReference: {fileID: 0}

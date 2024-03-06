@@ -47,7 +47,7 @@ public partial class PlayerState
         _stateTransitionFlag[(int)StateTransitionKinds.IDLE] = _leftStickHorizontal == 0 && _leftStickVertical == 0;
         // 回避状態.
         _stateTransitionFlag[(int)StateTransitionKinds.AVOID] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
-            _stamina >= _maxStamina / 10 && _input._AButtonDown;
+            _stamina >= _avoidStaminaCost && _input._AButtonDown;
         // 走る状態.
         _stateTransitionFlag[(int)StateTransitionKinds.RUN] = (_leftStickHorizontal != 0 || _leftStickVertical != 0) && 
             !_input._RBButton;
@@ -270,6 +270,15 @@ public partial class PlayerState
             _attackDamage *= 1.12f;
         }
 
+        // スタミナの自動回復を行うかどうか.
+        _autoRecaveryStaminaFlag = _currentState != _dash &&
+            _currentState != _avoid &&
+            _currentState != _fatigueDash &&
+            _currentState != _avoidDrawnSword &&
+            _currentState != _rightAvoid &&
+            _currentState != _leftAvoid &&
+            _currentState != _backAvoid;
+
         RenkiGaugeDraw();
     }
 
@@ -386,22 +395,6 @@ public partial class PlayerState
 
         _isProcess = false;
 
-    }
-
-    /// <summary>
-    /// 連続で回避するか先行入力情報を取得.
-    /// </summary>
-    /// <param name="AdvenceInputAcceptStartTime">先行入力受付開始時間</param>
-    /// <returns>_avoidAdvanceInput </returns>
-    private void GetAvoidAdvenceInput(int AdvenceInputAcceptStartTime)
-    {
-        if (_avoidTime >= AdvenceInputAcceptStartTime)
-        {
-            if (_input._AButtonDown)
-            {
-                _avoidAdvanceInput = true;
-            }
-        }
     }
 
     /// <summary>

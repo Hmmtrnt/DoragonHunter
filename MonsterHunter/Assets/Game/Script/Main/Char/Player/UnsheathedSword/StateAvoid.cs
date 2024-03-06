@@ -14,7 +14,6 @@ public partial class PlayerState
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
-            owner._flameAvoid = true;
             owner._rotateSpeed = 40.0f;
 
             if(prevState == _avoid)
@@ -27,15 +26,6 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
-            owner._avoidTime++;
-
-            if (owner._avoidTime == 6)
-            {
-                owner._flameAvoid = false;
-            }
-
-            owner.GetAvoidAdvenceInput(30);
-
             MoveAvoid(owner);
         }
 
@@ -45,7 +35,6 @@ public partial class PlayerState
             owner._avoidMotion = false;
             owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
-            owner._avoidAdvanceInput = false;
             owner._rotateSpeed = 10.0f;
         }
 

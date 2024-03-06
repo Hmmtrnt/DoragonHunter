@@ -156,9 +156,6 @@ public partial class PlayerState
     // 次のモーションに遷移する時間.
     private float _nextMotionTime = 0;
 
-    // フレーム回避の状態.
-    private bool _flameAvoid = false;
-
     //--共通モーション--//
     // Setbool
     private bool _damageMotion  = false;// ダメージ.
@@ -175,6 +172,8 @@ public partial class PlayerState
     private float _maxStamina = 200;
     // スタミナの自動回復量
     private float _autoRecaveryStamina = 0.5f;
+    // 自動回復を行わない時のフラグ.
+    private bool _autoRecaveryStaminaFlag = false;
 
     // モーションフレーム.
     private int _motionFrame = 0;
@@ -301,12 +300,11 @@ public partial class PlayerState
     // 最大回避フレーム.
     private int _avoidMaxTime = 80;
     // 回避時のスタミナ消費量.
-    private float _avoidStaminaCost = 25;
+    [Header("回避時のスタミナ消費量")]
+    [SerializeField] private float _avoidStaminaCost = 25;
 
     // 回避しているかどうか.
     private bool _isAvoiding = false;
-    // 回避をするかの先行入力を取得する.
-    private bool _avoidAdvanceInput = false;
 
     // スティックの傾きとプレイヤー間の方向ベクトル.
     private Vector3 _stickDirection = Vector3.zero;

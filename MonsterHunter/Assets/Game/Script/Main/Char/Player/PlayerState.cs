@@ -47,9 +47,7 @@ public partial class PlayerState : MonoBehaviour
         }
 
         // スタミナを回復させるタイミング指定.
-        if(_currentState != _dash &&
-            _currentState != _avoid &&
-            _currentState != _fatigueDash)
+        if(_autoRecaveryStaminaFlag)
         {
             AutoRecoveryStamina();
         }

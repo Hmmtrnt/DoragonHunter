@@ -14,16 +14,12 @@ public partial class PlayerState
             owner._avoidVelocity = -owner._transform.forward * (owner._avoidVelocityMagnification + 10);
             owner._nextMotionFlame = 100;
             owner._deceleration = 0.9f;
-            owner._flameAvoid = true;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
             owner._avoidTime++;
-            if (owner._stateFlame == 6)
-            {
-                owner._flameAvoid = false;
-            }
+            
         }
 
         public override void OnFixedUpdate(PlayerState owner)

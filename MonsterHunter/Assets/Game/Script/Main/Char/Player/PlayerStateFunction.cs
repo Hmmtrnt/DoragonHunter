@@ -35,7 +35,6 @@ public partial class PlayerState
     {
         _stateFlame = 0;
         _maintainTime = 100;
-        _isPlayOneShot = false;
     }
 
     /// <summary>
@@ -150,7 +149,7 @@ public partial class PlayerState
         // 状態終了時.
         _currentState.OnExit(this, nextState);
         // 各状態の時間をリセット.
-        ResetTime();
+        VariableReset();
         // 次の状態の呼び出し.
         nextState.OnEnter(this, _currentState);
         // 次に遷移する状態の代入.
@@ -228,11 +227,12 @@ public partial class PlayerState
     }
 
     /// <summary>
-    /// 各状態の経過時間をリセット.
+    /// 変数の値をリセット.
     /// </summary>
-    private void ResetTime()
+    private void VariableReset()
     {
         _stateTime = 0;
+        _isPlayOneShot = false;
     }
 
     /// <summary>
@@ -557,16 +557,16 @@ public partial class PlayerState
     /// <summary>
     /// SEを鳴らすときの処理.
     /// </summary>
-    /// <param name="flameNum1">鳴らすフレーム数</param>
+    /// <param name="flameNum">鳴らすフレーム数</param>
     /// <param name="seName">SEの種類</param>
-    private void SEPlayTest(float flameNum1, int seName)
+    private void SEPlayTest(float flameNum, int seName)
     {
-        //if (_stateFlame == flameNum1)
+        //if (_stateFlame == flameNum)
         //{
         //    _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
         //}
 
-        if ((_stateTime >= flameNum1 && _stateTime <= flameNum1 + 0.04f) && !_isPlayOneShot)
+        if ((_stateTime >= flameNum && _stateTime <= flameNum + 0.04f) && !_isPlayOneShot)
         {
             _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
 

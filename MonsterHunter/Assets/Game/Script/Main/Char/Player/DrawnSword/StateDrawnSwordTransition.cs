@@ -7,17 +7,20 @@ public partial class PlayerState
 {
     public class StateDrawnSwordTransition : StateBase
     {
+        // 前進させるスピード.
+        private const float _forwardSpeed = 0.8f;
+
+
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSwordMotion = true;
             owner._unsheathedSword = true;
-            owner._motionFrame = 0;
             owner.StateTransitionInitialization();
         }
 
         public override void OnUpdate(PlayerState owner)
         {
-            owner._rigidbody.velocity *= 0.8f;
+            owner._rigidbody.velocity *= _forwardSpeed;
 
             owner._motionFrame++;
 
@@ -28,12 +31,8 @@ public partial class PlayerState
             }
 
             // 抜刀効果音再生.
-            owner.SEPlay(20, (int)SEManager.HunterSE.DRAWSWORD);
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
-            
+            //owner.SEPlay(20, (int)SEManager.HunterSE.DRAWSWORD);
+            owner.SEPlayTest(0.24f, (int)SEManager.HunterSE.DRAWSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

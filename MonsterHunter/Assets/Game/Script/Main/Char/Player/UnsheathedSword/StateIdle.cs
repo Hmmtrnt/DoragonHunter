@@ -8,7 +8,6 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner.ResetTime();
             // アニメーション開始.
             owner._idleMotion = true;
         }

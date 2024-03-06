@@ -6,28 +6,24 @@ public partial class PlayerState
 {
     public class StateRecovery : StateBase
     {
-        // 回復時間
-        private int _recoveryTime = 0;
         // 回復薬を減らしたかどうか.
         private bool _medicineConsume = false;
         // 回復薬を減らすタイミング.
-        private float _medicineConsumeTiming = 1.2f;
+        private const float _medicineConsumeTiming = 1.2f;
         // 回復終了タイミング.
-        private float _recoveryFinishTiming = 2.3f;
+        private const float _recoveryFinishTiming = 2.3f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
             owner._isRecovery = true;
             owner._healMotion = true;
-            _medicineConsume = false;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
             owner._rigidbody.velocity *= 0.8f;
             owner._currentRecoveryTime++;
-            _recoveryTime++;
             // 回復薬を減らす.
             if (owner._stateTime >= _medicineConsumeTiming && !_medicineConsume)
             {
@@ -48,7 +44,6 @@ public partial class PlayerState
         {
             owner._isRecovery = false;
             owner._currentRecoveryTime = 0;
-            _recoveryTime = 0;
             owner._healMotion = false;
             _medicineConsume = false;
         }

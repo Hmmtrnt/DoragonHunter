@@ -1,4 +1,4 @@
-﻿/*抜刀走る*/
+﻿/*抜刀移動状態*/
 
 using UnityEngine;
 
@@ -14,11 +14,6 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
-
-        }
-
-        public override void OnFixedUpdate(PlayerState owner)
-        {
             Move(owner);
             owner.RotateDirection();
         }
@@ -31,44 +26,26 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // 抜刀アイドル状態へ.
-            if (owner._leftStickHorizontal == 0 &&
-                owner._leftStickVertical == 0)
-            {
-                owner.StateTransition(_idleDrawnSword);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWIDLE], _idleDrawnSword);
 
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.DRAWRUN]) return;
+
+            // メニュー画面を開いているときは処理をスキップする.
             if (owner._openMenu) return;
 
             // 踏み込み斬り.
-            if (owner._input._YButtonDown)
-            {
-                owner.StateTransition(_steppingSlash);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.STEPPINGSLASH], _steppingSlash);
             // 必殺技の構え
-            else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
-            {
-                owner.StateTransition(_stance);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE], _stance);
             // 突き
-            else if(owner._input._BButtonDown)
-            {
-                owner.StateTransition(_prick);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.PRICK], _prick);
             // 気刃斬り1.
-            else if (owner._input._RightTrigger >= 0.5f)
-            {
-                owner.StateTransition(_spiritBlade1);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
             // 回避.
-            else if (owner._input._AButtonDown)
-            {
-                owner.StateTransition(_avoidDrawnSword);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWAVOID], _avoidDrawnSword);
             // 納刀.
-            else if(owner._input._XButtonDown || owner._input._RBButtonDown)
-            {
-                owner.StateTransition(_sheathingSword);
-            }
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SHEATHINGSWORD], _sheathingSword);
         }
 
         // 移動

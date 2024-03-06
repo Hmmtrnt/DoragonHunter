@@ -20,10 +20,7 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // 次の状態遷移を起こすタイミング.
-            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE])
-            {
-                return;
-            }
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE]) return;
 
             // 移動.
             //owner.TransitionMove();

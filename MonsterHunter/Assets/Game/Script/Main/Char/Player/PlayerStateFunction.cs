@@ -87,8 +87,7 @@ public partial class PlayerState
         // “¥‚İ‚İa‚èó‘Ô.
         _stateTransitionFlag[(int)StateTransitionKinds.STEPPINGSLASH] = _input._YButtonDown;
         // “Ë‚«ó‘Ô.
-        _stateTransitionFlag[(int)StateTransitionKinds.PRICK] = (_input._BButtonDown || _input._YButtonDown) && 
-            !_input._LBButton;
+        _stateTransitionFlag[(int)StateTransitionKinds.PRICK] = _input._BButtonDown && !_input._LBButton;
         // Ø‚èã‚°ó‘Ô.
         _stateTransitionFlag[(int)StateTransitionKinds.SLASHUP] = _input._BButtonDown || _input._YButtonDown;
         // ‹Cna‚è1ó‘Ô.

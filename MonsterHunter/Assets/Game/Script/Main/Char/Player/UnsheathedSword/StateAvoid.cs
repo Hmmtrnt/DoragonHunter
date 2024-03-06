@@ -16,11 +16,6 @@ public partial class PlayerState
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
             owner._rotateSpeed = 40.0f;
 
-            if(prevState == _avoid)
-            {
-                owner._animator.Play("Avoid", 0, 0);
-            }
-
             owner.RotateDirection();
         }
 
@@ -40,18 +35,18 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            if (owner._stateTime >= 1.0f)
+            // 次の状態遷移を起こすタイミング.
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.AVOID])
             {
-                // スティック傾けていたら移動状態に.
-                //owner.TransitionMove();
-
-                // 待機状態.
-                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
-                // 走る状態.
-                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
-                // ダッシュ状態.
-                owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
+                return;
             }
+            // 待機状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.IDLE], _idle);
+            // 走る状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
+            // ダッシュ状態.
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
+            
         }
 
         // 回避処理

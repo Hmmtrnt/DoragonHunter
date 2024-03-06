@@ -31,6 +31,7 @@ public partial class PlayerState
             // 走る状態.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
 
+            // メニュー画面を開いているときはスキップする.
             if (owner._openMenu) return;
 
             // ダッシュ状態.

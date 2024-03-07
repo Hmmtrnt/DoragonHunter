@@ -1,3 +1,5 @@
+/*フェード処理*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +17,12 @@ public class Fade : MonoBehaviour
 
     // フェードインスピード.
     public byte _fadeInSpeed = 0;
+    // フェードイン終了.
+    private float _fadeInFinish = 0.05f;
     // フェードアウトスピード.
     public byte _fadeOutSpeed = 0;
+    // フェードアウト終了.
+    private float _fadeOutFinish = 0.95f;
 
     void Start()
     {
@@ -53,7 +59,7 @@ public class Fade : MonoBehaviour
     private void FadeIn()
     {
         // 透明度が0の時はスキップ.
-        if (_image.color.a <= 0.05f)
+        if (_image.color.a <= _fadeInFinish)
         {
             _colorA = 0;
             
@@ -65,7 +71,7 @@ public class Fade : MonoBehaviour
     // フェードアウト.
     private void FadeOut()
     {
-        if (_image.color.a >= 0.95f) 
+        if (_image.color.a >= _fadeOutFinish) 
         {
             _colorA = 255;
             _fadeEnd = true;

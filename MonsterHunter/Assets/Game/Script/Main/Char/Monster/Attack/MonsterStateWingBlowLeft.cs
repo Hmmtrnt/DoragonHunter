@@ -1,11 +1,18 @@
 /*左翼攻撃*/
 
-using UnityEngine;
-
 public partial class MonsterState
 {
     public class MonsterStateWingBlowLeft : StateBase
     {
+        // 攻撃判定発生タイミング.
+        private const int _spawnColTiming = 40;
+        // 攻撃判定消去タイミング.
+        private const int _eraseColTiming = 100;
+        // SEを鳴らすタイミング.
+        private float[] _sePlayTiming = new float[2];
+        // SEを鳴らすフラグ.
+        private float _playOneShotResetTiming = 0.5f;
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -19,29 +26,29 @@ public partial class MonsterState
             {
                 owner._AttackPower = 5;
             }
+            _sePlayTiming[0] = 0.4f;
+            _sePlayTiming[1] = 1.1f;
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            owner.SEPlay(_sePlayTiming[0], (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(_playOneShotResetTiming);
+            owner.SEPlay(_sePlayTiming[1], (int)SEManager.MonsterSE.ROTATE);
         }
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            if(owner._stateFlame == 40 )
+            if(owner._stateFlame == _spawnColTiming)
             {
                 owner._wingLeftCollisiton.SetActive(true);
             }
-            else if(owner._stateFlame == 100)
+            else if(owner._stateFlame == _eraseColTiming)
             {
                 owner._wingLeftCollisiton.SetActive(false);
             }
 
             ParticleGenerateTime(owner);
-
-            owner.SEPlay(0.4f, (int)SEManager.MonsterSE.FOOTSTEP);
-            owner.PlayOneShotReset(0.5f);
-            owner.SEPlay(1.1f, (int)SEManager.MonsterSE.ROTATE);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -52,7 +59,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateFlame >= 135)
+            if(owner._stateTime >= owner._stateTransitionTime[(int)StateTransitionKinds.WINGBLOWRIGHT])
             {
                 owner.ChangeState(_idle);
             }

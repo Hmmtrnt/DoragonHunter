@@ -1,7 +1,5 @@
 ﻿/*回転攻撃*/
 
-using UnityEngine;
-
 public partial class MonsterState
 {
     public class MonsterStateRotateAttack : StateBase

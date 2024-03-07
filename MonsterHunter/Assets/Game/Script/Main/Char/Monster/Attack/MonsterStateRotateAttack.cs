@@ -6,6 +6,15 @@ public partial class MonsterState
 {
     public class MonsterStateRotateAttack : StateBase
     {
+        // 攻撃判定発生タイミング.
+        private const int _spawnColTiming = 90;
+        // 攻撃判定消去タイミング.
+        private const int _eraseColTiming = 135;
+        // SEを鳴らすタイミング.
+        private float[] _sePlayTiming = new float[3];
+        // SEを鳴らすフラグ.
+        private float[] _playOneShotResetTiming = new float[2];
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -20,20 +29,27 @@ public partial class MonsterState
             {
                 owner._AttackPower = 10;
             }
+
+            _sePlayTiming[0] = 0.4f;
+            _sePlayTiming[1] = 0.5f;
+            _sePlayTiming[2] = 1.8f;
+            _playOneShotResetTiming[0] = 0.45f;
+            _playOneShotResetTiming[1] = 1.7f;
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-            owner.SEPlay(0.4f, (int)SEManager.MonsterSE.GROAN);
-            owner.PlayOneShotReset(0.45f);
-            owner.SEPlay(0.5f, (int)SEManager.MonsterSE.FOOTSMALLSTEP);
-            owner.PlayOneShotReset(1.7f);
-            owner.SEPlay(1.8f, (int)SEManager.MonsterSE.ROTATE);
+            owner.SEPlay(_sePlayTiming[0], (int)SEManager.MonsterSE.GROAN);
+            owner.PlayOneShotReset(_playOneShotResetTiming[0]);
+            owner.SEPlay(_sePlayTiming[1], (int)SEManager.MonsterSE.FOOTSMALLSTEP);
+            owner.PlayOneShotReset(_playOneShotResetTiming[1]);
+            owner.SEPlay(_sePlayTiming[2], (int)SEManager.MonsterSE.ROTATE);
         }
+
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            if(owner._stateFlame == 90)
+            if(owner._stateFlame == _spawnColTiming)
             {
                 owner._biteCollisiton.SetActive(true);
                 owner._rushCollisiton.SetActive(true);
@@ -45,7 +61,7 @@ public partial class MonsterState
                 }
                 owner._rotateCollisiton.SetActive(true);
             }
-            else if(owner._stateFlame == 135)
+            else if(owner._stateFlame == _eraseColTiming)
             {
                 owner._biteCollisiton.SetActive(false);
                 owner._rushCollisiton.SetActive(false);
@@ -59,9 +75,6 @@ public partial class MonsterState
             }
 
             ParticleGenerateTime(owner);
-
-            
-
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -72,7 +85,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateTime >= 4)
+            if(owner._stateTime >= owner._stateTransitionTime[(int)StateTransitionKinds.ROTATE])
             {
                 owner.ChangeState(_idle);
             }

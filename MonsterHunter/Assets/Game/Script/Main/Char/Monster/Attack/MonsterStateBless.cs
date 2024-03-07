@@ -6,6 +6,13 @@ public partial class MonsterState
 {
     public class MonsterStateBless : StateBase
     {
+        // 回転スピード.
+        private const int _rotateSpeed = 40;
+        // 攻撃判定発生タイミング.
+        private const int _spawnColTiming = 55;
+        // SEを鳴らすタイミング.
+        private float _sePlayTiming = 0.8f;
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -22,22 +29,20 @@ public partial class MonsterState
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            owner.SEPlay(_sePlayTiming, (int)SEManager.MonsterSE.BLESS);
         }
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            owner.TurnTowards(40);
+            owner.TurnTowards(_rotateSpeed);
 
-            // 発射ぁ.
-            if (owner._stateFlame == 55)
+            // 発射.
+            if (owner._stateFlame == _spawnColTiming)
             {
                 Instantiate(owner._fireBall, new Vector3(owner._fireBallPosition.transform.position.x,
                 owner._fireBallPosition.transform.position.y,
                 owner._fireBallPosition.transform.position.z), Quaternion.identity);
             }
-
-            owner.SEPlay(0.8f, (int)SEManager.MonsterSE.BLESS);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -47,7 +52,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateFlame >= 150)
+            if(owner._stateTime >= owner._stateTransitionTime[(int)StateTransitionKinds.BLESS])
             {
                 owner.ChangeState(_idle);
             }

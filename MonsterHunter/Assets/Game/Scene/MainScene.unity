@@ -37518,7 +37518,22 @@ PrefabInstance:
     - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
         type: 3}
       propertyPath: _stateIgnore
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
+        type: 3}
+      propertyPath: _stateTransitionTime.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
+        type: 3}
+      propertyPath: _stateTransitionTime.Array.data[0]
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
+        type: 3}
+      propertyPath: _stateTransitionTime.Array.data[1]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7624384508927273303, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
         type: 3}

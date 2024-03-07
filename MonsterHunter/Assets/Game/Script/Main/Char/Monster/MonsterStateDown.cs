@@ -6,18 +6,17 @@ public partial class MonsterState
 {
     public class MonsterStateDown : StateBase
     {
+        // SEを鳴らすタイミング.
+        private const float _sePlayTiming = 1;
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
-
-            //Debug.Log("to");
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-            
-
-            owner.SEPlay(1, (int)SEManager.MonsterSE.DOWN);
+            owner.SEPlay(_sePlayTiming, (int)SEManager.MonsterSE.DOWN);
 
             owner._deathMotion = true;
 
@@ -37,21 +36,5 @@ public partial class MonsterState
             }
             owner._rotateCollisiton.SetActive(false);
         }
-
-        public override void OnFixedUpdate(MonsterState owner)
-        {
-
-        }
-
-        public override void OnExit(MonsterState owner, StateBase nextState)
-        {
-            owner._deathMotion = false;
-        }
-
-        public override void OnChangeState(MonsterState owner)
-        {
-            
-        }
     }
-
 }

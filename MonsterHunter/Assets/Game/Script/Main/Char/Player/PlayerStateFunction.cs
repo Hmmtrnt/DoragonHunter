@@ -110,19 +110,6 @@ public partial class PlayerState
     }
 
     /// <summary>
-    /// ひとつ前の状態を取得し、次の状態に遷移する時間を設定.
-    /// </summary>
-    /// <param name="PrevState">ひとつ前の状態</param>
-    /// <param name="NextStateTransitionTime">次の状態に遷移出来るようになる時間</param>
-    private void SetNextStateTransitionTime(StateBase PrevState, int NextStateTransitionTime)
-    {
-        if(_currentState == PrevState)
-        {
-            _nextMotionFlame = NextStateTransitionTime;
-        }
-    }
-
-    /// <summary>
     /// 次の状態に遷移する時間をリセット.
     /// </summary>
     private void ResetNextStateTransitionTime()

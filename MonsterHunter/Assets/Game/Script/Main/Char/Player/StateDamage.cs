@@ -6,8 +6,16 @@ public partial class PlayerState
 {
     public class StateDamage : StateBase
     {
-        Vector3 knockBackVector = Vector3.zero;
-
+        // ノックバックされる方向ベクトル.
+        Vector3 _knockBackVector = Vector3.zero;
+        // 初速をかけるタイミング.
+        private const float _initialVelocityTiming = 0.8f;
+        // 地面についてから速度をかけるタイミング.
+        private const float _landingVelocityTiming = 1.7f;
+        // 初速の速度倍率.
+        private const float _initialVelocitySpeed = 0.15f;
+        // 地面についてからの速度倍率.
+        private const float _landingVelocitySpeed = 0.25f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -35,10 +43,11 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // 納刀かそうじゃないかで遷移先を変更
-            if (owner._stateTime <= 1.8f) return;
+            
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.DAMAGE]) return;
 
-            if(owner._unsheathedSword)
+            // 納刀かそうじゃないかで遷移先を変更
+            if (owner._unsheathedSword)
             {
                 owner.StateTransition(_idleDrawnSword);
             }
@@ -51,31 +60,26 @@ public partial class PlayerState
         // ノックバック先のベクトル取得.
         private void KnockBackVector(PlayerState owner)
         {
-            knockBackVector = owner._transform.position - owner._Monster.transform.position;
+            _knockBackVector = owner._transform.position - owner._Monster.transform.position;
 
-            knockBackVector.Normalize();
+            _knockBackVector.Normalize();
         }
 
         // ノックバック
         private void KnockBack(PlayerState owner)
         {
-            // 敵の中心点からベクトルを取得.
-            //Vector3 dir = owner._transform.position - owner._Monster.transform.position;
-            //dir = dir.normalized;
-            //owner._rigidbody.AddForce(dir * 30, ForceMode.Impulse);
-            if(owner._stateTime <= 0.8f)
-            {
-                owner._transform.position += knockBackVector * 0.15f;
-            }
-            else if(owner._stateTime <= 1.7f)
-            {
-                owner._transform.position += knockBackVector * 0.3f;
-            }
             
+            if(owner._stateTime <= _initialVelocityTiming)
+            {
+                owner._transform.position += _knockBackVector * _initialVelocitySpeed;
+            }
+            else if(owner._stateTime <= _landingVelocityTiming)
+            {
+                owner._transform.position += _knockBackVector * _landingVelocitySpeed;
+            }
 
-            var rotation = Quaternion.LookRotation(-knockBackVector, Vector3.up);
+            Quaternion rotation = Quaternion.LookRotation(-_knockBackVector, Vector3.up);
             owner._transform.rotation = rotation;
-            //owner._isProcess = false;
         }
     }
 

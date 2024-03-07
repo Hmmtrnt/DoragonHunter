@@ -97,7 +97,6 @@ public class MainSceneManager : MonoBehaviour
             _pauseCount = 15;
         }
 
-        //Debug.Log(_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed);
 
         // ˆê’â~‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—.
         if(_mainSceneSelectUi._selectNum == (int)MainSceneMenuSelectUi.SelectItem.PAUSE && 

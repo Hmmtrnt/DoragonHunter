@@ -7,6 +7,27 @@ public partial class MonsterState
 {
     public class MonsterStateRushForward : StateBase
     {
+        // 回転スピード.
+        private const int _rotateSpeed = 40;
+        // 攻撃判定発生タイミング.
+        private const int _spawnColTiming = 65;
+        // 攻撃判定消去タイミング.
+        private const int _eraseColTiming = 130;
+        // 前進させるタイミング.
+        private int[] _forwardStopTiming = new int[2];
+        // 移動力.
+        private float[] _speedPower = new float[2];
+        // 減速するタイミング.
+        private const int _slowDownStart = 60;
+        // 減速を終了するタイミング.
+        private const int _slowDownFinish = 140;
+        // 減速力.
+        private const float _slowDownPower = 0.001f;
+        // SEを鳴らすタイミング.
+        private float[] _sePlayTiming = new float[5];
+        // SEを鳴らすフラグ.
+        private float[] _playOneShotResetTiming = new float[4];
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -19,41 +40,61 @@ public partial class MonsterState
             {
                 owner._AttackPower = 17;
             }
+            _forwardStopTiming[0] = 60;
+            _forwardStopTiming[1] = 100;
+            _speedPower[0] = 0.7f;
+            _speedPower[1] = 0.15f;
+
+            _sePlayTiming[0] = 1.1f;
+            _sePlayTiming[1] = 1.5f;
+            _sePlayTiming[2] = 1.7f;
+            _sePlayTiming[3] = 2.1f;
+            _sePlayTiming[4] = 2.5f;
+            _playOneShotResetTiming[0] = 1.4f;
+            _playOneShotResetTiming[1] = 1.6f;
+            _playOneShotResetTiming[2] = 2.0f;
+            _playOneShotResetTiming[3] = 2.4f;
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            owner.SEPlay(_sePlayTiming[0], (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(_playOneShotResetTiming[0]);
+            owner.SEPlay(_sePlayTiming[1], (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(_playOneShotResetTiming[1]);
+            owner.SEPlay(_sePlayTiming[2], (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(_playOneShotResetTiming[2]);
+            owner.SEPlay(_sePlayTiming[3], (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(_playOneShotResetTiming[3]);
+            owner.SEPlay(_sePlayTiming[4], (int)SEManager.MonsterSE.FOOTSTEP);
         }
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            owner.TurnTowards(40);
+            owner.TurnTowards(_rotateSpeed);
 
-            if (owner._stateFlame == 60)
+            if (owner._stateFlame == _forwardStopTiming[0])
             {
-                //owner._trasnform.position -= Vector3.forward * 0.5f;
-                owner._forwardSpeed = 0.7f;
+                owner._forwardSpeed = _speedPower[0];
             }
-            else if (owner._stateFlame == 100)
+            else if (owner._stateFlame == _forwardStopTiming[1])
             {
-                //owner._trasnform.position += Vector3.forward * 0.15f;
-                //owner._forwardSpeed = -0.15f;
-                owner._forwardSpeed = 0.15f;
+                owner._forwardSpeed = _speedPower[1];
             }
 
-            if(owner._stateFlame >= 60 && owner._stateFlame <= 140)
+            // 減速.
+            if(owner._stateFlame >= _slowDownStart && owner._stateFlame <= _slowDownFinish)
             {
-                owner._forwardSpeed -= 0.001f;
+                owner._forwardSpeed -= _slowDownPower;
             }
 
-            if(owner._stateFlame == 65)
+            if(owner._stateFlame == _spawnColTiming)
             {
                 owner._rushCollisiton.SetActive(true);
                 owner._wingRightCollisiton.SetActive(true);
                 owner._wingLeftCollisiton.SetActive(true);
             }
-            else if(owner._stateFlame == 130)
+            else if(owner._stateFlame == _eraseColTiming)
             {
                 owner._rushCollisiton.SetActive(false);
                 owner._wingRightCollisiton.SetActive(false);
@@ -61,17 +102,6 @@ public partial class MonsterState
             }
 
             ParticleGenerateTime(owner);
-            //FootStepSound(owner);
-            //owner.SEPlay(55, 75, 85, 105, 125, (int)SEManager.MonsterSE.FOOTSTEP);
-            owner.SEPlay(1.1f, (int)SEManager.MonsterSE.FOOTSTEP);
-            owner.PlayOneShotReset(1.4f);
-            owner.SEPlay(1.5f, (int)SEManager.MonsterSE.FOOTSTEP);
-            owner.PlayOneShotReset(1.6f);
-            owner.SEPlay(1.7f, (int)SEManager.MonsterSE.FOOTSTEP);
-            owner.PlayOneShotReset(2.0f);
-            owner.SEPlay(2.1f, (int)SEManager.MonsterSE.FOOTSTEP);
-            owner.PlayOneShotReset(2.4f);
-            owner.SEPlay(2.5f, (int)SEManager.MonsterSE.FOOTSTEP);
 
             owner._trasnform.position += owner._moveVelocity;
         }
@@ -79,15 +109,13 @@ public partial class MonsterState
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
             owner._rushMotion = false;
-            // デバッグ用座標初期化.
-            //owner._trasnform.position = new Vector3(500.0f, 0.4f, 500.0f);
             // スピードを0にする.
             owner._forwardSpeed = 0.0f;
         }
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateFlame >= 150)
+            if(owner._stateTime >= 3)
             {
                 owner.ChangeState(_idle);
             }
@@ -105,16 +133,5 @@ public partial class MonsterState
                 owner.FootSmokeSpawn((int)footSmokeEffect.LEG, (int)footSmokePosition.WINGLEFT);
             }
         }
-
-        // 足音を流す.
-        //private void FootStepSound(Monster owner)
-        //{
-        //    if(owner._stateFlame == 55 || owner._stateFlame == 75 || owner._stateFlame == 85 || 
-        //        owner._stateFlame == 105 || owner._stateFlame == 125 )
-        //    {
-        //        //owner._seManager.MonsterPlaySE((int)MainSceneSEManager.MonsterSE.FOOTSTEP);
-        //        owner._seManager.PlaySE((int)MainSceneSEManager.AudioNumber.AUDIO3D, (int)MainSceneSEManager.MonsterSE.FOOTSTEP);
-        //    }
-        //}
     }
 }

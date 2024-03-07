@@ -36,7 +36,7 @@ public partial class MonsterState
                 owner._viewDirection[(int)viewDirection.FORWARD] && owner._viewDirection[(int)viewDirection.FORWARD] &&
                 owner._stateIgnore)
             {
-                owner.ChangeState(_bless);
+                owner.ChangeState(_rush);
             }
 
             if (owner._stateIgnore) return;

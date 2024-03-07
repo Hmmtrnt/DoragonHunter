@@ -1,6 +1,5 @@
 ﻿/*右翼で攻撃*/
 
-using UnityEngine;
 
 public partial class MonsterState
 {

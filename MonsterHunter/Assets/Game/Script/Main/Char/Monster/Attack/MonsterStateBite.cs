@@ -1,11 +1,24 @@
 ﻿/*噛みつき*/
 
-using UnityEngine;
-
 public partial class MonsterState
 {
     public class MonsterStateBite : StateBase
     {
+        // 回転スピード.
+        private const int _rotateSpeed = 40;
+        // 攻撃判定発生タイミング.
+        private const int _spawnColTiming = 40;
+        // 攻撃判定消去タイミング.
+        private const int _eraseColTiming = 70;
+        // 前進させるタイミング.
+        private const int _forwardStopTiming = 1;
+        // 前進終了タイミング.
+        private const int _forwardTiming = 15;
+        // 移動力.
+        private const float _speedPower = 0.4f;
+        // SEを鳴らすタイミング.
+        private float _sePlayTiming = 0.6f;
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -22,14 +35,14 @@ public partial class MonsterState
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            owner.SEPlay(_sePlayTiming, (int)SEManager.MonsterSE.BITE);
         }
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            owner.TurnTowards(40);
+            owner.TurnTowards(_rotateSpeed);
 
-            if(owner._stateFlame >= 40 && owner._stateFlame <=70)
+            if(owner._stateFlame >= _spawnColTiming && owner._stateFlame <= _eraseColTiming)
             {
                 owner._biteCollisiton.SetActive(true);
             }
@@ -38,21 +51,16 @@ public partial class MonsterState
                 owner._biteCollisiton.SetActive(false);
             }
 
-            if(owner._stateFlame == 1)
+            if(owner._stateFlame == _forwardStopTiming)
             {
-                //Debug.Log("通る");
-                owner._forwardSpeed = 0.4f;
+                owner._forwardSpeed = _speedPower;
             }
-            else if(owner._stateFlame == 15)
+            else if(owner._stateFlame == _forwardTiming)
             {
                 owner._forwardSpeed = 0.0f;
             }
 
-            //Debug.Log(owner._forwardSpeed);
-
             owner._trasnform.position += owner._moveVelocity;
-
-            owner.SEPlay(0.6f, (int)SEManager.MonsterSE.BITE);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -62,8 +70,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            
-            if (owner._stateFlame >= 120)
+            if (owner._stateTime >= owner._stateTransitionTime[(int)StateTransitionKinds.BITE])
             {
                 owner.ChangeState(_idle);
             }

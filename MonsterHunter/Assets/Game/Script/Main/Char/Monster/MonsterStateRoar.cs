@@ -1,12 +1,12 @@
 /*™ôšK*/
 
-using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
-
 public partial class MonsterState
 {
     public class MonsterStateRoar : StateBase
     {
+        // SE‚ð–Â‚ç‚·ƒ^ƒCƒ~ƒ“ƒO.
+        private const float _sePlayTiming = 1.7f;
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner._isRoar = false;
@@ -17,12 +17,7 @@ public partial class MonsterState
         public override void OnUpdate(MonsterState owner)
         {
             owner._isRoar = false;
-            owner.SEPlay(1.7f, (int)SEManager.MonsterSE.ROAR);
-        }
-
-        public override void OnFixedUpdate(MonsterState owner)
-        {
-            
+            owner.SEPlay(_sePlayTiming, (int)SEManager.MonsterSE.ROAR);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -32,22 +27,11 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateTime >= 5.4f)
+            if(owner._stateTime >= owner._stateTransitionTime[(int)StateTransitionKinds.ROAR])
             {
                 owner.ChangeState(_idle);
-                //Debug.Log("’Ê‚é");
             }
         }
-
-        // ™ôšK‚Ì‰¹‚ð—¬‚·.
-        //private void RoarSound(Monster owner)
-        //{
-        //    if(owner._stateFlame == 90)
-        //    {
-        //        owner._seManager.MonsterPlaySE((int)MainSceneSEManager.MonsterSE.ROAR);
-        //    }
-            
-        //}
     }
 }
 

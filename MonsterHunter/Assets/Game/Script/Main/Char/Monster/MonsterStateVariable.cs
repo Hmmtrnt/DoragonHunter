@@ -22,6 +22,24 @@ public partial class MonsterState
     // Stateの初期化.
     public StateBase _currentState = _idle;
 
+    // 次の状態に遷移するときの時間.
+    public enum StateTransitionKinds
+    {
+        ROAR,
+        IDLE,
+        DOWN,
+        FALTER,
+        ROTATE,
+        BLESS,
+        BITE,
+        RUSH,
+        WINGBLOWRIGHT,
+        WINGBLOWLEFT,
+        TAIL,
+
+        MAX
+    }
+
     // モンスターから見てハンターの位置はどこか.
     enum viewDirection
     {
@@ -49,6 +67,10 @@ public partial class MonsterState
         WING,
         NONE,
     }
+
+    [Header("次の状態に遷移するときの時間")]
+    [SerializeField, EnumIndex(typeof(StateTransitionKinds))]
+    private float[] _stateTransitionTime;
 
     // メインシーンの情報.
     private MainSceneManager _mainSceneManager;

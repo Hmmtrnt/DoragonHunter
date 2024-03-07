@@ -21,18 +21,6 @@ public partial class MonsterState
             {
                 owner._idleMotion = true;
             }
-            
-
-        }
-
-        public override void OnUpdate(MonsterState owner)
-        {
-            
-        }
-
-        public override void OnFixedUpdate(MonsterState owner)
-        {
-
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -44,27 +32,6 @@ public partial class MonsterState
         public override void OnChangeState(MonsterState owner)
         {
             if (owner._stateTime <= 2) return;
-            //if (owner._stateFlame <= 100) return;
-
-            // デバッグ用.
-            // 近距離.
-            //if (owner._isNearDistance)
-            //{
-            //    // 正面(主にかみつき).
-            //    if (owner._viewDirection[(int)viewDirection.FORWARD])
-            //    {
-            //        owner.ChangeState(_rotate);
-            //    }
-            //}
-            //// 遠距離.
-            //else
-            //{
-            //    // 正面(主にかみつき).
-            //    if (owner._viewDirection[(int)viewDirection.FORWARD])
-            //    {
-            //        owner.ChangeState(_rotate);
-            //    }
-            //}
 
             // デバッグ用.
             // 行動パターン.

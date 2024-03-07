@@ -605,11 +605,6 @@ public partial class PlayerState
     /// <param name="seName">SE‚ÌŽí—Þ</param>
     private void SEPlay(float flameNum, int seName)
     {
-        //if (_stateFlame == flameNum)
-        //{
-        //    _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
-        //}
-
         if ((_stateTime >= flameNum && _stateTime <= flameNum + 0.04f) && !_isPlayOneShot)
         {
             _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);

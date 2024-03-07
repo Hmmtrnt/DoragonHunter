@@ -1,7 +1,6 @@
 ﻿// モンスターのState変数
 
 using UnityEngine;
-using UnityEngine.UI;
 
 public partial class MonsterState
 {
@@ -54,7 +53,6 @@ public partial class MonsterState
     // 目標のプレイヤー.
     private GameObject _hunter;
     private Transform _trasnform;
-    private Rigidbody _rigidbody;
     // プレイヤーのステート情報.
     private PlayerState _playerState;
 

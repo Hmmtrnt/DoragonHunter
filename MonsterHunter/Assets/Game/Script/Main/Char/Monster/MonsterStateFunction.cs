@@ -1,8 +1,6 @@
 /*モンスターの全体の関数*/
 
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public partial class MonsterState
 {
@@ -20,7 +18,6 @@ public partial class MonsterState
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _hunter = GameObject.Find("Hunter");
         _trasnform = transform;
-        _rigidbody = GetComponent<Rigidbody>();
         _playerState = _hunter.GetComponent<PlayerState>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fireBall = (GameObject)Resources.Load("FireBall2");

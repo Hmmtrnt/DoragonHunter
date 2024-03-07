@@ -13,9 +13,9 @@ public partial class PlayerState
         // 地面についてから速度をかけるタイミング.
         private const float _landingVelocityTiming = 1.7f;
         // 初速の速度倍率.
-        private const float _initialVelocitySpeed = 0.15f;
+        private const float _initialVelocitySpeed = 0.07f;
         // 地面についてからの速度倍率.
-        private const float _landingVelocitySpeed = 0.25f;
+        private const float _landingVelocitySpeed = 0.18f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {

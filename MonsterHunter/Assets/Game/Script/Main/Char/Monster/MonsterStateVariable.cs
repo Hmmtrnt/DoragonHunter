@@ -19,6 +19,9 @@ public partial class MonsterState
     public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.
     public static readonly MonsterStateTailAttack       _tail = new();          // 尻尾攻撃.
 
+    // Stateの初期化.
+    public StateBase _currentState = _idle;
+
     // モンスターから見てハンターの位置はどこか.
     enum viewDirection
     {

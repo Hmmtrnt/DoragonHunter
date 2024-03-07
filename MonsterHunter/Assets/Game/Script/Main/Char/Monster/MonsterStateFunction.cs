@@ -4,6 +4,92 @@ using UnityEngine;
 
 public partial class MonsterState
 {
+    // 以下の4つの関数の処理順変更不可.
+    /// <summary>
+    /// 初期化.
+    /// </summary>
+    private void Init()
+    {
+        Initialization();
+        _currentState.OnEnter(this, null);
+    }
+
+    /// <summary>
+    /// 更新処理.
+    /// </summary>
+    private void UpdateProcess()
+    {
+        _currentState.OnUpdate(this);
+        _currentState.OnChangeState(this);
+        ViewAngle();
+        WeakenState();
+        // 状態の経過時間を増やす.
+        StateTime();
+    }
+
+    /// <summary>
+    /// 固定更新処理.
+    /// </summary>
+    private void FixedUpdateProcess()
+    {
+        // 計算情報の代入.
+        SubstituteVariable();
+
+        // 状態のフレームの時間を増やす.
+        _stateFlame++;
+
+        _currentState.OnFixedUpdate(this);
+
+        // 乱数を常に与える.
+        _randomNumber = Random.Range(1, 101);
+
+        // プレイヤーとモンスター同士の角度、距離によって処理を変更.
+        PositionalRelationship();
+        // アニメーション遷移.
+        AnimTransition();
+
+        // 最初だけ咆哮するようにする.
+        if (_isRoar && _stateFlame >= 10)
+        {
+            RoarTransition();
+        }
+
+        // 怯み値がたまった時と生きているときに処理.
+        if (_falterValue >= _falterMaxValue && _HitPoint > 0)
+        {
+            ChangeFlater();
+        }
+
+        // 体力が0になった時の処理.
+        if (_HitPoint <= 0)
+        {
+            ChangeStateDeath();
+        }
+        // 体力を0未満にしない.
+        HitPointLowerLimit();
+
+        // ダメージを受ける.
+        if (_takeDamage)
+        {
+            GetOnDamager();
+            GetOnFalter();
+            _takeDamage = false;
+        }
+    }
+
+    /// <summary>
+    /// 貫通した瞬間.
+    /// </summary>
+    /// <param name="other">対象の当たり判定</param>
+    private void TriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "HunterAtCol" && _playerState.GetIsCauseDamage())
+        {
+            _playerState.SetIsCauseDamage(false);
+            _takeDamage = true;
+        }
+    }
+
     // ステートの変更.
     private void ChangeState(StateBase nextState)
     {
@@ -22,7 +108,6 @@ public partial class MonsterState
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fireBall = (GameObject)Resources.Load("FireBall2");
         _fireBallPosition = GameObject.Find("BlessPosition");
-        //_footSmokePrehub = (GameObject)Resources.Load("MonsterLegSmoke");
         _footSmokePrehub[0] = (GameObject)Resources.Load("MonsterLegSmoke");
         _footSmokePrehub[1] = (GameObject)Resources.Load("MonsterTailSmoke");
         _footSmokePrehub[2] = (GameObject)Resources.Load("MonsterWingSmoke");
@@ -39,8 +124,6 @@ public partial class MonsterState
         _idleMotion = true;
         // 初手吠える.
         _isRoar = true;
-        //_isRoar = false;
-
 
         // 攻撃当たり判定を無効.
         _biteCollisiton.SetActive(false);
@@ -60,12 +143,13 @@ public partial class MonsterState
         }
         else
         {
-            // HACK:後で体力を直す.
             _MaxHitPoint = 5000;
         }
 
         _weakenTimingHitPoint = _MaxHitPoint / 4;
         _HitPoint = _MaxHitPoint;
+
+        _randomNumber = 0;
     }
 
     // モンスターの状態を弱らせる.
@@ -124,8 +208,6 @@ public partial class MonsterState
     private void StateTime()
     {
         _stateTime += Time.deltaTime;
-
-        
     }
 
     // 咆哮モーションに遷移.
@@ -294,7 +376,6 @@ public partial class MonsterState
         // 方向ベクトルからクォータニオン取得
         Quaternion _rotation = Quaternion.LookRotation(_direction, Vector3.up);
 
-        // デバッグ用ブレス
         // プレイヤーのほうを向いて回転
         if (_stateFlame <= turnFlame)
         {
@@ -337,8 +418,10 @@ public partial class MonsterState
         }
     }
 
-    
-
+    /// <summary>
+    /// プレイヤーとモンスター同士の距離取得.
+    /// </summary>
+    /// <returns></returns>
     private float GetDistance()
     {
         _currentDistance = (_hunter.transform.position - _trasnform.position).magnitude;
@@ -346,30 +429,38 @@ public partial class MonsterState
         return _currentDistance;
     }
 
+    /// <summary>
+    /// モンスターの攻撃力.
+    /// </summary>
+    /// <returns></returns>
     public float GetMonsterAttack()
     {
         return _AttackPower;
     }
 
-    // ダメージをくらう.
+    /// <summary>
+    /// ダメージを受けた後の体力.
+    /// </summary>
+    /// <returns></returns>
     private float GetOnDamager()
     {
         _HitPoint = _HitPoint - _playerState.GetHunterAttack();
         return _HitPoint;
     }
 
-    // 怯み値を蓄積.
+    /// <summary>
+    /// 怯み値を蓄積.
+    /// </summary>
+    /// <returns></returns>
     private float GetOnFalter()
     {
         _falterValue = _falterValue + _playerState.GetHunterAttack();
         return _falterValue;
     }
-
-    public void SetHitPoint(float hitPoint)
-    {
-        _HitPoint = hitPoint;
-    }
-
+    /// <summary>
+    /// 体力を取得
+    /// </summary>
+    /// <returns></returns>
     public float GetHitPoint()
     {
         return _HitPoint;

@@ -15,11 +15,6 @@ public abstract class StateBase
     /// <param name="owner">アクセスするための参照</param>
     public virtual void OnUpdate(PlayerState owner) { }
     /// <summary>
-    /// FixedUpdate
-    /// </summary>
-    /// <param name="owner">アクセスするための参照</param>
-    public virtual void OnFixedUpdate(PlayerState owner) { }
-    /// <summary>
     /// ステート終了時呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>

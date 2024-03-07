@@ -22,8 +22,6 @@ public partial class PlayerState
             // 次の状態遷移を起こすタイミング.
             if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE]) return;
 
-            // 移動.
-            //owner.TransitionMove();
             // 走る状態.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RUN], _running);
 

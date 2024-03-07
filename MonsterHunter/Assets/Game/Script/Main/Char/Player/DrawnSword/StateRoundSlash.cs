@@ -19,7 +19,6 @@ public partial class PlayerState
         {
             owner._drawnSpiritRoundSlash = true;
             owner._nextMotionFlame = 120;
-            owner._deceleration = 0.9f;
             owner.StateTransitionInitialization();
             owner._attackPower = 150;
             owner._isCauseDamage = true;

@@ -15,7 +15,6 @@ public partial class PlayerState
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
-            owner._deceleration = 0.9f;
             owner._rigidbody.velocity = Vector3.zero;
         }
 

@@ -1,12 +1,108 @@
 /*プレイヤーステートの関数まとめ*/
 
-using System.Buffers;
 using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
-
 
 public partial class PlayerState
 {
+    // 以下の5個の関数の処理順を変更してはいけない.
+
+    /// <summary>
+    /// 初期化時の処理.
+    /// </summary>
+    private void Init()
+    {
+        VariableInitialization();
+        _currentState.OnEnter(this, null);
+    }
+
+    /// <summary>
+    /// 更新処理.
+    /// </summary>
+    private void UpdateProcess()
+    {
+        StateTransitionFlag();
+
+        GetStickInput();
+        AnimTransition();
+
+        _currentState.OnUpdate(this);
+        if (!_mainSceneManager.GetPauseStop())
+        {
+            _currentState.OnChangeState(this);
+        }
+        viewAngle();
+        StateFlameManager();
+        StateTime();
+    }
+
+    /// <summary>
+    /// 50fps固定更新処理.
+    /// </summary>
+    private void FixedUpdateProcess()
+    {
+        SubstituteVariableFixedUpdate();
+
+        // スタミナ.
+        LimitStop(ref _stamina, _maxStamina);
+        // 練気ゲージ.
+        LimitStop(ref _currentRenkiGauge, _maxRenkiGauge);
+        // 練気ゲージ赤.
+        LimitStop(ref _currentRedRenkiGauge, _maxRedRenkiGauge);
+
+        // 体力が0以下の時.
+        if (_currentHitPoint <= 0)
+        {
+            OnDead();
+        }
+
+        // スタミナを回復させるタイミング指定.
+        if (_autoRecaveryStaminaFlag)
+        {
+            AutoRecoveryStamina();
+        }
+
+        RenkiNaturalConsume();
+        MaintainElapsedTimeRenkiGauge();
+        ApplyRedRenkiGauge();
+        OpenMenu();
+    }
+
+    /// <summary>
+    /// 当たり判定に当たった瞬間の処理.
+    /// </summary>
+    /// <param name="collision">当たり判定の対象</param>
+    private void ColEnter(Collision collision)
+    {
+        // モンスターに当たっても浮かないようにする.
+        if (collision.transform.tag == "Monster")
+        {
+            _transform.position = new Vector3(_transform.position.x, 0.1f, _transform.position.z);
+        }
+    }
+
+    /// <summary>
+    /// 当たり判定が貫通した瞬間の処理.
+    /// </summary>
+    /// <param name="other">当たり判定の対象</param>
+    private void TriggerEnter(Collider other)
+    {
+        // ダメージを受けつける.
+        if (other.gameObject.tag == "MonsterAtCol" && _currentState != _damage)
+        {
+            // カウンターの受付をしていない時はダメージを受ける.
+            if (!_counterValid)
+            {
+                OnDamage();
+            }
+            else if (_counterValid)
+            {
+                _counterSuccess = true;
+            }
+
+        }
+    }
+
+
     /// <summary>
     /// プレイヤー情報の初期化.
     /// </summary>
@@ -115,15 +211,6 @@ public partial class PlayerState
     private void ResetNextStateTransitionTime()
     {
         _nextMotionFlame = 0;
-    }
-
-    // まだ使う予定なし.
-    /// <summary>
-    /// 状態終了時の初期化.
-    /// </summary>
-    private void StateTransitionEnd()
-    {
-
     }
 
     /// <summary>
@@ -276,18 +363,18 @@ public partial class PlayerState
     /// </summary>
     private void ApplyRedRenkiGauge()
     {
-        if (_currentRenkiGauge > 75)
+        if (_currentRenkiGauge > _renkiGaugeRedChangeTiming)
         {
             _applyRedRenkiGauge = true;
         }
-        else if(_currentRenkiGauge < 75)
+        else if(_currentRenkiGauge < _renkiGaugeRedChangeTiming)
         {
             _applyRedRenkiGauge = false;
         }
     }
 
     /// <summary>
-    /// プレイヤーの視野角.
+    /// プレイヤーから見てスティックがどこに傾いているかを見るの視野角.
     /// </summary>
     private void viewAngle()
     {
@@ -301,7 +388,7 @@ public partial class PlayerState
         RaycastHit hit;
         bool ray = Physics.Raycast(_transform.position, direction.normalized, out hit);
 
-        bool viewFlag = ray && hit.collider.gameObject == _stickPosition && GetDistance() > 1;
+        //bool viewFlag = ray && hit.collider.gameObject == _stickPosition && GetDistance() > 1;
 
         // 正面.
         if (forwardAngle < 45)
@@ -323,7 +410,7 @@ public partial class PlayerState
         {
             FoundFlag((int)viewDirection.LEFT);
         }
-        // もし、
+        // スティックを傾けていない場合.
         else if(forwardAngle == 0 && sideAngle == 0)
         {
             FoundFlag((int)viewDirection.NONE);
@@ -331,7 +418,7 @@ public partial class PlayerState
     }
 
     /// <summary>
-    /// スティックがいる位置をtureで返す
+    /// スティックがいる位置をtureで返す.
     /// </summary>
     /// <param name="foundNum">スティックの位置を示す番号</param>
     private void FoundFlag(int foundNum)
@@ -349,6 +436,9 @@ public partial class PlayerState
         }
     }
 
+    /// <summary>
+    /// ダッシュするときにスタミナを消費させる.
+    /// </summary>
     private void ConsumeStamina()
     {
         _stamina -= _isDashStaminaCost;
@@ -367,18 +457,6 @@ public partial class PlayerState
     /// </summary>
     private void MoveAvoid()
     {
-        // 減速.
-        //if (_avoidTime <= 15)
-        //{
-        //    _rigidbody.velocity *= _deceleration;
-        //}
-
-        //// 一気に減速.
-        //if (_avoidTime >= 55)
-        //{
-        //    _rigidbody.velocity *= 0.8f;
-        //}
-
         // 一度処理を通すと次は通さないようにする.
         if (!_isProcess) return;
 
@@ -479,18 +557,6 @@ public partial class PlayerState
         }
     }
 
-
-    /// <summary>
-    /// スティックを倒すと移動状態に遷移.
-    /// </summary>
-    private void TransitionMove()
-    {
-        if (_stateTransitionFlag[(int)StateTransitionKinds.RUN])
-        {
-            RunOrDash();
-        }
-    }
-
     /// <summary>
     /// 走るかダッシュするかを決める.
     /// </summary>
@@ -573,52 +639,6 @@ public partial class PlayerState
     }
 
     /// <summary>
-    /// SEを鳴らすときの処理.
-    /// </summary>
-    /// <param name="flameNum1">鳴らすフレーム数</param>
-    /// <param name="seName">SEの種類</param>
-    private void SEPlay(int flameNum1, int seName)
-    {
-        if(_stateFlame == flameNum1)
-        {
-            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
-        }
-    }
-
-    /// <summary>
-    /// SEを鳴らすときの処理.
-    /// </summary>
-    /// <param name="flameNum1">一回目の鳴らすフレーム数</param>
-    /// <param name="flameNum2">二回目の鳴らすフレーム数</param>
-    /// <param name="seName">SEの種類</param>
-    private void SEPlay(int flameNum1, int flameNum2, int seName)
-    {
-        if (_stateFlame == flameNum1 ||
-            _stateFlame == flameNum2)
-        {
-            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
-        }
-    }
-
-    // 使わなくなる.
-    /// <summary>
-    /// SEを鳴らすときの処理.
-    /// </summary>
-    /// <param name="flameNum1">一回目の鳴らすフレーム数</param>
-    /// <param name="flameNum2">二回目の鳴らすフレーム数</param>
-    /// <param name="flameNum3">三回目の鳴らすフレーム数</param>
-    /// <param name="seName">SEの種類</param>
-    private void SEPlay(int flameNum1, int flameNum2, int flameNum3, int seName)
-    {
-        if (_stateFlame == flameNum1 ||
-            _stateFlame == flameNum2 ||
-            _stateFlame == flameNum3)
-        {
-            _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, seName);
-        }
-    }
-
-    /// <summary>
     /// メニューを開いているかの情報を代入.
     /// </summary>
     private void OpenMenu()
@@ -627,76 +647,65 @@ public partial class PlayerState
     }
 
     /// <summary>
-    /// ダッシュしているかどうかの情報取得.
-    /// </summary>
-    /// <returns>ダッシュしているかどうか</returns>
-    public bool GetIsDashing() { return _isDashing; }
-
-    /// <summary>
-    /// 回避フレームの数を取得.
-    /// </summary>
-    /// <returns>回避しているときのフレーム数</returns>
-    public int GetAvoidTime() { return _avoidTime; }
-
-    /// <summary>
-    /// 回避しているかどうかの情報取得.
-    /// </summary>
-    /// <returns>回避をしているかどうか</returns>
-    public bool GetIsAvoiding() { return _isAvoiding; }
-
-    /// <summary>
-    /// 回復している時間取得.
-    /// </summary>
-    /// <returns>回復している時間</returns>
-    public int GetRecoveryTime() { return _currentRecoveryTime; }
-
-    /// <summary>
-    /// 回復しているかどうかの情報取得.
-    /// </summary>
-    /// <returns>回復しているかどうか</returns>
-    public bool GetIsRecovery() { return _isRecovery; }
-
-    /// <summary>
     /// 残り体力.
     /// </summary>
-    /// <returns>体力</returns>
+    /// <returns></returns>
     public float GetHitPoint() { return _currentHitPoint; }
-
     /// <summary>
     /// 体力最大値.
     /// </summary>
-    /// <returns>体力の最大値</returns>
+    /// <returns></returns>
     public float GetMaxHitPoint() { return _maxHitPoint; }
-    // 残りスタミナ.
-    public float GetStamina() { return _stamina; }
-    // スタミナ最大値.
-    public float GetMaxStamina() { return _maxStamina; }
-
-    // ダメージを与えた時の値.
-    public float GetHunterAttack() { return _attackDamage; }
-
-    // ダメージを与えられるかどうか.
-    public bool GetIsCauseDamage() { return _isCauseDamage; }
-    // ダメージを与えられるかの代入.
-    public void SetIsCauseDamage(bool causeDamage) { _isCauseDamage = causeDamage; }
-
-    // 最大錬気ゲージ.
-    public float GetMaxRenkiGauge() { return _maxRenkiGauge; }
-    // 現在の錬気ゲージ.
-    public float GetCurrentRenkiGauge() { return _currentRenkiGauge; }
-    // 最大練気ゲージ赤.
-    public float GetMaxRedRenkiGauge() { return _maxRedRenkiGauge; }
-    // 現在の練気ゲージ赤.
-    public float GetCurrentRedRenkiGauge() { return _currentRedRenkiGauge; }
-    // 気刃大回転斬りを行っている途中.
-    public bool GetRoundSlash() { return _drawnSpiritRoundSlash; }
-
     /// <summary>
-    /// カウンター受付しているかどうか取得.
+    /// 残りスタミナ.
     /// </summary>
     /// <returns></returns>
-    public bool GetCounterValid() {  return _counterValid; }
-
+    public float GetStamina() { return _stamina; }
+    /// <summary>
+    /// スタミナ最大値.
+    /// </summary>
+    /// <returns></returns>
+    public float GetMaxStamina() { return _maxStamina; }
+    /// <summary>
+    /// ダメージを与えた時の値.
+    /// </summary>
+    /// <returns></returns>
+    public float GetHunterAttack() { return _attackDamage; }
+    /// <summary>
+    /// ダメージを与えられるかどうか.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetIsCauseDamage() { return _isCauseDamage; }
+    /// <summary>
+    /// ダメージを与えられるかの代入.
+    /// </summary>
+    /// <param name="causeDamage">攻撃を与えられるか</param>
+    public void SetIsCauseDamage(bool causeDamage) { _isCauseDamage = causeDamage; }
+    /// <summary>
+    /// 最大錬気ゲージ.
+    /// </summary>
+    /// <returns></returns>
+    public float GetMaxRenkiGauge() { return _maxRenkiGauge; }
+    /// <summary>
+    /// 現在の錬気ゲージ.
+    /// </summary>
+    /// <returns></returns>
+    public float GetCurrentRenkiGauge() { return _currentRenkiGauge; }
+    /// <summary>
+    /// 最大練気ゲージ赤.
+    /// </summary>
+    /// <returns></returns>
+    public float GetMaxRedRenkiGauge() { return _maxRedRenkiGauge; }
+    /// <summary>
+    /// 現在の練気ゲージ赤.
+    /// </summary>
+    /// <returns></returns>
+    public float GetCurrentRedRenkiGauge() { return _currentRedRenkiGauge; }
+    /// <summary>
+    /// 気刃大回転斬りを行っている途中.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetRoundSlash() { return _drawnSpiritRoundSlash; }
     /// <summary>
     /// スティックの傾きによって距離を求める. 
     /// </summary>
@@ -706,7 +715,9 @@ public partial class PlayerState
         _currentDistance = (_stickPosition.transform.position - _transform.position).magnitude;
         return _currentDistance;
     }
-
-    // 回復薬の数を取得.
+    /// <summary>
+    /// 回復薬の数を取得.
+    /// </summary>
+    /// <returns></returns>
     public int GetCureMedicineNum() { return _cureMedicineNum; }
 }

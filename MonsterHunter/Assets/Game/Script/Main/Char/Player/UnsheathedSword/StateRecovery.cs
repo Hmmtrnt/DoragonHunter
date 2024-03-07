@@ -23,7 +23,6 @@ public partial class PlayerState
         public override void OnUpdate(PlayerState owner)
         {
             owner._rigidbody.velocity *= 0.8f;
-            owner._currentRecoveryTime++;
             // 回復薬を減らす.
             if (owner._stateTime >= _medicineConsumeTiming && !_medicineConsume)
             {
@@ -43,7 +42,6 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._isRecovery = false;
-            owner._currentRecoveryTime = 0;
             owner._healMotion = false;
             _medicineConsume = false;
         }

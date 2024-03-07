@@ -87,14 +87,14 @@ public partial class PlayerState
     private float[] _stateTransitionTime;
     private bool[] _stateTransitionFlag = new bool[(int)StateTransitionKinds.MAX];
 
-    // デバッグ用のテキスト
-    //public Text _text;
-
     // スティックがハンターのどの向きにいるかを取得
     private bool[] _viewDirection = new bool[(int)viewDirection.NONE];
 
     // スティックの傾きを表す球とハンターの距離
     private float _currentDistance;
+
+    // transformをキャッシュ.
+    private Transform _transform;
 
     // コントローラーの入力情報.
     private ControllerManager _input;
@@ -203,10 +203,6 @@ public partial class PlayerState
     [Header("攻撃したモンスターの肉質")]
     public float _MonsterFleshy = 0;
 
-    // モーション値.
-    //private float _MotionValue = 0;
-
-    // Rigidbody.
     private Rigidbody _rigidbody;
 
     // 納刀抜刀を確認するデバッグ用オブジェクト.
@@ -219,9 +215,6 @@ public partial class PlayerState
     public bool _weaponActive;
 
     
-
-    // transformをキャッシュ.
-    private Transform _transform;
     // カメラ.
     private Camera _camera;
     // カメラの正面.
@@ -250,6 +243,8 @@ public partial class PlayerState
     private float _maxRenkiGauge = 100;
     // 現在の練気ゲージ.
     public float _currentRenkiGauge = 0;
+    // 練気ゲージを赤にするタイミング.
+    private const float _renkiGaugeRedChangeTiming = 75;
     // 練気ゲージの増加量
     public float _increaseAmountRenkiGauge = 0;
     // 練気ゲージを維持する時間.
@@ -276,8 +271,6 @@ public partial class PlayerState
 
     // 移動速度倍率.
     private float _moveVelocityMagnification = 0;
-    // 回復しながらの移動倍率.
-    //private float _moveVelocityRecoveryMagnification = 10;
 
     // 移動速度.
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
@@ -310,30 +303,19 @@ public partial class PlayerState
     // 回避しているかどうか.
     private bool _isAvoiding = false;
 
-    // スティックの傾きとプレイヤー間の方向ベクトル.
-    private Vector3 _stickDirection = Vector3.zero;
-
     /*回復*/
     // 回復薬の数.
     private int _cureMedicineNum = 0;
     // 回復しているかどうか.
     private bool _isRecovery = false;
-    // 現在の回復時間.
-    private int _currentRecoveryTime = 0;
-    // 最大回復時間.
-    private int _maxRecoveryTime = 300;
     // 回復量.
     [Header("回復量")]
     [SerializeField] private float _recoveryAmount = 0.0f;
 
-    /*共通*/
-    // 減速.
-    private float _deceleration = 0;
-
     // メニューを開いているか取得.
     private bool _openMenu = false;
 
-    // 以下デバッグ用変数
+    // モンスターの情報.
     // モンスターオブジェクト.
     private GameObject _Monster;
     // モンスターのState.

@@ -21,7 +21,6 @@ public partial class PlayerState
         {
             owner._drawnSpiritBlade1 = true;
             owner._nextMotionFlame = 60;
-            owner._deceleration = 0.9f;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
             owner._attackPower = 102;

@@ -15,7 +15,6 @@ public partial class PlayerState
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.right * owner._avoidVelocityMagnification;
             owner._nextMotionFlame = 80;
-            owner._deceleration = 0.9f;
             owner._rigidbody.velocity = Vector3.zero;
             
         }

@@ -4,7 +4,6 @@ public partial class MonsterState
 {
     public class MonsterStateIdle : StateBase
     {
-
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -29,17 +28,6 @@ public partial class MonsterState
         public override void OnChangeState(MonsterState owner)
         {
             if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE]) return;
-
-            // デバッグ用.
-            // 行動パターン.
-            if (owner._viewDirection[(int)viewDirection.FORWARD] && owner._viewDirection[(int)viewDirection.FORWARD] &&
-                owner._viewDirection[(int)viewDirection.FORWARD] && owner._viewDirection[(int)viewDirection.FORWARD] &&
-                owner._stateIgnore)
-            {
-                owner.ChangeState(_tail);
-            }
-
-            if (owner._stateIgnore) return;
 
             // 近距離.
             if (owner._isNearDistance)

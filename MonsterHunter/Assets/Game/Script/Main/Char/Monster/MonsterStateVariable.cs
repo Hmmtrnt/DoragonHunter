@@ -198,10 +198,6 @@ public partial class MonsterState
     // ダメージを受けるかどうか.
     private bool _takeDamage = false;
 
-    // 状態遷移を無視するかどうか.
-    [Header("状態遷移を無視するかどうか")]
-    public bool _stateIgnore = false;
-
     // SEを同時に慣らさないようにする為の変数.
     private bool _isPlayOneShot = false;
 

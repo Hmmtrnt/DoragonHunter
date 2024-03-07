@@ -14,20 +14,10 @@ public partial class MonsterState
             owner.StateTransitionInitialization();
         }
 
-        //public override void OnEnter(Monster owner, StateBase prevState)
-        //{
-        //    owner._isRoar = false;
-        //    owner._roarMotion = true;
-        //    Debug.Log("’Ê‚é");
-        //    owner.StateTransitionInitialization();
-        //}
-
         public override void OnUpdate(MonsterState owner)
         {
             owner._isRoar = false;
             owner.SEPlay(1.7f, (int)SEManager.MonsterSE.ROAR);
-
-            //owner.SEPlayTest(1.7f, (int)SEManager.MonsterSE.ROAR);
         }
 
         public override void OnFixedUpdate(MonsterState owner)

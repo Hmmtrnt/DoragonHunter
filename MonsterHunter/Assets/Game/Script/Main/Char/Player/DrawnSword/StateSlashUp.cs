@@ -49,7 +49,7 @@ public partial class PlayerState
                 owner.ForwardStep(_speedPower);
             }
             // 空振り効果音再生.
-            owner.SEPlayTest(_sePlayTiming, (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(_sePlayTiming, (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

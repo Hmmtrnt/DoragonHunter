@@ -26,7 +26,7 @@ public partial class PlayerState
                 owner.ForwardStep(_forwardPower);
             }
             // 納刀効果音再生.
-            owner.SEPlayTest(0.18f, (int)SEManager.HunterSE.SHEATHINGSWORD);
+            owner.SEPlay(0.18f, (int)SEManager.HunterSE.SHEATHINGSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

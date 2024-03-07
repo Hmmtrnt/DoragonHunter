@@ -108,11 +108,11 @@ public partial class PlayerState
             }
 
             // 空振り効果音再生.
-            owner.SEPlayTest(_sePlayTiming[0], (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(_sePlayTiming[0], (int)SEManager.HunterSE.MISSINGSLASH);
             owner.PlayOneShotReset(_playOneShotResetTiming[0]);
-            owner.SEPlayTest(_sePlayTiming[1], (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(_sePlayTiming[1], (int)SEManager.HunterSE.MISSINGSLASH);
             owner.PlayOneShotReset(_playOneShotResetTiming[1]);
-            owner.SEPlayTest(_sePlayTiming[2], (int)SEManager.HunterSE.MISSINGSLASH);
+            owner.SEPlay(_sePlayTiming[2], (int)SEManager.HunterSE.MISSINGSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

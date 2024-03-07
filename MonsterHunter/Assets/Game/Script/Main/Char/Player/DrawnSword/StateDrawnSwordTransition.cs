@@ -30,7 +30,7 @@ public partial class PlayerState
             }
 
             // 抜刀効果音再生.
-            owner.SEPlayTest(0.24f, (int)SEManager.HunterSE.DRAWSWORD);
+            owner.SEPlay(0.24f, (int)SEManager.HunterSE.DRAWSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

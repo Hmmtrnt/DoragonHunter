@@ -34,7 +34,7 @@ public partial class PlayerState
                 Recovery(owner);
             }
             // ごくごく音.
-            owner.SEPlayTest(0.96f, (int)SEManager.HunterSE.DRINK);
+            owner.SEPlay(0.96f, (int)SEManager.HunterSE.DRINK);
 
         }
 

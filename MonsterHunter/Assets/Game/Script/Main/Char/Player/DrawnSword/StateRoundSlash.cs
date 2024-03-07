@@ -57,7 +57,7 @@ public partial class PlayerState
             }
 
             // 空振り効果音再生.
-            owner.SEPlayTest(_sePlayTiming, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
+            owner.SEPlay(_sePlayTiming, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

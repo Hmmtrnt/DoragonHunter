@@ -603,7 +603,7 @@ public partial class PlayerState
     /// </summary>
     /// <param name="flameNum">–Â‚ç‚·ƒtƒŒ[ƒ€”</param>
     /// <param name="seName">SE‚Ìí—Ş</param>
-    private void SEPlayTest(float flameNum, int seName)
+    private void SEPlay(float flameNum, int seName)
     {
         //if (_stateFlame == flameNum)
         //{

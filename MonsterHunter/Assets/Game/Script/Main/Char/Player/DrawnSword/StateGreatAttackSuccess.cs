@@ -36,7 +36,7 @@ public partial class PlayerState
             }
 
             // ‹óU‚èŒø‰Ê‰¹Ä¶.
-            owner.SEPlayTest(_sePlayTiming, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
+            owner.SEPlay(_sePlayTiming, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

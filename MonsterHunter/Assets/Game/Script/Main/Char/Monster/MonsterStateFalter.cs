@@ -1,11 +1,12 @@
 /*モンスターが怯むときの処理*/
 
-using UnityEngine;
-
 public partial class MonsterState
 {
     public class MonsterStateFalter : StateBase
     {
+        // SEを鳴らすタイミング.
+        private const float _sePlayTiming = 0.2f;
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -23,7 +24,7 @@ public partial class MonsterState
 
         public override void OnUpdate(MonsterState owner)
         {
-            owner.SEPlay(0.2f, (int)SEManager.MonsterSE.FALTER);
+            owner.SEPlay(_sePlayTiming, (int)SEManager.MonsterSE.FALTER);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -34,7 +35,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(owner._stateTime >= 3.6f)
+            if(owner._stateTime >= owner._stateTransitionTime[(int)StateTransitionKinds.FALTER])
             {
                 owner.ChangeState(_idle);
             }

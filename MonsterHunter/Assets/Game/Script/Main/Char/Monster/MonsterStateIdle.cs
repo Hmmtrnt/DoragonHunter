@@ -28,7 +28,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._stateTime <= 2) return;
+            if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE]) return;
 
             // デバッグ用.
             // 行動パターン.
@@ -36,7 +36,7 @@ public partial class MonsterState
                 owner._viewDirection[(int)viewDirection.FORWARD] && owner._viewDirection[(int)viewDirection.FORWARD] &&
                 owner._stateIgnore)
             {
-                //owner.ChangeState(_bite);
+                owner.ChangeState(_falter);
             }
 
             if (owner._stateIgnore) return;

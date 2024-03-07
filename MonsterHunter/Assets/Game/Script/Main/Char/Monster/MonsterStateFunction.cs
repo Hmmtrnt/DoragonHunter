@@ -90,7 +90,10 @@ public partial class MonsterState
         }
     }
 
-    // ステートの変更.
+    /// <summary>
+    /// ステートの変更.
+    /// </summary>
+    /// <param name="nextState">次の状態</param>
     private void ChangeState(StateBase nextState)
     {
         _currentState.OnExit(this, nextState);
@@ -98,7 +101,9 @@ public partial class MonsterState
         _currentState = nextState;
     }
 
-    // 初期化.
+    /// <summary>
+    /// 初期化.
+    /// </summary>
     private void Initialization()
     {
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
@@ -152,7 +157,9 @@ public partial class MonsterState
         _randomNumber = 0;
     }
 
-    // モンスターの状態を弱らせる.
+    /// <summary>
+    /// モンスターの状態を弱らせる.
+    /// </summary>
     private void WeakenState()
     {
         if(_HitPoint <= _weakenTimingHitPoint)
@@ -161,7 +168,9 @@ public partial class MonsterState
         }
     }
 
-    // 計算した情報の代入.
+    /// <summary>
+    /// 計算した情報の代入.
+    /// </summary>
     private void SubstituteVariable()
     {
         // モンスターの正面
@@ -175,7 +184,9 @@ public partial class MonsterState
         _moveVelocity = moveForward + moveSide;
     }
 
-    // 状態遷移時の初期化.
+    /// <summary>
+    /// 状態遷移時の初期化.
+    /// </summary>
     private void StateTransitionInitialization()
     {
         _stateFlame = 0;
@@ -183,7 +194,9 @@ public partial class MonsterState
         _isPlayOneShot = false;
     }
 
-    // アニメーション遷移.
+    /// <summary>
+    /// アニメーション遷移.
+    /// </summary>
     private void AnimTransition()
     {
         // アニメーターがアタッチされていなければ引っかかる
@@ -204,19 +217,25 @@ public partial class MonsterState
         _animator.SetBool("Rota", _rotateMotion);
     }
 
-    // 状態の経過時間取得.
+    /// <summary>
+    /// 状態の経過時間取得.
+    /// </summary>
     private void StateTime()
     {
         _stateTime += Time.deltaTime;
     }
 
-    // 咆哮モーションに遷移.
+    /// <summary>
+    /// 咆哮モーションに遷移.
+    /// </summary>
     private void RoarTransition()
     {
         ChangeState(_roar);
     }
 
-    // プレイヤーとモンスター同士の角度、距離によって処理を変更.
+    /// <summary>
+    /// プレイヤーとモンスター同士の角度、距離によって処理を変更.
+    /// </summary>
     private void PositionalRelationship()
     {
         // 正面
@@ -224,12 +243,10 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                //_text.text = "正面近距離";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                //_text.text = "正面遠距離";
                 _isNearDistance = false;
             }
         }
@@ -238,12 +255,10 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                //_text.text = "背後近距離";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                //_text.text = "背後遠距離";
                 _isNearDistance = false;
             }
         }
@@ -252,12 +267,10 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                //_text.text = "右近距離";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                //_text.text = "右遠距離";
                 _isNearDistance = false;
             }
         }
@@ -266,19 +279,19 @@ public partial class MonsterState
         {
             if (GetDistance() <= _shortDistance)
             {
-                //_text.text = "左近距離";
                 _isNearDistance = true;
             }
             else if (GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
             {
-                //_text.text = "左遠距離";
                 _isNearDistance = false;
 
             }
         }
     }
 
-    // プレイヤーが今モンスターから見てどこにいるのかを取得する
+    /// <summary>
+    /// プレイヤーが今モンスターから見てどこにいるのかを取得する.
+    /// </summary>
     private void ViewAngle()
     {
         Vector3 direction = _hunter.transform.position - _trasnform.position;
@@ -351,14 +364,18 @@ public partial class MonsterState
         ChangeState(_falter);
     }
 
-    // 体力が0になると強制的にダウンする.
+    /// <summary>
+    /// 体力が0になると強制的にダウンする.
+    /// </summary>
     private void ChangeStateDeath()
     {
         _currentState = _down;
         ChangeState(_down);
     }
 
-    // 体力を0未満にしない.
+    /// <summary>
+    /// 体力を0未満にしない.
+    /// </summary>
     private void HitPointLowerLimit()
     {
         if(_HitPoint <= 0)
@@ -367,7 +384,10 @@ public partial class MonsterState
         }
     }
 
-    // プレイヤーの方を向く.
+    /// <summary>
+    /// プレイヤーの方を向く.
+    /// </summary>
+    /// <param name="turnFlame">向くスピード</param>
     private void TurnTowards(int turnFlame)
     {
         // ターゲットの方向ベクトル.
@@ -383,7 +403,11 @@ public partial class MonsterState
         }
     }
 
-    // 足煙エフェクトの生成.
+    /// <summary>
+    /// 足煙エフェクトの生成.
+    /// </summary>
+    /// <param name="footSmokeKinds">煙の種類</param>
+    /// <param name="footSmokePosition">発生タイミング</param>
     private void FootSmokeSpawn(int footSmokeKinds, int footSmokePosition)
     {
         Instantiate(_footSmokePrehub[footSmokeKinds],

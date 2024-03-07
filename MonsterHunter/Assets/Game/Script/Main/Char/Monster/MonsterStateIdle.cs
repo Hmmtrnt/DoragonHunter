@@ -1,8 +1,5 @@
 ﻿/*モンスターのアイドル*/
 
-using DG.Tweening.Core.Easing;
-using UnityEngine;
-
 public partial class MonsterState
 {
     public class MonsterStateIdle : StateBase
@@ -62,9 +59,6 @@ public partial class MonsterState
                     {
                         owner.ChangeState(_rotate);
                     }
-
-                    // デバッグ用状態遷移.
-                    //owner.ChangeState(_bite);
                 }
                 // 後ろ.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
@@ -81,10 +75,6 @@ public partial class MonsterState
                     {
                         owner.ChangeState(_bite);
                     }
-
-
-                    // デバッグ用状態遷移.
-                    //owner.ChangeState(_tail);
                 }
                 // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])
@@ -101,9 +91,6 @@ public partial class MonsterState
                     {
                         owner.ChangeState(_bite);
                     }
-
-                    //デバッグ用状態遷移.
-                    //owner.ChangeState(_rotate);
                 }
                 // 右.
                 else if (owner._viewDirection[(int)viewDirection.RIGHT])
@@ -120,9 +107,6 @@ public partial class MonsterState
                     {
                         owner.ChangeState(_bite);
                     }
-
-                    // デバッグ用状態遷移.
-                    //owner.ChangeState(_rotate);
                 }
             }
             // 遠距離.
@@ -139,9 +123,6 @@ public partial class MonsterState
                     {
                         owner.ChangeState(_bless);
                     }
-
-                    // デバッグ用モーション遷移.
-                    //owner.ChangeState(_rush);
                 }
                 // 背後.
                 else if (owner._viewDirection[(int)viewDirection.BACKWARD])
@@ -154,8 +135,6 @@ public partial class MonsterState
                     {
                         owner.ChangeState(_bless);
                     }
-
-                    //owner.ChangeState(_rush);
                 }
                 // 左.
                 else if (owner._viewDirection[(int)viewDirection.LEFT])

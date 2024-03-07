@@ -1,12 +1,25 @@
 /*狩猟終了時の処理*/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HuntingEnd : MonoBehaviour
 {
+    // ランクの番号.
+    enum RankNumber
+    {
+        S = 0,
+        A,
+        B,
+        C,
+        MAXNUM
+    }
+
+    // ランクダウンさせる時間帯.
+    // ノーマルモード.
+    private int[] _rankDownNormalTime = new int[(int)RankNumber.MAXNUM];
+    // ハードモード.
+    private int[] _rankDownHardTime = new int[(int)RankNumber.MAXNUM];
+
     // メインシーンの情報.
     private MainSceneManager _mainSceneManager;
 
@@ -40,14 +53,22 @@ public class HuntingEnd : MonoBehaviour
     public int _Minute = 0;
     public int _Second = 0;
 
+    // クエスト失敗になる時間.
+    private const int _minuteFailed = 50;
+
     // 現在のランク.
     private int _currentRank = 0;
 
-    // 狩猟成功してシーン遷移を行うまでの時間.
-    private int _startSceneTransitionCount = 0;
-
     void Start()
     {
+        _rankDownNormalTime[0] = 3;
+        _rankDownNormalTime[1] = 6;
+        _rankDownNormalTime[2] = 10;
+
+        _rankDownHardTime[0] = 5;
+        _rankDownHardTime[1] = 9;
+        _rankDownHardTime[2] = 13;
+
         _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
         _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
@@ -57,7 +78,6 @@ public class HuntingEnd : MonoBehaviour
         _resultUpdate = GameObject.Find("ResultBackGround").GetComponent<ResultUpdate>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fade = GameObject.Find("Fade").GetComponent<Fade>();
-        _startSceneTransitionCount = 1000;
         _selectSceneRemove = false;
     }
 
@@ -107,21 +127,7 @@ public class HuntingEnd : MonoBehaviour
 
     }
 
-    // シーン遷移時に行う処理.
-    private void SceneTransitionUpdate(Scene next, LoadSceneMode mode)
-    {
-        // シーン切り替え後のスクリプト追加.
-        ResultUpdate resultBranch = GameObject.Find("GameManager").GetComponent<ResultUpdate>();
-
-        // クエスト終了時のクエスト状態を代入.
-        //resultBranch._questClear = _QuestClear;
-
-
-        SceneManager.sceneLoaded -= SceneTransitionUpdate;
-    }
-
     // モンスター又、プレイヤーの体力が0になった時.クエストのクリアどうか変更.
-    // デバッグ状態.
     private void HuntingEndBranch()
     {
         // 敵の体力が尽きたらクリア.
@@ -130,13 +136,13 @@ public class HuntingEnd : MonoBehaviour
             _QuestClear = true;
         }
         // ハンターの体力が尽きる、また時間が過ぎたら失敗.
-        else if(_playerState.GetHitPoint() == 0 || _Minute >= 50)
+        else if(_playerState.GetHitPoint() == 0 || _Minute >= _minuteFailed)
         {
             _QuestClear= false;
         }
 
 
-        if (_playerState.GetHitPoint()==0 || _monsterState.GetHitPoint() == 0 || _Minute >= 50)
+        if (_playerState.GetHitPoint()==0 || _monsterState.GetHitPoint() == 0 || _Minute >= _minuteFailed)
         {
             _questEnd = true;
             _Minute = _questTime.GetMinutes();
@@ -150,43 +156,35 @@ public class HuntingEnd : MonoBehaviour
         // ハードモードのタイム.
         if (_mainSceneManager._hitPointMany)
         {
-            if (_Minute >= 5)
+            if (_Minute >= _rankDownHardTime[0])
             {
-                _currentRank = 1;
+                _currentRank = (int)RankNumber.A;
             }
-            else if (_Minute >= 9)
+            else if (_Minute >= _rankDownHardTime[1])
             {
-                _currentRank = 2;
+                _currentRank = (int)RankNumber.B;
             }
-            else if (_Minute >= 13)
+            else if (_Minute >= _rankDownHardTime[2])
             {
-                _currentRank = 3;
+                _currentRank = (int)RankNumber.C;
             }
         }
         // ノーマルモードのタイム.
         else if (!_mainSceneManager._hitPointMany)
         {
-            if (_Minute >= 3)
+            if (_Minute >= _rankDownNormalTime[0])
             {
-                _currentRank = 1;
+                _currentRank = (int)RankNumber.A;
             }
-            else if (_Minute >= 6)
+            else if (_Minute >= _rankDownNormalTime[1])
             {
-                _currentRank = 2;
+                _currentRank = (int)RankNumber.B;
             }
-            else if (_Minute >= 10)
+            else if (_Minute >= _rankDownNormalTime[2])
             {
-                _currentRank = 3;
+                _currentRank = (int)RankNumber.C;
             }
         }
-    }
-
-    // カウント開始.
-    private void CountStart()
-    {
-        // クエストをクリアしていないときにスキップ.
-        if (!_QuestClear) return;
-        _startSceneTransitionCount--;
     }
 
     // クエストの結果を決定.

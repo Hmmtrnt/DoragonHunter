@@ -9,7 +9,6 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._dashMotion = true;
-            owner._isDashing = true;
             owner._moveVelocityMagnification = owner._moveVelocityDashMagnigication;
         }
 
@@ -24,7 +23,6 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._dashMotion = false;
-            owner._isDashing = false;
         }
 
         public override void OnChangeState(PlayerState owner)

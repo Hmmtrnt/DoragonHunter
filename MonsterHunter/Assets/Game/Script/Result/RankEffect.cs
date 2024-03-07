@@ -22,7 +22,6 @@ public class RankEffect : MonoBehaviour
     private RectTransform[] _rectTransform = new RectTransform[(int)EffectNum.MAX_NUM];
     // エフェクトの再生時間.
     private int _EffectCount = 0;
-    private float _effectScale = 1.0f;
     private byte[] _alpha = new byte[(int)EffectNum.MAX_NUM];
 
     void Start()
@@ -134,13 +133,8 @@ public class RankEffect : MonoBehaviour
     // 待機時のエフェクトのアニメーション.
     private void IdleEffectAnim(int EffectNum, Vector3 Scale, float Time)
     {
-        //_sequence.Append(_rectTransform[EffectNum].DOScale(Scale, Time)
-        //    .SetLoops(-1, LoopType.Yoyo))
-        //    .Play();
-
         _rectTransform[EffectNum].DOScale(Scale, Time)
             .SetLoops(-1, LoopType.Yoyo);
-        //_rectTransform[EffectNum].DOLocalMoveX(1f, 2f).SetLoops(-1, LoopType.Yoyo);
     }
 
 

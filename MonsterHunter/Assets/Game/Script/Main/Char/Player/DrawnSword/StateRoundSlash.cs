@@ -18,7 +18,6 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSpiritRoundSlash = true;
-            owner._nextMotionFlame = 120;
             owner.StateTransitionInitialization();
             owner._attackPower = 150;
             owner._isCauseDamage = true;
@@ -26,7 +25,6 @@ public partial class PlayerState
             owner._hitStopTime = 0.3f;
             owner._attackCol._isOneProcess = true;
             owner._isAttackProcess = false;
-            owner._nextMotionTime = 2.0f;
 
             _forwardStopTiming[0] = 0.18f;
             _forwardStopTiming[1] = 0.88f;

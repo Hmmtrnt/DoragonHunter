@@ -154,11 +154,6 @@ public partial class PlayerState
     private bool _greatAttackStanceMotion   = false;// 必殺技の構え.
     private bool _greatAttackSuccess        = false;// 必殺技成功.
 
-    // 次のモーションに遷移するフレーム.
-    private float _nextMotionFlame = 0;
-    // 次のモーションに遷移する時間.
-    private float _nextMotionTime = 0;
-
     //--共通モーション--//
     // Setbool
     private bool _damageMotion  = false;// ダメージ.
@@ -179,8 +174,6 @@ public partial class PlayerState
     // 自動回復を行わない時のフラグ.
     private bool _autoRecaveryStaminaFlag = false;
 
-    // モーションフレーム.
-    private int _motionFrame = 0;
     // 現在の状態のフレーム数.
     public int _stateFlame = 0;
     // 現在の状態の時間.
@@ -277,8 +270,6 @@ public partial class PlayerState
     // 移動時の回転速度
     private float _rotateSpeed = 20.0f;
 
-    // ダッシュしているかどうか.
-    private bool _isDashing = false;
     // ダッシュしているときのスタミナ消費量.
     [Header("ダッシュしているときのスタミナ消費量")]
     [SerializeField] private float _isDashStaminaCost = 0.2f;
@@ -292,22 +283,13 @@ public partial class PlayerState
     [SerializeField]private float _avoidVelocityMagnification = 25;
     // 回避速度.
     private Vector3 _avoidVelocity = Vector3.zero;
-    // 現在の回避フレーム.
-    private int _avoidTime = 0;
-    // 最大回避フレーム.
-    private int _avoidMaxTime = 80;
     // 回避時のスタミナ消費量.
     [Header("回避時のスタミナ消費量")]
     [SerializeField] private float _avoidStaminaCost = 25;
 
-    // 回避しているかどうか.
-    private bool _isAvoiding = false;
-
     /*回復*/
     // 回復薬の数.
     private int _cureMedicineNum = 0;
-    // 回復しているかどうか.
-    private bool _isRecovery = false;
     // 回復量.
     [Header("回復量")]
     [SerializeField] private float _recoveryAmount = 0.0f;

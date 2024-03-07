@@ -14,7 +14,6 @@ public partial class PlayerState
             owner._drawnLeftAvoidMotion = true;
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.right * owner._avoidVelocityMagnification;
-            owner._nextMotionFlame = 80;
             owner._rigidbody.velocity = Vector3.zero;
             
         }
@@ -27,7 +26,6 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnLeftAvoidMotion = false;
-            owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
         }
 

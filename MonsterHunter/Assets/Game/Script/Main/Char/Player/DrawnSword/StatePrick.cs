@@ -20,14 +20,12 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnThrustSlash = true;
-            owner._nextMotionFlame = 35;
             owner.StateTransitionInitialization();
             owner._attackPower = 55;
             owner._isCauseDamage = true;
             owner._increaseAmountRenkiGauge = 3;
             owner._hitStopTime = 0.05f;
             owner._attackCol._isOneProcess = true;
-            owner._nextMotionTime = 0.45f;
             owner._isAttackProcess = false;
         }
 

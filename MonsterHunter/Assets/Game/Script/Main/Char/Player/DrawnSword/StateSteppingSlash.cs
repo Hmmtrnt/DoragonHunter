@@ -26,7 +26,6 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSteppingSlash = true;
-            owner._nextMotionFlame = 80;
             owner._rigidbody.velocity = Vector3.zero;
             owner._unsheathedSword = true;
             owner.StateTransitionInitialization();
@@ -36,7 +35,6 @@ public partial class PlayerState
             owner._hitStopTime = 0.1f;
             owner._attackCol._isOneProcess = true;
             owner._isAttackProcess = false;
-            owner._nextMotionTime = 1.13f;
         }
 
         public override void OnUpdate(PlayerState owner)

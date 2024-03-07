@@ -26,7 +26,6 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnAvoidMotion = false;
-            owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
         }
 

@@ -14,21 +14,17 @@ public partial class PlayerState
             owner._drawnBackAvoidMotion = true;
             owner._isProcess = true;
             owner._avoidVelocity = -owner._transform.forward * owner._avoidVelocityMagnification;
-            owner._nextMotionFlame = 100;
             owner._rigidbody.velocity = Vector3.zero;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
-            owner._avoidTime++;
             owner.MoveAvoid();
-
         }
         
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._drawnBackAvoidMotion = false;
-            owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
         }
 

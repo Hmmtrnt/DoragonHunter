@@ -206,14 +206,6 @@ public partial class PlayerState
     }
 
     /// <summary>
-    /// Ÿ‚Ìó‘Ô‚É‘JˆÚ‚·‚éŠÔ‚ğƒŠƒZƒbƒg.
-    /// </summary>
-    private void ResetNextStateTransitionTime()
-    {
-        _nextMotionFlame = 0;
-    }
-
-    /// <summary>
     /// ó‘Ô‘JˆÚ.
     /// </summary>
     /// <param name="nextState">Ÿ‚É‘JˆÚ‚·‚éó‘Ô</param>

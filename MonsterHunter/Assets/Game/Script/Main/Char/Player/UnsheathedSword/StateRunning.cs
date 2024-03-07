@@ -11,7 +11,6 @@ public partial class PlayerState
             owner.StateTransitionInitialization();
             owner._runMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
-            owner.ResetNextStateTransitionTime();
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -27,9 +26,7 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._runMotion = false;
-            owner._isDashing = false;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
-            owner.ResetNextStateTransitionTime();
         }
 
         public override void OnChangeState(PlayerState owner)

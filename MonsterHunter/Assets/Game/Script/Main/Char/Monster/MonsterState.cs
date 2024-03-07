@@ -1,26 +1,9 @@
 ﻿/*モンスターの行動全体の管理*/
 
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UI;
 
 public partial class MonsterState : MonoBehaviour
 {
-    /*攻撃以外のモーション*/
-    public static readonly MonsterStateRoar             _roar = new();          // 咆哮.
-    public static readonly MonsterStateIdle             _idle = new();          // 待機.
-    public static readonly MonsterStateDown             _down = new();          // やられる.
-    public static readonly MonsterStateFalter           _falter = new();        // 怯み.
-
-    /*攻撃モーション*/
-    public static readonly MonsterStateRotateAttack     _rotate = new();        // 回転攻撃.
-    public static readonly MonsterStateBless            _bless = new();         // ブレス攻撃.
-    public static readonly MonsterStateBite             _bite = new();          // 噛みつき攻撃.
-    public static readonly MonsterStateRushForward      _rush = new();          // 突進攻撃.
-    public static readonly MonsterStateWingBlowRight    _wingBlowRight = new(); // 右翼攻撃.
-    public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.
-    public static readonly MonsterStateTailAttack       _tail = new();          // 尻尾攻撃.
-
     // Stateの初期化.
     public StateBase _currentState = _idle;
 
@@ -91,22 +74,6 @@ public partial class MonsterState : MonoBehaviour
             GetOnDamager();
             GetOnFalter();
             _takeDamage = false;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            _collisionTag = collision.transform.tag;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            _collisionTag = null;
         }
     }
 

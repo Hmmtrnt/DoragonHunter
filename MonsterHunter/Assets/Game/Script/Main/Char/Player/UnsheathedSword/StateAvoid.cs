@@ -8,7 +8,6 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._isAvoiding = true;
             owner._avoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
             owner._isProcess = true;
@@ -26,9 +25,7 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._isAvoiding = false;
             owner._avoidMotion = false;
-            owner._avoidTime = 0;
             owner._rigidbody.velocity = Vector3.zero;
             owner._rotateSpeed = 10.0f;
         }

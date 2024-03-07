@@ -27,7 +27,6 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSpiritBlade3 = true;
-            owner._nextMotionFlame = 130;
             owner.StateTransitionInitialization();
             owner._attackPower = 40;
             owner._isCauseDamage = true;
@@ -35,7 +34,6 @@ public partial class PlayerState
             owner._hitStopTime = 0.05f;
             owner._attackCol._isOneProcess = true;
             owner._isAttackProcess = false;
-            owner._nextMotionTime = 1.6f;
 
             _spawnColTiming[0] = 0.15f;
             _spawnColTiming[1] = 0.3f;

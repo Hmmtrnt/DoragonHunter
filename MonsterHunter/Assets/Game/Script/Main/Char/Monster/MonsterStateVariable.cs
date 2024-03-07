@@ -5,6 +5,21 @@ using UnityEngine.UI;
 
 public partial class MonsterState
 {
+    /*攻撃以外のモーション*/
+    public static readonly MonsterStateRoar             _roar = new();          // 咆哮.
+    public static readonly MonsterStateIdle             _idle = new();          // 待機.
+    public static readonly MonsterStateDown             _down = new();          // やられる.
+    public static readonly MonsterStateFalter           _falter = new();        // 怯み.
+
+    /*攻撃モーション*/
+    public static readonly MonsterStateRotateAttack     _rotate = new();        // 回転攻撃.
+    public static readonly MonsterStateBless            _bless = new();         // ブレス攻撃.
+    public static readonly MonsterStateBite             _bite = new();          // 噛みつき攻撃.
+    public static readonly MonsterStateRushForward      _rush = new();          // 突進攻撃.
+    public static readonly MonsterStateWingBlowRight    _wingBlowRight = new(); // 右翼攻撃.
+    public static readonly MonsterStateWingBlowLeft     _wingBlowLeft = new();  // 左翼攻撃.
+    public static readonly MonsterStateTailAttack       _tail = new();          // 尻尾攻撃.
+
     // モンスターから見てハンターの位置はどこか.
     enum viewDirection
     {
@@ -80,11 +95,6 @@ public partial class MonsterState
     // 子オブジェクトの当たり判定.
     private MeshCollider[] _colliderChildren;
 
-    // 追従スピード
-    private float _followingSpeed = 1;
-
-    // 当たったオブジェクトのタグ取得
-    private string _collisionTag = null;
     // ハンターがモンスターのどの向きにいるかを取得
     private bool[] _viewDirection = new bool[5];
 
@@ -107,7 +117,6 @@ public partial class MonsterState
     private bool _idleMotion = false;// 待機.
     private bool _weakenMotion = false;// 弱った時の待機.
     private bool _falterMotion = false;// 怯む.
-    private bool _runMotion = false;// 走る.
     private bool _deathMotion = false;// 死.
     private bool _rotateMotion = false;// 回転攻撃.
     private bool _blessMotion = false;// ブレス攻撃.

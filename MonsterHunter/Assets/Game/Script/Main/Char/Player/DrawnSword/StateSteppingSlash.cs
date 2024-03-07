@@ -7,7 +7,7 @@ public partial class PlayerState
     public class StateSteppingSlash : StateBase
     {
         // 攻撃判定発生タイミング.
-        private const float _spawnColTiming = 0.9f;
+        private const float _spawnColTiming = 0.95f;
         // 攻撃判定消去タイミング.
         private const float _eraseColTiming = 1.1f;
         // 前進させるタイミング.

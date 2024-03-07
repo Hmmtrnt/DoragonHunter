@@ -15,7 +15,7 @@ public partial class PlayerState
         // 前進させるタイミング.
         private const float _forwardStopTiming = 1;
         // 移動力.
-        private const float _speedPower = 4;
+        private const float _speedPower = 6;
         // SEを鳴らすタイミング.
         private float[] _sePlayTiming = new float[3];
         // SEを鳴らすフラグ.

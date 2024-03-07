@@ -689,6 +689,11 @@ public partial class PlayerState
     /// <returns></returns>
     public float GetCurrentRedRenkiGauge() { return _currentRedRenkiGauge; }
     /// <summary>
+    /// —û‹CƒQ[ƒWÔ‚ª“K—p‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©æ“¾.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetApplyRedRenkiGauge() { return _applyRedRenkiGauge; }
+    /// <summary>
     /// ‹Cn‘å‰ñ“]a‚è‚ğs‚Á‚Ä‚¢‚é“r’†.
     /// </summary>
     /// <returns></returns>

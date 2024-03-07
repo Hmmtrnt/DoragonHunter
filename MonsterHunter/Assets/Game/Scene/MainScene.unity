@@ -37570,6 +37570,11 @@ PrefabInstance:
       propertyPath: _stateTransitionTime.Array.data[9]
       value: 2.7
       objectReference: {fileID: 0}
+    - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
+        type: 3}
+      propertyPath: _stateTransitionTime.Array.data[10]
+      value: 4.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7624384508927273303, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
         type: 3}
       propertyPath: m_Mesh

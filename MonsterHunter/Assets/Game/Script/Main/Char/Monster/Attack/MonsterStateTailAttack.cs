@@ -1,11 +1,18 @@
 /*尻尾攻撃*/
 
-using UnityEngine;
-
 public partial class MonsterState
 {
     public class MonsterStateTailAttack : StateBase
     {
+        // 攻撃判定発生タイミング.
+        private const int _spawnColTiming = 30;
+        // 攻撃判定消去タイミング.
+        private const int _eraseColTiming = 170;
+        // SEを鳴らすタイミング.
+        private float[] _sePlayTiming = new float[2];
+        // SEを鳴らすフラグ.
+        private float _playOneShotResetTiming = 1.5f;
+
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             owner.StateTransitionInitialization();
@@ -18,26 +25,30 @@ public partial class MonsterState
             {
                 owner._AttackPower = 8;
             }
+
+            _sePlayTiming[0] = 1;
+            _sePlayTiming[1] = 2;
         }
 
         public override void OnUpdate(MonsterState owner)
         {
-
+            owner.SEPlay(_sePlayTiming[0], (int)SEManager.MonsterSE.FOOTSTEP);
+            owner.PlayOneShotReset(_playOneShotResetTiming);
+            owner.SEPlay(_sePlayTiming[1], (int)SEManager.MonsterSE.FOOTSTEP);
         }
 
         public override void OnFixedUpdate(MonsterState owner)
         {
-            
-            if(owner._stateFlame == 30) 
+            // 攻撃判定生成.
+            if(owner._stateFlame == _spawnColTiming) 
             {
-                //owner._tailObject.tag = "MonsterAtCol";
-
                 for(int colNum = 0; colNum < owner._tailCollisiton.Length; colNum++)
                 {
                     owner._tailCollisiton[colNum].SetActive(true);
                 }
             }
-            else if(owner._stateFlame == 170)
+            // 攻撃判定消去.
+            else if (owner._stateFlame == _eraseColTiming)
             {
                 for (int colNum = 0; colNum < owner._tailCollisiton.Length; colNum++)
                 {
@@ -45,10 +56,6 @@ public partial class MonsterState
                 }
             }
             ParticleGenerateTime(owner);
-
-            owner.SEPlay(1.0f, (int)SEManager.MonsterSE.FOOTSTEP);
-            owner.PlayOneShotReset(1.5f);
-            owner.SEPlay(2.0f, (int)SEManager.MonsterSE.FOOTSTEP);
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
@@ -58,7 +65,7 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if (owner._stateFlame >= 240)
+            if (owner._stateTime >= owner._stateTransitionTime[(int)StateTransitionKinds.TAIL])
             {
                 owner.ChangeState(_idle);
             }

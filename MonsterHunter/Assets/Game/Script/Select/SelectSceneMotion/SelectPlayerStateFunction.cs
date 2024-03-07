@@ -17,12 +17,6 @@ public partial class SelectPlayerState
         _transform = transform;
     }
 
-    // ó‘Ô‘JˆÚ‚Ì‰Šú‰».
-    private void StateTransitionInitialization()
-    {
-        _stateFlame = 0;
-    }
-
     /// <summary>
     /// ó‘Ô‘JˆÚ
     /// </summary>
@@ -44,12 +38,6 @@ public partial class SelectPlayerState
         _animator.SetBool("Idle", _idleMotion);
         _animator.SetBool("Run", _runMotion);
         _animator.SetBool("Dash", _dashMotion);
-    }
-
-    // Œ»İ‚Ìó‘Ô‚ÌƒtƒŒ[ƒ€”ŠÇ—.
-    private void StateFlameManager()
-    {
-        _stateFlame++;
     }
 
     // í‚Éî•ñ‚ğ‘ã“ü.

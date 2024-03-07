@@ -8,7 +8,6 @@ public partial class SelectPlayerState
     {
         public override void OnEnter(SelectPlayerState owner, StateBase prevState)
         {
-            owner.StateTransitionInitialization();
             owner._runMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
@@ -16,10 +15,6 @@ public partial class SelectPlayerState
         public override void OnUpdate(SelectPlayerState owner)
         {
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
-        }
-
-        public override void OnFixedUpdate(SelectPlayerState owner)
-        {
             Move(owner);
             owner.RotateDirection();
         }

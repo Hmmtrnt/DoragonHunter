@@ -19,11 +19,6 @@ public class AudioManager : MonoBehaviour
     private float _BGMVolume = 0;
     private float _SEVolume = 0;
 
-    void Start()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         VolumeAssignment();

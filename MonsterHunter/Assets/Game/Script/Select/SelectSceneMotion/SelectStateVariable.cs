@@ -4,6 +4,12 @@ using UnityEngine;
 
 public partial class SelectPlayerState
 {
+    private static readonly SelectStateIdle _idle = new();      // アイドル.
+    private static readonly SelectStateRunning _running = new();// 走る.
+    private static readonly SelectStateDash _dash = new();      // ダッシュ.
+
+    private StateBase _currentState = _idle;// 現在の状態.
+
     // 受付UI.
     private ReceptionFlag _receptionFlag;
     // タイトル画面へ戻るUI.
@@ -25,13 +31,6 @@ public partial class SelectPlayerState
     private bool _runMotion = false;// 走る.
     private bool _dashMotion = false;// ダッシュ.
 
-    // 次のモーションに遷移するフレーム.
-    private float _nextMotionFlame = 0;
-
-    // 現在の状態のフレーム数.
-    public int _stateFlame = 0;
-
-    // 物理エンジン.
     private Rigidbody _rigidbody;
 
     // transformをキャッシュ.
@@ -53,11 +52,11 @@ public partial class SelectPlayerState
     // 移動時の回転速度.
     private float _rotateSpeed = 30.0f;
     // 移動速度倍率.
-    private float _moveVelocityMagnification = 12;
+    private float _moveVelocityMagnification = 10;
     // 走るときの移動倍率.
-    private float _moveVelocityRunMagnification = 12;
+    private float _moveVelocityRunMagnification = 10;
     // ダッシュ時の移動倍率.
-    private float _moveVelocityDashMagnigication = 20;
+    private float _moveVelocityDashMagnigication = 15;
 
 
     // クエスト選択画面を開いているかどうか.

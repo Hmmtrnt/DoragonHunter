@@ -1,8 +1,5 @@
 ﻿/*プレイヤーの攻撃判定*/
 
-using System.Buffers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackCol : MonoBehaviour
@@ -24,10 +21,15 @@ public class AttackCol : MonoBehaviour
     private SEManager _seManager;
     // 攻撃を当てた時の流血エフェクトプレハブ取得.
     GameObject _bloodEffectObject;
-    // 弱い攻撃ヒットエフェクトのプレハブ取得.
+    // 流血エフェクトの大きさ.
+    Vector3 _bloodEffectScale = new Vector3(10.0f,10.0f,10.0f);
+
+    // 普通の攻撃ヒットエフェクトのプレハブ取得.
     GameObject _smallHitEffectObject;
-    // 強い攻撃ヒットエフェクトのプレハブ取得.
+    // 大回転斬りの攻撃ヒットエフェクトのプレハブ取得.
     GameObject _hardHitEffectObject;
+    // 必殺技の攻撃ヒットエフェクトのプレハブ取得.
+    GameObject _greatHitEffectObject;
     // ダメージ表記.
     public GameObject _DamageUiObject;
     // ダメージ表記のプレハブ.
@@ -42,8 +44,6 @@ public class AttackCol : MonoBehaviour
 
     public GameObject _canvas;
 
-    Camera _camera;
-
     // 処理を複数同時に行わないようにするための変数.
     public bool _isOneProcess = true;
 
@@ -54,11 +54,11 @@ public class AttackCol : MonoBehaviour
         _end = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         // 攻撃ヒットエフェクトのプレハブ取得.
-        _bloodEffectObject = (GameObject)Resources.Load("Blood2");
+        _bloodEffectObject = (GameObject)Resources.Load("Blood");
         _smallHitEffectObject = (GameObject)Resources.Load("SmallHitEffect");
         _hardHitEffectObject = (GameObject)Resources.Load("HardHitEffect");
+        _greatHitEffectObject = (GameObject)Resources.Load("GreatHitEffect");
         _EffectPosition = GameObject.Find("EffectSpawnPosition");
-        _camera = GameObject.Find("CameraBase").GetComponent<Camera>();
         _isOneProcess = true;
     }
 
@@ -94,11 +94,6 @@ public class AttackCol : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
-
     // ダメージを与えた瞬間、肉質を変化やヒットストップ追加.
     // TODO:変数名が決まってない.
     /// <summary>
@@ -125,9 +120,14 @@ public class AttackCol : MonoBehaviour
             SEPlay((int)SEManager.HunterSE.BOUNCE);
         }
 
+        // 当てた攻撃に応じてエフェクトを変更.
         if(_state.GetRoundSlash())
         {
             _hitEffectPocket = _hardHitEffectObject;
+        }
+        else if (_state.GetGreatAttackSuccess())
+        {
+            _hitEffectPocket = _greatHitEffectObject;
         }
         else
         {
@@ -151,17 +151,6 @@ public class AttackCol : MonoBehaviour
     /// <param name="SENumber">SEの番号</param>
     private void SEPlay(int SENumber)
     {
-        // 気大回転刃斬りの時音を変更.
-        //if (_state.GetRoundSlash())
-        //{
-        //    _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.HunterSE.ROUNDSLASH);
-        //}
-        //else
-        //{
-        //    _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.HunterSE.SLASH);
-
-        //}
-
         _seManager.HunterPlaySE((int)SEManager.AudioNumber.AUDIO2D, SENumber);
     }
 
@@ -187,18 +176,9 @@ public class AttackCol : MonoBehaviour
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(_EffectPosition.transform.position);
 
-        //Instantiate(_DamageUiObject, screenPos, Quaternion.identity);
-
         _DamageUiPrefab = Instantiate(_DamageUiObject);
 
-        //_canvas.transform.position = Vector3.zero;
-        
-
         _DamageUiPrefab.transform.SetParent(_canvas.transform, false);
-
-        //_damageUiRectTransform.anchoredPosition = Vector3.zero;
-
-        //Debug.Log(_damageUiRectTransform.anchoredPosition);
     }
 
     /// <summary>

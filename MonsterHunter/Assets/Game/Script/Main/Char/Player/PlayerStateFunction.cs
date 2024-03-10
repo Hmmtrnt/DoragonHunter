@@ -699,6 +699,11 @@ public partial class PlayerState
     /// <returns></returns>
     public bool GetRoundSlash() { return _drawnSpiritRoundSlash; }
     /// <summary>
+    /// 必殺技を成功させたかどうか.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetGreatAttackSuccess() {  return _greatAttackSuccess; }
+    /// <summary>
     /// スティックの傾きによって距離を求める. 
     /// </summary>
     /// <returns>スティックの傾きとプレイヤーの距離</returns>

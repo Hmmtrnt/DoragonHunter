@@ -20,7 +20,7 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
-            MoveAvoid(owner);
+            owner.MoveAvoid();
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -45,20 +45,6 @@ public partial class PlayerState
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
             
         }
-
-        // 回避処理
-        private void MoveAvoid(PlayerState owner)
-        {
-            // 最初の一回だけ加速.
-            if (!owner._isProcess) return;
-            
-            owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
-
-            owner._isProcess = false;
-            
-        }
-
-        
     }
 }
 

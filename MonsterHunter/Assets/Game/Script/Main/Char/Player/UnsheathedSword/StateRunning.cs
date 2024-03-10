@@ -16,7 +16,7 @@ public partial class PlayerState
         public override void OnUpdate(PlayerState owner)
         {
 
-            owner.FixedRotate();
+            //owner.FixedRotate();
 
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
             owner.RotateDirection();

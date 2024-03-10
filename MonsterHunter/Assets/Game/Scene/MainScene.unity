@@ -36361,6 +36361,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2636240316248195154, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _rotateSpeed
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
       propertyPath: _stickPosition

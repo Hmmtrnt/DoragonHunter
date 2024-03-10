@@ -8,14 +8,8 @@ public partial class PlayerState
     {
         // ノックバックされる方向ベクトル.
         Vector3 _knockBackVector = Vector3.zero;
-        // 初速をかけるタイミング.
-        private const float _initialVelocityTiming = 0.8f;
-        // 地面についてから速度をかけるタイミング.
-        private const float _landingVelocityTiming = 1.7f;
-        // 初速の速度倍率.
-        private const float _initialVelocitySpeed = 0.07f;
-        // 地面についてからの速度倍率.
-        private const float _landingVelocitySpeed = 0.18f;
+        // 吹っ飛ばされた時の速度倍率.
+        private const float _blowAwayVelocitySpeed = 10;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -39,6 +33,7 @@ public partial class PlayerState
         {
             owner._damageMotion = false;
             owner._isProcess = false;
+            owner._rigidbody.velocity = Vector3.zero;
         }
 
         public override void OnChangeState(PlayerState owner)
@@ -46,7 +41,7 @@ public partial class PlayerState
             
             if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.DAMAGE]) return;
 
-            // 納刀かそうじゃないかで遷移先を変更
+            // 納刀かそうじゃないかで状態遷移先を変更.
             if (owner._unsheathedSword)
             {
                 owner.StateTransition(_idleDrawnSword);
@@ -57,7 +52,10 @@ public partial class PlayerState
             }
         }
 
-        // ノックバック先のベクトル取得.
+        /// <summary>
+        /// ノックバック先のベクトル取得.
+        /// </summary>
+        /// <param name="owner">アクセスするための参照</param>
         private void KnockBackVector(PlayerState owner)
         {
             _knockBackVector = owner._transform.position - owner._Monster.transform.position;
@@ -65,20 +63,15 @@ public partial class PlayerState
             _knockBackVector.Normalize();
         }
 
-        // ノックバック
+        /// <summary>
+        /// ノックバック.
+        /// </summary>
+        /// <param name="owner">アクセスするための参照</param>
         private void KnockBack(PlayerState owner)
         {
-            
-            if(owner._stateTime <= _initialVelocityTiming)
-            {
-                owner._transform.position += _knockBackVector * _initialVelocitySpeed;
-            }
-            else if(owner._stateTime <= _landingVelocityTiming)
-            {
-                owner._transform.position += _knockBackVector * _landingVelocitySpeed;
-            }
+            owner._rigidbody.velocity = new Vector3(_knockBackVector.x * _blowAwayVelocitySpeed, 0.0f, _knockBackVector.z * _blowAwayVelocitySpeed);
 
-            Quaternion rotation = Quaternion.LookRotation(-_knockBackVector, Vector3.up);
+            Quaternion rotation = Quaternion.LookRotation(-new Vector3(_knockBackVector.x, 0.0f, _knockBackVector.z), Vector3.up);
             owner._transform.rotation = rotation;
         }
     }

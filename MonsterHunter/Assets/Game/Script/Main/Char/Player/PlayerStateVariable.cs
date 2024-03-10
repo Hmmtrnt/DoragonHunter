@@ -268,7 +268,8 @@ public partial class PlayerState
     // 移動速度.
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
     // 移動時の回転速度
-    private float _rotateSpeed = 20.0f;
+    [Header("移動時の回転速度")]
+    [SerializeField] private float _rotateSpeed = 20.0f;
 
     // ダッシュしているときのスタミナ消費量.
     [Header("ダッシュしているときのスタミナ消費量")]

@@ -380,7 +380,7 @@ public partial class PlayerState
         RaycastHit hit;
         bool ray = Physics.Raycast(_transform.position, direction.normalized, out hit);
 
-        //bool viewFlag = ray && hit.collider.gameObject == _stickPosition && GetDistance() > 1;
+        bool viewFlag = ray && hit.collider.gameObject == _stickPosition && GetDistance() > 1;
 
         // ê≥ñ .
         if (forwardAngle < 45)

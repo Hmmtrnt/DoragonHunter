@@ -13,9 +13,12 @@ public partial class PlayerState
             owner._isProcess = true;
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
-            owner._rotateSpeed = 40.0f;
 
-            owner.RotateDirection();
+            //owner.RotateDirection();
+
+            owner._transform.LookAt(new Vector3(owner._stickPositionObject.transform.position.x,
+                0, 
+                owner._stickPositionObject.transform.position.z));
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -27,7 +30,6 @@ public partial class PlayerState
         {
             owner._avoidMotion = false;
             owner._rigidbody.velocity = Vector3.zero;
-            owner._rotateSpeed = 10.0f;
         }
 
         public override void OnChangeState(PlayerState owner)

@@ -313,6 +313,8 @@ public partial class PlayerState
     /// </summary>
     private void SubstituteVariableFixedUpdate()
     {
+        //_stickPosition.FixPosition(_stickPositionObject.transform.position, _transform.position);
+
 
         // カメラの正面.
         _cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
@@ -325,7 +327,7 @@ public partial class PlayerState
         // 速度の代入.
         _moveVelocity = moveForward + moveSide;
         //スティックがどの方向に傾いているかを取得.
-        _stickPosition.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
+        _stickPositionObject.transform.position = new Vector3(transform.position.x + _moveVelocity.x * 5, transform.position.y, transform.position.z + _moveVelocity.z * 5);
         // 武器の当たり判定の表示非表示.
         _weaponObject.SetActive(_weaponActive);
         // 攻撃力の代入.
@@ -370,7 +372,7 @@ public partial class PlayerState
     /// </summary>
     private void viewAngle()
     {
-        Vector3 direction = _stickPosition.transform.position - _transform.position;
+        Vector3 direction = _stickPositionObject.transform.position - _transform.position;
         // ハンターとデバッグ用キューブのベクトルのなす角.
         // デバッグ用キューブの正面.
         float forwardAngle = Vector3.Angle(direction, _transform.forward);
@@ -380,7 +382,7 @@ public partial class PlayerState
         RaycastHit hit;
         bool ray = Physics.Raycast(_transform.position, direction.normalized, out hit);
 
-        bool viewFlag = ray && hit.collider.gameObject == _stickPosition && GetDistance() > 1;
+        bool viewFlag = ray && hit.collider.gameObject == _stickPositionObject && GetDistance() > 1;
 
         // 正面.
         if (forwardAngle < 45)
@@ -709,7 +711,7 @@ public partial class PlayerState
     /// <returns>スティックの傾きとプレイヤーの距離</returns>
     private float GetDistance()
     {
-        _currentDistance = (_stickPosition.transform.position - _transform.position).magnitude;
+        _currentDistance = (_stickPositionObject.transform.position - _transform.position).magnitude;
         return _currentDistance;
     }
     /// <summary>

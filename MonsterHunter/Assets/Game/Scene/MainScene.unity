@@ -8735,7 +8735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534877904}
   m_Layer: 0
-  m_Name: pinttest
+  m_Name: StickPosition
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8749,12 +8749,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534877903}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 500, y: 0.2, z: 450}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1074426266}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &539050231
 Mesh:
@@ -19367,12 +19367,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 426988, guid: 0aba4a10df8ca7446ac50f5eb14de00c,
     type: 3}
   m_PrefabInstance: {fileID: 1064856108}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1074426266 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6639154028566018491, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 6555427336135147900}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1076382376
 Mesh:
@@ -36369,7 +36363,7 @@ PrefabInstance:
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
       propertyPath: _rotateSpeed
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
@@ -36396,6 +36390,11 @@ PrefabInstance:
       propertyPath: _isDashStaminaCost
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
+        type: 3}
+      propertyPath: _stickPositionObject
+      value: 
+      objectReference: {fileID: 534877903}
     - target: {fileID: 5058558824778833911, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
         type: 3}
       propertyPath: _avoidVelocityMagnification
@@ -36641,11 +36640,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3083237680488381850, guid: a4e47c4294b0f0242aebc3e3438fe4a3, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6639154028566018491, guid: a4e47c4294b0f0242aebc3e3438fe4a3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 534877904}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4e47c4294b0f0242aebc3e3438fe4a3, type: 3}
 --- !u!1001 &8068756842470320486
@@ -37778,6 +37773,7 @@ SceneRoots:
   - {fileID: 743937830}
   - {fileID: 2087204440}
   - {fileID: 1555868638}
+  - {fileID: 534877904}
   - {fileID: 6555427336135147900}
   - {fileID: 8068756842470320486}
   - {fileID: 4512428505446009932}

@@ -112,7 +112,8 @@ public partial class PlayerState
     private MainSceneManager _mainSceneManager;
 
     // スティックの傾き具合に合わせる.
-    public GameObject _stickPosition;
+    [Header("スティックの傾き具合に合わせる")]
+    public GameObject _stickPositionObject;
 
     // 攻撃判定の情報.
     private AttackCol _attackCol;

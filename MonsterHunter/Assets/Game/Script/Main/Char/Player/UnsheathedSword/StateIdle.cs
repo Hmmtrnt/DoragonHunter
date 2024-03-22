@@ -30,7 +30,6 @@ public partial class PlayerState
 
             // ダッシュ状態.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DASH], _dash);
-
             // 回復.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RECOVERY], _recovery);
             // 抜刀する.

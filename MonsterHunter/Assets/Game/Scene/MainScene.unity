@@ -37522,6 +37522,11 @@ PrefabInstance:
       objectReference: {fileID: 1271439802}
     - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
         type: 3}
+      propertyPath: _isAction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
+        type: 3}
       propertyPath: _stateIgnore
       value: 1
       objectReference: {fileID: 0}

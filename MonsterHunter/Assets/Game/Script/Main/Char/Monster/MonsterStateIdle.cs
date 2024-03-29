@@ -27,6 +27,12 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
+#if UNITY_EDITOR
+            // 行動を起こさないようにする処理(デバッグ用).
+            if (owner._isAction) return;
+#endif
+
+            // 次の行動を起こすインターバル.
             if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE]) return;
 
             // 近距離.

@@ -39,18 +39,26 @@ public class TargetCamera : MonoBehaviour
         // ’Ç]‘ÎÛ‚Ìî•ñ‚ª‚È‚¢ê‡‚Ì‰½‚à‚µ‚È‚¢.
         if(_targetList == null || _targetList.Length <= 0) return;
 
+        //Debug.Log(_currentTarget);
+
         // ƒJƒƒ‰‚Ì’Ç]‘ÎÛ‚Ì•ÏX.
         if (_input._RightStickButtonDown)
         {
             // ’Ç]‘ÎÛ‚ÌØ‚è‘Ö‚¦.
-            if(_currentTarget++ >= _targetList.Length)
+            if(++_currentTarget >= _targetList.Length)
             {
+                //Debug.Log("’Ê‚é");
                 _currentTarget = 0;
             }
 
             // ’Ç]‘ÎÛ‚ÌXV.
             _virtualCamera.Follow = _targetList[_currentTarget]._follow;
             _virtualCamera.LookAt = _targetList[_currentTarget]._lookAt;
+
+            //_virtualCamera.
+            
         }
+
+        
     }
 }

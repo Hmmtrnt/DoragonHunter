@@ -27,7 +27,7 @@ public class MainSceneManager : MonoBehaviour
     private HuntingEnd _huntingEnd;
 
     private CinemachineVirtualCamera _cinemachineVirtualCamera;
-    private CinemachinePOV _cinemachinePOV;
+    //private CinemachinePOV _cinemachinePOV;
 
     // àÍéûí‚é~ÇµÇƒÇ¢ÇÈÇ©Ç«Ç§Ç©.
     private bool _pauseStop = false;
@@ -63,10 +63,10 @@ public class MainSceneManager : MonoBehaviour
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
         _cinemachineVirtualCamera = GameObject.Find("CameraBase").GetComponent<CinemachineVirtualCamera>();
-        _cinemachinePOV = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
+       // _cinemachinePOV = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
         // ÉJÉÅÉâÇÃå≥ÇÃâÒì]Ç∑ÇÈílÇï€éù.
-        _originalHorizontalAxisMaxSpeed = _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed;
-        _originalVerticalAxisMaxSpeed = _cinemachinePOV.m_VerticalAxis.m_MaxSpeed;
+        //_originalHorizontalAxisMaxSpeed = _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed;
+        //_originalVerticalAxisMaxSpeed = _cinemachinePOV.m_VerticalAxis.m_MaxSpeed;
 
         _pauseCount = 15;
     }
@@ -78,8 +78,8 @@ public class MainSceneManager : MonoBehaviour
         {
             _openMenu = false;
             _openPause = true;
-            _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
-            _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
+            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
+            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
 
             if(_pauseCount == 0)
             {
@@ -92,8 +92,8 @@ public class MainSceneManager : MonoBehaviour
         {
             _pauseTimeStop.StartTime();
             _openPause = false;
-            _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
-            _cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
+            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
+            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
             _pauseCount = 15;
         }
 

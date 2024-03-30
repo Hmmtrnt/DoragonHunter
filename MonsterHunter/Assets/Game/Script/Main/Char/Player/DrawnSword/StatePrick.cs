@@ -61,12 +61,6 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // アイドル.
-            //if (owner._stateTime >= 1.2f)
-            //{
-            //    owner.StateTransition(_idleDrawnSword);
-            //}
-
             // モーションキャンセル適応外の遷移先.
             if (owner._stateTime >= _TransitionTime)
             {
@@ -81,60 +75,18 @@ public partial class PlayerState
 
             // 回避.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.DRAWAVOID], _avoidDrawnSword);
-            //else if (owner._stateTime >= owner._nextMotionTime &&
-            //    owner._viewDirection[(int)viewDirection.FORWARD] && 
-            //    owner.GetDistance() > 1 &&
-            //    owner._input._AButtonDown)
-            //{
-            //    owner.StateTransition(_avoidDrawnSword);
-            //}
             // 右回避.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.RIGHTAVOID], _rightAvoid);
-            //else if (owner._stateTime >= owner._nextMotionTime &&
-            //    owner._viewDirection[(int)viewDirection.RIGHT] && 
-            //    owner.GetDistance() > 1 &&
-            //    owner._input._AButtonDown)
-            //{
-            //    owner.StateTransition(_rightAvoid);
-            //}
             // 左回避.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.LEFTAVOID], _leftAvoid);
-            //else if (owner._stateTime >= owner._nextMotionTime &&
-            //    owner._viewDirection[(int)viewDirection.LEFT] && 
-            //    owner.GetDistance() > 1 
-            //    && owner._input._AButtonDown)
-            //{
-            //    owner.StateTransition(_leftAvoid);
-            //}
             // 後ろ回避.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.BACKAVOID], _backAvoid);
-            //else if (owner._stateTime >= owner._nextMotionTime &&
-            //    owner._viewDirection[(int)viewDirection.BACKWARD] &&
-            //    owner.GetDistance() > 1 &&
-            //    owner._input._AButtonDown)
-            //{
-            //    owner.StateTransition(_backAvoid);
-            //}
             // 斬り上げ.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SLASHUP], _slashUp);
-            //else if (owner._stateTime >= owner._nextMotionTime &&
-            //    (owner._input._YButtonDown || owner._input._BButtonDown))
-            //{
-            //    owner.StateTransition(_slashUp);
-            //}
             // 必殺技の構え
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE], _stance);
-            //else if (owner._input._LBButton && owner._input._BButtonDown && owner._applyRedRenkiGauge)
-            //{
-            //    owner.StateTransition(_stance);
-            //}
             // 気刃斬り1.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
-            //else if (owner._stateTime >= owner._nextMotionTime &&
-            //    owner._input._RightTrigger >= 0.5)
-            //{
-            //    owner.StateTransition(_spiritBlade1);
-            //}
         }
     }
 }

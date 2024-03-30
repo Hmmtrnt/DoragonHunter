@@ -82,8 +82,8 @@ public partial class PlayerState
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.BACKAVOID], _backAvoid);
             // 必殺技の構え状態
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.GREATATTACKSTANCE], _stance);
-            // 突き状態.
-            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.PRICK], _prick);
+            // 突き状態(遷移条件を追加).
+            owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.PRICK] || owner._input._YButtonDown, _prick);
             // 気刃斬り1状態.
             owner.TransitionState(owner._stateTransitionFlag[(int)StateTransitionKinds.SPIRITBLADE1], _spiritBlade1);
         }

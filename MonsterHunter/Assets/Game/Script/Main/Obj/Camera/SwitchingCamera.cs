@@ -14,10 +14,14 @@ public class SwitchingCamera : MonoBehaviour
     private ControllerManager _input;
     // ƒJƒƒ‰‚ÌØ‚è‘Ö‚¦î•ñ.
     public bool _switchCamera = false;
+    // SE.
+    private SEManager _seManager;
+
 
     void Start()
     {
         _input = GetComponent<ControllerManager>();
+        _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
     }
 
     void Update()
@@ -39,6 +43,7 @@ public class SwitchingCamera : MonoBehaviour
             {
                 _switchCamera = true;
             }
+            _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.SELECT);
         }
     }
 

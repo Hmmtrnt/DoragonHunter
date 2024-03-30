@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6476.046, g: 6274.7275, b: 6028.0747, a: 1}
+  m_IndirectSpecularColor: {r: 6475.999, g: 6274.743, b: 6028.153, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -36723,6 +36723,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 4095636395228332453, guid: 0abed6887e99aae4ca7ce87493493c55,
+        type: 3}
+      propertyPath: m_DefaultBlend.m_Time
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4347513758223068157, guid: 0abed6887e99aae4ca7ce87493493c55,
         type: 3}
       propertyPath: probeLayerMask.m_Bits
@@ -36766,6 +36771,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6380799120356023853, guid: 0abed6887e99aae4ca7ce87493493c55, type: 3}
     - {fileID: 8490391475560310713, guid: 0abed6887e99aae4ca7ce87493493c55, type: 3}
+    - {fileID: 7635978238963343960, guid: 0abed6887e99aae4ca7ce87493493c55, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -37950,7 +37956,7 @@ PrefabInstance:
     - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
         type: 3}
       propertyPath: _isAction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7600243860659291883, guid: 97fe86dbe1d4ee641bd2ca2a2eb747e2,
         type: 3}

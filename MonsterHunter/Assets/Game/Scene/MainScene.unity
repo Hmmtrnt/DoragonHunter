@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6475.999, g: 6274.743, b: 6028.153, a: 1}
+  m_IndirectSpecularColor: {r: 6476.046, g: 6274.7275, b: 6028.0747, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7743,8 +7743,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499835167}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.030196197, y: 0, z: 0, w: 0.999544}
-  m_LocalPosition: {x: 500, y: 3.6, z: 442.8987}
+  m_LocalRotation: {x: 0.030075593, y: 0, z: 0, w: 0.99954766}
+  m_LocalPosition: {x: 500, y: 3.6, z: 442.89792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14974,6 +14974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateCamera: {fileID: 689714102}
   _targetCamera: {fileID: 499835168}
+  _switchCamera: 0
 --- !u!43 &833537455
 Mesh:
   m_ObjectHideFlags: 0
@@ -27803,6 +27804,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6164697104426203526, guid: 770c66d9b238eb247bc35773e4e90b34,
+        type: 3}
+      propertyPath: _targetIcon
+      value: 
+      objectReference: {fileID: 1708756299}
+    - target: {fileID: 6164697104426203526, guid: 770c66d9b238eb247bc35773e4e90b34,
+        type: 3}
+      propertyPath: _switchCamera
+      value: 
+      objectReference: {fileID: 828352935}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -29748,6 +29759,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1708756299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6514588619681239275, guid: 770c66d9b238eb247bc35773e4e90b34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1625269073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1711027263
 Mesh:
   m_ObjectHideFlags: 0

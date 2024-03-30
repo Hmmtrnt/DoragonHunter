@@ -1,8 +1,9 @@
 /*カメラの座標関係の処理*/
+// 参考サイトURL.
+// https://tat1kun.hatenablog.com/entry/chinemachine_fixedPos#Y%E8%BB%B8%E5%9B%BA%E5%AE%9A%E3%81%AE%E3%81%BF%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89
 
 using Cinemachine;
 using UnityEngine;
-using UnityEditor.Overlays;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

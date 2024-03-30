@@ -1,5 +1,6 @@
 /*ƒJƒƒ‰Ø‚è‘Ö‚¦*/
 
+
 using UnityEngine;
 using Cinemachine;
 
@@ -12,7 +13,7 @@ public class SwitchingCamera : MonoBehaviour
     // “ü—Íî•ñ.
     private ControllerManager _input;
     // ƒJƒƒ‰‚ÌØ‚è‘Ö‚¦î•ñ.
-    private bool _switchCamera = false;
+    public bool _switchCamera = false;
 
     void Start()
     {

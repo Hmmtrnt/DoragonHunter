@@ -1,7 +1,5 @@
 /*MainSceneSEマネージャー*/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SEManager : MonoBehaviour
@@ -34,6 +32,7 @@ public class SEManager : MonoBehaviour
         FOOTSTEPLEFT,       // 足音(左).
         FOOTSTEPRIGHT,      // 足音(右).
         BOUNCE,             // 弾かれた音
+        SUCCESSCOUNTER, // カウンター成功時の音.
 
         SENUM               // SE数.
     }

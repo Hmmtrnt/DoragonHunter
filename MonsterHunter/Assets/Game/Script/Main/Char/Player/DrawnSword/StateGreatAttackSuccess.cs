@@ -11,7 +11,7 @@ public partial class PlayerState
         // 攻撃判定消去タイミング.
         private const float _eraseColTiming = 0.8f;
         // SEを鳴らすタイミング.
-        private const float _sePlayTiming = 0.1f;
+        private const float _sePlayTiming = 0.01f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -35,8 +35,8 @@ public partial class PlayerState
                 owner._weaponActive = false;
             }
 
-            // 空振り効果音再生.
-            owner.SEPlay(_sePlayTiming, (int)SEManager.HunterSE.MISSINGROUNDSLASH);
+            // はじいた音の再生.
+            owner.SEPlay(_sePlayTiming, (int)SEManager.HunterSE.SUCCESSCOUNTER);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

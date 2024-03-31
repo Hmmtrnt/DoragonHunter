@@ -6,6 +6,8 @@ public partial class PlayerState
     {
         // カウンター受付終了タイミング.
         private float _counterValidFinish = 1.5f;
+        // 音の発生タイミング.
+        private float _sePlayTiming = 0.02f;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -23,6 +25,9 @@ public partial class PlayerState
             {
                 owner._counterValid = false;
             }
+
+            // 構える時の音再生.
+            owner.SEPlay(_sePlayTiming, (int)SEManager.HunterSE.SHEATHINGSWORD);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

@@ -11,6 +11,7 @@ public class SelectSceneSelectUi : MonoBehaviour
     {
         EASY,       // イージーモード.
         HATD,       // ハードモード.
+        TUTORIAL,   // チュートリアルモード.
         MAXITEMNUM  // 項目の最大数.
     }
 
@@ -22,8 +23,6 @@ public class SelectSceneSelectUi : MonoBehaviour
     private Menu _menu;
 
     // 現在選ばれている選択番号.
-    // 1.EASY.
-    // 2.HARD.
     private int _selectNum = (int)SelectItem.EASY;
 
 
@@ -58,6 +57,10 @@ public class SelectSceneSelectUi : MonoBehaviour
         else if(_selectNum == (int)SelectItem.HATD)
         {
             _rectTransform.anchoredPosition = new Vector3(-500, 0, 0);
+        }
+        else if(_selectNum == (int)SelectItem.TUTORIAL) 
+        {
+            _rectTransform.anchoredPosition = new Vector3(-500, -250, 0);
         }
     }
 

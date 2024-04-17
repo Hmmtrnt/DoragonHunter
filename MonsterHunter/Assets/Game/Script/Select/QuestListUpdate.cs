@@ -20,6 +20,8 @@ public class QuestListUpdate : MonoBehaviour
     private bool _decidePush = false;
     // クエストの難易度.
     private bool _hard = false;
+    // チュートリアルを選んだかどうか.
+    private bool _tutorialSelect = false;
 
     void Start()
     {
@@ -55,6 +57,10 @@ public class QuestListUpdate : MonoBehaviour
         {
             _hard = true;
         }
+        else if(_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.TUTORIAL)
+        {
+            _tutorialSelect = true;
+        }
     }
 
     // 決定した時の処理.
@@ -73,16 +79,28 @@ public class QuestListUpdate : MonoBehaviour
     {
         if (!_decidePush) return;
 
+        
+        if(!_tutorialSelect)
+        {
+            SceneManager.sceneLoaded += MainSceneTransitionUpdate;
+        }
+
         // シーン遷移
-        SceneManager.sceneLoaded += SceneTransitionUpdate;
         if (_fade._fadeEnd)
         {
-            _sceneTransitionManager.MainScene();
+            if(_tutorialSelect)
+            {
+                _sceneTransitionManager.TutorialScene();
+            }
+            else
+            {
+                _sceneTransitionManager.MainScene();
+            }
         }
     }
 
-    // シーン遷移時に行う処理.
-    private void SceneTransitionUpdate(Scene next, LoadSceneMode mode)
+    // メインシーン遷移時に行う処理.
+    private void MainSceneTransitionUpdate(Scene next, LoadSceneMode mode)
     {
         // シーン遷移先にあるスクリプト追加.
         MainSceneManager mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
@@ -90,7 +108,7 @@ public class QuestListUpdate : MonoBehaviour
         // 難易度を選択した情報を代入.
         mainSceneManager._hitPointMany = _hard;
 
-        SceneManager.sceneLoaded -= SceneTransitionUpdate;
+        SceneManager.sceneLoaded -= MainSceneTransitionUpdate;
     }
 
     

@@ -23,9 +23,9 @@ public class SceneTransitionManager : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    // リザルトシーン遷移.
-    public void ResultScene()
+    // チュートリアルシーン遷移.
+    public void TutorialScene()
     {
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene("TutorialScene");
     }
 }

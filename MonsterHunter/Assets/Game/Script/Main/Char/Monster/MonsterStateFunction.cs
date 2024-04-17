@@ -142,14 +142,18 @@ public partial class MonsterState
         _rotateCollisiton.SetActive(false);
 
         // ‘Ì—Í‚ÌŒˆ’è.
-        if(_mainSceneManager._hitPointMany)
-        {
-            _MaxHitPoint = 10000;
-        }
-        else
-        {
-            _MaxHitPoint = 5000;
-        }
+        //if(_mainSceneManager._hitPointMany)
+        //{
+        //    _MaxHitPoint = 10000;
+        //}
+        //else
+        //{
+        //    _MaxHitPoint = 5000;
+        //}
+
+        _MaxHitPoint = 10;
+
+
 
         _weakenTimingHitPoint = _MaxHitPoint / 4;
         _HitPoint = _MaxHitPoint;

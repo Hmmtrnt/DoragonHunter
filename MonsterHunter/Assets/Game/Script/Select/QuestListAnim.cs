@@ -3,11 +3,12 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using static SEManager;
 
 
 public class QuestListAnim : MonoBehaviour
 {
-    // アニメーションするUIの項目数.
+    // アニメーションするUIの項目.
     enum UIAnimNum
     {
         PARCHMENT_ONE,          // クエスト用紙.
@@ -15,8 +16,10 @@ public class QuestListAnim : MonoBehaviour
         PARCHMENT_THREE,        // クエスト用紙(下から三番目).
         SELECT_QUEST_NORMAL,    // 普通の難易度の項目.
         NORMAL_STRING,          // 普通の難易度の項目の文字.
-        SELECT_QUEST_HARD,      // 難しいの難易度の項目.
-        HARD_STRING,            // 難しいの難易度の項目の文字.
+        SELECT_QUEST_HARD,      // 難しい難易度の項目.
+        HARD_STRING,            // 難しい難易度の項目の文字.
+        SELECT_QUEST_TUTORIAL,  // チュートリアルの項目.
+        TUTORIAL_STRING,        // チュートリアルの項目の文字.
         SELECTED_UI,            // 選択しているUI.
         QUEST_TITLE,
         //EXPLANATION,            // 説明テキスト.
@@ -27,12 +30,14 @@ public class QuestListAnim : MonoBehaviour
     {
         NORMAL,
         HARD,
+        TUTORIAL,
         MAX_NUM
     }
 
     private Sequence _sequence;
 
     // 各UI.
+    [SerializeField, EnumIndex(typeof(UIAnimNum))]
     public GameObject[] _ui;
     // 各UIの座標.
     private RectTransform[] _rectTransforms = new RectTransform[(int)UIAnimNum.MAX_NUM];
@@ -51,6 +56,7 @@ public class QuestListAnim : MonoBehaviour
     // クエストを開いてからの経過時間．
     private int _questOpenCount = 0;
 
+    [SerializeField, EnumIndex(typeof(QuestTitle))]
     public Sprite[] _questSprite;
     // 選択したUI.
     private SelectSceneSelectUi _SelectUi;
@@ -201,11 +207,11 @@ public class QuestListAnim : MonoBehaviour
             _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = new Vector2(605, 67);
             _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = new Vector3(1.1f, 1.1f, 1.1f);
         }
+        else if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.TUTORIAL)
+        {
+            _images[(int)UIAnimNum.QUEST_TITLE].sprite = _questSprite[(int)QuestTitle.TUTORIAL];
+            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = new Vector2(1322, 150);
+            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        }
     }
-
-    // クエストの項目のアニメーション.
-
-
-
-    // クエストの説明のアニメーション.
 }

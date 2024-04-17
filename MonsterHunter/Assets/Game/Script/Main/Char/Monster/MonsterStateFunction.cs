@@ -1,6 +1,7 @@
 /*モンスターの全体の関数*/
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public partial class MonsterState
 {
@@ -63,18 +64,24 @@ public partial class MonsterState
         // 体力が0になった時の処理.
         if (_HitPoint <= 0)
         {
-            ChangeStateDeath();
+            if(!_tutorialState)
+            {
+                ChangeStateDeath();
+            }
+            
         }
         // 体力を0未満にしない.
         HitPointLowerLimit();
 
         // ダメージを受ける.
-        if (_takeDamage)
+        if (_takeDamage && !_tutorialState)
         {
             GetOnDamager();
             GetOnFalter();
             _takeDamage = false;
         }
+
+        Debug.Log(_HitPoint);
     }
 
     /// <summary>
@@ -141,6 +148,7 @@ public partial class MonsterState
         }
         _rotateCollisiton.SetActive(false);
 
+#if false
         // 体力の決定.
         //if(_mainSceneManager._hitPointMany)
         //{
@@ -150,15 +158,18 @@ public partial class MonsterState
         //{
         //    _MaxHitPoint = 5000;
         //}
-
+#else
         _MaxHitPoint = 10;
-
+#endif
 
 
         _weakenTimingHitPoint = _MaxHitPoint / 4;
         _HitPoint = _MaxHitPoint;
 
         _randomNumber = 0;
+
+        // チュートリアル状態かを見る
+        _tutorialState = SceneManager.GetActiveScene().name == "TutorialScene";
     }
 
     /// <summary>

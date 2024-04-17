@@ -1,5 +1,7 @@
 ﻿/*モンスターのアイドル*/
 
+using UnityEngine.SceneManagement;
+
 public partial class MonsterState
 {
     public class MonsterStateIdle : StateBase
@@ -31,6 +33,8 @@ public partial class MonsterState
             // 行動を起こさないようにする処理(デバッグ用).
             if (owner._isAction) return;
 //#endif
+
+            if (owner._tutorialState) return;
 
             // 次の行動を起こすインターバル.
             if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE]) return;

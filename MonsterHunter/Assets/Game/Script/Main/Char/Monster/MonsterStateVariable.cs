@@ -201,8 +201,9 @@ public partial class MonsterState
     // SEを同時に慣らさないようにする為の変数.
     private bool _isPlayOneShot = false;
 
+    // チュートリアル状態かどうか.
+    private bool _tutorialState = false;
 
-    /*デバッグ用変数.*/
     // 行動を起こすかどうか.
     [Header("行動を起こすかどうか")]
     [SerializeField] private bool _isAction = false;

@@ -144,6 +144,8 @@ public class HuntingEnd : MonoBehaviour
 
         if (_playerState.GetHitPoint()==0 || _monsterState.GetHitPoint() == 0 || _Minute >= _minuteFailed)
         {
+            Debug.Log("’Ê‚é");
+
             _questEnd = true;
             _Minute = _questTime.GetMinutes();
             _Second = _questTime.GetSecond();

@@ -69,7 +69,6 @@ public partial class MonsterState
             {
                 ChangeStateDeath();
             }
-            
         }
         // ‘Ì—Í‚ð0–¢–ž‚É‚µ‚È‚¢.
         HitPointLowerLimit();

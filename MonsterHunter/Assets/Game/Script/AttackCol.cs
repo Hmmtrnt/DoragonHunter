@@ -62,11 +62,6 @@ public class AttackCol : MonoBehaviour
         _isOneProcess = true;
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         // 同時に処理させないために一度しか処理を通さない.

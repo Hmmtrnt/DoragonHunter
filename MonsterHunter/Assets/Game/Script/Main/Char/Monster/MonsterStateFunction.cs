@@ -123,10 +123,10 @@ public partial class MonsterState
         _footSmokePrehub[0] = (GameObject)Resources.Load("MonsterLegSmoke");
         _footSmokePrehub[1] = (GameObject)Resources.Load("MonsterTailSmoke");
         _footSmokePrehub[2] = (GameObject)Resources.Load("MonsterWingSmoke");
-
         _colliderChildren = GetComponentsInChildren<MeshCollider>();
-
         _animator = GetComponent<Animator>();
+        // チュートリアル状態かを見る
+        _tutorialState = SceneManager.GetActiveScene().name == "TutorialScene";
 
 
         for (int i = 0; i < (int)viewDirection.NONE; i++)
@@ -134,8 +134,17 @@ public partial class MonsterState
             _viewDirection[i] = false;
         }
         _idleMotion = true;
-        // 初手吠える.
-        _isRoar = true;
+        // 吠えるか吠えないか.
+        if (_tutorialState)
+        {
+            _isRoar = false;
+        }
+        else
+        {
+            _isRoar = true;
+        }
+
+        
 
         // 攻撃当たり判定を無効.
         _biteCollisiton.SetActive(false);
@@ -168,8 +177,7 @@ public partial class MonsterState
 
         _randomNumber = 0;
 
-        // チュートリアル状態かを見る
-        _tutorialState = SceneManager.GetActiveScene().name == "TutorialScene";
+        
     }
 
     /// <summary>

@@ -34,116 +34,17 @@ public partial class MonsterState
             if (owner._isAction) return;
 //#endif
 
-            if (owner._tutorialState) return;
-
             // 次の行動を起こすインターバル.
             if (owner._stateTime <= owner._stateTransitionTime[(int)StateTransitionKinds.IDLE]) return;
 
-            // 近距離.
-            if (owner._isNearDistance)
+            // チュートリアルシーンによってAiを変更.
+            if(owner._tutorialState)
             {
-                // 正面(主にかみつき).
-                if (owner._viewDirection[(int)viewDirection.FORWARD])
-                {
-                    if (owner._randomNumber <= 30)
-                    {
-                        owner.ChangeState(_bite);
-                    }
-                    else if (owner._randomNumber <= 70)
-                    {
-                        owner.ChangeState(_rush);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_rotate);
-                    }
-                }
-                // 後ろ.
-                else if (owner._viewDirection[(int)viewDirection.BACKWARD])
-                {
-                    if (owner._randomNumber <= 30)
-                    {
-                        owner.ChangeState(_rotate);
-                    }
-                    else if (owner._randomNumber <= 60)
-                    {
-                        owner.ChangeState(_tail);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_bite);
-                    }
-                }
-                // 左.
-                else if (owner._viewDirection[(int)viewDirection.LEFT])
-                {
-                    if (owner._randomNumber <= 20)
-                    {
-                        owner.ChangeState(_rotate);
-                    }
-                    else if (owner._randomNumber <= 60)
-                    {
-                        owner.ChangeState(_wingBlowLeft);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_bite);
-                    }
-                }
-                // 右.
-                else if (owner._viewDirection[(int)viewDirection.RIGHT])
-                {
-                    if (owner._randomNumber <= 20)
-                    {
-                        owner.ChangeState(_rotate);
-                    }
-                    else if (owner._randomNumber <= 60)
-                    {
-                        owner.ChangeState(_wingBlowRight);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_bite);
-                    }
-                }
+                owner.TutorialAI();
             }
-            // 遠距離.
             else
             {
-                // 正面.
-                if (owner._viewDirection[(int)viewDirection.FORWARD])
-                {
-                    if (owner._randomNumber <= 60)
-                    {
-                        owner.ChangeState(_rush);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_bless);
-                    }
-                }
-                // 背後.
-                else if (owner._viewDirection[(int)viewDirection.BACKWARD])
-                {
-                    if (owner._randomNumber <= 40)
-                    {
-                        owner.ChangeState(_rush);
-                    }
-                    else
-                    {
-                        owner.ChangeState(_bless);
-                    }
-                }
-                // 左.
-                else if (owner._viewDirection[(int)viewDirection.LEFT])
-                {
-                    owner.ChangeState(_bless);
-                }
-                // 右,
-                else if (owner._viewDirection[(int)viewDirection.RIGHT])
-                {
-                    owner.ChangeState(_bless);
-                }
+                owner.AttackStateAi();
             }
         }
     }

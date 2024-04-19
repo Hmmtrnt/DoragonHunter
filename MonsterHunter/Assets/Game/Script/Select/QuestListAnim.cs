@@ -3,7 +3,6 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using static SEManager;
 
 
 public class QuestListAnim : MonoBehaviour

@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public partial class MonsterState
 {
@@ -81,7 +82,7 @@ public partial class MonsterState
             _takeDamage = false;
         }
 
-        Debug.Log(_HitPoint);
+        //Debug.Log(_HitPoint);
     }
 
     /// <summary>
@@ -456,6 +457,132 @@ public partial class MonsterState
             _isPlayOneShot = false;
         }
     }
+
+    /// <summary>
+    /// 攻撃パターンAIの処理.
+    /// </summary>
+    private void AttackStateAi()
+    {
+        // 近距離.
+        if (_isNearDistance)
+        {
+            // 正面(主にかみつき).
+            if (_viewDirection[(int)viewDirection.FORWARD])
+            {
+                if (_randomNumber <= 30)
+                {
+                    ChangeState(_bite);
+                }
+                else if (_randomNumber <= 70)
+                {
+                    ChangeState(_rush);
+                }
+                else
+                {
+                    ChangeState(_rotate);
+                }
+            }
+            // 後ろ.
+            else if (_viewDirection[(int)viewDirection.BACKWARD])
+            {
+                if (_randomNumber <= 30)
+                {
+                    ChangeState(_rotate);
+                }
+                else if (_randomNumber <= 60)
+                {
+                    ChangeState(_tail);
+                }
+                else
+                {
+                    ChangeState(_bite);
+                }
+            }
+            // 左.
+            else if (   _viewDirection[(int)viewDirection.LEFT])
+            {
+                if (_randomNumber <= 20)
+                {
+                    ChangeState(_rotate);
+                }
+                else if (_randomNumber <= 60)
+                {
+                    ChangeState(_wingBlowLeft);
+                }
+                else
+                {
+                    ChangeState(_bite);
+                }
+            }
+            // 右.
+            else if (_viewDirection[(int)viewDirection.RIGHT])
+            {
+                if (_randomNumber <= 20)
+                {
+                    ChangeState(_rotate);
+                }
+                else if (_randomNumber <= 60)
+                {
+                    ChangeState(_wingBlowRight);
+                }
+                else
+                {
+                    ChangeState(_bite);
+                }
+            }
+        }
+        // 遠距離.
+        else
+        {
+            // 正面.
+            if (_viewDirection[(int)viewDirection.FORWARD])
+            {
+                if (_randomNumber <= 60)
+                {
+                    ChangeState(_rush);
+                }
+                else
+                {
+                    ChangeState(_bless);
+                }
+            }
+            // 背後.
+            else if (_viewDirection[(int)viewDirection.BACKWARD])
+            {
+                if (_randomNumber <= 40)
+                {
+                    ChangeState(_rush);
+                }
+                else
+                {
+                    ChangeState(_bless);
+                }
+            }
+            // 左.
+            else if (_viewDirection[(int)viewDirection.LEFT])
+            {
+                ChangeState(_bless);
+            }
+            // 右,
+            else if (_viewDirection[(int)viewDirection.RIGHT])
+            {
+                ChangeState(_bless);
+            }
+        }
+    }
+
+    /// <summary>
+    /// チュートリアルシーンのAI.
+    /// </summary>
+    private void TutorialAI()
+    {
+        // 攻撃可能にチェックを入れたら攻撃を行う.
+        //if ()
+        //{
+
+        //}
+    }
+
 
     /// <summary>
     /// プレイヤーとモンスター同士の距離取得.

@@ -1,11 +1,6 @@
 /*メインシーンマネージャー*/
 
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class MainSceneManager : MonoBehaviour
 {
@@ -26,9 +21,6 @@ public class MainSceneManager : MonoBehaviour
     // 狩猟終了した時.
     private HuntingEnd _huntingEnd;
 
-    private CinemachineVirtualCamera _cinemachineVirtualCamera;
-    //private CinemachinePOV _cinemachinePOV;
-
     // 一時停止しているかどうか.
     private bool _pauseStop = false;
     // メニュー画面を開いているか.
@@ -41,10 +33,6 @@ public class MainSceneManager : MonoBehaviour
     public bool _openRetireConfirmation = false;
     // プレイ中UIの表示非表示.
     public bool _openGamePlayUi = true;
-
-    // カメラの回転量の保持.
-    private float _originalHorizontalAxisMaxSpeed;
-    private float _originalVerticalAxisMaxSpeed;
 
     // ゲーム全体の時間を停止するまでの時間
     private int _pauseCount;
@@ -62,12 +50,7 @@ public class MainSceneManager : MonoBehaviour
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _huntingEnd = GameObject.Find("GameManager").GetComponent<HuntingEnd>();
-        _cinemachineVirtualCamera = GameObject.Find("CameraBase").GetComponent<CinemachineVirtualCamera>();
-       // _cinemachinePOV = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
-        // カメラの元の回転する値を保持.
-        //_originalHorizontalAxisMaxSpeed = _cinemachinePOV.m_HorizontalAxis.m_MaxSpeed;
-        //_originalVerticalAxisMaxSpeed = _cinemachinePOV.m_VerticalAxis.m_MaxSpeed;
-
+        
         _pauseCount = 15;
     }
 
@@ -78,8 +61,6 @@ public class MainSceneManager : MonoBehaviour
         {
             _openMenu = false;
             _openPause = true;
-            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = 0;
-            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = 0;
 
             if(_pauseCount == 0)
             {
@@ -92,8 +73,6 @@ public class MainSceneManager : MonoBehaviour
         {
             _pauseTimeStop.StartTime();
             _openPause = false;
-            //_cinemachinePOV.m_HorizontalAxis.m_MaxSpeed = _originalHorizontalAxisMaxSpeed;
-            //_cinemachinePOV.m_VerticalAxis.m_MaxSpeed = _originalVerticalAxisMaxSpeed;
             _pauseCount = 15;
         }
 

@@ -60,6 +60,17 @@ public class QuestListAnim : MonoBehaviour
     // 選択したUI.
     private SelectSceneSelectUi _SelectUi;
 
+    // クエストタイトルのサイズの値.
+    private float _questTitleSizeValueX = 0;
+    private float _questTitleSizeValueY = 0;
+    // クエストタイトルのサイズ,
+    private Vector2 _questTitleSize = Vector2.zero;
+
+    // クエストタイトルの大きさの値.
+    private float _questTitleScaleValue = 0;
+    // クエストタイトルの大きさ.
+    private Vector3 _questTitleScale = Vector3.zero;
+
     void Start()
     {
         _sequence = DOTween.Sequence();
@@ -197,20 +208,28 @@ public class QuestListAnim : MonoBehaviour
         if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.EASY)
         {
             _images[(int)UIAnimNum.QUEST_TITLE].sprite = _questSprite[(int)QuestTitle.NORMAL];
-            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = new Vector2(306, 66);
-            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            _questTitleSizeValueX = 306;
+            _questTitleSizeValueY = 66;
+            _questTitleScaleValue = 1.5f;
         }
         else if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.HATD)
         {
             _images[(int)UIAnimNum.QUEST_TITLE].sprite = _questSprite[(int)QuestTitle.HARD];
-            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = new Vector2(605, 67);
-            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            _questTitleSizeValueX = 605;
+            _questTitleSizeValueY = 67;
+            _questTitleScaleValue = 1.1f;
         }
         else if (_SelectUi.GetSelectNumber() == (int)SelectSceneSelectUi.SelectItem.TUTORIAL)
         {
             _images[(int)UIAnimNum.QUEST_TITLE].sprite = _questSprite[(int)QuestTitle.TUTORIAL];
-            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = new Vector2(1322, 150);
-            _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            _questTitleSizeValueX = 127;
+            _questTitleSizeValueY = 46;
+            _questTitleScaleValue = 2.0f;
         }
+
+        _questTitleSize = new Vector2(_questTitleSizeValueX, _questTitleSizeValueY);
+        _questTitleScale = new Vector3(_questTitleScaleValue, _questTitleScaleValue, _questTitleScaleValue);
+        _rectTransforms[(int)UIAnimNum.QUEST_TITLE].sizeDelta = _questTitleSize;
+        _rectTransforms[(int)UIAnimNum.QUEST_TITLE].localScale = _questTitleScale;
     }
 }

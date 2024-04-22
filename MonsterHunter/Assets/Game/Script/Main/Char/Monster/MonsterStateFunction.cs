@@ -113,7 +113,7 @@ public partial class MonsterState
     /// </summary>
     private void Initialization()
     {
-        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
         _hunter = GameObject.Find("Hunter");
         _trasnform = transform;
         _playerState = _hunter.GetComponent<PlayerState>();

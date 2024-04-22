@@ -22,7 +22,7 @@ public class MainSceneConfirmationSelectUI : MonoBehaviour
     // シーン遷移の情報.
     private SceneTransitionManager _sceneTransitionManager;
     // メインシーンの情報.
-    private MainSceneManager _mainSceneManager;
+    private HuntingSceneManager _huntingSceneManager;
     // SE.
     private SEManager _seManager;
     // フェード.
@@ -37,7 +37,7 @@ public class MainSceneConfirmationSelectUI : MonoBehaviour
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
         _sceneTransitionManager = GameObject.Find("GameManager").GetComponent<SceneTransitionManager>();
-        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fade = GameObject.Find("Fade").GetComponent<Fade>();
         _selectNum = (int)SelectItem.NO;
@@ -81,7 +81,7 @@ public class MainSceneConfirmationSelectUI : MonoBehaviour
         if(_selectNum == (int)SelectItem.NO && _controllerManager._AButtonDown)
         {
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.REMOVE_PUSH);
-            _mainSceneManager._openRetireConfirmation = false;
+            _huntingSceneManager._openRetireConfirmation = false;
         }
         else if(_selectNum == (int)SelectItem.YES && _controllerManager._AButtonDown) 
         {

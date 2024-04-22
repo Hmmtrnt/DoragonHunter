@@ -20,22 +20,22 @@ public class MainSceneUi : MonoBehaviour
     // UI.
     public GameObject[] _ui;
 
-    // シーンの情報.
-    private MainSceneManager _mainSceneManager;
+    // 狩猟中シーンの情報.
+    private HuntingSceneManager _huntingSceneManager;
 
     void Start()
     {
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
-        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
     }
 
     private void FixedUpdate()
     {
-        _ui[(int)UIKinds.MENU].SetActive(_mainSceneManager.GetOpenMenu());
-        _ui[(int)UIKinds.OPTION].SetActive(_mainSceneManager.GetOpenOption());
-        _ui[(int)UIKinds.RETIREMENT].SetActive(_mainSceneManager.GetOpenRetireConfirmation());
-        _ui[(int)UIKinds.PAUSE].SetActive(_mainSceneManager.GetOpenPause());
-        _ui[(int)UIKinds.GAMEPLAY].SetActive(_mainSceneManager.GetGamePlayUI());
+        _ui[(int)UIKinds.MENU].SetActive(_huntingSceneManager.GetOpenMenu());
+        _ui[(int)UIKinds.OPTION].SetActive(_huntingSceneManager.GetOpenOption());
+        _ui[(int)UIKinds.RETIREMENT].SetActive(_huntingSceneManager.GetOpenRetireConfirmation());
+        _ui[(int)UIKinds.PAUSE].SetActive(_huntingSceneManager.GetOpenPause());
+        _ui[(int)UIKinds.GAMEPLAY].SetActive(_huntingSceneManager.GetGamePlayUI());
         _ui[(int)UIKinds.GREATEATTACKBUTTONGUIDE].SetActive(_playerState.GetApplyRedRenkiGauge());
     }
 }

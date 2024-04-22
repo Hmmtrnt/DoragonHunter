@@ -26,7 +26,7 @@ public partial class PlayerState
         AnimTransition();
 
         _currentState.OnUpdate(this);
-        if (!_mainSceneManager.GetPauseStop())
+        if (!_huntingSceneManager.GetPauseStop())
         {
             _currentState.OnChangeState(this);
         }
@@ -117,7 +117,7 @@ public partial class PlayerState
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
         _Monster = GameObject.FindWithTag("Monster");
         _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
-        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
         _attackCol = GameObject.Find("AttackCollider").GetComponent<AttackCol>();
         _weaponObject.SetActive(false);
         _weaponActive = false;
@@ -632,7 +632,7 @@ public partial class PlayerState
     /// </summary>
     private void OpenMenu()
     {
-        _openMenu = _mainSceneManager.GetOpenMenu();
+        _openMenu = _huntingSceneManager.GetOpenMenu();
     }
 
     /// <summary>
@@ -655,6 +655,13 @@ public partial class PlayerState
     /// </summary>
     /// <returns></returns>
     public float GetMaxStamina() { return _maxStamina; }
+
+    /// <summary>
+    /// 抜刀、納刀状態取得.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetIsUnsheathedSword() { return _unsheathedSword; }
+
     /// <summary>
     /// ダメージを与えた時の値.
     /// </summary>

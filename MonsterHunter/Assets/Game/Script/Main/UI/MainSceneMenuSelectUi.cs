@@ -24,8 +24,8 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     private PlayerState _playerState;
     // パッドの入力情報.
     private ControllerManager _controllerManager;
-    // メインシーンの情報.
-    private MainSceneManager _mainSceneManager;
+    // 狩猟中シーンの情報.
+    private HuntingSceneManager _huntingSceneManager;
     // SEマネージャー.
     private SEManager _seManager;
 
@@ -39,7 +39,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         _menu = GameObject.Find("GameManager").GetComponent<Menu>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _controllerManager = GameObject.Find("GameManager").GetComponent<ControllerManager>();
-        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
 
         _selectNum = (int)SelectItem.OPTION;
@@ -53,8 +53,8 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     void Update()
     {
         // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
-        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption() ||
-            _mainSceneManager.GetOpenRetireConfirmation()) return;
+        if (!_huntingSceneManager.GetOpenMenu() || _huntingSceneManager.GetOpenOption() ||
+            _huntingSceneManager.GetOpenRetireConfirmation()) return;
         _menu.SelectMove(_controllerManager._UpDownCrossKey, ref _selectNum);
         _menu.CrossKeyPushFlameCount(_controllerManager._UpDownCrossKey);
         _menu.CrossKeyNoPush(_controllerManager._UpDownCrossKey);
@@ -65,8 +65,8 @@ public class MainSceneMenuSelectUi : MonoBehaviour
     private void FixedUpdate()
     {
         // メニュー画面を閉じているまた、オプション画面を開いている時にスキップ処理.
-        if (!_mainSceneManager.GetOpenMenu() || _mainSceneManager.GetOpenOption() ||
-            _mainSceneManager.GetOpenRetireConfirmation()) return;
+        if (!_huntingSceneManager.GetOpenMenu() || _huntingSceneManager.GetOpenOption() ||
+            _huntingSceneManager.GetOpenRetireConfirmation()) return;
         _menu.SelectNumLimit(ref _selectNum, (int)SelectItem.MAXNUM);
         SelectPosition();
         
@@ -96,7 +96,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         if(_controllerManager._AButtonDown && _selectNum == (int)SelectItem.OPTION)
         {
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
-            _mainSceneManager._openOption = true;
+            _huntingSceneManager._openOption = true;
         }
     }
 
@@ -106,7 +106,7 @@ public class MainSceneMenuSelectUi : MonoBehaviour
         if(_controllerManager._AButtonDown && _selectNum ==(int)SelectItem.RETIRE)
         {
             _seManager.UIPlaySE((int)SEManager.AudioNumber.AUDIO2D, (int)SEManager.UISE.DECISION);
-            _mainSceneManager._openRetireConfirmation = true;
+            _huntingSceneManager._openRetireConfirmation = true;
         }
     }
 

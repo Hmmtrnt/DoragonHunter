@@ -50,12 +50,12 @@ public class TimeTable : MonoBehaviour
     // ランク表の画像.
     public Sprite[] _timeSprite;
 
-    // メインシーンの情報.
-    private MainSceneManager _mainSceneManager;
+    // 狩猟中シーンの情報.
+    private HuntingSceneManager _huntingSceneManager;
 
     void Start()
     {
-        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
     }
 
     void Update()

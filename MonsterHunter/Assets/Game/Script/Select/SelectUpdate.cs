@@ -112,10 +112,10 @@ public class SelectUpdate : MonoBehaviour
     private void SceneTransitionUpdate(Scene next, LoadSceneMode mode)
     {
         // シーン遷移先にあるスクリプト追加.
-        MainSceneManager mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        HuntingSceneManager huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
 
         // 難易度を選択した情報を代入.
-        mainSceneManager._hitPointMany = _hard;
+        huntingSceneManager._hitPointMany = _hard;
 
         SceneManager.sceneLoaded -= SceneTransitionUpdate;
     }

@@ -1,8 +1,8 @@
-/*メインシーンマネージャー*/
+/*狩猟中のシーンマネージャー*/
 
 using UnityEngine;
 
-public class MainSceneManager : MonoBehaviour
+public class HuntingSceneManager : MonoBehaviour
 {
     // パッドの入力情報.
     private ControllerManager _controllerManager;

@@ -19,7 +19,7 @@ public partial class MonsterState
             owner._rotateMotion = true;
             owner._currentRotateAttack = true;
             
-            if(owner._mainSceneManager._hitPointMany)
+            if(owner._huntingSceneManager._hitPointMany)
             {
                 owner._AttackPower = 15;
             }

@@ -72,8 +72,8 @@ public partial class MonsterState
     [SerializeField, EnumIndex(typeof(StateTransitionKinds))]
     private float[] _stateTransitionTime;
 
-    // メインシーンの情報.
-    private MainSceneManager _mainSceneManager;
+    // 狩猟中シーンの情報.
+    private HuntingSceneManager _huntingSceneManager;
 
     // 目標のプレイヤー.
     private GameObject _hunter;

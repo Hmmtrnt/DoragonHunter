@@ -20,8 +20,8 @@ public class HuntingEnd : MonoBehaviour
     // ハードモード.
     private int[] _rankDownHardTime = new int[(int)RankNumber.MAXNUM];
 
-    // メインシーンの情報.
-    private MainSceneManager _mainSceneManager;
+    // 狩猟中シーンの情報.
+    private HuntingSceneManager _huntingSceneManager;
 
     // モンスターの情報.
     private MonsterState _monsterState;
@@ -69,7 +69,7 @@ public class HuntingEnd : MonoBehaviour
         _rankDownHardTime[1] = 9;
         _rankDownHardTime[2] = 13;
 
-        _mainSceneManager = GameObject.Find("GameManager").GetComponent<MainSceneManager>();
+        _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
         _monsterState = GameObject.Find("Dragon").GetComponent<MonsterState>();
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
         _sceneTransitionManager = GetComponent<SceneTransitionManager>();
@@ -144,8 +144,6 @@ public class HuntingEnd : MonoBehaviour
 
         if (_playerState.GetHitPoint()==0 || _monsterState.GetHitPoint() == 0 || _Minute >= _minuteFailed)
         {
-            Debug.Log("通る");
-
             _questEnd = true;
             _Minute = _questTime.GetMinutes();
             _Second = _questTime.GetSecond();
@@ -156,7 +154,7 @@ public class HuntingEnd : MonoBehaviour
     private void RankDown()
     {
         // ハードモードのタイム.
-        if (_mainSceneManager._hitPointMany)
+        if (_huntingSceneManager._hitPointMany)
         {
             if (_Minute >= _rankDownHardTime[0])
             {
@@ -172,7 +170,7 @@ public class HuntingEnd : MonoBehaviour
             }
         }
         // ノーマルモードのタイム.
-        else if (!_mainSceneManager._hitPointMany)
+        else if (!_huntingSceneManager._hitPointMany)
         {
             if (_Minute >= _rankDownNormalTime[0])
             {
@@ -195,12 +193,12 @@ public class HuntingEnd : MonoBehaviour
         if(_playerState.GetHitPoint()<=0)
         {
             _QuestFailed = true;
-            _mainSceneManager._openGamePlayUi = false;
+            _huntingSceneManager._openGamePlayUi = false;
         }
         else if(_monsterState.GetHitPoint()<=0) 
         {
             _QuestClear = true;
-            _mainSceneManager._openGamePlayUi = false;
+            _huntingSceneManager._openGamePlayUi = false;
         }
     }
 

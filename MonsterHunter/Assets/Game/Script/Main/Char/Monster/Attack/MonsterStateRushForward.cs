@@ -32,7 +32,7 @@ public partial class MonsterState
         {
             owner.StateTransitionInitialization();
             owner._rushMotion = true;
-            if (owner._mainSceneManager._hitPointMany)
+            if (owner._huntingSceneManager._hitPointMany)
             {
                 owner._AttackPower = 22;
             }

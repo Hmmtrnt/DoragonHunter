@@ -108,8 +108,8 @@ public partial class PlayerState
     // カメラの注視点.
     [SerializeField] private GameObject _cameraFollow;
 
-    // メインシーンの情報.
-    private MainSceneManager _mainSceneManager;
+    // 狩猟中シーンの情報.
+    private HuntingSceneManager _huntingSceneManager;
 
     // スティックの傾き具合に合わせる.
     [Header("スティックの傾き具合に合わせる")]

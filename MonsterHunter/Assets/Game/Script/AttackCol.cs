@@ -89,8 +89,6 @@ public class AttackCol : MonoBehaviour
         }
     }
 
-    // ダメージを与えた瞬間、肉質を変化やヒットストップ追加.
-    // TODO:変数名が決まってない.
     /// <summary>
     /// ダメージを与えた瞬間に更新する.
     /// </summary>

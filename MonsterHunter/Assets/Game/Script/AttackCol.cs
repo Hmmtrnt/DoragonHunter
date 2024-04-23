@@ -157,7 +157,11 @@ public class AttackCol : MonoBehaviour
     private void EffectSpawn(GameObject objectName, int FleshyNumber)
     {
         // 生成.
-        Instantiate(objectName, _EffectPosition.transform.position, Quaternion.identity);
+        for(int i = 0; i < 10; i++)
+        {
+            Instantiate(objectName, _EffectPosition.transform.position, Quaternion.identity);
+        }
+
         if (GetSoftFleshy(FleshyNumber))
         {
             Instantiate(_bloodEffectObject, _EffectPosition.transform.position, Quaternion.identity);

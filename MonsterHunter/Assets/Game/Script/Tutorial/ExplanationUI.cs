@@ -30,6 +30,7 @@ public class ExplanationUI : MonoBehaviour
     [Header("説明画像")]
     [SerializeField, EnumIndex(typeof(DrawImageType))]
     public Image[] _canvasUI;
+
     [Header("説明画像オブジェクト")]
     [SerializeField, EnumIndex(typeof(DrawImageType))]
     public GameObject[] _canvasUIObject;

@@ -1116,15 +1116,15 @@ RectTransform:
   m_GameObject: {fileID: 1249592475529789549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7607898757054570079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -150}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -265, y: -132}
+  m_SizeDelta: {x: 754, y: 688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4521513515014126599
 CanvasRenderer:
@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5d832bac9b3aef742a5d1d22402eaac2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1416,15 +1416,15 @@ RectTransform:
   m_GameObject: {fileID: 1545668251138240298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7607898757054570079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: 0}
-  m_SizeDelta: {x: 300, y: 150}
+  m_AnchoredPosition: {x: -280, y: 15}
+  m_SizeDelta: {x: 495, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7772587047756364819
 CanvasRenderer:
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 794caa8d31ccea041a26213fb98ffcb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0f33f175ac34a340a9ddc839dce2eb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6851,8 +6851,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 21300000, guid: 3c2d02314953b7a4ca7a57507ef8dea6, type: 3}
-  - {fileID: 21300000, guid: 8400d889e43dd424487dfbe4980b795f, type: 3}
+  - {fileID: 21300000, guid: 441d5fc38cb0faf44a648194fb4ffaec, type: 3}
+  - {fileID: 21300000, guid: e0f33f175ac34a340a9ddc839dce2eb6, type: 3}
   _canvasUI:
   - {fileID: 8026180267534656189}
   - {fileID: 716619368762188654}

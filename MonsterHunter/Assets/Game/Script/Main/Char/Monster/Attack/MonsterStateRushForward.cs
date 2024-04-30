@@ -103,7 +103,7 @@ public partial class MonsterState
 
             ParticleGenerateTime(owner);
 
-            owner._trasnform.position += owner._moveVelocity;
+            owner._transform.position += owner._moveVelocity;
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

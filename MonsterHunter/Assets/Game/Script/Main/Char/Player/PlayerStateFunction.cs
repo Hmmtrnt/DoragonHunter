@@ -373,39 +373,31 @@ public partial class PlayerState
     private void viewAngle()
     {
         Vector3 direction = _stickPositionObject.transform.position - _transform.position;
-        // ハンターとデバッグ用キューブのベクトルのなす角.
-        // デバッグ用キューブの正面.
-        float forwardAngle = Vector3.Angle(direction, _transform.forward);
-        // オブジェクトの側面.
-        float sideAngle = Vector3.Angle(direction, _transform.right);
-
-        RaycastHit hit;
-        bool ray = Physics.Raycast(_transform.position, direction.normalized, out hit);
-
-        bool viewFlag = ray && hit.collider.gameObject == _stickPositionObject && GetDistance() > 1;
-
+        // ハンターとスティックの傾きを表すオブジェクトのベクトルのなす角.
+        float angle = Vector3.SignedAngle(_transform.forward, direction, Vector3.up);
+  
         // 正面.
-        if (forwardAngle < 45)
+        if (angle < 45 && angle > -45)
         {
             FoundFlag((int)viewDirection.FORWARD);
         }
         // 後ろ.
-        else if (forwardAngle > 135)
+        else if (angle > 135 || angle < -135)
         {
             FoundFlag((int)viewDirection.BACKWARD);
         }
         // 右.
-        else if (sideAngle < 45)
+        else if (angle > 45 && angle <135)
         {
             FoundFlag((int)viewDirection.RIGHT);
         }
         // 左.
-        else if (sideAngle > 135)
+        else if (angle < -45 && angle > -135)
         {
             FoundFlag((int)viewDirection.LEFT);
         }
         // スティックを傾けていない場合.
-        else if(forwardAngle == 0 && sideAngle == 0)
+        else
         {
             FoundFlag((int)viewDirection.NONE);
         }

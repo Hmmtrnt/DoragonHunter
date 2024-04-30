@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using static UnityEngine.UI.GridLayoutGroup;
 
 public partial class MonsterState
@@ -115,7 +116,7 @@ public partial class MonsterState
     {
         _huntingSceneManager = GameObject.Find("GameManager").GetComponent<HuntingSceneManager>();
         _hunter = GameObject.Find("Hunter");
-        _trasnform = transform;
+        _transform = transform;
         _playerState = _hunter.GetComponent<PlayerState>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _fireBall = (GameObject)Resources.Load("FireBall2");
@@ -157,22 +158,19 @@ public partial class MonsterState
         }
         _rotateCollisiton.SetActive(false);
 
-#if false
         // 体力の決定.
-        //if(_mainSceneManager._hitPointMany)
-        //{
-        //    _MaxHitPoint = 10000;
-        //}
-        //else
-        //{
-        //    _MaxHitPoint = 5000;
-        //}
-#else
-        _MaxHitPoint = 10;
-#endif
+        if (_huntingSceneManager._hitPointMany)
+        {
+            _MaxHitPoint = 10000;
+        }
+        else
+        {
+            _MaxHitPoint = 5000;
+        }
 
-
+        // 弱るタイミングを代入
         _weakenTimingHitPoint = _MaxHitPoint / 4;
+        // 最大ヒットポイント
         _HitPoint = _MaxHitPoint;
 
         _randomNumber = 0;
@@ -317,37 +315,34 @@ public partial class MonsterState
     /// </summary>
     private void ViewAngle()
     {
-        Vector3 direction = _hunter.transform.position - _trasnform.position;
+        Vector3 direction = _hunter.transform.position - _transform.position;
         // オブジェクトとプレイヤーのベクトルのなす角
-        // オブジェクトの正面.
-        float forwardAngle = Vector3.Angle(direction, _trasnform.forward);
-        // オブジェクトの側面.
-        float sideAngle = Vector3.Angle(direction, _trasnform.right);
+        float angle = Vector3.SignedAngle(_transform.forward, direction, Vector3.up);
 
+        // Rayを飛ばしてプレイヤーが存在しているかを確認.
         RaycastHit hit;
-        bool ray = Physics.Raycast(_trasnform.position, direction.normalized, out hit);
-
+        bool ray = Physics.Raycast(_transform.position, direction.normalized, out hit);
         bool viewFlag = ray && hit.collider.gameObject == _hunter;
 
         if (!viewFlag) return;
 
         // 正面.
-        if (forwardAngle < 90 * 0.5f)
+        if (angle < 45 && angle > -45)
         {
             FoundFlag((int)viewDirection.FORWARD);
         }
         // 後ろ.
-        else if (forwardAngle > 135 && forwardAngle < 180)
+        else if (angle > 135 || angle < -135)
         {
             FoundFlag((int)viewDirection.BACKWARD);
         }
         // 右.
-        else if (sideAngle < 90 * 0.5f)
+        else if (angle > 45 && angle < 135)
         {
             FoundFlag((int)viewDirection.RIGHT);
         }
         // 左.
-        else if (sideAngle > 135 && sideAngle < 180)
+        else if (angle < -45 && angle > -135)
         {
             FoundFlag((int)viewDirection.LEFT);
         }
@@ -422,7 +417,7 @@ public partial class MonsterState
         // プレイヤーのほうを向いて回転
         if (_stateFlame <= turnFlame)
         {
-            _trasnform.rotation = Quaternion.Slerp(_trasnform.rotation, _rotation, Time.deltaTime * _rotateSpeed);
+            _transform.rotation = Quaternion.Slerp(_transform.rotation, _rotation, Time.deltaTime * _rotateSpeed);
         }
     }
 
@@ -597,7 +592,7 @@ public partial class MonsterState
     /// <returns></returns>
     private float GetDistance()
     {
-        _currentDistance = (_hunter.transform.position - _trasnform.position).magnitude;
+        _currentDistance = (_hunter.transform.position - _transform.position).magnitude;
 
         return _currentDistance;
     }

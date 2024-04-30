@@ -60,7 +60,7 @@ public partial class MonsterState
                 owner._forwardSpeed = 0.0f;
             }
 
-            owner._trasnform.position += owner._moveVelocity;
+            owner._transform.position += owner._moveVelocity;
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)

@@ -77,7 +77,7 @@ public partial class MonsterState
 
     // 目標のプレイヤー.
     private GameObject _hunter;
-    private Transform _trasnform;
+    private Transform _transform;
     // プレイヤーのステート情報.
     private PlayerState _playerState;
 

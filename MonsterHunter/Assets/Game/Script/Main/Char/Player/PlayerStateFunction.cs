@@ -36,7 +36,7 @@ public partial class PlayerState
         StateTime();
 
         // デバッグ用Ray.
-        DebugRayCast();
+        GenerateRay();
     }
 
     /// <summary>
@@ -113,7 +113,6 @@ public partial class PlayerState
     private void VariableInitialization()
     {
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
-        _mainSceneSelectUi = GameObject.Find("SelectItem").GetComponent<MainSceneMenuSelectUi>();
         _seManager = GameObject.Find("SEManager").GetComponent<SEManager>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -632,75 +631,63 @@ public partial class PlayerState
     }
 
     /// <summary>
-    /// デバッグ用レイキャスト
+    /// Rayの生成.
     /// </summary>
-    private void DebugRayCast()
+    private void GenerateRay()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    // 飛ばす＆表示するRayの長さ
-        //    float distance = 100;
-        //    float duration = 3;
-
-        //    //Ray ray = Camera.main.ScreenPointToRay(_transform.position);
-        //    //Ray ray = _transform.position;
-        //    Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
-
-        //    RaycastHit hit = new RaycastHit();
-        //    if(Physics.Raycast(ray, out hit, distance))
-        //    {
-        //        GameObject hitObject = hit.collider.gameObject;
-        //    }
-
-        //}
-
-        // 飛ばす＆表示するRayの長さ
-        float distance = 100;
-        float duration = 1;
-
         // デバッグ用オブジェクト名の出力.
         string debugNameLeg = "none";
         string debugNameHead = "none";
 
         // Ray高さ.
-        // 足元.
+        // 足裏.
+        float bottomLegHeight = 0.0f;
+        // 足.
         float legHeight = 1.0f;
         // 上半身.
         float upBodyHeight = 2.5f;
         // Rayの長さ
         float rayLength = 2;
-        // Rayの原点.
+        // 足裏の原点.
+        Vector3 originBottomLeg = _transform.position + new Vector3(0.0f, bottomLegHeight, 0.0f);
+        // 足の原点.
         Vector3 originLeg = _transform.position + new Vector3(0.0f, legHeight, 0.0f);
-        // Rayの原点.
-        Vector3 originHead = _transform.position + new Vector3(0.0f, upBodyHeight, 0.0f);
+        // 上半身の原点.
+        Vector3 originUpBody = _transform.position + new Vector3(0.0f, upBodyHeight, 0.0f);
 
         // Rayの方向
         Vector3 direction = _transform.forward * rayLength;
 
-
+        // Rayの描画：上から、足裏、足、上半身
+        Debug.DrawRay(originBottomLeg, direction, Color.red);
         Debug.DrawRay(originLeg, direction, Color.red);
-        Debug.DrawRay(originHead, direction, Color.red);
+        Debug.DrawRay(originUpBody, direction, Color.red);
 
+        // Rayの設定：上から、足裏、足、上半身
+        Ray rayBottomLeg = new Ray(originBottomLeg, direction);
         Ray rayLeg = new Ray(originLeg, direction);
-        Ray rayHead = new Ray(originHead, direction);
+        Ray rayUpBody = new Ray(originUpBody, direction);
 
-        RaycastHit hitLeg = new RaycastHit();
-        RaycastHit hitHead = new RaycastHit();
-        if (Physics.Raycast(rayLeg, out hitLeg, rayLength))
+        RaycastHit[] hit = new RaycastHit[(int)RayKinds.MAX];
+
+        // どのRayが当たっているかを取得.
+        GetRayHit(rayBottomLeg, hit[(int)RayKinds.BOTTOMLEG], rayLength, _rayHit[(int)RayKinds.BOTTOMLEG]);
+        GetRayHit(rayLeg, hit[(int)RayKinds.LEG], rayLength, _rayHit[(int)RayKinds.LEG]);
+        GetRayHit(rayUpBody, hit[(int)RayKinds.UPBODY], rayLength, _rayHit[(int)RayKinds.UPBODY]);
+
+        Debug.Log(_rayHit[(int)RayKinds.BOTTOMLEG]);
+        Debug.Log(_rayHit[(int)RayKinds.LEG]);
+        Debug.Log(_rayHit[(int)RayKinds.UPBODY]);
+
+    }
+
+
+    private void GetRayHit(Ray rayKinds, RaycastHit hit, float rayLength, bool getRayHit)
+    {
+        if(Physics.Raycast(rayKinds, out hit, rayLength))
         {
-            debugNameLeg = hitLeg.collider.gameObject.name;
-
-            Debug.Log(debugNameLeg);
+            getRayHit = true;
         }
-
-        if(Physics.Raycast(rayHead, out hitHead, rayLength))
-        {
-            debugNameHead = hitHead.collider.gameObject.name;
-
-            Debug.Log(debugNameHead);
-        }
-
-        
     }
 
     /// <summary>

@@ -84,6 +84,17 @@ public partial class PlayerState
         MAX
     }
 
+    // Rayの種類
+    public enum RayKinds
+    {
+        BOTTOMLEG,  // 足の裏
+        LEG,        // 足
+        UPBODY,     // 上半身
+
+        MAX
+    }
+
+
     [Header("次の状態に遷移するときの時間")]
     [SerializeField, EnumIndex(typeof(StateTransitionKinds))]
     private float[] _stateTransitionTime;
@@ -103,9 +114,6 @@ public partial class PlayerState
 
     // SEマネージャー.
     private SEManager _seManager;
-
-    // メニュー画面の選択している情報.
-    private MainSceneMenuSelectUi _mainSceneSelectUi;
 
     // カメラの注視点.
     [SerializeField] private GameObject _cameraFollow;
@@ -297,6 +305,9 @@ public partial class PlayerState
     // 回復量.
     [Header("回復量")]
     [SerializeField] private float _recoveryAmount = 0.0f;
+
+    // Rayにオブジェクトが当たっているかを取得.
+    private bool[] _rayHit = new bool[(int)RayKinds.MAX];
 
     // メニューを開いているか取得.
     private bool _openMenu = false;

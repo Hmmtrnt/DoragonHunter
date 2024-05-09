@@ -1,5 +1,6 @@
 /*プレイヤーステートの関数まとめ*/
 
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public partial class PlayerState
@@ -33,6 +34,9 @@ public partial class PlayerState
         viewAngle();
         StateFlameManager();
         StateTime();
+
+        // デバッグ用Ray.
+        DebugRayCast();
     }
 
     /// <summary>
@@ -625,6 +629,78 @@ public partial class PlayerState
     private void OpenMenu()
     {
         _openMenu = _huntingSceneManager.GetOpenMenu();
+    }
+
+    /// <summary>
+    /// デバッグ用レイキャスト
+    /// </summary>
+    private void DebugRayCast()
+    {
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    // 飛ばす＆表示するRayの長さ
+        //    float distance = 100;
+        //    float duration = 3;
+
+        //    //Ray ray = Camera.main.ScreenPointToRay(_transform.position);
+        //    //Ray ray = _transform.position;
+        //    Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
+
+        //    RaycastHit hit = new RaycastHit();
+        //    if(Physics.Raycast(ray, out hit, distance))
+        //    {
+        //        GameObject hitObject = hit.collider.gameObject;
+        //    }
+
+        //}
+
+        // 飛ばす＆表示するRayの長さ
+        float distance = 100;
+        float duration = 1;
+
+        // デバッグ用オブジェクト名の出力.
+        string debugNameLeg = "none";
+        string debugNameHead = "none";
+
+        // Ray高さ.
+        // 足元.
+        float legHeight = 1.0f;
+        // 上半身.
+        float upBodyHeight = 2.5f;
+        // Rayの長さ
+        float rayLength = 2;
+        // Rayの原点.
+        Vector3 originLeg = _transform.position + new Vector3(0.0f, legHeight, 0.0f);
+        // Rayの原点.
+        Vector3 originHead = _transform.position + new Vector3(0.0f, upBodyHeight, 0.0f);
+
+        // Rayの方向
+        Vector3 direction = _transform.forward * rayLength;
+
+
+        Debug.DrawRay(originLeg, direction, Color.red);
+        Debug.DrawRay(originHead, direction, Color.red);
+
+        Ray rayLeg = new Ray(originLeg, direction);
+        Ray rayHead = new Ray(originHead, direction);
+
+        RaycastHit hitLeg = new RaycastHit();
+        RaycastHit hitHead = new RaycastHit();
+        if (Physics.Raycast(rayLeg, out hitLeg, rayLength))
+        {
+            debugNameLeg = hitLeg.collider.gameObject.name;
+
+            Debug.Log(debugNameLeg);
+        }
+
+        if(Physics.Raycast(rayHead, out hitHead, rayLength))
+        {
+            debugNameHead = hitHead.collider.gameObject.name;
+
+            Debug.Log(debugNameHead);
+        }
+
+        
     }
 
     /// <summary>

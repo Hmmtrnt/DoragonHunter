@@ -11,6 +11,7 @@ public partial class PlayerState
     private static readonly StateDash _dash = new();                // ダッシュ.
     private static readonly StateFatigueDash _fatigueDash = new();  // 疲労時のダッシュ.
     private static readonly StateRecovery _recovery = new();        // 回復.
+    private static readonly StateClimbSteps _climbSteps = new();    // 段差を登る.
 
     //--抜刀状態--//
     private static readonly StateDrawnSwordTransition _drawSwordTransition = new(); // 抜刀する.
@@ -38,6 +39,7 @@ public partial class PlayerState
     // 現在のState.
     private StateBase _currentState = _idle;
 
+    // スティックの傾けた方向.
     enum viewDirection
     {
         FORWARD = 0,

@@ -14,11 +14,7 @@ public partial class PlayerState
             owner._rigidbody.velocity = Vector3.zero;
             owner._avoidVelocity = owner._transform.forward * owner._avoidVelocityMagnification;
 
-            //owner.RotateDirection();
-
-            owner._transform.LookAt(new Vector3(owner._stickPositionObject.transform.position.x,
-                0, 
-                owner._stickPositionObject.transform.position.z));
+            
         }
 
         public override void OnUpdate(PlayerState owner)

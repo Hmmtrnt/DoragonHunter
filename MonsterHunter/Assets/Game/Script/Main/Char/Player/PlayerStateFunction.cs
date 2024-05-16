@@ -378,6 +378,9 @@ public partial class PlayerState
         Vector3 direction = _stickPositionObject.transform.position - _transform.position;
         // ハンターとスティックの傾きを表すオブジェクトのベクトルのなす角.
         float angle = Vector3.SignedAngle(_transform.forward, direction, Vector3.up);
+
+        //Debug.Log(angle);
+        Debug.Log(_transform.forward);
   
         // 正面.
         if (angle < 45 && angle > -45)
@@ -675,9 +678,9 @@ public partial class PlayerState
         GetRayHit(rayLeg, hit[(int)RayKinds.LEG], rayLength, _rayHit[(int)RayKinds.LEG]);
         GetRayHit(rayUpBody, hit[(int)RayKinds.UPBODY], rayLength, _rayHit[(int)RayKinds.UPBODY]);
 
-        Debug.Log(_rayHit[(int)RayKinds.BOTTOMLEG]);
-        Debug.Log(_rayHit[(int)RayKinds.LEG]);
-        Debug.Log(_rayHit[(int)RayKinds.UPBODY]);
+        //Debug.Log(_rayHit[(int)RayKinds.BOTTOMLEG]);
+        //Debug.Log(_rayHit[(int)RayKinds.LEG]);
+        //Debug.Log(_rayHit[(int)RayKinds.UPBODY]);
 
     }
 
